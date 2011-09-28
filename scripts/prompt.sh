@@ -73,7 +73,7 @@ custom_prompt () {
       STATE="${STATE}${YELLOW}*${NO_COLOR}"
     fi
 
-    PS1="${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR} (${PROMPT_COLOR}${BRANCH}${NO_COLOR}${STATE}${NO_COLOR})\n\u \$ "
+    PS1="${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR} ( ${PROMPT_COLOR}${BRANCH}${NO_COLOR}${STATE}${NO_COLOR} )\n\u \$ "
   else
     PS1="${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR}\n\u \$ "
   fi

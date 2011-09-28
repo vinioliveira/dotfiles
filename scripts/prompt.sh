@@ -40,7 +40,7 @@ custom_prompt () {
     local RAILS_PROMPT="${RAILS_VERSION}#"
   fi
 
-  RUBY_PROMPT="${GRAY}[${RAILS_PROMPT}${GEMSET_NAME}${RUBY_VERSION}]${NO_COLOR} "
+  RUBY_PROMPT="${GRAY}[${RAILS_PROMPT}${RUBY_VERSION}]${NO_COLOR} "
 
   if [ "$STATUS" != "" ]; then
     if [[ "$STATUS" =~ "$CHANGES_NOT_STAGED" ]]; then
@@ -73,9 +73,9 @@ custom_prompt () {
       STATE="${STATE}${YELLOW}*${NO_COLOR}"
     fi
 
-    PS1="\n${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR} (${PROMPT_COLOR}${BRANCH}${NO_COLOR}${STATE}${NO_COLOR})\n\$ "
+    PS1="${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR} (${PROMPT_COLOR}${BRANCH}${NO_COLOR}${STATE}${NO_COLOR})\n\u \$ "
   else
-    PS1="\n${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR}\n\$ "
+    PS1="${RUBY_PROMPT}${YELLOW}\w\a${NO_COLOR}\n\u \$ "
   fi
 }
 

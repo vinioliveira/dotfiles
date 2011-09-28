@@ -20,3 +20,8 @@ alias xmldelete="curl -X DELETE -H 'Accept: application/xml'"
 alias xmlget="curl -X GET -H 'Accept: application/xml'"
 alias xmlpost="curl -X POST -H 'Accept: application/xml'"
 alias xmlput="curl -X PUT -H 'Accept: application/xml'"
+# Directory navigation aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'

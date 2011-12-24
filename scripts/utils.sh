@@ -32,30 +32,6 @@ if [ -f $CDHISTORY ]; then
   fi
 fi
 
-# Open a new SSH tunnel.
-#
-#   $ tunnel                    # Open dynamic proxy for my own domain
-#   $ tunnel example.com 2812   # Redirect localhost:2812 to example.com:2812, without exposing service/port.
-#   $ tunnel -h                 # Show help
-#
-tunnel() {
-  if [[ $# = 0 ]]; then
-    echo "Opening dynamic tunnel to simplesideias..."
-    sudo ssh -vND localhost:666 fnando@simplesideias.com.br
-  elif [[ $# = 2 ]]; then
-    echo "Forwarding port $2 to $1..."
-    ssh -L $2:localhost:$2 $1
-  else
-    echo "Usage:"
-    echo "  tunnel                         # Use simplesideias as proxy server"
-    echo "  tunnel example.com 2345        # Redirect port from localhost:2345 to example.com"
-    echo ""
-    echo "Common ports:"
-    echo "  2812: Monit"
-    echo "  5984: CouchDB"
-  fi
-}
-
 # Check if given url is giving gzipped content
 #
 #   $ gzipped http://simplesideias.com.br

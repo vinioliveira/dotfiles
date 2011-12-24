@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require "yaml"
 require "optparse"
+require 'pry'
 
 # Save a config file at ~/.projects with something like
 #
@@ -19,9 +20,13 @@ require "optparse"
 class Project
   APPLESCRIPT = <<-APPLESCRIPT
 osascript <<EOF
-  tell application "Terminal"
+  tell application "iTerm"
     activate
+    set term to (current terminal)
+
+    tell term
     %s
+    end tell 
   end tell
 EOF
   APPLESCRIPT
@@ -56,8 +61,10 @@ EOF
     commands = []
 
     config["tabs"].each_with_index do |tab_command, i|
-      commands << %[do script "cd #{config["home"]} && #{tab_command}" in last tab of front window]
-      commands << 'tell application "System Events" to keystroke "t" using command down' if i < config["tabs"].size - 1
+      commands << %[ set tab to (launch session "Default") ]
+      commands << %[ tell tab ]
+      commands << %[ write text "cd #{config["home"]} && #{tab_command}" ]
+      commands << %[ end tell ] 
     end
 
     command = APPLESCRIPT % commands.join("\n")
@@ -65,7 +72,8 @@ EOF
   end
   
   def go
-    command = APPLESCRIPT % %[do script "cd #{config["home"]}" in last tab of front window]
+
+    command = APPLESCRIPT % [" set tab to (launch session \"Default\") ", " tell tab ", " write text \"cd #{config['home']}\"", " end tell "].join("\n")
     system(command)
   end
 end

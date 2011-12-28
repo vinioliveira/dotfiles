@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require "yaml"
 require "optparse"
-require 'pry'
 
 # Save a config file at ~/.projects with something like
 #
@@ -44,6 +43,10 @@ EOF
 
   attr_accessor :config
 
+  def self.list
+    system("echo ' Projetos existents \n - #{ projects.keys.join('\n - ')}'")
+  end
+  
   def self.run(project_name)
     new(project_name).run
   end
@@ -70,7 +73,7 @@ EOF
     command = APPLESCRIPT % commands.join("\n")
     system(command)
   end
-  
+
   def go
 
     command = APPLESCRIPT % [" set tab to (launch session \"Default\") ", " tell tab ", " write text \"cd #{config['home']}\"", " end tell "].join("\n")
@@ -84,6 +87,7 @@ end
 #
 #   -r, --run [PROJECT] Run project prescriptions contained in ~/.project
 #   -g, --go  [PROJECT] Change to project home directory
+#   -l, --list          List all projects availables
 #   -h, --help          Show help
 #
 class Command
@@ -92,12 +96,12 @@ class Command
   def initialize
     @help, @options = parse_command_line
   end
-  
+
   private
-  
+
   def parse_command_line
     options = {}
-    
+
     optparse = OptionParser.new do |opts|
       opts.banner = "Usage: project [-r | -g] name"
 
@@ -111,12 +115,17 @@ class Command
         options[:project] = project
       end
 
+      opts.on("-l", "--list", "List all projects availables") do 
+        options[:action] = :list
+        options[:project] = nil
+      end
+
       opts.on("-h", "--help", "Show help") do
         options[:action] = :help
         options[:project] = nil
       end
     end
-    
+
     help = optparse.help
 
     if ARGV.empty?
@@ -124,13 +133,13 @@ class Command
       options[:project] = nil
     else
       optparse.parse!
-    
+
       if options.empty?
         options[:action] = :run
         options[:project] = ARGV.first
       end
     end
-    
+
     [help, options]
   end
 end
@@ -139,12 +148,14 @@ begin
   command = Command.new
   action  = command.options[:action]
   project = command.options[:project]
-
+  
   case action
   when :run
     Project.run(project)
   when :go
     Project.go(project)
+  when :list
+    Project.list
   when :help
     puts command.help
   end

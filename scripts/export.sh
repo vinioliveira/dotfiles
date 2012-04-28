@@ -40,13 +40,13 @@ export RED="\[\033[0;31m\]"
 export WHITE="\[\033[1;37m\]"
 export YELLOW="\[\033[0;33m\]"
 
-# export DYLD_LIBRARY_PATH=/Applications/oracle/instantclient_10_2
+# export DYLD_LIBRARY_PATH=/Users/vinioliveira/Developement/oracle/instantclient_10_2
 # export SQLPATH=/Applications/oracle/instantclient_10_2
 # export TNS_ADMIN=/Applications/oracle/network/admin
 # export PATH=$PATH:$DYLD_LIBRARY_PATH
 
-# export DYLD_LIBRARY_PATH="/opt/oracle/instantclient_10_2"
+export DYLD_LIBRARY_PATH="/opt/oracle/instantclient"
 # export SQLPATH="/opt/oracle/instantclient_10_2"
 # export TNS_ADMIN="/opt/oracle/network/admin"
 # export NLS_LANG="AMERICAN_AMERICA.UTF8"
-# export PATH=$PATH:$DYLD_LIBRARY_PATH
+export PATH=$PATH:$DYLD_LIBRARY_PATH

@@ -11,7 +11,7 @@ custom_prompt () {
    fi
 
   local RUBY_VERSION=`ruby -e "puts RUBY_VERSION"`
-  local GEMSET_NAME=`rvm gemset name`
+  #local GEMSET_NAME=`rvm gemset name`
   
   if [[ "$GEMSET_NAME" != "base" ]]; then
     GEMSET_NAME="${GEMSET_NAME}@"

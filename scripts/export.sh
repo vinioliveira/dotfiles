@@ -50,3 +50,4 @@ export DYLD_LIBRARY_PATH="/opt/oracle/instantclient"
 # export TNS_ADMIN="/opt/oracle/network/admin"
 # export NLS_LANG="AMERICAN_AMERICA.UTF8"
 export PATH=$PATH:$DYLD_LIBRARY_PATH
+export PATH="$HOME/.rbenv/bin:$PATH"

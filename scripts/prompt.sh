@@ -5,6 +5,18 @@ custom_prompt () {
   # history -r
 
   local BRANCH=`git branch 2> /dev/null | grep \* | sed 's/* //'`
+  local BLUE="\[\033[0;34m\]"
+  local NO_COLOR="\[\e[0m\]"
+  local GRAY="\[\033[1;30m\]"
+  local GREEN="\[\033[0;32m\]"
+  local LIGHT_GRAY="\[\033[0;37m\]"
+  local LIGHT_GREEN="\[\033[1;32m\]"
+  local LIGHT_RED="\[\033[1;31m\]"
+  local RED="\[\033[0;31m\]"
+  local WHITE="\[\033[1;37m\]"
+  local YELLOW="\[\033[0;33m\]"
+
+  local BASE_COLOR="$NO_COLOR"
 
   if [[ "$BRANCH" = "" ]]; then
      BRANCH=`git status 2> /dev/null | grep "On branch" | sed 's/# On branch //'`
@@ -41,7 +53,7 @@ custom_prompt () {
     local RAILS_PROMPT="${RAILS_VERSION}#"
   fi
 
-  RUBY_PROMPT="${GRAY}[${RAILS_PROMPT}${RUBY_VERSION}]${NO_COLOR} "
+  RUBY_PROMPT="${WHITE}[${RAILS_PROMPT}${RUBY_VERSION}]${NO_COLOR} "
 
   if [ "$STATUS" != "" ]; then
     if [[ "$STATUS" =~ "$CHANGES_NOT_STAGED" ]]; then

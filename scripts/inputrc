@@ -1,12 +1,3 @@
-#Be 8 bit clean.
-set input-meta on
-set output-meta on
-set convert-meta off
-
-# Auto completion options
-set show-all-if-ambiguous on
-set completion-ignore-case on
-
 # Keybindings
 "\e[1~": beginning-of-line       # Home key
 "\e[4~": end-of-line             # End key
@@ -15,3 +6,8 @@ set completion-ignore-case on
 "\e[3~": delete-char             # Delete key
 "\e[5C": forward-word            # Ctrl+right
 "\e[5D": backward-word           # Ctrl+left
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+
+
+set completion-ignore-case On

@@ -5,7 +5,7 @@ title() {
 
 # reload source
 reload() {
-  source ~/.bash_profile;
+  source ~/.zshrc;
 }
 
 # list directory after cd; also save the last directory
@@ -52,17 +52,6 @@ gzipped() {
 
   echo -e $message
   return 0
-}
-
-# Schedule alarm. Will display growl
-# notification and beep.
-#
-#   $ alarm "now + 2 hours" "Your time has finished"
-#
-# Quotes required, sorry!
-#
-alarm() {
-  echo "afplay /System/Library/Sounds/Basso.aiff && /usr/local/bin/growlnotify -t Alarm -s -d alarm -a /Applications/iCal.app -m '$2'" | at $1
 }
 
 extract () {

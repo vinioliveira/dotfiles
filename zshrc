@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="vinioliveira"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -81,7 +81,6 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
 
 source $HOME/.dotfiles/scripts/alias.sh
 source $HOME/.dotfiles/scripts/export.sh
-source $HOME/.dotfiles/scripts/macosx.sh
 source $HOME/.dotfiles/scripts/other.sh
 source $HOME/.dotfiles/scripts/utils.sh
 

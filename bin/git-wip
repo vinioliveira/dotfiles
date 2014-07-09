@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-git add .
-git ci -a -m "WIP"

@@ -1,10 +1,10 @@
-== Bash
+## .dotfiles
 
 
 After download minor installation creating symlinks 
 
-  $ ln -s ~/.dotfiles/vim/ ~/.vim
-  $ ln -s ~/.dotfiles/vim/vimrc ~/.vimrc
-  $ ln -s ~/.dotfiles/zshrc ~/.zshrc
-  $ ln -s ~/.dotfiles/gitconfig ~/.gitconfig
-  $ ln -s ~/.dotfiles/gemrc ~/.gemrc
+    $ ln -s ~/.dotfiles/vim/ ~/.vim
+    $ ln -s ~/.dotfiles/vim/vimrc ~/.vimrc
+    $ ln -s ~/.dotfiles/zshrc ~/.zshrc
+    $ ln -s ~/.dotfiles/gitconfig ~/.gitconfig
+    $ ln -s ~/.dotfiles/gemrc ~/.gemrc

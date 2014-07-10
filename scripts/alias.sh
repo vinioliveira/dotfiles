@@ -1,6 +1,5 @@
 alias ll="ls -Glahs"
 alias ls="ls -G"
-alias macirb="macirb --simple-prompt -f"
 alias make="make -j2"
 alias mysql="mysql --auto-vertical-output"
 alias ni="lsof -i -Pn"

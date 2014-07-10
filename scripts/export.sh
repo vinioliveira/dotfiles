@@ -1,4 +1,5 @@
-export PATH="./bin:$HOME/.bash/bin:$HOME/bin:$HOME/local/bin:$HOME/local/ruby/gems/bin:$HOME/local/sbin:$HOME/Sites/codeplane/scripts:/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/X11/bin"
+
+export PATH=":$HOME/bin:/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/X11/bin"
 export INSTALL_DIR="$HOME/local"
 export MANPATH=/usr/local/git/man:$MANPATH
 
@@ -9,27 +10,7 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CDHISTORY="/tmp/cd-${USER}"
 
-<<<<<<< HEAD
-export RUBYLIB='.'
-export RUBYOPT=''
-
-export LESS_TERMCAP_mb=$'\E[04;33m'
-export LESS_TERMCAP_md=$'\E[04;33m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[00;32m'
-
-export PATH="$EC2_HOME/bin:$EC2_AMI_HOME/bin:$PATH"
-export JAVA_HOME="/Library/Java/Home"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.grail2/bin:$PATH" 
-export GRAILS="/Users/vinicius/Development/Ambiente/Groovy/grails-2.2.1/bin"
-export PATH="$GRAILS:$PATH"
-=======
 export JAVA_HOME="/Library/Java/Home"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export SSL_CERT_FILE=~/.ssl/cacert.pem
 #export LD_LIBRARY_PATH=~/ld_library
->>>>>>> Fixing init.sh and remove old and useless stuffs

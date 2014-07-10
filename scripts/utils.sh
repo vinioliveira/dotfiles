@@ -1,8 +1,3 @@
-# Set window title
-title() {
-  echo -ne "\033]0;$@\007";
-}
-
 # reload source
 reload() {
   source ~/.zshrc;
@@ -13,24 +8,6 @@ reload() {
 cd() {
   builtin cd "${@:-$HOME}" && ls && pwd > $CDHISTORY;
 }
-
-# run rake without worring about
-# bundler wrapper.
-function rake {
-  if [ -e Gemfile ]; then
-    bundle exec rake $@
-  else
-    `which rake` $@
-  fi
-}
-
-if [ -f $CDHISTORY ]; then
-  dir=$(cat $CDHISTORY)
-
-  if [ -d "$dir" ]; then
-    cd "$dir" && clear
-  fi
-fi
 
 # Check if given url is giving gzipped content
 #

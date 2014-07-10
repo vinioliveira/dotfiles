@@ -1,17 +1,14 @@
-# AVIT ZSH Theme
 
 PROMPT='$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
 ▶ '
 
 PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
 
-RPROMPT='$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
+RPROMPT='$(_vi_status)%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
 local _current_dir="%{$fg[blue]%}%3~%{$reset_color%} "
 local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
 local _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
-
-local _ruby_version_old="~/.rbenv/bin/rbenv version-name"
 
 function _user_host() {
   if [[ -n $SSH_CONNECTION ]]; then
@@ -32,7 +29,7 @@ function _vi_status() {
 
 function _ruby_version() {
   if {echo $fpath | grep -q "plugins/rbenv"}; then
-    echo "%{$fg[grey]%}$(current_ruby)%{$reset_color%}"
+    echo "%{$fg[grey]%}$(rbenv_prompt_info)%{$reset_color%}"
   fi
 }
 

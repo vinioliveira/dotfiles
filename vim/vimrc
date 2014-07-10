@@ -4,9 +4,9 @@ set encoding=utf-8
 set nocompatible               " be iMproved
 filetype off                   " required by vundle
 
-set rtp+=~/.dotfiles/vim/bundle/vundle/
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-source ~/.dotfiles/vim/vundles
+source ~/.vim/vundles
 
 
 filetype plugin indent on     " required! should be here at this line otherwise syntaxe for coffee script won't work

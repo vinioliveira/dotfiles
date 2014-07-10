@@ -1,11 +1,10 @@
 == Bash
 
-These are my bash scripts for daily usage.
 
-Just clone this repository to `~/.bash` and
-add the following line to your `~/.bash_profile`
-or equivalent file:
+After download minor installation creating symlinks 
 
-  source ~/.bash/init.sh
-  or 
-  . ~/.bash/init.sh
+  $ ln -s ~/.dotfiles/vim/ ~/.vim
+  $ ln -s ~/.dotfiles/vim/vimrc ~/.vimrc
+  $ ln -s ~/.dotfiles/zshrc ~/.zshrc
+  $ ln -s ~/.dotfiles/gitconfig ~/.gitconfig
+  $ ln -s ~/.dotfiles/gemrc ~/.gemrc

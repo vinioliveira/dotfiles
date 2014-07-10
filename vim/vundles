@@ -1,0 +1,33 @@
+" Syntax checking 
+Bundle 'scrooloose/syntastic' 
+" Lean & mean status/tabline
+Bundle 'bling/vim-airline' 
+" file-type sensible comments for Vim
+Bundle 'tomtom/tcomment_vim' 
+" Bundle 'ack.vim'
+" Suround by the command 
+Bundle 'tpope/vim-surround' 
+" This plug-in provides automatic closing of quotes
+Bundle 'Raimondi/delimitMate' 
+" For identation 
+Bundle 'nathanaelkane/vim-indent-guides' 
+" Make js beautiful 
+Bundle 'michalliu/sourcebeautify.vim' 
+" HTML made easy 
+Bundle 'rstacruz/sparkup' 
+Bundle 'scrooloose/nerdtree.git'
+" For auto compleation
+Bundle 'Shougo/neocomplcache' 
+Bundle 'ctrlp.vim'
+" Bundle 'skwp/vim-powerline.git'
+Bundle 'bufexplorer.zip'
+Bundle 'vim-coffee-script'
+Bundle 'tpope/vim-fugitive'
+
+" Themest://github.com/
+Bundle 'sjl/badwolf'
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'

@@ -25,7 +25,7 @@ Bundle 'vim-coffee-script'
 Bundle 'tpope/vim-fugitive'
 
 " Themest://github.com/
-Bundle 'sjl/badwolf'
+Bundle 'github-theme'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"

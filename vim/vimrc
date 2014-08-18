@@ -96,18 +96,19 @@ let g:ctrlp_custom_ignore ='\.git$\|\.DS_Store$\|.*\.class$|node_modules\|DS_Sto
 
 "============== THEME  ===========================
 "
-set background=dark
-colorscheme badwolf
+"set background=dark
+colorscheme macvim
 
 "============== AIR LINE ===========================
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'sol'
 let g:airline_section_warning = ''
 let g:airline_inactive_collapse = 0
 
 "Colors for indent
 hi IndentGuidesOdd  ctermbg=white
 hi IndentGuidesEven ctermbg=lightgrey
-
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 source ~/.dotfiles/vim/alias

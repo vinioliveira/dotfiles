@@ -32,16 +32,16 @@
 	changed = green
 	untracked = cyan
 
+[push]
+	default = current
+
 [alias]
   c = commit -m
   a = add
   aa= !git add -u && git add . && git status
   ck = checkout
   nb = checkout -b
-  p  = push
-  up = !git fetch origin && git rebase origin/master
-  ir = !git rebase origin/master
+  p = "!git push"
+  up = !git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"
   done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git push
 
-[push]
-	default = current

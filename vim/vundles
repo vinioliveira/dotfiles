@@ -20,13 +20,12 @@ Bundle 'scrooloose/nerdtree.git'
 Bundle 'Shougo/neocomplcache' 
 Bundle 'ctrlp.vim'
 " Bundle 'skwp/vim-powerline.git'
-Bundle 'bufexplorer.zip'
+"Bundle 'bufexplorer.zip'
+Bundle 'jlanzarotta/bufexplorer'
 Bundle 'vim-coffee-script'
 Bundle 'tpope/vim-fugitive'
 
 " Themest://github.com/
-Bundle 'github-theme'
-
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle 'garbas/vim-snipmate'

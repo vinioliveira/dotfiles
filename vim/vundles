@@ -1,12 +1,14 @@
 " Syntax checking 
 Bundle 'scrooloose/syntastic' 
+Bundle 'tpope/vim-rails'
 " Lean & mean status/tabline
 Bundle 'bling/vim-airline' 
-" file-type sensible comments for Vim
-Bundle 'tomtom/tcomment_vim' 
+Bundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+
 " Bundle 'ack.vim'
 " Suround by the command 
 Bundle 'tpope/vim-surround' 
+
 " This plug-in provides automatic closing of quotes
 Bundle 'Raimondi/delimitMate' 
 " For identation 
@@ -28,5 +30,7 @@ Bundle 'tpope/vim-fugitive'
 " Themest://github.com/
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle 'garbas/vim-snipmate'
+Bundle "garbas/vim-snipmate"
 Bundle 'honza/vim-snippets'
+Bundle 'jade.vim'
+Bundle 'mileszs/ack.vim'

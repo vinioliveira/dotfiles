@@ -8,7 +8,6 @@ set rtp+=~/.vim/vundle
 call vundle#rc()
 source ~/.vim/vundles
 
-
 filetype plugin indent on     " required! should be here at this line otherwise syntaxe for coffee script won't work
 syntax on
 
@@ -29,6 +28,7 @@ set laststatus=2                "It enabled powerline to be present always
 set cursorline                  " highlight the line of the cursor
 set list                        " Show invisible characters
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
+set guifont=Monaco:h10
 "set showbreak= ↪\
 
 " ================ Search Settings  =================
@@ -58,8 +58,9 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-set nowrap       "Don't wrap lines
+set wrap       "wrap lines
 set linebreak    "Wrap lines at convenient points
+set nolist
 
 " ================ Completion =======================
 
@@ -91,14 +92,26 @@ set sidescrolloff=15
 set sidescroll=1
 
 "============== IGNORE ctrlP  ======================
+"
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-let g:ctrlp_custom_ignore ='\.git$\|\.DS_Store$\|.*\.class$|node_modules\|DS_Store|vendor/bundle'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|build|vendor/bundle)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+  \ }
 
 "============== THEME  ===========================
 "
 "set background=dark
-colorscheme macvim
+colorscheme dracula
 
+"============== UtilSnippet =======================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsListSnippets = "<c-tab>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 "============== AIR LINE ===========================
 
 let g:airline_powerline_fonts = 1
@@ -109,6 +122,6 @@ let g:airline_inactive_collapse = 0
 "Colors for indent
 hi IndentGuidesOdd  ctermbg=white
 hi IndentGuidesEven ctermbg=lightgrey
-set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
+"set cursorline
+"hi CursorLine term=bold cterm=bold guibg=Grey40
 source ~/.dotfiles/vim/alias

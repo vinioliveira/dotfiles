@@ -11,16 +11,15 @@ alias redis="redis-server"
 alias top="top -o cpu"
 alias vim="vim -N"
 
+alias jsondel="curl -X DELETE -H 'Accept: application/json'"
+alias jsonget="curl -X GET -H 'Accept: application/json'"
+alias jsonpost="curl -X POST -H 'Accept: application/json'"
+alias jsonput="curl -X PUT -H 'Accept: application/json'"
+
 alias xmldelete="curl -X DELETE -H 'Accept: application/xml'"
 alias xmlget="curl -X GET -H 'Accept: application/xml'"
 alias xmlpost="curl -X POST -H 'Accept: application/xml'"
 alias xmlput="curl -X PUT -H 'Accept: application/xml'"
-
-# Directory navigation aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
 
 #Just give a try to Git alias thanks to Celso Dantas
 alias glog="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s => %C(green)%an%C(white), %C(red)%ar%Creset'"

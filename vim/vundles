@@ -1,36 +1,49 @@
 " Syntax checking 
-Bundle 'scrooloose/syntastic' 
-Bundle 'tpope/vim-rails'
-" Lean & mean status/tabline
-Bundle 'bling/vim-airline' 
-Bundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-
-" Bundle 'ack.vim'
-" Suround by the command 
-Bundle 'tpope/vim-surround' 
+Plugin 'scrooloose/syntastic' 
+Plugin 'tpope/vim-rails'
+Plugin 'bling/vim-airline' 
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'michalliu/sourcebeautify.vim' 
 
 " This plug-in provides automatic closing of quotes
-Bundle 'Raimondi/delimitMate' 
-" For identation 
-Bundle 'nathanaelkane/vim-indent-guides' 
-" Make js beautiful 
-Bundle 'michalliu/sourcebeautify.vim' 
-" HTML made easy 
-Bundle 'rstacruz/sparkup' 
-Bundle 'scrooloose/nerdtree.git'
-" For auto compleation
-Bundle 'Shougo/neocomplcache' 
-Bundle 'ctrlp.vim'
-" Bundle 'skwp/vim-powerline.git'
-"Bundle 'bufexplorer.zip'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'vim-coffee-script'
-Bundle 'tpope/vim-fugitive'
+Plugin 'Raimondi/delimitMate' 
 
-" Themest://github.com/
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'honza/vim-snippets'
-Bundle 'jade.vim'
-Bundle 'mileszs/ack.vim'
+" For identation 
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'junegunn/vim-easy-align'
+
+" HTML made easy 
+Plugin 'rstacruz/sparkup' 
+
+" For auto compleation
+Plugin 'Shougo/neocomplcache' 
+
+" Navigation
+Plugin 'ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'jlanzarotta/bufexplorer'
+"Plugin 'scrooloose/nerdtree.git'
+Plugin 'tpope/vim-vinegar'
+
+" Languages & Framework
+Plugin 'pangloss/vim-javascript'
+Plugin 'jade.vim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'vim-coffee-script'
+Plugin 'vim-ruby/vim-ruby'
+
+" Themes
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+
+" Facilities 
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'ecomba/vim-ruby-refactoring'
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+
+Plugin 'tpope/vim-rbenv'
+Plugin 'dockyard/vim-easydir'

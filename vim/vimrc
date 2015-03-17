@@ -1,14 +1,17 @@
 scriptencoding utf-8
 set encoding=utf-8
 
+filetype plugin on   
+filetype indent on
+
 set nocompatible               " be iMproved
 filetype off                   " required by vundle
+au BufWritePost vimrc so $MYVIMRC
 
 set rtp+=~/.vim/vundle
-call vundle#rc()
+call vundle#begin()
 source ~/.vim/vundles
-
-filetype plugin indent on     " required! should be here at this line otherwise syntaxe for coffee script won't work
+call vundle#end()
 syntax on
 
 
@@ -61,6 +64,12 @@ set expandtab
 set wrap       "wrap lines
 set linebreak    "Wrap lines at convenient points
 set nolist
+
+" ================ Easy Align =======================
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " ================ Completion =======================
 

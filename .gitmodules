@@ -1,3 +1,6 @@
 [submodule "vim/vundle"]
 	path = vim/vundle
 	url = https://github.com/gmarik/Vundle.vim
+[submodule "vim/bundle/vim-rbenv"]
+	path = vim/bundle/vim-rbenv
+	url = git@github.com:tpope/vim-rbenv.git

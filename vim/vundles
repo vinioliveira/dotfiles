@@ -22,8 +22,8 @@ Plugin 'Shougo/neocomplcache'
 Plugin 'ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'jlanzarotta/bufexplorer'
-"Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-vinegar'
+Plugin 'scrooloose/nerdtree.git'
+"Plugin 'tpope/vim-vinegar'
 
 " Languages & Framework
 Plugin 'pangloss/vim-javascript'
@@ -41,9 +41,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'ecomba/vim-ruby-refactoring'
-
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+Plugin 'bling/vim-bufferline'
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'tpope/vim-rbenv'
 Plugin 'dockyard/vim-easydir'

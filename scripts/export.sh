@@ -12,5 +12,5 @@ export CDHISTORY="/tmp/cd-${USER}"
 
 export JAVA_HOME="/Library/Java/Home"
 export PATH="$HOME/.rbenv/bin:$PATH"
-export SSL_CERT_FILE=~/.ssl/cacert.pem
+#export SSL_CERT_FILE=~/.ssl/cacert.pem
 #export LD_LIBRARY_PATH=~/ld_library

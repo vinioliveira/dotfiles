@@ -31,8 +31,10 @@ set laststatus=2                "It enabled powerline to be present always
 set cursorline                  " highlight the line of the cursor
 set list                        " Show invisible characters
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
-set guifont=Monaco:h10
-"set showbreak= ↪\
+set guifont=Monaco\ for\ Powerline:h10
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 
 " ================ Search Settings  =================
 
@@ -122,15 +124,46 @@ let g:UltiSnipsListSnippets = "<c-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 "============== AIR LINE ===========================
+"
+" ============ Surround Vim Shortcuts ============== 
+vmap ' S'
+vmap " S"
+vmap { S{
+vmap } S}
+vmap ( S(
+vmap ) S)
+vmap [ S[
+vmap ] S]
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'sol'
-let g:airline_section_warning = ''
-let g:airline_inactive_collapse = 0
+vnoremap << <
+vnoremap >> >
+
+nmap <leader>cs' cs"'
+nmap <leader>cs" cs'"
+nmap <leader>s' cysiw'
+nmap <leader>s" ysiw"
+nmap <leader>s( ysiw)
+nmap <leader>s[ ysiw]
+nmap <leader>s{ ysiw}
+
+nmap <leader>d' yss'
+nmap <leader>d" yss"
+nmap <leader>d( yss)
+nmap <leader>d[ yss]
+nmap <leader>d{ yss}
+" ============ Surround Vim Shortcuts ============== 
+
+let g:airline_theme             = 'powerlineish'
+let g:airline_enable_branch     = 1
+let g:airline_enable_syntastic  = 1
+let g:airline_powerline_fonts   = 1
+
+"let g:airline_section_warning = ''
+"let g:airline_inactive_collapse = 0
 
 "Colors for indent
 hi IndentGuidesOdd  ctermbg=white
 hi IndentGuidesEven ctermbg=lightgrey
-"set cursorline
-"hi CursorLine term=bold cterm=bold guibg=Grey40
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 source ~/.dotfiles/vim/alias

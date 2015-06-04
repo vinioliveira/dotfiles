@@ -29,3 +29,10 @@ alias gs="git status"
 alias g='git'
 alias gd="git diff"
 alias gup="git pull --rebase && git push"
+
+
+alias t="tmux"
+alias tn="tmux new -s"
+alias tls="tmux ls"
+alias tkill="tmux kill-session -t"
+

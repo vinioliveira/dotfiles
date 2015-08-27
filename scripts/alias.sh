@@ -30,9 +30,18 @@ alias g='git'
 alias gd="git diff"
 alias gup="git pull --rebase && git push"
 
-
 alias t="tmux"
 alias tn="tmux new -s"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
 
+alias gc="git-cola"
+
+
+#Grunt alias
+alias gt="grunt"
+alias gts="grunt serve"
+alias gtsa="grunt serve --allow-remote"
+alias gtjh="grunt jshint"
+alias gtt="grunt test"
+alias gtb="grunt build"

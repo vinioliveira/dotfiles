@@ -31,7 +31,8 @@ set laststatus=2                "It enabled powerline to be present always
 set cursorline                  " highlight the line of the cursor
 set list                        " Show invisible characters
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
-set guifont=Monaco\ for\ Powerline:h10
+"set guifont=Monaco\ for\ Powerline:h10
+"set guifont=Mono Uralic 10
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
@@ -95,6 +96,7 @@ vnoremap Y "*y
 " " In normal mode, do the same with the current line
 nnoremap Y "*yy
 set clipboard=unnamed           "To copy to clipboard
+set clipboard=unnamedplus
 
 " ================ Scrolling ========================
 
@@ -107,7 +109,7 @@ set sidescroll=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|build|vendor/bundle)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|bower_components|node_modules|dist|build|vendor/bundle)$',
   \ 'file': '\v\.(exe|so|dll)$'
   \ }
 
@@ -124,6 +126,13 @@ let g:UltiSnipsListSnippets = "<c-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 "============== AIR LINE ===========================
+"
+"============= funky - for search functions ======== 
+"nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <C-f> :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+"nnoremap <C-S-f> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
 "
 " ============ Surround Vim Shortcuts ============== 
 vmap ' S'
@@ -167,3 +176,5 @@ hi IndentGuidesEven ctermbg=lightgrey
 set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 source ~/.dotfiles/vim/alias
+
+

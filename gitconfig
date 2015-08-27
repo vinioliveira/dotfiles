@@ -1,16 +1,12 @@
 [user]
-	name = Vínicius Oliveira
-	email = oliveira.mvs@gmail.com
+	name = Vinícius Oliveira
+	email = me@vinioliveira.com
 [core]
 	excludesfile = ~/.gitignore_global
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 
 [color]
   ui = auto
@@ -44,4 +40,7 @@
   p = "!git push"
   up = !git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"
   done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git push
+  m = "merge --no-ff"
 
+[merge]
+	tool = meld

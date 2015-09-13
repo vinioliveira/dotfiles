@@ -1,4 +1,4 @@
-" Syntax checking 
+I" Syntax checking 
 Plugin 'scrooloose/syntastic' 
 Plugin 'tpope/vim-rails'
 Plugin 'bling/vim-airline' 
@@ -38,14 +38,17 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 " Facilities 
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'ecomba/vim-ruby-refactoring'
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rking/ag.vim'
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 Plugin 'tpope/vim-rbenv'
 Plugin 'dockyard/vim-easydir'

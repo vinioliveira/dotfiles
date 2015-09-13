@@ -1,4 +1,4 @@
-I" Syntax checking 
+" Syntax checking 
 Plugin 'scrooloose/syntastic' 
 Plugin 'tpope/vim-rails'
 Plugin 'bling/vim-airline' 

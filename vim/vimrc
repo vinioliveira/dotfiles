@@ -95,7 +95,7 @@ vnoremap Y "*y
 " " In normal mode, do the same with the current line
 nnoremap Y "*yy
 set clipboard=unnamed           "To copy to clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 " ================ Scrolling ========================
 

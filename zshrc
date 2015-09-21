@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="vinioliveira"
 
-plugins=(git fasd autojump)
+plugins=(git autojump z fasd)
 
 source $ZSH/oh-my-zsh.sh
 

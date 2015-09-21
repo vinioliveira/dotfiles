@@ -4,6 +4,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'bling/vim-airline' 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'michalliu/sourcebeautify.vim' 
+Plugin 'slim-template/vim-slim'
 
 " This plug-in provides automatic closing of quotes
 Plugin 'Raimondi/delimitMate' 

@@ -45,6 +45,7 @@ Plugin 'ecomba/vim-ruby-refactoring'
 "Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rking/ag.vim'
+Plugin 'Shutnik/jshint2.vim'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'

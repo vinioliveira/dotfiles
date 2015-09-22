@@ -16,7 +16,6 @@ syntax on
 
 
 " ================ Basic Settings  =================
-
 "let mapleader = '\'
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -34,6 +33,7 @@ set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
 set guifont=Monaco\ for\ Powerline:h12
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set t_Co=256
 
 
 " ================ Search Settings  =================
@@ -115,8 +115,7 @@ let g:ctrlp_custom_ignore = {
 "============== THEME  ===========================
 "
 "set background=dark
-colorscheme dracula
-
+colorscheme solarized
 "============== UtilSnippet =======================
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -172,8 +171,9 @@ let g:airline_powerline_fonts   = 1
 "Colors for indent
 hi IndentGuidesOdd  ctermbg=white
 hi IndentGuidesEven ctermbg=lightgrey
-set cursorline
+"set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
+
 source ~/.dotfiles/vim/alias
 
 

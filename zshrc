@@ -1,5 +1,13 @@
 # Path to your oh-my-zsh installation.
+export TERM="xterm-256color"
 export ZSH=$HOME/.oh-my-zsh
+
+setopt RM_STAR_WAIT
+setopt CORRECT
+
+export EDITOR="vim"
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
 
 #ZSH_THEME="vinioliveira"
 ZSH_THEME="amuse"

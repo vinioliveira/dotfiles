@@ -29,7 +29,7 @@ set hidden
 set laststatus=2                "It enabled powerline to be present always
 set cursorline                  " highlight the line of the cursor
 set list                        " Show invisible characters
-set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
 set guifont=Monaco\ for\ Powerline:h12
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -115,6 +115,7 @@ let g:ctrlp_custom_ignore = {
 "============== THEME  ===========================
 "
 "set background=dark
+set term=screen-256color
 colorscheme solarized
 "============== UtilSnippet =======================
 let g:UltiSnipsExpandTrigger="<tab>"

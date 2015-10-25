@@ -10,7 +10,7 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
 #ZSH_THEME="vinioliveira"
-ZSH_THEME="amuse"
+ZSH_THEME="amuse-vinicius"
 
 plugins=(git autojump z fasd)
 

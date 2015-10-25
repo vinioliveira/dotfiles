@@ -1,4 +1,4 @@
-" Syntax checking 
+I" Syntax checking 
 Plugin 'scrooloose/syntastic' 
 Plugin 'tpope/vim-rails'
 Plugin 'bling/vim-airline' 
@@ -18,8 +18,8 @@ Plugin 'rstacruz/sparkup'
 Plugin 'MatchTag'
 
 " For auto compleation
-Plugin 'Shougo/neocomplcache' 
-
+"Plugin 'Shougo/neocomplcache' 
+Plugin 'ervandew/supertab'
 " Navigation
 Plugin 'ctrlp.vim'
 Plugin 'mileszs/ack.vim'
@@ -47,6 +47,7 @@ Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rking/ag.vim'
 Plugin 'Shutnik/jshint2.vim'
+Plugin 'mhinz/vim-signify'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'

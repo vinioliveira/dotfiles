@@ -11,3 +11,4 @@ export GREP_COLOR="4;33"
 export CDHISTORY="/tmp/cd-${USER}"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
+export NVM_DIR=$(brew --prefix)/var/nvm

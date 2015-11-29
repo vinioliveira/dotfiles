@@ -28,15 +28,11 @@ alias gl="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s => %
 alias gs="git status"
 alias g='git'
 alias gd="git diff"
-alias gup="git pull --rebase && git push"
 
 alias t="tmux"
 alias tn="tmux new -s"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
-
-alias gc="git-cola"
-
 
 #Grunt alias
 alias gt="grunt"

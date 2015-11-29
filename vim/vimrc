@@ -1,18 +1,15 @@
-scriptencoding utf-8
-set encoding=utf-8
+set nocompatible               " be iMproved
 
-filetype plugin on   
+syntax on
+
+filetype off                   " required by vundle
 filetype indent on
 
-set nocompatible               " be iMproved
-filetype off                   " required by vundle
-au BufWritePost vimrc so $MYVIMRC
-
 set rtp+=~/.vim/vundle
+
 call vundle#begin()
 source ~/.vim/vundles
 call vundle#end()
-syntax on
 
 
 " ================ Basic Settings  =================
@@ -26,21 +23,6 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set hidden
-set laststatus=2                "It enabled powerline to be present always
-set cursorline                  " highlight the line of the cursor
-set list                        " Show invisible characters
-set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
-set guifont=Monaco\ for\ Powerline:h12
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-set t_Co=256
-
-
-" ================ Search Settings  =================
-
-set incsearch        "Find the next match as we type the search
-set hlsearch         "Hilight searches by default
-set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 
 " ================ Turn Off Swap Files ==============
 
@@ -49,10 +31,13 @@ set nobackup
 set nowb
 
 " ================ Persistent Undo ==================
-
-silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir=~/.vim/backups
-set undofile
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
 
 " ================ Indentation ======================
 
@@ -63,15 +48,25 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-set wrap       "wrap lines
-set linebreak    "Wrap lines at convenient points
-set nolist
 
-" ================ Easy Align =======================
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
+set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
+
+set nowrap       "wrap lines
+set linebreak    "Wrap lines at convenient points
+"set nolist
+
+filetype plugin on
+filetype indent on
+
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
@@ -88,35 +83,39 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-" ================= COPY to ClipBoard ==============
-" In visual mode, use Y to copy to system clipboard
-vnoremap Y "*y
-
-" " In normal mode, do the same with the current line
-nnoremap Y "*yy
-set clipboard=unnamed           "To copy to clipboard
-"set clipboard=unnamedplus
 
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margin
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-"============== IGNORE ctrlP  ======================
-"
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital"
+
+" Disable the macvim toolbar
+set guioptions-=T)
+
+"============== THEME  ===========================
+
+let g:solarized_termtrans = 1
+colorscheme wombat256
+
+""============== IGNORE ctrlP  ======================
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|bower_components|node_modules|dist|build|vendor/bundle)$',
-  \ 'file': '\v\.(exe|so|dll)$'
-  \ }
+   \ 'file': '\v\.(exe|so|dll)$'
+   \ }
 
-"============== THEME  ===========================
-"
-"set background=dark
-set term=screen-256color
-colorscheme solarized
+set clipboard=unnamed           "To copy to clipboard
+
 "============== UtilSnippet =======================
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -124,57 +123,70 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsListSnippets = "<c-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
 "============== AIR LINE ===========================
 "
-"============= funky - for search functions ======== 
-"nnoremap <Leader>fu :CtrlPFunky<Cr>
-nnoremap <C-f> :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-"nnoremap <C-S-f> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'b', 'c' ],
+  \ ['y', 'x', 'z' ]
+  \ ]
 
-"
+let g:airline_theme             = 'powerlineish'
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts   = 1
+let g:airline_section_z = ''
+let g:airline_inactive_collapse=0
+set laststatus=2
+
 " ============ Surround Vim Shortcuts ============== 
 vmap ' S'
 vmap " S"
-vmap { S{
-vmap } S}
-vmap ( S(
-vmap ) S)
-vmap [ S[
-vmap ] S]
 
-vnoremap << <
-vnoremap >> >
+" ============ Vim Identent Line =================
 
-nmap <leader>cs' cs"'
-nmap <leader>cs" cs'"
-nmap <leader>s' cysiw'
-nmap <leader>s" ysiw"
-nmap <leader>s( ysiw)
-nmap <leader>s[ ysiw]
-nmap <leader>s{ ysiw}
+let g:indentLine_enabled = 1
 
-nmap <leader>d' yss'
-nmap <leader>d" yss"
-nmap <leader>d( yss)
-nmap <leader>d[ yss]
-nmap <leader>d{ yss}
-" ============ Surround Vim Shortcuts ============== 
+"=========== RSpec VIm ==========================
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
-let g:airline_theme             = 'powerlineish'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline_powerline_fonts   = 1
+"============ NETRW CONFIG ======================
+let g:netrw_hide = 1
+let g:netrw_liststyle=1
 
-"let g:airline_section_warning = ''
-"let g:airline_inactive_collapse = 0
-
-"Colors for indent
-hi IndentGuidesOdd  ctermbg=white
-hi IndentGuidesEven ctermbg=lightgrey
-"set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
+let g:netrw_list_hide='\.o,\.obj,*\~,\.pyc,' "stuff to ignore when tab completing
+let g:netrw_list_hide.='\.env,'
+let g:netrw_list_hide.='\.env[0-9].,'
+let g:netrw_list_hide.='\.env-pypy,'
+let g:netrw_list_hide.='\.git,'
+let g:netrw_list_hide.='\.bundle,'
+let g:netrw_list_hide.='\.gitkeep,'
+let g:netrw_list_hide.='\.vagrant,'
+let g:netrw_list_hide.='\.tmp,'
+let g:netrw_list_hide.='\.coverage$,'
+let g:netrw_list_hide.='\.DS_Store,'
+let g:netrw_list_hide.='__pycache__,'
+let g:netrw_list_hide.='\.webassets-cache/,'
+let g:netrw_list_hide.='\.sass-cache/,'
+let g:netrw_list_hide.='\.ropeproject/,'
+let g:netrw_list_hide.='vendor/rails/,'
+let g:netrw_list_hide.='vendor/cache/,'
+let g:netrw_list_hide.='\.gem,'
+let g:netrw_list_hide.='\.ropeproject/,'
+let g:netrw_list_hide.='\.coverage/,'
+let g:netrw_list_hide.='log/,'
+let g:netrw_list_hide.='tmp/,'
+let g:netrw_list_hide.='\.tox/,'
+let g:netrw_list_hide.='\.idea/,'
+let g:netrw_list_hide.='\.egg,\.egg-info,'
+let g:netrw_list_hide.='\.png,\.jpg,\.gif,'
+let g:netrw_list_hide.='\.so,\.swp,\.zip,/\.Trash/,\.pdf,\.dmg,/Library/,/\.rbenv/,'
+let g:netrw_list_hide.='*/\.nx/**,*\.app'
 
 source ~/.dotfiles/vim/alias
-
-
+source ~/.dotfiles/vim/keymap.vim

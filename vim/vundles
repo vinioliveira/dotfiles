@@ -1,57 +1,49 @@
-I" Syntax checking 
+" Syntax checking + Languages & Framework
+Plugin 'pangloss/vim-javascript'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'vim-coffee-script'
 Plugin 'scrooloose/syntastic' 
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
-Plugin 'bling/vim-airline' 
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'michalliu/sourcebeautify.vim' 
 Plugin 'slim-template/vim-slim'
 
 " This plug-in provides automatic closing of quotes
 Plugin 'Raimondi/delimitMate' 
 
 " For identation 
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'junegunn/vim-easy-align'
+Plugin 'Yggdroot/indentLine'
 
 " HTML made easy 
 Plugin 'rstacruz/sparkup' 
 Plugin 'MatchTag'
 
 " For auto compleation
-"Plugin 'Shougo/neocomplcache' 
 Plugin 'ervandew/supertab'
+
 " Navigation
 Plugin 'ctrlp.vim'
-Plugin 'mileszs/ack.vim'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'scrooloose/nerdtree.git'
-"Plugin'tpope/vim-vinegar'
+Plugin'tpope/vim-vinegar'
 Plugin 'tacahiroy/ctrlp-funky'
-
-" Languages & Framework
-Plugin 'pangloss/vim-javascript'
-Plugin 'jade.vim'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'vim-coffee-script'
-Plugin 'vim-ruby/vim-ruby'
+Plugin 'rking/ag.vim'
 
 " Themes
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'flazz/vim-colorschemes'
 
 " Facilities 
+Plugin 'bling/vim-airline' 
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'ecomba/vim-ruby-refactoring'
-"Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'rking/ag.vim'
-Plugin 'Shutnik/jshint2.vim'
 Plugin 'mhinz/vim-signify'
-
-Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'ngmy/vim-rubocop'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
 Plugin 'tpope/vim-rbenv'
 Plugin 'dockyard/vim-easydir'
+
+" Hints 
+Plugin 'Shutnik/jshint2.vim'

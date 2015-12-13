@@ -5,10 +5,9 @@ syntax on
 filetype off                   " required by vundle
 filetype indent on
 
-set rtp+=~/.vim/vundle
-
+set rtp+=~/.dotfiles/vim/vundle
 call vundle#begin()
-source ~/.vim/vundles
+source ~/.dotfiles/vim/vundles
 call vundle#end()
 
 
@@ -25,7 +24,6 @@ set autoread                    "Reload files changed outside vim
 set hidden
 
 " ================ Turn Off Swap Files ==============
-
 set noswapfile
 set nobackup
 set nowb
@@ -40,7 +38,6 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
 endif
 
 " ================ Indentation ======================
-
 set autoindent
 set smartindent
 set smarttab
@@ -52,12 +49,11 @@ set expandtab
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
-
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
 
 set nowrap       "wrap lines
 set linebreak    "Wrap lines at convenient points
-"set nolist
+set list
 
 filetype plugin on
 filetype indent on
@@ -85,13 +81,11 @@ set wildignore+=*.png,*.jpg,*.gif
 
 
 " ================ Scrolling ========================
-
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
 " ================ Search ===========================
-
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
@@ -101,12 +95,10 @@ set smartcase       " ...unless we type a capital"
 set guioptions-=T)
 
 "============== THEME  ===========================
-
 let g:solarized_termtrans = 1
-colorscheme wombat256
+colorscheme dracula
 
 ""============== IGNORE ctrlP  ======================
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 let g:ctrlp_custom_ignore = {
@@ -116,37 +108,37 @@ let g:ctrlp_custom_ignore = {
 
 set clipboard=unnamed           "To copy to clipboard
 
-"============== UtilSnippet =======================
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsListSnippets = "<c-tab>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+""============== UtilSnippet =======================
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsListSnippets = "<c-tab>"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 "============== AIR LINE ===========================
 "
-let g:airline#extensions#default#layout = [
-  \ [ 'a', 'b', 'c' ],
-  \ ['y', 'x', 'z' ]
-  \ ]
+"l"et g:airline#extensions#default#layout = [
+" " \ [ 'a', 'b', 'c' ],
+" " \ ['y', 'x', 'z' ]
+" " \ ]
 
-let g:airline_theme             = 'powerlineish'
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts   = 1
-let g:airline_section_z = ''
-let g:airline_inactive_collapse=0
-set laststatus=2
+"let g:airline_theme             = 'powerlineish'
+"let g:airline#extensions#hunks#enabled = 0
+"let g:airline#extensions#wordcount#enabled = 0
+"let g:airline#extensions#tmuxline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts   = 1
+"let g:airline_section_z = ''
+"let g:airline_inactive_collapse=0
+"set laststatus=2
+
 
 " ============ Surround Vim Shortcuts ============== 
 vmap ' S'
 vmap " S"
 
 " ============ Vim Identent Line =================
-
 let g:indentLine_enabled = 1
 
 "=========== RSpec VIm ==========================

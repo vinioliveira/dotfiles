@@ -5,7 +5,7 @@ fi
 
 setopt RM_STAR_WAIT
 setopt CORRECT
-
+bindkey -e
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR

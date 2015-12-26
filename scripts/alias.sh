@@ -42,7 +42,3 @@ alias gtjh="grunt jshint"
 alias gtt="grunt test"
 alias gtb="grunt build"
 
-
-#TO WORK WITH TMUX 
-alias stree='reattach-to-user-namespace stree'
-alias open='reattach-to-user-namespace open'

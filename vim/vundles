@@ -2,20 +2,20 @@
 "Plugin 'pangloss/vim-javascript'
 Plugin 'thoughtbot/vim-rspec'
 "Plugin 'vim-coffee-script'
-Plugin 'scrooloose/syntastic' 
+Plugin 'scrooloose/syntastic'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 "Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'slim-template/vim-slim'
 
 " This plug-in provides automatic closing of quotes
-Plugin 'Raimondi/delimitMate' 
+Plugin 'Raimondi/delimitMate'
 
-" For identation 
+" For identation
 Plugin 'Yggdroot/indentLine'
 
-" HTML made easy 
-"Plugin 'rstacruz/sparkup' 
+" HTML made easy
+"Plugin 'rstacruz/sparkup'
 "Plugin 'MatchTag'
 
 " For auto compleation
@@ -29,7 +29,7 @@ Plugin 'rking/ag.vim'
 " Themes
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
-" Facilities 
+" Facilities
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'mhinz/vim-signify'
@@ -37,12 +37,12 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'tpope/vim-rbenv'
 
 Plugin 'garbas/vim-snipmate'
-"snipmate requires 
+"snipmate requires
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-
-"Plugin 'bling/vim-airline' 
+Plugin 'itchyny/lightline.vim'
+"Plugin 'bling/vim-airline'
 "Plugin 'dockyard/vim-easydir'
 
-" Hints 
+" Hints
 "Plugin 'Shutnik/jshint2.vim'

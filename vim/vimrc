@@ -131,10 +131,18 @@ set clipboard=unnamed           "To copy to clipboard
 "let g:airline_powerline_fonts   = 1
 "let g:airline_section_z = ''
 "let g:airline_inactive_collapse=0
-"set laststatus=2
+set laststatus=2
+"
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 
-
-" ============ Surround Vim Shortcuts ============== 
+" ============ Surround Vim Shortcuts ==============
 vmap ' S'
 vmap " S"
 
@@ -147,6 +155,14 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" " Delete trailing white space when saving
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+au BufWrite * :call DeleteTrailingWS()
 "============ NETRW CONFIG ======================
 let g:netrw_hide = 1
 let g:netrw_liststyle=1

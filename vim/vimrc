@@ -45,6 +45,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+set nocp
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -56,7 +57,6 @@ set linebreak    "Wrap lines at convenient points
 set list
 
 filetype plugin on
-filetype indent on
 
 " ================ Folds ============================
 
@@ -134,7 +134,6 @@ set clipboard=unnamed           "To copy to clipboard
 set laststatus=2
 "
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },
@@ -163,38 +162,11 @@ func! DeleteTrailingWS()
 endfunc
 
 au BufWrite * :call DeleteTrailingWS()
-"============ NETRW CONFIG ======================
-let g:netrw_hide = 1
-let g:netrw_liststyle=1
 
-let g:netrw_list_hide='\.o,\.obj,*\~,\.pyc,' "stuff to ignore when tab completing
-let g:netrw_list_hide.='\.env,'
-let g:netrw_list_hide.='\.env[0-9].,'
-let g:netrw_list_hide.='\.env-pypy,'
-let g:netrw_list_hide.='\.git,'
-let g:netrw_list_hide.='\.bundle,'
-let g:netrw_list_hide.='\.gitkeep,'
-let g:netrw_list_hide.='\.vagrant,'
-let g:netrw_list_hide.='\.tmp,'
-let g:netrw_list_hide.='\.coverage$,'
-let g:netrw_list_hide.='\.DS_Store,'
-let g:netrw_list_hide.='__pycache__,'
-let g:netrw_list_hide.='\.webassets-cache/,'
-let g:netrw_list_hide.='\.sass-cache/,'
-let g:netrw_list_hide.='\.ropeproject/,'
-let g:netrw_list_hide.='vendor/rails/,'
-let g:netrw_list_hide.='vendor/cache/,'
-let g:netrw_list_hide.='\.gem,'
-let g:netrw_list_hide.='\.ropeproject/,'
-let g:netrw_list_hide.='\.coverage/,'
-let g:netrw_list_hide.='log/,'
-let g:netrw_list_hide.='tmp/,'
-let g:netrw_list_hide.='\.tox/,'
-let g:netrw_list_hide.='\.idea/,'
-let g:netrw_list_hide.='\.egg,\.egg-info,'
-let g:netrw_list_hide.='\.png,\.jpg,\.gif,'
-let g:netrw_list_hide.='\.so,\.swp,\.zip,/\.Trash/,\.pdf,\.dmg,/Library/,/\.rbenv/,'
-let g:netrw_list_hide.='*/\.nx/**,*\.app'
+"=============== VimFiler =====================
+
+let g:vimfiler_as_default_explorer= 1
+let g:vimfiler_define_wrapper_commands= 1
 
 source ~/.dotfiles/vim/alias
 source ~/.dotfiles/vim/keymap.vim

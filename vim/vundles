@@ -25,6 +25,8 @@ Plugin 'ervandew/supertab'
 Plugin 'ctrlp.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'rking/ag.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
 
 " Themes
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}

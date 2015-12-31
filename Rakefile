@@ -36,6 +36,11 @@ task :default => 'install'
 
 private
 # to see more check https://github.com/skwp/dotfiles/blob/master/Rakefile
+def run(cmd)
+  puts "[Running] #{cmd}"
+  `#{cmd}` unless ENV['DEBUG']
+end
+
 def install_homebrew
   run %{which brew}
   unless $?.success?

@@ -21,6 +21,9 @@ alias xmlget="curl -X GET -H 'Accept: application/xml'"
 alias xmlpost="curl -X POST -H 'Accept: application/xml'"
 alias xmlput="curl -X PUT -H 'Accept: application/xml'"
 
+#Adding hub alias to git
+alias git="hub"
+
 #Just give a try to Git alias thanks to Celso Dantas
 alias glog="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s => %C(green)%an%C(white), %C(red)%ar%Creset'"
 alias gca="git add --all && git commit -a"

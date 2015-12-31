@@ -10,7 +10,7 @@ call vundle#end()
 
 
 " ================ Basic Settings  =================
-"let mapleader = '\'
+let mapleader = ','
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
@@ -105,29 +105,7 @@ let g:ctrlp_custom_ignore = {
 
 set clipboard=unnamed           "To copy to clipboard
 
-""============== UtilSnippet =======================
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"let g:UltiSnipsListSnippets = "<c-tab>"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-
-"============== AIR LINE ===========================
-"
-"l"et g:airline#extensions#default#layout = [
-" " \ [ 'a', 'b', 'c' ],
-" " \ ['y', 'x', 'z' ]
-" " \ ]
-
-"let g:airline_theme             = 'powerlineish'
-"let g:airline#extensions#hunks#enabled = 0
-"let g:airline#extensions#wordcount#enabled = 0
-"let g:airline#extensions#tmuxline#enabled = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts   = 1
-"let g:airline_section_z = ''
-"let g:airline_inactive_collapse=0
+"============== LIGHT LINE ===========================
 set laststatus=2
 "
 let g:lightline = {
@@ -141,6 +119,9 @@ let g:lightline = {
 " ============ Surround Vim Shortcuts ==============
 vmap ' S'
 vmap " S"
+
+"============= Vim-Tags ==========================
+let g:vim_tags_auto_generate = 1
 
 " ============ Vim Identent Line =================
 let g:indentLine_enabled = 1

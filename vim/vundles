@@ -39,6 +39,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'tpope/vim-rbenv'
 Plugin 'garbas/vim-snipmate'
+Plugin 'szw/vim-tags'
 
 "snipmate requires
 Plugin 'tomtom/tlib_vim'

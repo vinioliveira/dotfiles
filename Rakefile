@@ -15,8 +15,16 @@ task :install => [:submodules] do
   install_files(Dir.glob('ctags/*'))
   install_files(Dir.glob('tmux/*'))
   install_files(Dir.glob('{vimrc,gvimrc}'))
-  vundle_install!
+  Rake::Task["install_vundle"].execute
   Rake::Task["install_prezto"].execute
+end
+
+task :install_vundle do
+  vundle_install
+end
+
+task :install_prezto do
+  install_prezto
 end
 
 task :submodules do
@@ -125,6 +133,6 @@ def install_files(files)
   end
 end
 
-def vundle_install!
+def vundle_install
   system "vim --noplugin -N \"+set hidden\" \"+syntax on\" +BundleClean +BundleInstall! +qall"
 end

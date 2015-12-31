@@ -1,12 +1,11 @@
 " Syntax checking + Languages & Framework
-"Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 Plugin 'thoughtbot/vim-rspec'
-"Plugin 'vim-coffee-script'
+Plugin 'vim-coffee-script'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
-"Plugin 'jelera/vim-javascript-syntax'
-"Plugin 'slim-template/vim-slim'
+Plugin 'slim-template/vim-slim'
 
 " This plug-in provides automatic closing of quotes
 Plugin 'Raimondi/delimitMate'
@@ -30,6 +29,7 @@ Plugin 'Shougo/vimfiler.vim'
 
 " Themes
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'sjl/badwolf'
 
 " Facilities
 Plugin 'honza/vim-snippets'
@@ -37,14 +37,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'mhinz/vim-signify'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'tpope/vim-rbenv'
-
 Plugin 'garbas/vim-snipmate'
+
 "snipmate requires
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'itchyny/lightline.vim'
-"Plugin 'bling/vim-airline'
-"Plugin 'dockyard/vim-easydir'
 
 " Hints
 "Plugin 'Shutnik/jshint2.vim'

@@ -1,9 +1,7 @@
 set nocompatible               " be iMproved
 
 syntax on
-
 filetype off                   " required by vundle
-filetype indent on
 
 set rtp+=~/.dotfiles/vim/vundle
 call vundle#begin()
@@ -56,7 +54,7 @@ set nowrap       "wrap lines
 set linebreak    "Wrap lines at convenient points
 set list
 
-filetype plugin on
+filetype plugin indent on
 
 " ================ Folds ============================
 
@@ -95,8 +93,7 @@ set smartcase       " ...unless we type a capital"
 set guioptions-=T)
 
 "============== THEME  ===========================
-let g:solarized_termtrans = 1
-colorscheme dracula
+colorscheme badwolf
 
 ""============== IGNORE ctrlP  ======================
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip

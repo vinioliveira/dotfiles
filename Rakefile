@@ -90,7 +90,7 @@ def install_prezto
   run %{ ln -nfs "$HOME/.dotfiles/zsh/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" }
 
   puts
-  puts "Overriding prezto ~/.zpreztorc with Dotfile's zpreztorc"
+  puts "Overriding prezto ~/.zshrc with Dotfile's zshrc"
   run %{ ln -nfs  "$HOME/.dotfiles/zsh/zshrc" "$HOME/.zshrc" }
 
   puts

@@ -1,33 +1,7 @@
 require 'rake'
 require 'fileutils'
 
-task :install => [:submodules] do
-  puts
-  puts "======================================================"
-  puts "Start dotfiles setup"
-  puts "======================================================"
-  puts
-
-  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
-  install_files(Dir.glob('git/*'))
-  install_files(Dir.glob('irb/*'))
-  install_files(Dir.glob('ruby/*'))
-  install_files(Dir.glob('ctags/*'))
-  install_files(Dir.glob('tmux/*'))
-  install_files(Dir.glob('{vimrc,gvimrc}'))
-  Rake::Task["install_vundle"].execute
-  Rake::Task["install_prezto"].execute
-end
-
-task :install_vundle do
-  vundle_install
-end
-
-task :install_prezto do
-  install_prezto
-end
-
-task :submodules do
+task :submodules => [:pre_install] do
   puts "======================================================"
   puts "Init Dotfile Submodules"
   puts "======================================================"
@@ -39,6 +13,38 @@ task :submodules do
   }
   puts
 end
+
+task :install_homebrew => [:submodules] do
+  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+end
+
+task :copy_files => [:install_homebrew] do
+  install_files(Dir.glob('git/*'))
+  install_files(Dir.glob('irb/*'))
+  install_files(Dir.glob('ruby/*'))
+  install_files(Dir.glob('ctags/*'))
+  install_files(Dir.glob('tmux/*'))
+  install_files(Dir.glob('{vimrc,gvimrc}'))
+end
+
+task :install_vundle => [:copy_files] do
+  vundle_install
+end
+
+task :install_prezto => [:install_vundle] do
+  install_prezto
+end
+
+task :install => :install_prezto
+
+task :pre_install do
+  puts
+  puts "======================================================"
+  puts "Start dotfiles setup"
+  puts "======================================================"
+  puts
+end
+
 
 task :default => 'install'
 
@@ -70,8 +76,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher}
-  run %{brew install macvim --custom-icons --override-system-vim --with-lua --with-luajit}
+  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher fasd rbenv rbenv-bundler ruby-build}
   puts
   puts
 end

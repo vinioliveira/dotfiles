@@ -11,6 +11,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'Raimondi/delimitMate'
 
 " For identation
+Plugin 'tomtom/tcomment_vim'
 Plugin 'Yggdroot/indentLine'
 
 " HTML made easy

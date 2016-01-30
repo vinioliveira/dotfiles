@@ -1,4 +1,5 @@
 alias ll="ls -Glahs"
+alias ll="ls -Glahs"
 alias ls="ls -G"
 alias make="make -j2"
 alias mysql="mysql --auto-vertical-output"
@@ -29,8 +30,11 @@ alias glog="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s =>
 alias gca="git add --all && git commit -a"
 alias gl="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s => %C(green)%an%C(white), %C(red)%ar%Creset'"
 alias gs="git status"
+alias gc="git status"
 alias g='git'
 alias gd="git diff"
+alias go='git browse'
+alias gop='git browse -- pulls'
 
 alias t="tmux"
 alias tn="tmux new -s"
@@ -45,3 +49,4 @@ alias gtjh="grunt jshint"
 alias gtt="grunt test"
 alias gtb="grunt build"
 
+alias today="cal | grep -C6 --color $(date +%e)"

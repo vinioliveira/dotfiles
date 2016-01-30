@@ -31,6 +31,7 @@ Plugin 'Shougo/vimfiler.vim'
 " Themes
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plugin 'sjl/badwolf'
+Plugin  'w0ng/vim-hybrid'
 
 " Facilities
 Plugin 'honza/vim-snippets'
@@ -40,6 +41,7 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'tpope/vim-rbenv'
 Plugin 'garbas/vim-snipmate'
 Plugin 'szw/vim-tags'
+Plugin 'tpope/vim-repeat'
 
 "snipmate requires
 Plugin 'tomtom/tlib_vim'

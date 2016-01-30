@@ -6,7 +6,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [color]
   ui = auto
@@ -38,10 +38,11 @@
   ck = checkout
   nb = checkout -b
   p = "!git push"
+  pf = "!git push --force"
   up = !git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"
-  done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git push
+  done = !git fetch && git rebase origin/master && git push
   m = "merge --no-ff"
-  rename = branch -m 
+  rename = branch -m
 
 [merge]
 	tool = meld

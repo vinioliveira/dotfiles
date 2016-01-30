@@ -3,6 +3,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Disable flow control commands (keeps C-s from freezing everything)
+stty start undef
+stty stop undef
+
 setopt RM_STAR_WAIT
 setopt CORRECT
 bindkey -e

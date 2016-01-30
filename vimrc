@@ -93,7 +93,12 @@ set smartcase       " ...unless we type a capital"
 set guioptions-=T)
 
 "============== THEME  ===========================
-colorscheme badwolf
+"colorscheme badwolf
+
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+colorscheme hybrid
+set background=dark
 
 ""============== IGNORE ctrlP  ======================
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -139,7 +144,14 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 
+"========== Remaping Record Key ================
+noremap <Leader>q q
+noremap q <Nop>
+
 au BufWrite * :call DeleteTrailingWS()
+
+"=============== RSpec  =======================
+let g:rspec_command = "!bundle exec rspec --drb {spec}"
 
 "=============== VimFiler =====================
 
@@ -150,6 +162,17 @@ let g:vimfiler_define_wrapper_commands= 1
 " hit ,f to find the definition of the current class
 " this uses ctags. the standard way to get this is Ctrl-]
 nnoremap <silent> <leader>f <C-]>
+
+" Note that remapping C-s requires flow control to be disabled
+" (e.g. in .bashrc or .zshrc)
+"
+
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
 
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>

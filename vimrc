@@ -169,10 +169,21 @@ nnoremap <silent> <leader>f <C-]>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-
-
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+
+"========== VimFiler Map ===============
+map <leader>d <esc>:VimFiler .<CR>
+imap <leader>d <esc>:VimFiler .<CR>
+
+" NERDTree view style
+map <leader>n <esc>:VimFilerBufferDir -explorer<CR>
+imap <leader>n <esc>:VimFilerBufferDir -explorer<CR>
+
+"Open in the current directory
+map <Leader>e :e <C-R>=escape(expand("%:p:h")," ") . "/"<CR><Esc>
+imap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+
 
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>

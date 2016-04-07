@@ -1,24 +1,18 @@
 set nocompatible               " be iMproved
 
 syntax on
-filetype off                   " required by vundle
 
-set rtp+=~/.dotfiles/vim/vundle
-call vundle#begin()
-source ~/.dotfiles/vim/vundles
-call vundle#end()
-
+if filereadable(expand("~/.dotfiles/vim/vimrc.bundler"))
+  source ~/.dotfiles/vim/vimrc.bundler
+endif
 
 " ================ Basic Settings  =================
 let mapleader = ','
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
 set hidden
 
 " ================ Turn Off Swap Files ==============
@@ -44,13 +38,27 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set nocp
+" set synmaxcol=100
+
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
 
-set nowrap       "wrap lines
+" Make it more obvious which paren I'm on
+hi MatchParen cterm=none ctermbg=black ctermfg=yellow
+
+" Without this, vim breaks in the middle of words when wrapping
+autocmd FileType markdown setlocal nolist wrap lbr
+
+" Wrap the quickfix window
+autocmd FileType qf setlocal wrap linebreak
+
+" Make it more obviouser when lines are too long
+highlight ColorColumn ctermbg=235
+
+" set wrap       "wrap lines
 set linebreak    "Wrap lines at convenient points
 set list
 
@@ -93,12 +101,14 @@ set smartcase       " ...unless we type a capital"
 set guioptions-=T)
 
 "============== THEME  ===========================
-"colorscheme badwolf
+colorscheme badwolf
 
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-colorscheme hybrid
-set background=dark
+"colorscheme hybrid
+" colorscheme distinguished
+"
+" set background=dark
 
 ""============== IGNORE ctrlP  ======================
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -117,9 +127,32 @@ let g:lightline = {
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \ 'filename': 'LightLineFilename'
+      \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+function! LightLineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! LightLineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? @% : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
 
 " ============ Surround Vim Shortcuts ==============
 vmap ' S'
@@ -169,24 +202,30 @@ nnoremap <silent> <leader>f <C-]>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
+map <C-s> <esc>:w<CR><esc>
+imap <C-s> <esc>:w<CR><esc>
 
 "========== VimFiler Map ===============
-map <leader>d <esc>:VimFiler .<CR>
-imap <leader>d <esc>:VimFiler .<CR>
+map <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
+imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
 
 " NERDTree view style
 map <leader>n <esc>:VimFilerBufferDir -explorer<CR>
 imap <leader>n <esc>:VimFilerBufferDir -explorer<CR>
 
 "Open in the current directory
-map <Leader>e :e <C-R>=escape(expand("%:p:h")," ") . "/"<CR><Esc>
-imap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
+imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
 
+"Adding es6 syntaxe
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+
+" Rubocop
+"
+let g:vimrubocop_config = getcwd() + '/.rubocop.yml'
 
 source ~/.dotfiles/vim/alias
 source ~/.dotfiles/vim/keymap.vim

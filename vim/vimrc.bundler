@@ -1,0 +1,66 @@
+
+if empty(glob("~/.vim/autoload/plug.vim"))
+  " Ensure all needed directories exist  (Thanks @kapadiamush)
+  echom "This will install vim plgin"
+  silent execute '!mkdir -p ~/.vim/plugged'
+  silent execute '!mkdir -p ~/.vim/autoload'
+  echom "Download the actual plugin manager"
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Syntax checking + Languages & Framework
+Plug 'pangloss/vim-javascript'
+Plug 'thoughtbot/vim-rspec'
+Plug 'vim-coffee-script'
+Plug 'scrooloose/syntastic'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'slim-template/vim-slim'
+Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'
+
+" This plug-in provides automatic closing of quotes
+Plug 'Raimondi/delimitMate'
+
+" For identation
+Plug 'tomtom/tcomment_vim'
+Plug 'Yggdroot/indentLine'
+
+" HTML made easy
+Plug 'rstacruz/sparkup'
+Plug 'MatchTag'
+
+" For auto compleation
+Plug 'ervandew/supertab'
+
+" Navigation
+Plug 'ctrlp.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'rking/ag.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler.vim'
+
+" Themes
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plug 'sjl/badwolf'
+Plug  'w0ng/vim-hybrid'
+
+" Facilities
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'mhinz/vim-signify'
+Plug 'ngmy/vim-rubocop'
+Plug 'tpope/vim-rbenv'
+Plug 'garbas/vim-snipmate'
+Plug 'tpope/vim-repeat'
+Plug 'szw/vim-tags'
+
+"snipmate requires
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'itchyny/lightline.vim'
+
+filetype plugin indent on                   " required!
+call plug#end()

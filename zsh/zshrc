@@ -21,3 +21,6 @@ source $HOME/.dotfiles/scripts/utils.sh
 
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+
+# added by travis gem
+[ -f /Users/vinicius/.travis/travis.sh ] && source /Users/vinicius/.travis/travis.sh

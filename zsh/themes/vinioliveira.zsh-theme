@@ -1,6 +1,6 @@
 
 PROMPT='$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
-%{$fg[green]%}% ❯ %{$reset_color%}'
+%{$fg[blue]%}% ❯ %{$reset_color%}'
 
 PROMPT2='%{$fg[grey]%}◀%{$reset_color%} '
 

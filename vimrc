@@ -186,7 +186,8 @@ noremap q <Nop>
 au BufWrite * :call DeleteTrailingWS()
 
 "=============== RSpec  =======================
-let g:rspec_command = "!bundle exec rspec --drb {spec}"
+"
+let g:rspec_command = "Dispatch bundle exec rspec --color --drb {spec}"
 
 "=============== VimFiler =====================
 
@@ -231,3 +232,4 @@ let g:vimrubocop_config = getcwd() + '/.rubocop.yml'
 
 source ~/.dotfiles/vim/alias
 source ~/.dotfiles/vim/keymap.vim
+

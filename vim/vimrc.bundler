@@ -45,7 +45,7 @@ Plug 'Shougo/vimfiler.vim'
 " Themes
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'sjl/badwolf'
-Plug  'w0ng/vim-hybrid'
+Plug 'flazz/vim-colorschemes'
 
 " Facilities
 Plug 'honza/vim-snippets'
@@ -57,6 +57,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'tpope/vim-repeat'
 Plug 'szw/vim-tags'
 
+Plug 'tpope/vim-dispatch'
 "snipmate requires
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'

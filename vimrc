@@ -57,6 +57,7 @@ autocmd FileType qf setlocal wrap linebreak
 
 " Make it more obviouser when lines are too long
 highlight ColorColumn ctermbg=235
+set colorcolumn=80
 
 " set wrap       "wrap lines
 set linebreak    "Wrap lines at convenient points

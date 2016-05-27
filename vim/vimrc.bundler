@@ -58,6 +58,8 @@ Plug 'tpope/vim-repeat'
 Plug 'szw/vim-tags'
 
 Plug 'tpope/vim-dispatch'
+"Plug 'radenling/vim-dispatch-neovim'
+
 "snipmate requires
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'

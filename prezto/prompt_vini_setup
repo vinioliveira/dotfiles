@@ -36,6 +36,7 @@ function prompt_vini_setup {
   zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{yellow}--- VI-COMMAND ---%f'
 
   # Set git-info parameters.
+  zstyle ':prezto:module:git:info' verbose 'yes'
 
   zstyle ':prezto:module:git:info:action' format '%F{7}:%f%%B%F{9}%s%f%%b'
   zstyle ':prezto:module:git:info:added' format ' %%B%F{2}✚%f%%b'
@@ -47,7 +48,6 @@ function prompt_vini_setup {
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{4}✱%f%%b'
   zstyle ':prezto:module:git:info:position' format ' %%B%F{13}%p%f%%b'
   zstyle ':prezto:module:git:info:renamed' format ' %%B%F{5}➜%f%%b'
-  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{6}✭%f%%b'
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{3}═%f%%b'
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7}◼%f%%b'
   #zstyle ':prezto:module:git:info:keys' format 'rprompt' '%b%c%s%D'

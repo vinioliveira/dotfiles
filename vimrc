@@ -30,6 +30,7 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
 endif
 
 " ================ Indentation ======================
+"
 set autoindent
 set smartindent
 set smarttab
@@ -103,14 +104,15 @@ set guioptions-=T)
 
 "============== THEME  ===========================
 "
-colorscheme hybrid_material
 
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-"colorscheme hybrid
+set background=dark
+colorscheme base16-eighties
+
+" let g:hybrid_custom_term_colors = 1
+" let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+" colorscheme hybrid
 " colorscheme distinguished
 "
-" set background=dark
 
 ""============== IGNORE ctrlP  ======================
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip

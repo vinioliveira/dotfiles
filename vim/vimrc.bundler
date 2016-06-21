@@ -13,16 +13,17 @@ call plug#begin('~/.vim/plugged')
 " Syntax checking + Languages & Framework
 Plug 'pangloss/vim-javascript'
 Plug 'thoughtbot/vim-rspec'
-Plug 'vim-coffee-script'
+" Plug 'vim-coffee-script'
 Plug 'scrooloose/syntastic'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'slim-template/vim-slim'
+" Plug 'slim-template/vim-slim'
 Plug 'isRuslan/vim-es6'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 
 " This plug-in provides automatic closing of quotes
 Plug 'Raimondi/delimitMate'
+Plug 'godlygeek/tabular'
 
 " For identation
 Plug 'tomtom/tcomment_vim'
@@ -32,9 +33,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'rstacruz/sparkup'
 Plug 'MatchTag'
 
-" For auto compleation
-Plug 'ervandew/supertab'
-
 " Navigation
 Plug 'ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
@@ -43,19 +41,18 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
 
 " Themes
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'sjl/badwolf'
-Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
 " Facilities
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-signify'
-Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-rbenv'
 Plug 'garbas/vim-snipmate'
+Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-repeat'
 Plug 'szw/vim-tags'
+Plug 'fugitive.vim'
 
 Plug 'tpope/vim-dispatch'
 "Plug 'radenling/vim-dispatch-neovim'
@@ -64,6 +61,12 @@ Plug 'tpope/vim-dispatch'
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'itchyny/lightline.vim'
+
+"Clojure
+" Plug 'guns/vim-clojure-static'
+" Plug 'tpope/vim-fireplace'
+" Plug 'tpope/vim-classpath'
+" Plug 'Conque-Shell'
 
 filetype plugin indent on                   " required!
 call plug#end()

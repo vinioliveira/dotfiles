@@ -24,3 +24,6 @@ bindkey -M vicmd '^r' history-incremental-search-backward
 
 # added by travis gem
 [ -f /Users/vinicius/.travis/travis.sh ] && source /Users/vinicius/.travis/travis.sh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

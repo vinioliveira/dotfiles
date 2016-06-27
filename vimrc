@@ -114,13 +114,18 @@ colorscheme base16-eighties
 " colorscheme distinguished
 "
 
-""============== IGNORE ctrlP  ======================
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" ""============== IGNORE ctrlP  ======================
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+"
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/](\.(git|hg|svn)|bower_components|node_modules|dist|build|vendor/bundle)$',
+"    \ 'file': '\v\.(exe|so|dll)$'
+"    \ }
+let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|bower_components|node_modules|dist|build|vendor/bundle)$',
-   \ 'file': '\v\.(exe|so|dll)$'
-   \ }
+nnoremap <silent> <C-p> :call fzf#run({
+\   'down': '40%',
+\   'sink': 'e' })<CR>
 
 set clipboard=unnamed           "To copy to clipboard
 

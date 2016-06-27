@@ -34,7 +34,9 @@ Plug 'rstacruz/sparkup'
 Plug 'MatchTag'
 
 " Navigation
-Plug 'ctrlp.vim'
+" Plug 'ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim'

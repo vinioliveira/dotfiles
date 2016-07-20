@@ -1,4 +1,3 @@
-
 let mapleader = ','
 
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -10,7 +9,6 @@ set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -62,7 +60,11 @@ set colorcolumn=80
 set number
 set relativenumber
 set lazyredraw
-set numberwidth=5
+set gdefault
+set grepprg=ag " Use Silver Searcher instead of grep
+set wmh=0
+" Set the tag file search order
+set tags=./tags;
 
 " ================ Syntastic =======================
 "mark syntax errors with :signs

@@ -18,8 +18,9 @@ Plug 'scrooloose/syntastic'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 " Plug 'slim-template/vim-slim'
-Plug 'isRuslan/vim-es6'
-" Plug 'mxw/vim-jsx'
+" Plug 'isRuslan/vim-es6'
+Plug 'digitaltoad/vim-pug'
+Plug 'mxw/vim-jsx'
 
 " This plug-in provides automatic closing of quotes
 Plug 'Raimondi/delimitMate'
@@ -39,30 +40,32 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'rking/ag.vim'
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
 
 " Themes
 Plug 'chriskempson/base16-vim'
+Plug 'w0ng/vim-hybrid'
 
 " Facilities
 Plug 'honza/vim-snippets'
+Plug 'garbas/vim-snipmate'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rbenv'
-Plug 'garbas/vim-snipmate'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-repeat'
-Plug 'szw/vim-tags'
 Plug 'fugitive.vim'
-
+Plug 'craigemery/vim-autotag'
+Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
 "Plug 'radenling/vim-dispatch-neovim'
 
 "snipmate requires
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'itchyny/lightline.vim'
+
+
 
 "Clojure
 " Plug 'guns/vim-clojure-static'

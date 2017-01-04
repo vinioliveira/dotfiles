@@ -25,10 +25,7 @@ alias xmlput="curl -X PUT -H 'Accept: application/xml'"
 #Adding hub alias to git
 alias git="hub"
 
-#Just give a try to Git alias thanks to Celso Dantas
 alias g='git'
-alias glog="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s => %C(green)%an%C(white), %C(red)%ar%Creset'"
-alias gl="git log --graph --pretty='format:%C(yellow)%h%C(cyan)%d%Creset %s => %C(green)%an%C(white), %C(red)%ar%Creset'"
 alias gs="git status"
 alias gd="git diff"
 alias go='git browse'

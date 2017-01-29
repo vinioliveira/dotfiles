@@ -5,6 +5,10 @@ set history=50
 set ruler          " show the cursor position all the time
 set showcmd        " display incomplete commands
 set laststatus=2   " Always display the status line
+set wildmenu       " Enhance command-line completion
+set esckeys        " Allow cursor keys in insert mode
+set ttyfast        " Optimize for fast terminal connections
+set title
 
 " ======    SEARCH  ==========
 
@@ -77,12 +81,15 @@ set colorcolumn=80
 
 " Numbers
 set number
-set relativenumber
-set lazyredraw
 set gdefault " global Substitute by default
 set grepprg=ag " Use Silver Searcher instead of grep
 set wmh=0
 
+if exists("&relativenumber")
+  set relativenumber
+  set lazyredraw
+  au BufReadPost * set relativenumber
+endif
 " ================ Syntastic =======================
 "mark syntax errors with :signs
 let g:syntastic_enable_signs=1
@@ -113,7 +120,6 @@ set guioptions-=T)
 
 "============== RUBY  ===========================
 set regexpengine=2
-
 
 "============== FZF  ===========================
 
@@ -181,16 +187,28 @@ vmap ' S'
 vmap " S"
 
 "============= Vim-Tags ==========================
-let g:vim_tags_auto_generate = 1
+" let g:vim_tags_auto_generate = 1
 
 " ============ Vim Identent Line =================
 let g:indentLine_enabled = 1
+" let g:indentLine_setColors = 0
+" let g:indentLine_concealcursor = 'inc'
+" let g:indentLine_conceallevel = 2
 
 "=========== RSpec VIm ==========================
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
+let test#strategy = "dispatch"
+let g:dispatch_quickfix_height=25
+
+" let g:rspec_command = "Dispatch bundle exec rspec --color {spec}"
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
 
 " " Delete trailing white space when saving
 func! DeleteTrailingWS()
@@ -204,10 +222,6 @@ noremap <Leader>q q
 noremap q <Nop>
 
 au BufWrite * :call DeleteTrailingWS()
-
-"=============== RSpec  =======================
-"
-let g:rspec_command = "Dispatch bundle exec rspec --color --drb {spec}"
 
 "=============== VimFiler =====================
 
@@ -249,7 +263,7 @@ let g:vimrubocop_config = getcwd() + '/.rubocop.yml'
 
 let g:autotagTagsFile=".tags"
 " let g:indentLine_conceallevel = 1
-let g:indentLine_setConceal = 0
+" let g:indentLine_setConceal = 0
 
 "========== FileTypes Map ===============
 " Ruby

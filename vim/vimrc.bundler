@@ -11,27 +11,28 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
-Plug 'pangloss/vim-javascript'
-Plug 'thoughtbot/vim-rspec'
+" Plug 'pangloss/vim-javascript'
+Plug 'janko-m/vim-test'
+" Plug 'thoughtbot/vim-rspec'
 " Plug 'vim-coffee-script'
 Plug 'scrooloose/syntastic'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 " Plug 'slim-template/vim-slim'
 " Plug 'isRuslan/vim-es6'
-Plug 'digitaltoad/vim-pug'
-Plug 'mxw/vim-jsx'
+" Plug 'digitaltoad/vim-pug'
+" Plug 'mxw/vim-jsx'
 
 " This plug-in provides automatic closing of quotes
-Plug 'Raimondi/delimitMate'
-Plug 'godlygeek/tabular'
+" Plug 'Raimondi/delimitMate'
+" Plug 'godlygeek/tabular'
 
 " For identation
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
 
 " HTML made easy
-Plug 'rstacruz/sparkup'
+" Plug 'rstacruz/sparkup'
 Plug 'MatchTag'
 
 " Navigation
@@ -56,10 +57,11 @@ Plug 'tpope/vim-rbenv'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-repeat'
 Plug 'fugitive.vim'
-Plug 'craigemery/vim-autotag'
+" Plug 'craigemery/vim-autotag'
 Plug 'itchyny/lightline.vim'
+" Plug  'benmills/vimux'
 Plug 'tpope/vim-dispatch'
-"Plug 'radenling/vim-dispatch-neovim'
+" Plug 'radenling/vim-dispatch-neovim'
 
 "snipmate requires
 Plug 'tomtom/tlib_vim'

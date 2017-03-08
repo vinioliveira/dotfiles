@@ -11,28 +11,22 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
-" Plug 'pangloss/vim-javascript'
 Plug 'janko-m/vim-test'
-" Plug 'thoughtbot/vim-rspec'
-" Plug 'vim-coffee-script'
-Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-" Plug 'slim-template/vim-slim'
-" Plug 'isRuslan/vim-es6'
-" Plug 'digitaltoad/vim-pug'
-" Plug 'mxw/vim-jsx'
+Plug 'isRuslan/vim-es6'
+" Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " This plug-in provides automatic closing of quotes
-" Plug 'Raimondi/delimitMate'
-" Plug 'godlygeek/tabular'
+Plug 'jiangmiao/auto-pairs'
 
 " For identation
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
 
 " HTML made easy
-" Plug 'rstacruz/sparkup'
 Plug 'MatchTag'
 
 " Navigation
@@ -45,27 +39,23 @@ Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
 
 " Themes
-Plug 'chriskempson/base16-vim'
-Plug 'w0ng/vim-hybrid'
+" Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+" Plug 'w0ng/vim-hybrid'
 
 " Facilities
+Plug 'Shougo/deoplete.nvim'
 Plug 'honza/vim-snippets'
-Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-rbenv'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-repeat'
 Plug 'fugitive.vim'
-" Plug 'craigemery/vim-autotag'
 Plug 'itchyny/lightline.vim'
-" Plug  'benmills/vimux'
 Plug 'tpope/vim-dispatch'
-" Plug 'radenling/vim-dispatch-neovim'
-
-"snipmate requires
-Plug 'tomtom/tlib_vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
 
 
 

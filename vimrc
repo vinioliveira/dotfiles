@@ -49,7 +49,7 @@ endif
 " let base16colorspace=256
 set background=dark
 let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
+colorscheme gruvbox
 
 filetype plugin indent on
 
@@ -90,30 +90,15 @@ if exists("&relativenumber")
   set lazyredraw
   au BufReadPost * set relativenumber
 endif
-" ================ Syntastic =======================
-"mark syntax errors with :signs
-let g:syntastic_enable_signs=1
-"automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
-"show the error list automatically
-let g:syntastic_auto_loc_list=1
-"don't care about warnings
-let g:syntastic_quiet_messages = {'level': 'warnings'}
 
-" I have no idea why this is not working, as it used to
-" be a part of syntastic code but was apparently removed
-" This will make syntastic find the correct ruby specified by mri
-function! s:FindRubyExec()
-  if executable("rvm")
-    return system("rvm tools identifier")
-  endif
+" " ================ Neomake =======================
+" let g:neomake_open_list=2
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+let g:neomake_javascript_enabled_makers = ['eslint']
+au BufWritePost *.rb :let b:neomake_ruby_rubocop_exe =  system('PATH=$(pwd)/bin:$PATH && which rubocop | tr -d "\n"')
+au BufWritePost * Neomake
 
-  return "ruby"
-endfunction
-
-if !exists("g:syntastic_ruby_exec")
-  let g:syntastic_ruby_exec = s:FindRubyExec()
-endif
 
 " Disable the macvim toolbar
 set guioptions-=T)
@@ -202,13 +187,7 @@ nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
 let test#strategy = "dispatch"
-let g:dispatch_quickfix_height=25
-
-" let g:rspec_command = "Dispatch bundle exec rspec --color {spec}"
-" map <Leader>t :call RunCurrentSpecFile()<CR>
-" map <Leader>s :call RunNearestSpec()<CR>
-" map <Leader>l :call RunLastSpec()<CR>
-" map <Leader>a :call RunAllSpecs()<CR>
+let g:dispatch_quickfix_height=15
 
 " " Delete trailing white space when saving
 func! DeleteTrailingWS()
@@ -224,7 +203,6 @@ noremap q <Nop>
 au BufWrite * :call DeleteTrailingWS()
 
 "=============== VimFiler =====================
-
 let g:vimfiler_as_default_explorer= 1
 let g:vimfiler_define_wrapper_commands= 1
 
@@ -281,14 +259,33 @@ augroup END
 
 " JavaScript
 " -----------------------------------------------------------------
-augroup javascriptfiletype
-  autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-  autocmd BufRead,BufNewFile *.js.es6 setfiletype javascript
-  autocmd BufNewFile,BufRead *.es6 set filetype=javascript.jsx
-  autocmd BufRead,BufNewFile *.json set filetype=javascript
-augroup END
+" augroup javascriptfiletype
+"   autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+"   autocmd BufRead,BufNewFile *.js.es6 setfiletype javascript
+"   autocmd BufNewFile,BufRead *.es6 set filetype=javascript.jsx
+"   autocmd BufRead,BufNewFile *.json set filetype=javascript
+" augroup END
+"
+" let g:jsx_ext_required = 0
 
-let g:jsx_ext_required = 0
+
+" deoplete config
+let g:deoplete#enable_at_startup = 1
+" disable autocomplete
+let g:deoplete#disable_auto_complete = 1
+if has("gui_running")
+  inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
+else
+  inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
+endif
+
+" ======== UltiSnips  ==========
+inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
 
 source ~/.dotfiles/vim/alias
 source ~/.dotfiles/vim/keymap.vim

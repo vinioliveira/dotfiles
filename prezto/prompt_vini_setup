@@ -13,6 +13,11 @@ function prompt_vini_precmd {
   if (( $+functions[ruby-info] )); then
     ruby-info
   fi
+
+# Get node information.
+  if (( $+functions[node-info] )); then
+    node-info
+  fi
 }
 
 rbenv_version() {
@@ -55,13 +60,16 @@ function prompt_vini_setup {
     'status'  '$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
 
   # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format ' %F{white}%v%f'
+  zstyle ':prezto:module:ruby:info:version' format '%F{124}[%v]%f'
+
+  # Set node-info
+  zstyle ':prezto:module:node:info:version' format '%F{072}(%v)%f'
 
   # Define prompts.
-  PROMPT='%F{green}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
- %F{blue}% ❯ %f'
+  PROMPT='%F{132}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
+ %F{blue}% λ %f'
 
-  RPROMPT='${ruby_info[version]}'
+  RPROMPT='${ruby_info[version]} %f${node_info[version]}'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }
 

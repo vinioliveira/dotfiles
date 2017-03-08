@@ -10,7 +10,7 @@ stty stop undef
 setopt RM_STAR_WAIT
 setopt CORRECT
 bindkey -e
-export EDITOR="vim"
+export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
@@ -22,12 +22,5 @@ source $HOME/.dotfiles/scripts/utils.sh
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
-# added by travis gem
-[ -f /Users/vinicius/.travis/travis.sh ] && source /Users/vinicius/.travis/travis.sh
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-eighties.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

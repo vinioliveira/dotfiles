@@ -30,9 +30,10 @@ alias gs="git status"
 alias gd="git diff"
 alias go='git browse'
 alias gop='git browse -- pulls'
+alias gbclean= 'neat = branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
 alias t="tmux"
-alias tn="tmux new -s"
+alias tn="tmux new-session -A -s"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
 

@@ -33,9 +33,10 @@ alias gop='git browse -- pulls'
 alias gbclean= 'neat = branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
 alias t="tmux"
-alias tn="tmux new-session -A -s"
+alias tn="tmuxp load"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
+alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep \"^1\" | cut -d \" \" -f 2"
 
 #Grunt alias
 alias gt="grunt"

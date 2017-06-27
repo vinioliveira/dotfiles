@@ -43,6 +43,7 @@
   done = !git fetch && git rebase origin/master && git push
   m = "merge --no-ff"
   rename = branch -m
+  pr = pull-request
 
 [merge]
 	tool = meld

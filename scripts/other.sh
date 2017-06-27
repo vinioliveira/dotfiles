@@ -8,3 +8,6 @@ source $(brew --prefix nvm)/nvm.sh
 eval "$(fasd --init auto hub alias -s)"
 
 
+autoload bashcompinit
+bashcompinit
+eval "$(_TMUXP_COMPLETE=source tmuxp)"

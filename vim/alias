@@ -1,5 +1,0 @@
-"map to NERDTree
-nnoremap <leader>p :NERDTreeToggle<cr>
-
-"map to bufexplorer
-nnoremap <leader>b :BufExplorer<cr>

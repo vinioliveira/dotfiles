@@ -49,3 +49,7 @@ Session.vim
 vendor/bundler
 
 *.dump
+
+
+# JSON-SERVE
+db.json

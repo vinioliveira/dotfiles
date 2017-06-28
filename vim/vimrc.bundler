@@ -1,4 +1,3 @@
-
 if empty(glob("~/.vim/autoload/plug.vim"))
   " Ensure all needed directories exist  (Thanks @kapadiamush)
   echom "This will install vim plgin"
@@ -11,12 +10,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
-Plug 'janko-m/vim-test'
+" Plug 'janko-m/vim-test'
 Plug 'neomake/neomake'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'isRuslan/vim-es6'
-" Plug 'pangloss/vim-javascript'
+" Plug 'vim-ruby/vim-ruby'
+" Plug 'tpope/vim-rails'
+Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 " This plug-in provides automatic closing of quotes
@@ -27,10 +26,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
 
 " HTML made easy
-Plug 'MatchTag'
+" Plug 'MatchTag'
 
 " Navigation
-" Plug 'ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
@@ -39,31 +37,21 @@ Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
 
 " Themes
-" Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
-" Plug 'w0ng/vim-hybrid'
+"
+Plug 'SirVer/ultisnips'
 
 " Facilities
-Plug 'Shougo/deoplete.nvim'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-" Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-rbenv'
-Plug 'ngmy/vim-rubocop'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'fugitive.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
 
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'chrisbra/NrrwRgn'
+Plug 'tpope/vim-abolish'
+Plug 'nelstrom/vim-visual-star-search'
 
-
-"Clojure
-" Plug 'guns/vim-clojure-static'
-" Plug 'tpope/vim-fireplace'
-" Plug 'tpope/vim-classpath'
-" Plug 'Conque-Shell'
-
-filetype plugin indent on                   " required!
 call plug#end()

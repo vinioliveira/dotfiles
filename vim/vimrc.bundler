@@ -10,10 +10,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
-" Plug 'janko-m/vim-test'
+Plug 'janko-m/vim-test'
 Plug 'neomake/neomake'
-" Plug 'vim-ruby/vim-ruby'
-" Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -25,9 +25,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
 
-" HTML made easy
-" Plug 'MatchTag'
-
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -38,10 +35,9 @@ Plug 'Shougo/vimfiler.vim'
 
 " Themes
 Plug 'morhetz/gruvbox'
-"
-Plug 'SirVer/ultisnips'
 
 " Facilities
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'

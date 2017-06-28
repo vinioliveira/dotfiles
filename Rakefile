@@ -27,11 +27,7 @@ task :copy_files => [:install_homebrew] do
   install_files(Dir.glob('{vimrc,gvimrc}'))
 end
 
-task :install_vundle => [:copy_files] do
-  vundle_install
-end
-
-task :install_prezto => [:install_vundle] do
+task :install_prezto => [:copy_files] do
   install_prezto
 end
 
@@ -108,7 +104,7 @@ def install_prezto
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"
   else
     puts "Setting zsh as your default shell"
-    if File.exists?("/usr/local/bin/zsh")
+    if File.exist?("/usr/local/bin/zsh")
       if File.readlines("/private/etc/shells").grep("/usr/local/bin/zsh").empty?
         puts "Adding zsh to standard shell list"
         run %{ echo "/usr/local/bin/zsh" | sudo tee -a /private/etc/shells }
@@ -140,8 +136,4 @@ def install_files(files)
     puts "=========================================================="
     puts
   end
-end
-
-def vundle_install
-  system "vim --noplugin -N \"+set hidden\" \"+syntax on\" +BundleClean +BundleInstall! +qall"
 end

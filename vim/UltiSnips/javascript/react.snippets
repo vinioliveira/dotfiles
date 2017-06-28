@@ -1,0 +1,33 @@
+snippet ir "import react"
+import React from 'react';
+endsnippet
+
+snippet irc "import react with component"
+import React, { Component } from 'react';
+endsnippet
+
+snippet prp "Expand this.props" i
+this.props.${1}
+endsnippet
+
+snippet ste "Expand this.sate" i
+this.state.${1}
+endsnippet
+
+# React constructor
+snippet rcon
+constructor(props) {
+	super(props)
+
+		this.state = {
+			${1}: ${0},
+		}
+}
+endsnippet
+
+# State
+snippet rsst
+this.setState({
+		${1}: ${0},
+		})
+endsnippet

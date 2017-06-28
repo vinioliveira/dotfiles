@@ -1,0 +1,54 @@
+snippet des "describe('thing', () => { ... })" b
+describe('${1:}', () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet it "it('should do', () => { ... })" b
+it('${1:}', () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet xit "xit('should do', () => { ... })" b
+xit('${1:}', () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet bef "before(() => { ... })" b
+before(() => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet befe "beforeEach(() => { ... })" b
+beforeEach(() => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet aft "after(() => { ... })" b
+after(() => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet afte "afterEach(() => { ... })" b
+afterEach(() => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet exp "expect(...)" b
+expect(${1:})${0};
+endsnippet
+
+snippet expe "expect(...).to.equal(...)" b
+expect(${1:}).to.equal(${0});
+endsnippet
+
+snippet expd "expect(...).to.deep.equal(...)" b
+expect(${1:}).to.deep.equal(${0});
+endsnippet
+

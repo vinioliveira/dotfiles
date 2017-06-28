@@ -30,12 +30,10 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search'\
   'history' \
   'directory' \
-  'spectrum' \
   'git' \
   'utility' \
   'syntax-highlighting' \
   'completion' \
-  'tmux' \
   'ruby' \
   'node' \
   'prompt'

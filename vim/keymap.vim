@@ -1,36 +1,39 @@
-" move up/down quickly by using Cmd-j, Cmd-k
-" which will move us around by functions
-nnoremap <silent> <D-j> }
-nnoremap <silent> <D-k> {
-autocmd FileType ruby map <buffer> <D-j> ]m
-autocmd FileType ruby map <buffer> <D-k> [m
-autocmd FileType rspec map <buffer> <D-j> }
-autocmd FileType rspec map <buffer> <D-k> {
-autocmd FileType javascript map <buffer> <D-k> }
-autocmd FileType javascript map <buffer> <D-j> {as
+let mapleader = ','
 
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
 
-" Command-/ to toggle comments
-map <D-/> :TComment<CR>
-imap <D-/> <Esc>:TComment<CR>i
+"============== FZF  ===========================
+nnoremap <C-p> :FZF<CR>
 
-"map to NERDTree
-nnoremap <leader>p :NERDTreeToggle<cr>
+"========== Remaping Record Key ================
+noremap <Leader>q q
+noremap q <Nop>
 
-" Use numbers to pick the tab you want (like iTerm)
-map <silent> <D-1> :tabn 1<cr>
-map <silent> <D-2> :tabn 2<cr>
-map <silent> <D-3> :tabn 3<cr>
-map <silent> <D-4> :tabn 4<cr>
-map <silent> <D-5> :tabn 5<cr>
-map <silent> <D-6> :tabn 6<cr>
-map <silent> <D-7> :tabn 7<cr>
-map <silent> <D-8> :tabn 8<cr>
-map <silent> <D-9> :tabn 9<cr>
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+map <C-s> <esc>:w<CR><esc>
+imap <C-s> <esc>:w<CR><esc>
 
-" Source current file Cmd-% (good for vim development)
-map <D-%> :so %<CR>
+"========== VimFiler Map ===============
+map <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
+imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
 
+"Open in the current directory
+map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
+imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
+
+" use ,F to jump to tag in a vertical split
+nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+
+" move lines through the file
+nnoremap <C-J> :m .+1<CR>==
+nnoremap <C-K> :m .-2<CR>==
+inoremap <C-J> <Esc>:m .+1<CR>==gi
+inoremap <C-K> <Esc>:m .-2<CR>==gi
+vnoremap <C-J> :m '>+1<CR>gv=gv
+vnoremap <C-K> :m '<-2<CR>gv=gv
 
 " alias yw to yank the entire word 'yank inner word'
 " even if the cursor is halfway inside the word
@@ -41,3 +44,52 @@ nnoremap ,yw yiww
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
 nnoremap ,ow "_diwhp
 
+"=========== VIm - Test ==========================
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
+
+" ============ Surround Vim Shortcuts ==============
+vmap ' S'
+vmap " S"
+
+"============== CTAGS ========================
+" hit ,f to find the definition of the current class
+" this uses ctags. the standard way to get this is Ctrl-]
+nnoremap <silent> <leader>f <C-]>
+
+" VIM-FUGTIVE map
+nnoremap <silent> <Leader>g :Gstatus<CR>
+
+"map to bufexpl?rer
+nnoremap <leader>b :BufExplorer<cr>
+
+" Easier fold toggling
+nnoremap ,z za
+
+" Start substitute on current word under the cursor
+nnoremap ,s :%Subvert//gc<Left><Left><Left>
+
+" " Visual linewise up and down by default (and use gj gk to go quicker)
+" nnoremap j gj
+" nnoremap k gk
+" nnoremap gj 5j
+" nnoremap gk 5k
+" vnoremap j gj
+" vnoremap k gk
+" vnoremap gj 5j
+" vnoremap gk 5k
+
+" When jump to next match also center screen
+" Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
+nnoremap <silent> n :norm! nzz<CR>
+nnoremap <silent> N :norm! Nzz<CR>
+vnoremap <silent> n :norm! nzz<CR>
+vnoremap <silent> N :norm! Nzz<CR>
+
+" Reselect last-pasted text
+nnoremap gp `[v`]
+
+nnoremap <silent> ,r :source $MYVIMRC<CR>

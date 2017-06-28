@@ -1,30 +1,63 @@
-let mapleader = ','
+source ~/.dotfiles/vim/vimrc.bundler
 
-set backspace=2    " Backspace deletes like most programs in insert mode
-set history=50
-set ruler          " show the cursor position all the time
-set showcmd        " display incomplete commands
-set laststatus=2   " Always display the status line
-set wildmenu       " Enhance command-line completion
-set esckeys        " Allow cursor keys in insert mode
-set ttyfast        " Optimize for fast terminal connections
-set title
+" ======    GENERAL CONFIGURATIONS  ==========
+set nocompatible            " not compatible with vi
+set autoread                " detect when a file is changed
+set inccommand=nosplit
 
-" ======    SEARCH  ==========
+if (has("termguicolors"))
+  set termguicolors
+  set t_8f=^[[38;2;%lu;%lu;%lum
+  set t_8b=^[[48;2;%lu;%lu;%lum
+endif
 
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+syntax sync minlines=256
+syntax sync maxlines=256
 
-" ================ Scrolling ========================
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+" set background=dark
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_light='medium'
 
-" ================ Turn Off Swap Files ==============
-set noswapfile
-set nobackup
-set nowb
+colorscheme gruvbox
+set background=light
+
+set number                  " show line numbers
+set relativenumber          " show relative line numbers
+set regexpengine=1
+set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
+
+" TAB Control Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" code folding settings
+set foldmethod=syntax       " fold based on indent
+set foldnestmax=10          " deepest fold is 10 levels
+set nofoldenable            " don't fold by default
+set foldlevel=1
+
+" Copy settings
+set clipboard=unnamed
+
+" General perfomance Improvment
+set ttyfast                 " faster redrawing
+set laststatus=2            " show the satus line all the time
+set so=7                    " set 7 lines to the cursors - when moving vertical
+set wildmenu                " enhanced command line completion
+set hidden                  " current buffer can be put into background
+set showcmd                 " show incomplete commands
+set wildmode=list:longest   " complete files like a shell
+set shell=$SHELL
+
+" Searching
+set ignorecase              " case insensitive searching
+set smartcase               " case-sensitive if expresson contains a capital letter
+set hlsearch                " highlight search results
+set lazyredraw            " don't redraw while executing macros
+set showmatch               " show matching braces
+set mat=2                   " how many tenths of a second to blink
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -35,108 +68,59 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
-
-if filereadable(expand("~/.dotfiles/vim/vimrc.bundler"))
-  source ~/.dotfiles/vim/vimrc.bundler
-endif
-
-"============== THEME  ===========================
-" let base16colorspace=256
-set background=dark
-let g:hybrid_custom_term_colors = 1
-colorscheme gruvbox
-
-filetype plugin indent on
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
-set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
-
-" Make it more obvious which paren I'm on
-hi MatchParen cterm=none ctermbg=black ctermfg=yellow
-
-" Without this, vim breaks in the middle of words when wrapping
-autocmd FileType markdown setlocal nolist wrap lbr
-
-" Wrap the quickfix window
-autocmd FileType qf setlocal wrap linebreak
-
-" Make it more obviouser when lines are too long
-highlight ColorColumn ctermbg=233
-set colorcolumn=80
-
-" Numbers
-set number
-set gdefault " global Substitute by default
-set grepprg=ag " Use Silver Searcher instead of grep
-set wmh=0
-
-if exists("&relativenumber")
-  set relativenumber
-  set lazyredraw
-  au BufReadPost * set relativenumber
-endif
+" ================ Turn Off Swap Files ==============
+set noswapfile
+set nobackup
+set nowb
 
 " " ================ Neomake =======================
-" let g:neomake_open_list=2
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 let g:neomake_javascript_enabled_makers = ['eslint']
-au BufWritePost *.rb :let b:neomake_ruby_rubocop_exe =  system('PATH=$(pwd)/bin:$PATH && which rubocop | tr -d "\n"')
 au BufWritePost * Neomake
 
 
-" Disable the macvim toolbar
-set guioptions-=T)
-
-"============== RUBY  ===========================
-set regexpengine=2
-
 "============== FZF  ===========================
-
-let $FZF_DEFAULT_COMMAND= 'ag -g ""'
-
-let g:fzf_prefer_tmux = 1
-nnoremap <silent> <C-p> :call fzf#run({
-\   'down': '40%',
-\   'sink': 'e' })<CR>
+let $FZF_DEFAULT_COMMAND= 'ag -s -g ""'
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
 " [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
+let g:fzf_tags_command = 'ctags --tag-relative -R --sort=yes --languages=ruby,javascript --exclude=.git --exclude=log . $(bundle list --paths)'
 
-set clipboard=unnamed           "To copy to clipboard
+let g:fzf_colors =
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
+
 
 "============== LIGHT LINE ===========================
 set laststatus=2
-"
 let g:lightline = {
-      \ 'colorscheme' : 'PaperColor',
+      \ 'colorscheme' : 'gruvbox',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive'], ['filename' ] ]
+      \   'left': [ [ 'mode', 'paste' ], ['filename' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightLineFilename',
-      \   'fugitive': 'LightLineFugitive'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
@@ -161,87 +145,33 @@ endfunction
 function! LightLineFilename()
   return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
         \ '' != expand('%:t') ? @% : '[No Name]') .
         \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
-" ============ Surround Vim Shortcuts ==============
-vmap ' S'
-vmap " S"
-
-"============= Vim-Tags ==========================
-" let g:vim_tags_auto_generate = 1
+"=========== VIm - Test ==========================
+" let g:dispatch_quickfix_height=15
+" let test#strategy = "dispatch"
 
 " ============ Vim Identent Line =================
 let g:indentLine_enabled = 1
-" let g:indentLine_setColors = 0
-" let g:indentLine_concealcursor = 'inc'
-" let g:indentLine_conceallevel = 2
+let g:indentLine_setColors = 0
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
 
-"=========== RSpec VIm ==========================
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <leader>gt :TestVisit<CR>
-let test#strategy = "dispatch"
-let g:dispatch_quickfix_height=15
-
-" " Delete trailing white space when saving
+"========== Delete trailing white space when saving ================
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
 
-"========== Remaping Record Key ================
-noremap <Leader>q q
-noremap q <Nop>
-
 au BufWrite * :call DeleteTrailingWS()
 
 "=============== VimFiler =====================
 let g:vimfiler_as_default_explorer= 1
 let g:vimfiler_define_wrapper_commands= 1
-
-"============== CTAGS ========================
-" hit ,f to find the definition of the current class
-" this uses ctags. the standard way to get this is Ctrl-]
-nnoremap <silent> <leader>f <C-]>
-
-" Note that remapping C-s requires flow control to be disabled
-" (e.g. in .bashrc or .zshrc)
-"
-
-" If the current buffer has never been saved, it will have no name,
-" call the file browser to save it, otherwise just save it.
-map <C-s> <esc>:w<CR><esc>
-imap <C-s> <esc>:w<CR><esc>
-
-"========== VimFiler Map ===============
-map <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
-imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
-
-" NERDTree view style
-map <leader>n <esc>:VimFilerBufferDir -explorer<CR>
-imap <leader>n <esc>:VimFilerBufferDir -explorer<CR>
-
-"Open in the current directory
-map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
-imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
-
-" use ,F to jump to tag in a vertical split
-nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
-
-" Rubocop
-"
-let g:vimrubocop_config = getcwd() + '/.rubocop.yml'
-
-let g:autotagTagsFile=".tags"
-" let g:indentLine_conceallevel = 1
-" let g:indentLine_setConceal = 0
+let g:vimfiler_safe_mode_by_default=0
 
 "========== FileTypes Map ===============
 " Ruby
@@ -259,34 +189,24 @@ augroup END
 
 " JavaScript
 " -----------------------------------------------------------------
-" augroup javascriptfiletype
-"   autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-"   autocmd BufRead,BufNewFile *.js.es6 setfiletype javascript
-"   autocmd BufNewFile,BufRead *.es6 set filetype=javascript.jsx
-"   autocmd BufRead,BufNewFile *.json set filetype=javascript
-" augroup END
-"
-" let g:jsx_ext_required = 0
+augroup javascriptfiletype
+  autocmd BufRead,BufNewFile *.es6 set filetype=javascript.jsx
+  autocmd BufRead,BufNewFile *.js.es6 set filetype=javascript.jsx
+augroup END
 
+let g:jsx_ext_required = 0
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" deoplete config
-let g:deoplete#enable_at_startup = 1
-" disable autocomplete
-let g:deoplete#disable_auto_complete = 1
-if has("gui_running")
-  inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
-else
-  inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
-endif
+"========== UltiSnips Map ===============
 
-" ======== UltiSnips  ==========
-inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
 
-source ~/.dotfiles/vim/alias
+"========== GitGutter Map ===============
+let g:gitgutter_map_keys = 0
+
+"========== Key Map ===============
 source ~/.dotfiles/vim/keymap.vim
 

@@ -162,4 +162,7 @@ def install_vim_plugins
   puts "Installing vim plugings"
   puts "======================================================"
   system "vim --noplugin -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugInstall! +qall"
+
+  puts "linking custom snippets"
+  run %{ ln -nfs "$HOME/.dotfiles/vim/UltiSnips" "${ZDOTDIR:-$HOME}/.vim" }
 end

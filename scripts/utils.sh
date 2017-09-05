@@ -87,3 +87,11 @@ mvg (){
   fi
 }
 
+fbr() {
+  local branches branch
+  # branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+    fzf-tmux --height 20% --reverse -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}

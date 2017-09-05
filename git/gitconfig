@@ -36,13 +36,13 @@
   aa     = !git add -u && git add . && git status
   b      = branch
   c      = commit -m
-  co     = !gco
+  co     = checkout
   d      = diff
   delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
   m      = merge --no-ff
   nb     = checkout -b
-  o      = browser
-  op     = browser -- pulls
+  o      = browse
+  op     = browse -- pulls
   p      = push
   pf     = push --force
   pr     = pull-request

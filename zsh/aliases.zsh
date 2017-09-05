@@ -14,7 +14,28 @@ alias top="top -o cpu"
 
 #Adding hub alias to git
 alias git="hub"
-alias g='git'
+alias g="git"
+
+
+# Git Alias
+alias ga="g a"
+alias gaa="g aa"
+alias gb="g bb"
+alias gc="g c"
+alias gco="g co"
+alias gd="g d"
+alias gm="g m"
+alias gnb="g nb"
+alias go="g o"
+alias gop="g op"
+alias gp="g p"
+alias gpf="g pf"
+alias gpr="g pr"
+alias grename="g rename"
+alias gs="g s"
+alias gst="g st"
+alias gup="g up"
+alias gcoi="fbr"
 
 alias t="tmux"
 alias tn="tmuxp load"

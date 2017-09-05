@@ -3,28 +3,36 @@ source ~/.dotfiles/vim/vimrc.bundler
 " ======    GENERAL CONFIGURATIONS  ==========
 set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
-set inccommand=nosplit
+" set inccommand=nosplit
 
-if (has("termguicolors"))
+if (has('nvim') && has("termguicolors"))
   set termguicolors
   set t_8f=^[[38;2;%lu;%lu;%lum
   set t_8b=^[[48;2;%lu;%lu;%lum
 endif
 
+if (!has('nvim'))
+  " set Vim-specific sequences for RGB colors
+  set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+end
+
 syntax sync minlines=256
 syntax sync maxlines=256
 
-" set background=dark
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_contrast_light='medium'
-
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='normal'
+let g:gruvbox_bold=0
+set background=dark
 colorscheme gruvbox
-set background=light
 
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
 set regexpengine=1
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
+set list
+set guicursor=
 
 " TAB Control Softtabs, 2 spaces
 set tabstop=2
@@ -33,10 +41,9 @@ set shiftround
 set expandtab
 
 " code folding settings
-set foldmethod=syntax       " fold based on indent
+set foldmethod=indent       " fold based on indent
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
-set foldlevel=1
 
 " Copy settings
 set clipboard=unnamed
@@ -55,7 +62,7 @@ set shell=$SHELL
 set ignorecase              " case insensitive searching
 set smartcase               " case-sensitive if expresson contains a capital letter
 set hlsearch                " highlight search results
-set lazyredraw            " don't redraw while executing macros
+set lazyredraw              " don't redraw while executing macros
 set showmatch               " show matching braces
 set mat=2                   " how many tenths of a second to blink
 
@@ -77,12 +84,15 @@ set nowb
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 let g:neomake_javascript_enabled_makers = ['eslint']
-au BufWritePost * Neomake
+
+autocmd! BufWritePost * Neomake
+" au BufWritePost * Neomake
 
 
 "============== FZF  ===========================
 let $FZF_DEFAULT_COMMAND= 'ag -s -g ""'
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~30%' }
+
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-x': 'split',
@@ -108,6 +118,7 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
+let g:fzf_prefer_tmux = 1
 
 "============== LIGHT LINE ===========================
 set laststatus=2
@@ -117,10 +128,11 @@ let g:lightline = {
       \   'readonly': '%{&readonly?"":""}',
       \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], ['filename' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive'], ['filename' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightLineFilename',
+      \   'fugitive': 'LightLineFugitive',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
@@ -151,9 +163,9 @@ endfunction
 
 "=========== VIm - Test ==========================
 " let g:dispatch_quickfix_height=15
-" let test#strategy = "dispatch"
+let test#strategy = "dispatch"
 
-" ============ Vim Identent Line =================
+" ============ Vim Indentent Line =================
 let g:indentLine_enabled = 1
 let g:indentLine_setColors = 0
 let g:indentLine_concealcursor = 'inc'
@@ -195,7 +207,9 @@ augroup javascriptfiletype
 augroup END
 
 let g:jsx_ext_required = 0
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+"========== NVIM configuration ===============
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "========== UltiSnips Map ===============
 
@@ -206,6 +220,7 @@ let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 "========== GitGutter Map ===============
 let g:gitgutter_map_keys = 0
+
 
 "========== Key Map ===============
 source ~/.dotfiles/vim/keymap.vim

@@ -1,11 +1,10 @@
-[ -n "$TMUX" ] && export TERM=screen-256color
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Customize to your needs...
+for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
 
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
@@ -13,17 +12,7 @@ stty stop undef
 
 setopt RM_STAR_WAIT
 setopt CORRECT
-bindkey -e
-export EDITOR="nvim"
-export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
 
-bindkey -M viins '^r' history-incremental-search-backward
-bindkey -M vicmd '^r' history-incremental-search-backward
-
-source $HOME/.dotfiles/scripts/export.sh
-source $HOME/.dotfiles/scripts/alias.sh
 source $HOME/.dotfiles/scripts/utils.sh
-source $HOME/.dotfiles/scripts/other.sh
 
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -7,5 +7,5 @@ if [ ! -d "$HOME/.dotfile" ]; then
   # [ "$1" = "ask" ] && export ASK="true"
   rake install
 else
-  echo "YADR is already installed"
+  echo "My VimRC is already installed"
 fi

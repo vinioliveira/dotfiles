@@ -26,7 +26,6 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
-  'editor' \
   'history-substring-search'\
   'history' \
   'directory' \
@@ -36,6 +35,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'ruby' \
   'node' \
+  'editor' \
   'prompt'
 
 #
@@ -50,10 +50,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 #
 # Git
-#
-
-# Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-# zstyle ':prezto:module:git:status:ignore' submodules 'all'
+zstyle ':prezto:module:git:alias' skip 'no'
 
 #
 # GNU Utility

@@ -61,16 +61,32 @@ function* ${1:function_name}(${2}) {
 }
 endsnippet
 
-snippet caf "arrow anonymous function" i
+snippet fun "named anonymous function" i
+function ${1:function_name}(${2}) {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet caf "arrow anonymous function" b
 const ${1:function_name} = (${2}) => {
 	${0:${VISUAL}}
 }
 endsnippet
 
-snippet af "arrow anonymous function" i
+snippet af "arrow anonymous function" w
 (${1}) => {
 	${0:${VISUAL}}
 }
+endsnippet
+
+snippet fm "class method" b
+${1:method_name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet mode "Module exports"
+module.exports = ${0}
 endsnippet
 
 snippet ed "Export default"
@@ -99,7 +115,7 @@ snippet ter "tertiary conditional" i
 ${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
 endsnippet
 
-snippet switch "switch"
+snippet switch "switch" w
 switch (${1:expression}) {
 	case '${3:case}':
 		${4}
@@ -110,7 +126,7 @@ switch (${1:expression}) {
 }
 endsnippet
 
-snippet case "case 'xyz': ... break"
+snippet case "case 'xyz': ... break" w
 case '${1:case}':
 	${0:${VISUAL}}
 	break;
@@ -136,12 +152,12 @@ endsnippet
 
 # JSON.parse
 snippet jsonp "JSON parse" i
-JSON.parse(${0:jstr});
+JSON.parse(${0:jstr})
 endsnippet
 
 # JSON.stringify
 snippet jsons "JSON strinfy" i
-JSON.stringify(${0:object});
+JSON.stringify(${0:object})
 endsnippet
 
 # Debugging
@@ -150,27 +166,27 @@ debugger;
 endsnippet
 
 snippet cl "console.log"
-console.log(${0});
+console.log('${1}', ${2:$1});
 endsnippet
 
 snippet cd "console.debug"
-console.debug(${0});
+console.debug('${1}', ${2:$1});
 endsnippet
 
 snippet ce "console.error"
-console.error(${0});
+console.error('${1}', ${2:$1});
 endsnippet
 
 snippet cw "console.warn"
-console.warn(${0});
+console.warn('${1}', ${2:$1});
 endsnippet
 
 snippet ci "console.info"
-console.info(${0});
+console.info('${1}', ${2:$1});
 endsnippet
 
 snippet ct "console.trace"
-console.trace(${0:label});
+console.trace('${1:label}', ${2:$1});
 endsnippet
 
 snippet timeout "timout"
@@ -189,6 +205,20 @@ Promise.all([
 ])
 endsnippet
 
+snippet then "arrow anonymous function" i
+then((${1}) => {
+	${0:${VISUAL}}
+})
+endsnippet
+
 snippet ret "return"
 return ${0:result};
+endsnippet
+
+snippet req "requrie" b
+require('${1}');
+endsnippet
+
+snippet creq "requrie" b
+const ${1} = require('${2}');
 endsnippet

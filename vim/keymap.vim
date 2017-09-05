@@ -5,7 +5,15 @@ nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
 "============== FZF  ===========================
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
 nnoremap <C-p> :FZF<CR>
+nnoremap <leader>b :Unite buffer<CR>
 
 "========== Remaping Record Key ================
 noremap <Leader>q q
@@ -38,11 +46,11 @@ vnoremap <C-K> :m '<-2<CR>gv=gv
 " alias yw to yank the entire word 'yank inner word'
 " even if the cursor is halfway inside the word
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap ,yw yiww
+nnoremap <leader>yw yiww
 
 " ,ow = 'overwrite word', replace a word with what's in the yank buffer
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap ,ow "_diwhp
+nnoremap <leader>ow "_diwhp
 
 "=========== VIm - Test ==========================
 nnoremap <silent> <Leader>t :TestFile<CR>
@@ -63,24 +71,21 @@ nnoremap <silent> <leader>f <C-]>
 " VIM-FUGTIVE map
 nnoremap <silent> <Leader>g :Gstatus<CR>
 
-"map to bufexpl?rer
-nnoremap <leader>b :BufExplorer<cr>
-
 " Easier fold toggling
-nnoremap ,z za
+nnoremap <leader>z za
 
 " Start substitute on current word under the cursor
-nnoremap ,s :%Subvert//gc<Left><Left><Left>
+nnoremap <leader>S :%Subvert//gc<Left><Left><Left>
 
 " " Visual linewise up and down by default (and use gj gk to go quicker)
-" nnoremap j gj
-" nnoremap k gk
-" nnoremap gj 5j
-" nnoremap gk 5k
-" vnoremap j gj
-" vnoremap k gk
-" vnoremap gj 5j
-" vnoremap gk 5k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj 5j
+nnoremap gk 5k
+vnoremap j gj
+vnoremap k gk
+vnoremap gj 5j
+vnoremap gk 5k
 
 " When jump to next match also center screen
 " Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
@@ -92,4 +97,9 @@ vnoremap <silent> N :norm! Nzz<CR>
 " Reselect last-pasted text
 nnoremap gp `[v`]
 
-nnoremap <silent> ,r :source $MYVIMRC<CR>
+nnoremap <silent> <leader>r :source $MYVIMRC<CR>
+
+" VIM-FUGTIVE map
+" nnoremap <buffer> gd :TernDef<CR>
+nnoremap <buffer> gd :TernDef<CR>
+

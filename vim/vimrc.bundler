@@ -28,7 +28,8 @@ Plug 'Yggdroot/indentLine'
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'jlanzarotta/bufexplorer'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+" Plug 'jlanzarotta/bufexplorer'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'

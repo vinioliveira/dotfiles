@@ -1,6 +1,6 @@
 # reload source
 reload() {
-  source ~/.zshrc;
+  exec zsh;
 }
 
 # Check if given url is giving gzipped content

@@ -14,5 +14,3 @@ setopt RM_STAR_WAIT
 setopt CORRECT
 
 source $HOME/.dotfiles/scripts/utils.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

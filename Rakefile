@@ -24,7 +24,7 @@ task :copy_files => [:install_homebrew] do
   install_files(Dir.glob('ruby/*'))
   install_files(Dir.glob('ctags/*'))
   install_files(Dir.glob('tmux/*'))
-  install_files(Dir.glob('{vimrc,gvimrc}'))
+  install_files(Dir.glob('vim/{vimrc,gvimrc}'))
 end
 
 task :install_vim_plugins => [:config_tmux_powerline] do

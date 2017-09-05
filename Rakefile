@@ -27,13 +27,18 @@ task :copy_files => [:install_homebrew] do
   install_files(Dir.glob('{vimrc,gvimrc}'))
 end
 
-task :install_vim_plugins => [:copy_files] do
+task :install_vim_plugins => [:config_tmux_powerline] do
   install_vim_plugins
 end
 
 task :install_prezto => [:install_vim_plugins] do
   install_prezto
 end
+
+task :config_tmux_powerline => [:copy_files] do
+  config_tmux_powerline
+end
+
 
 task :install => :install_prezto
 
@@ -141,6 +146,15 @@ def install_files(files)
     puts "=========================================================="
     puts
   end
+end
+
+def config_tmux_powerline
+  puts "======================================================"
+  puts "Customizing tmux-powerline"
+  puts "======================================================"
+
+  puts "Linking custom theme"
+  run %{ ln -nfs "$HOME/.dotfiles/tmux/themes/powerline-theme.sh" "${ZDOTDIR:-$HOME}/.dotfiles/tmux/tmux-powerline/themes" }
 end
 
 def install_vim_plugins

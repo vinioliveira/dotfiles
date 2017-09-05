@@ -27,7 +27,11 @@ task :copy_files => [:install_homebrew] do
   install_files(Dir.glob('{vimrc,gvimrc}'))
 end
 
-task :install_prezto => [:copy_files] do
+task :install_vim_plugins => [:copy_files] do
+  install_vim_plugins
+end
+
+task :install_prezto => [:install_vim_plugins] do
   install_prezto
 end
 
@@ -92,14 +96,14 @@ def install_prezto
 
   puts
   puts "Overriding prezto ~/.zshrc with Dotfile's zshrc"
-  run %{ ln -nfs "$HOME/dev/dotfiles/zsh" "$HOME/.zsh" }
+  run %{ ln -nfs "$HOME/.dotfiles/zsh" "$HOME/.zsh" }
   run %{ ln -nfs "$HOME/.dotfiles/zsh/zshrc" "$HOME/.zshrc" }
 
   puts
   puts "Creating directories for your customizations"
   run %{ mkdir -p $HOME/.zsh.before }
   run %{ mkdir -p $HOME/.zsh.after }
-  run %{ mkdir -p $HOME/.zsh.prompts }
+  run %{ ln -nfs "$HOME/.dotfiles/zsh/prezto-themes" "$HOME/.zsh.prompts" }
 
   if ENV["SHELL"].include? 'zsh' then
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"
@@ -137,4 +141,11 @@ def install_files(files)
     puts "=========================================================="
     puts
   end
+end
+
+def install_vim_plugins
+  puts "======================================================"
+  puts "Installing vim plugings"
+  puts "======================================================"
+  system "vim --noplugin -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugInstall! +qall"
 end

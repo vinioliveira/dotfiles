@@ -1,3 +1,8 @@
+# Loading themes before use it
+autoload promptinit
+fpath=($HOME/.zsh.prompts $fpath)
+promptinit
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"

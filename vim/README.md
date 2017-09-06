@@ -1,27 +1,47 @@
-#### What's included
+## What's included
 
-* [CtrlP](https://github.com/kien/ctrlp.vim)
-* [airline](https://github.com/bling/vim-airline)
-* [snipmate](https://github.com/msanders/snipmate.vim)
-* [tcomment](https://github.com/tomtom/tcomment_vim)
-* [ack.vim](https://github.com/mileszs/ack.vim)
-* [fugitive](https://github.com/tpope/vim-fugitive)
-* [surround](https://github.com/tpope/vim-surround)
-* [delimitMate](https://github.com/Raimondi/delimitMate)
-* [indent-guides](https://github.com/nathanaelkane/vim-indent-guides)
-* [javascript](https://github.com/pangloss/vim-javascript)
-* [NERDtree](https://github.com/scrooloose/nerdtree)
-* [sourcebeautify](https://github.com/michalliu/sourcebeautify.vim)
-* [Sparkup](https://github.com/rstacruz/sparkup)
-* [Bad Wolf (colorscheme)](https://github.com/sjl/badwolf)
+#### Tests & Lints 
 
-#### Usage 
+* [Vim Test](https://github.com/janko-m/vim-test)
+* [Neomake](https://github.com/neomake/neomake)
 
-Clone my vimfiles repo:
+#### Langs 
+
+* [Vim Ruby](https://github.com/janko-m/vim-ruby/vim-ruby)
+* [Vim Rails](https://github.com/pope/vim-rails)
+* [Vim JavaScript](https://github.com/pangloss/vim-javascript)
+* [YAJS.vim: Yet Another JavaScript Syntax for Vim ](https://github.com/othree/yajs.vim)
+* [Vim JSX](https://github.com/mxw/vim-jsx)
+
+#### Navigation
+
+* [FZF](https://github.com/junegunn/fzf)
+* [FZF.vim](https://github.com/junegunn/fzf.vims)
+* [SilverAgent](https://github.com/rking/ag.vim)
+* [Unite](https://github.com/Shougo/unite.vim)
+* [Vimfiler](https://github.com/Shougo/vimfiler.vim)
+
+#### ColorScheme
+
+* [Gruvbox](https://github.com/morhetz/gruvbox)
+
+#### Theming 
+
+* [Light Line](https://github.com/itchyny/lightline.vim)
 
 
-    git clone --recursive https://github.com/vinioliveira/vimfiles.git ~/.vim
-    
-Link vimrc :
+#### Others 
 
-    ln -s ~/.vim/vimrc ~/.vimrc
+* [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
+* [Tcomment Vim](https://github.com/tomtom/tcomment_vim)
+* [indentLine](https://github.com/Yggdroot/indentLine)
+* [UltiSnips](https://github.com/SirVer/ultisnips)
+
+* [GitGutter](https://github.com/airblade/vim-gitgutter)
+* [Surround](https://github.com/tpope/vim-surround)
+* [Repeat](https://github.com/tpope/vim-repeat)
+* [Dispatch](https://github.com/tpope/vim-dispatch)
+* [Abolish](https://github.com/tpope/vim-abolish)
+* [Split Join (code lines)](https://github.com/AndrewRadev/splitjoin.vim)
+* [Visual Star Search](https://github.com/nelstrom/vim-visual-star-search)
+

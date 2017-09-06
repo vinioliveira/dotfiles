@@ -7,18 +7,18 @@
 
 ## What's included
 
-* [Aliases] (https://github.com/vinioliveira/dotfiles/blob/master/zsh/aliases.zsh)
-* [CTAGS] (http://ctags.sourceforge.net/)
-* [FZF] (https://github.com/junegunn/fzf)
+* [Aliases](https://github.com/vinioliveira/dotfiles/blob/master/zsh/aliases.zsh)
+* [CTAGS](http://ctags.sourceforge.net/)
+* [FZF](https://github.com/junegunn/fzf)
 * [fasd](https://github.com/clvv/fasd) integration - hit `z` and partial match for recently used directory. Tab completion 
-* [Git] (https://git-scm.com)
-* [Hub] (https://github.com/github/hub)
+* [Git](https://git-scm.com)
+* [Hub](https://github.com/github/hub)
 * [Homebrew](https://brew.sh/)
-* [Maven] (https://maven.apache.org)
-* [NVM] (https://github.com/creationix/nvm) 
+* [Maven](https://maven.apache.org)
+* [NVM](https://github.com/creationix/nvm) 
 * [Prezto](https://github.com/sorin-ionescu/prezto)
-* [Pry] (https://github.com/pry/pry)
-* [rbenv] (https://github.com/rbenv/rbenv)
+* [Pry](https://github.com/pry/pry)
+* [rbenv](https://github.com/rbenv/rbenv)
 * [Tmux](https://tmux.github.io)
 * [Tmuxp](https://github.com/tony/tmuxp)
 * [TmuxPowerline](https://github.com/ColinHebert/TmuxPowerline)

@@ -28,8 +28,6 @@ Plug 'Yggdroot/indentLine'
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-" Plug 'jlanzarotta/bufexplorer'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
@@ -37,7 +35,7 @@ Plug 'Shougo/vimfiler.vim'
 " Themes
 Plug 'morhetz/gruvbox'
 
-" Facilities
+" Others
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
@@ -47,7 +45,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
 
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-abolish'
 Plug 'nelstrom/vim-visual-star-search'
 

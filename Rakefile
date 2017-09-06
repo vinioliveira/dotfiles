@@ -1,21 +1,28 @@
 require 'rake'
 require 'fileutils'
 
+task :pre_install do
+  puts
+  puts "======================================================"
+  puts "Start dotfiles setup"
+  puts "======================================================"
+  puts
+end
+
 task :submodules => [:pre_install] do
   puts "======================================================"
   puts "Init Dotfile Submodules"
   puts "======================================================"
-
   run %{
-      cd $HOME/.dotfiles
-      git submodule update --init --recursive
-      git clean -df
+    cd $HOME/.dotfiles
+    git submodule update --init --recursive
+    git clean -df
   }
   puts
 end
 
 task :install_homebrew => [:submodules] do
-  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+  install_homebrew
 end
 
 task :copy_files => [:install_homebrew] do
@@ -27,6 +34,14 @@ task :copy_files => [:install_homebrew] do
   install_files(Dir.glob('vim/{vimrc,gvimrc}'))
 end
 
+task :install_pip_depdencies => [:copy_files] do
+  install_pip_depdencies
+end
+
+task :config_tmux_powerline => [:install_pip_depdencies] do
+  config_tmux_powerline
+end
+
 task :install_vim_plugins => [:config_tmux_powerline] do
   install_vim_plugins
 end
@@ -35,21 +50,7 @@ task :install_prezto => [:install_vim_plugins] do
   install_prezto
 end
 
-task :config_tmux_powerline => [:copy_files] do
-  config_tmux_powerline
-end
-
-
 task :install => :install_prezto
-
-task :pre_install do
-  puts
-  puts "======================================================"
-  puts "Start dotfiles setup"
-  puts "======================================================"
-  puts
-end
-
 
 task :default => 'install'
 
@@ -81,7 +82,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher fasd rbenv rbenv-bundler ruby-build fzf nvm}
+  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher fasd rbenv rbenv-bundler ruby-build fzf nvm python3}
   puts
   puts
 end
@@ -147,6 +148,14 @@ def install_files(files)
     puts
   end
 end
+
+def install_pip_depdencies
+  puts "======================================================"
+  puts "Installing pip dependencies"
+  puts "======================================================"
+  run %{pip install tmuxp}
+end
+
 
 def config_tmux_powerline
   puts "======================================================"

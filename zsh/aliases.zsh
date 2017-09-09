@@ -1,9 +1,9 @@
 alias ll="ls -Glahs"
-alias ll="ls -Glahs"
 alias ls="ls -G"
 alias make="make -j2"
-alias ni="lsof -i -Pn"
+alias ni="lsof -Pn -i"
 alias psgrep="ps aux | egrep -v egrep | egrep"
+alias k9="kill -9"
 
 alias r="rails"
 alias n="node"

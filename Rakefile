@@ -4,15 +4,15 @@ require 'fileutils'
 task :pre_install do
   puts
   puts "======================================================"
-  puts "Start dotfiles setup"
+  puts "            Start dotfiles setup                      "
   puts "======================================================"
   puts
 end
 
 task :submodules => [:pre_install] do
   puts "======================================================"
-  puts "Init Dotfile Submodules"
-  puts "======================================================"
+  puts "           Init Dotfile Submodules                    "
+  puts ' ====================================================== '
   run %{
     cd $HOME/.dotfiles
     git submodule update --init --recursive
@@ -110,6 +110,12 @@ def install_prezto
   run %{ mkdir -p $HOME/.zsh.before }
   run %{ mkdir -p $HOME/.zsh.after }
   run %{ ln -nfs "$HOME/.dotfiles/zsh/prezto-themes" "$HOME/.zsh.prompts" }
+
+  puts
+  puts "Creating secrets exports"
+  run %{ touch $HOME/.dotfiles/zsh/secrets.zsh }
+  run %{ echo "export HOMEBREW_GITHUB_API_TOKEN=\"\"\nexport GITHUB_TOKEN=\"\"" >> $HOME/.dotfiles/zsh/secrets.zsh }
+
 
   if ENV["SHELL"].include? 'zsh' then
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"

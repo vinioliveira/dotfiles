@@ -85,6 +85,12 @@ def install_homebrew
   run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher fasd rbenv rbenv-bundler ruby-build fzf nvm python3}
   puts
   puts
+  puts "======================================================"
+  puts "Installing Homebrew cask packages...There may be some warnings."
+  puts "======================================================"
+  run %{brew cask install keepingyouawake}
+  puts
+  puts
 end
 
 def install_prezto

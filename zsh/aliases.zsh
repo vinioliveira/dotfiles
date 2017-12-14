@@ -10,6 +10,7 @@ alias n="node"
 alias v="vim"
 
 alias redis="redis-server"
+alias mongod="mongod --config /usr/local/etc/mongod.conf --fork"
 alias top="top -o cpu"
 
 #Adding hub alias to git
@@ -20,7 +21,7 @@ alias g="git"
 # Git Alias
 alias ga="g a"
 alias gaa="g aa"
-alias gb="g bb"
+alias gb="g b"
 alias gc="g c"
 alias gco="g co"
 alias gd="g d"

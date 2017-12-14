@@ -6,13 +6,16 @@ nnoremap P P=`]<C-o>
 
 "============== FZF  ===========================
 " Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+" imap <c-x><c-k> <plug>(fzf-complete-word)
+" imap <c-x><c-f> <plug>(fzf-complete-path)
+" imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+" imap <c-x><c-l> <plug>(fzf-complete-line)
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 nnoremap <C-p> :FZF<CR>
+nnoremap <leader>F :BTags<CR>
+nnoremap <leader>? :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+
 nnoremap <leader>b :Unite buffer<CR>
 
 "========== Remaping Record Key ================
@@ -33,7 +36,7 @@ map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
 imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
 
 " use ,F to jump to tag in a vertical split
-nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+" nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
 " move lines through the file
 nnoremap <C-J> :m .+1<CR>==

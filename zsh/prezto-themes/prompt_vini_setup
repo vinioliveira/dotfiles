@@ -48,7 +48,7 @@ function prompt_vini_setup {
   zstyle ':prezto:module:git:info:added' format ' %%B%F{2}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{14}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{14}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format ' %%B%F{15} %f%%b%%B%b%%b'
+  zstyle ':prezto:module:git:info:branch' format ' %%B%F{8} %f%%b%b'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{1}✖%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
   zstyle ':prezto:module:git:info:position' format ' %%B%F{13}%p%f%%b'
@@ -69,15 +69,17 @@ function prompt_vini_setup {
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{green}λ%f%b'
+  # zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{green}λ%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{green}☁%f%b '
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%F{yellow}♺%f'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}λ%f%b'
+  # zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}λ%f%b'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}☁%f%b '
 
   # Define prompts.
-  PROMPT='┌ ${editor_info[keymap]} %F{12}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
-└ %F{208}~> %f'
+  PROMPT='${editor_info[keymap]} %F{12}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
+%F{208}» %f'
 
-  RPROMPT='${ruby_info[version]} %f${node_info[version]}'
+  # RPROMPT='${ruby_info[version]} %f${node_info[version]}'
   # RPROMPT='[]~${editor_info[overwrite]}~'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }

@@ -33,8 +33,6 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'syntax-highlighting' \
   'completion' \
-  'ruby' \
-  'node' \
   'editor' \
   'prompt'
 

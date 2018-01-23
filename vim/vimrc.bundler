@@ -17,6 +17,7 @@ Plug 'tpope/vim-rails'
 Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'slim-template/vim-slim'
 
 " This plug-in provides automatic closing of quotes
 Plug 'jiangmiao/auto-pairs'

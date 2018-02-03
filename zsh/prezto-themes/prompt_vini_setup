@@ -76,7 +76,7 @@ function prompt_vini_setup {
   zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}☁%f%b '
 
   # Define prompts.
-  PROMPT='${editor_info[keymap]} %F{12}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
+  PROMPT='${editor_info[keymap]} %F{14}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
 %F{208}» %f'
 
   # RPROMPT='${ruby_info[version]} %f${node_info[version]}'

@@ -23,7 +23,7 @@ Plug 'slim-template/vim-slim'
 Plug 'jiangmiao/auto-pairs'
 
 " For identation
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
 
 " Navigation
@@ -33,6 +33,7 @@ Plug 'junegunn/vim-slash'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Themes
 Plug 'morhetz/gruvbox'

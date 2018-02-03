@@ -37,6 +37,7 @@ alias gs="g s"
 alias gst="g st"
 alias gup="g up"
 alias gcoi="fbr"
+alias gsync="g sync"
 
 alias t="tmux"
 alias tn="tmuxp load"

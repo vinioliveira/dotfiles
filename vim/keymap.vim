@@ -27,6 +27,19 @@ noremap q <Nop>
 map <C-s> <esc>:w<CR><esc>
 imap <C-s> <esc>:w<CR><esc>
 
+" commentary map
+map <c-_><c-_> gcc
+imap <c-_><c-_> <esc>gcc
+vmap <c-_><c-_> gc
+
+" Save and exit shortcut
+map <leader>x <esc>:x<CR><esc>
+imap <leader>x <esc>:x<CR><esc>
+
+" quit all
+map <leader>q <esc>:qa!<CR><esc>
+imap <leader>q <esc>:qa!<CR><esc>
+
 "========== VimFiler Map ===============
 map <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
 imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
@@ -34,6 +47,9 @@ imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
 "Open in the current directory
 map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
 imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
+
+map <leader>E <esc>:VimFilerExplorer <C-R>=getcwd()<CR><esc>
+imap <leader>E <esc>:VimFilerExplorer <C-R>=getcwd()<CR><esc>
 
 " use ,F to jump to tag in a vertical split
 " nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>

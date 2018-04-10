@@ -16,3 +16,4 @@ export NVM_DIR=$(brew --prefix)/var/nvm
 export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER=spotify
 export TODO_DB_PATH="$HOME/.todos"
 
+export FZF_DEFAULT_COMMAND='ag -s -g ""'

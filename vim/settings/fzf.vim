@@ -1,4 +1,3 @@
-let $FZF_DEFAULT_COMMAND= 'ag -s -g ""'
 let g:fzf_layout = { 'down': '~30%' }
 
 let g:fzf_action = {
@@ -27,4 +26,3 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_prefer_tmux = 1
-

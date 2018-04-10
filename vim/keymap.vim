@@ -4,20 +4,6 @@ let mapleader = ','
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
-"============== FZF  ===========================
-" Insert mode completion
-" imap <c-x><c-k> <plug>(fzf-complete-word)
-" imap <c-x><c-f> <plug>(fzf-complete-path)
-" imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-" imap <c-x><c-l> <plug>(fzf-complete-line)
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-nnoremap <C-p> :FZF<CR>
-nnoremap <leader>F :BTags<CR>
-nnoremap <leader>? :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
-
-nnoremap <leader>b :Unite buffer<CR>
-
 "========== Remaping Record Key ================
 noremap <Leader>q q
 noremap q <Nop>
@@ -122,3 +108,19 @@ nnoremap <silent> <leader>r :source $MYVIMRC<CR>
 " nnoremap <buffer> gd :TernDef<CR>
 nnoremap <buffer> gd :TernDef<CR>
 
+"============== Maps  ===========================
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+nnoremap <C-p> :FZF<CR>
+nnoremap <leader>F :BTags<CR>
+nnoremap <leader>? :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+
+nnoremap <leader>b :Buffers<CR>
+
+nnoremap <silent> <leader>n :cnext<CR>
+nnoremap <silent> <leader>p :cprevious<CR>

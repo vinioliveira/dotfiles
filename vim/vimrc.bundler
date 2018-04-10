@@ -33,12 +33,18 @@ Plug 'junegunn/vim-slash'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
-Plug 'ryanoasis/vim-devicons'
 
 " Themes
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'iissnan/tangoX'
 Plug 'rakr/vim-one'
+Plug 'reedes/vim-colors-pencil'
+Plug 'jacoborus/tender.vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'chriskempson/base16-vim'
 
 " Others
 Plug 'SirVer/ultisnips'

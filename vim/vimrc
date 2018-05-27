@@ -18,12 +18,12 @@ if (!has('nvim'))
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 end
 
-syntax sync minlines=256
-let base16colorspace=256
+set synmaxcol=250
+syntax sync minlines=50
 set background=dark
 
 try
-  colorscheme base16-eighties
+  colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
@@ -94,7 +94,7 @@ endfunc
 
 au BufWrite * :call DeleteTrailingWS()
 
-let g:jsx_ext_required = 0
+let mapleader = ','
 
 " load plugin settings
 for fpath in split(globpath('~/.dotfiles/vim/settings', '*.vim'), '\n')

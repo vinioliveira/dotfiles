@@ -1,4 +1,9 @@
-let mapleader = ','
+" other mappsigs files
+" settings/fzf.vim
+" settings/vim-test.vim
+" settings/vimfiler.vim
+" settings/surround.vim
+" settings/vim-fugitve.vim
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -26,17 +31,6 @@ imap <leader>x <esc>:x<CR><esc>
 map <leader>q <esc>:qa!<CR><esc>
 imap <leader>q <esc>:qa!<CR><esc>
 
-"========== VimFiler Map ===============
-map <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
-imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
-
-"Open in the current directory
-map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
-imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
-
-map <leader>E <esc>:VimFilerExplorer <C-R>=getcwd()<CR><esc>
-imap <leader>E <esc>:VimFilerExplorer <C-R>=getcwd()<CR><esc>
-
 " use ,F to jump to tag in a vertical split
 " nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
@@ -48,33 +42,10 @@ inoremap <C-K> <Esc>:m .-2<CR>==gi
 vnoremap <C-J> :m '>+1<CR>gv=gv
 vnoremap <C-K> :m '<-2<CR>gv=gv
 
-" alias yw to yank the entire word 'yank inner word'
-" even if the cursor is halfway inside the word
-" FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap <leader>yw yiww
-
-" ,ow = 'overwrite word', replace a word with what's in the yank buffer
-" FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap <leader>ow "_diwhp
-
-"=========== VIm - Test ==========================
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <leader>gt :TestVisit<CR>
-
-" ============ Surround Vim Shortcuts ==============
-vmap ' S'
-vmap " S"
-
 "============== CTAGS ========================
 " hit ,f to find the definition of the current class
 " this uses ctags. the standard way to get this is Ctrl-]
 nnoremap <silent> <leader>f <C-]>
-
-" VIM-FUGTIVE map
-nnoremap <silent> <Leader>g :Gstatus<CR>
 
 " Easier fold toggling
 nnoremap <leader>z za
@@ -104,23 +75,22 @@ nnoremap gp `[v`]
 
 nnoremap <silent> <leader>r :source $MYVIMRC<CR>
 
-" VIM-FUGTIVE map
-" nnoremap <buffer> gd :TernDef<CR>
-nnoremap <buffer> gd :TernDef<CR>
-
-"============== Maps  ===========================
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-nnoremap <C-p> :FZF<CR>
-nnoremap <leader>F :BTags<CR>
-nnoremap <leader>? :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
-
-nnoremap <leader>b :Buffers<CR>
-
 nnoremap <silent> <leader>n :cnext<CR>
 nnoremap <silent> <leader>p :cprevious<CR>
+
+" CTRL-Tab is next tab
+noremap <C-t> :<C-U>tabnext<CR>
+inoremap <C-t> <C-\><C-N>:tabnext<CR>
+cnoremap <C-t> <C-\><C-N>:tabnext<CR>
+
+" CTRL-SHIFT-Tab is previous tab
+noremap <C-S-t> :<C-U>tabprevious<CR>
+inoremap <C-S-t> <C-\><C-N>:tabprevious<CR>
+cnoremap <C-S-t> <C-C>:tabprevious<CR>
+
+" delete all buffers
+inoremap <leader>bd :bufdo :bdelete<CR>
+noremap <leader>bd :bufdo :bdelete<CR>
+cnoremap <leader>bd :bufdo :bdelete<CR>
+
+

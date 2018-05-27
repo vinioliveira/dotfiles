@@ -16,3 +16,14 @@ let g:vimfiler_ignore_pattern =
       \ .'\|node_modules\|.*\.pyc\)$'
 
 
+"====================  Maps =================================
+map <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
+imap <leader>d <esc>:VimFiler <C-R>=getcwd()<CR><esc>
+
+"Open in the current directory
+map <Leader>e :VimFiler <C-R>=escape(expand("%:p:h")," ")<CR><esc>
+imap <Leader>e :VimFiler <C-R>=escape(expand("%:p:h"),' ')<CR><esc>
+
+"Open
+map <leader>E <esc>:VimFilerExplorer <C-R>=getcwd()<CR><esc>
+imap <leader>E <esc>:VimFilerExplorer <C-R>=getcwd()<CR><esc>

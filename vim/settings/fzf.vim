@@ -26,3 +26,18 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_prefer_tmux = 1
+
+
+
+" ============ MAPS ==============
+nnoremap <leader>b :Buffers<CR>
+nnoremap <C-p> :FZF<CR>
+nnoremap <leader>F :BTags<CR>
+nnoremap <leader>? :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})

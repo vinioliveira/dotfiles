@@ -2,7 +2,7 @@
   "title": "Launch my preffered apps",
   "rules": [
     {
-      "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spark",
+      "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
       "manipulators": [
         {
           "type": "basic",
@@ -65,6 +65,38 @@
           "to": [
             {
               "shell_command": "open /Applications/Spark.app"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "5",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open /Applications/Evernote.app"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open /Applications/Studio\\ 3T.app"
             }
           ]
         }

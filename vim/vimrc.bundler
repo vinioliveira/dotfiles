@@ -17,6 +17,7 @@ Plug 'tpope/vim-rails'
 Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 
 " This plug-in provides automatic closing of quotes
@@ -35,16 +36,9 @@ Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
 
 " Themes
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Plug 'altercation/vim-colors-solarized'
+Plug 'nightsense/carbonized'
 Plug 'morhetz/gruvbox'
-Plug 'iissnan/tangoX'
-Plug 'rakr/vim-one'
-Plug 'reedes/vim-colors-pencil'
-Plug 'jacoborus/tender.vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'ryanoasis/vim-devicons'
-Plug 'chriskempson/base16-vim'
+Plug 'sjl/badwolf'
 
 " Others
 Plug 'SirVer/ultisnips'

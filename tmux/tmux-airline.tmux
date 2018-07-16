@@ -1,8 +1,5 @@
 #!/bin/sh
 
-SEP=
-SEPE=
-
 MEDIUM=140
 
 if [ "${1}" -gt "$MEDIUM" ]; then
@@ -14,10 +11,7 @@ if [ "${1}" -gt "$MEDIUM" ]; then
     fi
     return 0
   }
-
-  MUSIC="#[fg=colour7, bg=colour237, nounderscore]$SEP#[fg=colour239, bg=colour7 bold]$(run_segment)"
+MUSIC="$(run_segment) #[fg=white]«"
 fi
-
-TIME="#[fg=colour237,bg=colour7,nobold,noitalics]$SEP#[fg=colour208,bg=colour237,nobold,noitalics]$SEP#[fg=colour0,bg=colour208,nobold] $(date +'%H:%M') "
-
+TIME="#[fg=yellow]$(date +'%H:%M') #[fg=white]"
 echo "$MUSIC $TIME" | sed 's/ *$/ /g'

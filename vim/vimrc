@@ -22,6 +22,9 @@ set synmaxcol=250
 syntax sync minlines=50
 set background=dark
 
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_light='soft'
+
 try
   colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/

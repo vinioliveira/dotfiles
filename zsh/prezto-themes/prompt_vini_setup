@@ -48,7 +48,7 @@ function prompt_vini_setup {
   zstyle ':prezto:module:git:info:added' format ' %%B%F{2}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{14}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{14}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format ' %%B%F{8} %f%%b%b'
+  zstyle ':prezto:module:git:info:branch' format ' %%B%F{8} %F{11}%%b%b'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{1}✖%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
   zstyle ':prezto:module:git:info:position' format ' %%B%F{13}%p%f%%b'
@@ -56,10 +56,6 @@ function prompt_vini_setup {
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{3}═%f%%b'
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{208}●%f%%b'
   zstyle ':prezto:module:git:info:keys' format 'status'  '$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
-
-  # zstyle ':prezto:module:git:info:keys' format 'rprompt' '%b%c%s%D'
-  # zstyle ':prezto:module:git:info:commit' format ' %%B%F{3}%.7c%f%%b'
-  # zstyle ':prezto:module:git:info:action' format '%F{7}:%f%%B%F{9}%s%f%%b'
 
   # Set ruby-info parameters.
   zstyle ':prezto:module:ruby:info:version' format '%F{red} %F{red}v%v%f'
@@ -69,15 +65,15 @@ function prompt_vini_setup {
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{green}☁%f%b '
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{green}λ%f%b '
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%F{yellow}♺%f'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}☁%f%b '
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}λ%f%b '
 
   # Define prompts.
   RPROMPT='${ruby_info[version]} %f${node_info[version]}'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 
-  PROMPT='${editor_info[keymap]} %F{14}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
+  PROMPT='${editor_info[keymap]} %F{12}${_prompt_vini_pwd}%f${${git_info:+${(e)git_info[status]}}}
 %F{208}» %f'
 }
 

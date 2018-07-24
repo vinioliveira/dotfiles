@@ -26,6 +26,9 @@ Plug 'jiangmiao/auto-pairs'
 " For identation
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'css', 'less', 'scss', 'json', 'markdown'] }
 
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

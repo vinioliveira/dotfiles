@@ -18,8 +18,8 @@ set -g status-right '#(eval ~/.dotfiles/tmux/tmux-airline.tmux `tmux display -p 
 # set -g status-right "#H #[fg=white]« #[fg=yellow]%H:%M:%S #[fg=green]%d-%b-%y"
 
 # Window status
-set -g window-status-format " #I:#W "
-set -g window-status-current-format " #I:#W "
+set -g window-status-format " #I. #W "
+set -g window-status-current-format " #I. #W "
 
 # Current window status
 set -g window-status-current-bg colour208

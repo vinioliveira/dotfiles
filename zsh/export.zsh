@@ -11,7 +11,7 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CDHISTORY="/tmp/cd-${USER}"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:/$HOME/Library/Python/3.7/bin:$PATH"
 export NVM_DIR=$(brew --prefix)/var/nvm
 export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER=spotify
 export TODO_DB_PATH="$HOME/.todos"

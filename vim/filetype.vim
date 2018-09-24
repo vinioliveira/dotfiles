@@ -1,3 +1,9 @@
+" RSpec
+" -----------------------------------------------------------------
+augroup filetypedetect
+  autocmd BufNewFile,BufRead *_spec.rb set syntax=rspec filetype=rspec.ruby
+augroup END
+
 " Ruby
 " -----------------------------------------------------------------
 augroup rubyfiletype
@@ -5,11 +11,6 @@ augroup rubyfiletype
   autocmd BufRead,BufNewFile Gemfile setfiletype ruby
 augroup END
 
-" RSpec
-" -----------------------------------------------------------------
-augroup filetypedetect
-  au! BufRead,BufNewFile *_spec.rb		set filetype=ruby.rspec
-augroup END
 
 " tmux
 " -----------------------------------------------------------------
@@ -23,3 +24,4 @@ augroup javascriptfiletype
   autocmd BufRead,BufNewFile *.es6 set filetype=javascript.jsx
   autocmd BufRead,BufNewFile *.js.es6 set filetype=javascript.jsx
 augroup END
+

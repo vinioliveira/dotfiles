@@ -1,3 +1,83 @@
+snippet rrcc "React Redux Class Component" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import styles from './${2:$1}.css';
+
+class ${1:`!v expand('%:t:r')`} extends Component {
+	static propTypes = {
+children: PropTypes.node,
+					className: PropTypes.string,
+					dispatch: PropTypes.func.isRequired,
+	};
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+				<div className={styles.base}>
+				$3
+				</div>
+				);
+	}
+}
+
+function mapStateToProps(state) {
+	return {};
+}
+
+export default connect(mapStateToProps)($1);
+endsnippet
+
+snippet rcc "React Class Component" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './${2:$1}.css';
+
+class ${1:`!v expand('%:t:r')`} extends Component {
+	static propTypes = {
+children: PropTypes.node,
+					className: PropTypes.string,
+	};
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+				<div className={styles.base}>
+				$3
+				</div>
+				);
+	}
+}
+
+export default $1;
+endsnippet
+
+snippet rfc "React Functional Component" b
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './${2:$1}.css';
+
+function ${1:`!v expand('%:t:r')`}(${3:{...props}}) {
+	return (
+			<div className={styles.base}>
+			$4
+			</div>
+			);
+}
+
+$1.defaultProps = {};
+
+$1.propTypes = {};
+
+export default $1;
+endsnippet
+
 snippet ir "import react"
 import React from 'react';
 endsnippet
@@ -28,4 +108,58 @@ endsnippet
 # State
 snippet sst "Expand this.setState({})" w
 this.setState({ ${1}: ${0:$1} });
+endsnippet
+
+snippet : "h1" w
+<h1 ${1:className="${2:class}"}>${3}</h1>
+endsnippet
+
+
+#############
+# HTML TAGS #
+#############
+snippet a "Link" w
+<a onClick={${1:function}} ${2: className="${3:class}"}>${4:Anchor Text}</a>
+endsnippet
+
+snippet h "<h${n}>" w
+<b>$1</b>
+endsnippet
+
+snippet b "<b>" w
+<b>$1</b>
+endsnippet
+
+snippet br "<br>" w
+<br/>
+endsnippet
+
+snippet cln "className attribute"
+className="$1"
+endsnippet
+
+snippet div "<div>" w
+<div ${1:className="${2:class}"}>
+	${3:${VISUAL}}
+</div>
+endsnippet
+
+snippet h1 "HTML <h1>" w
+<h1 ${1:className="${2:class}"}>${3:${VISUAL}}</h1>
+endsnippet
+
+snippet h2 "HTML <h2>" w
+<h2 ${1:className="${2:class}"}>${3:${VISUAL}}</h2>
+endsnippet
+
+snippet h3 "HTML <h3>" w
+<h3 ${1:className="${2:class}"}>${3:${VISUAL}}</h3>
+endsnippet
+
+snippet i "<i>" w
+<i${1:className="${2:class}"}>${3:${VISUAL}}</i>
+endsnippet
+
+snippet id "id global attribute"
+id="$1"
 endsnippet

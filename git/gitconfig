@@ -36,6 +36,7 @@
   aa     = !git add -u && git add . && git status
   b      = branch
   c      = commit -m
+  cp      = cherry-pick
   co     = checkout
   d      = diff
   delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

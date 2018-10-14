@@ -10,15 +10,16 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
-Plug 'janko-m/vim-test'
-Plug 'neomake/neomake'
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'othree/yajs.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
+
+" tests
+Plug 'janko-m/vim-test'
+
+" checkers
+Plug 'neomake/neomake'
 
 " This plug-in provides automatic closing of quotes
 Plug 'jiangmiao/auto-pairs'
@@ -33,7 +34,6 @@ Plug 'prettier/vim-prettier', {
 " Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-slash'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim' " vimfiler dependency
 Plug 'Shougo/vimfiler.vim'
@@ -42,10 +42,11 @@ Plug 'Shougo/vimfiler.vim'
 Plug 'nightsense/carbonized'
 Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
+Plug 'jacoborus/tender.vim'
+Plug 'chriskempson/base16-vim'
 
 " Others
 Plug 'SirVer/ultisnips'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
@@ -54,6 +55,7 @@ Plug 'tpope/vim-dispatch'
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-abolish'
+Plug 'junegunn/vim-slash'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'vim-scripts/IndexedSearch'
 

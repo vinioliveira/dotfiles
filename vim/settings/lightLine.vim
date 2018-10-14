@@ -1,6 +1,6 @@
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme' : 'gruvbox',
+      \ 'colorscheme' : 'seoul256',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },

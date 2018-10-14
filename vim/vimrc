@@ -26,9 +26,12 @@ let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 
 try
-  colorscheme gruvbox
+  colorscheme base16-material-darker
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
+
+hi Visual  guifg=#000000 guibg=#c1c4c9 gui=none
+hi LineNr guifg=#979ba3
 
 set number                  " show line numbers
 set relativenumber          " show relative line numbers

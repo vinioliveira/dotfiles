@@ -7,14 +7,15 @@ alias k9="kill -9"
 
 alias r="rails"
 alias n="node"
-alias v="vim"
+alias v="nvim"
 
 alias redis="redis-server"
 alias mongod="mongod --config /usr/local/etc/mongod.conf --fork"
 alias top="top -o cpu"
 
 #Adding hub alias to git
-alias git="hub"
+eval "$(hub alias -s)"
+# alias git="hub"
 alias g="git"
 
 
@@ -34,7 +35,7 @@ alias glog="g log"
 alias gl="g log"
 alias gp="g p"
 alias gpf="g pf"
-alias gpr="g pr"
+alias gopr="g opr"
 alias grename="g rename"
 alias gs="g s"
 alias gst="g st"
@@ -49,3 +50,4 @@ alias tkill="tmux kill-session -t"
 alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep \"^1\" | cut -d \" \" -f 2"
 
 alias today="cal | grep -C6 --color $(date +%e)"
+

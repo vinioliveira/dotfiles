@@ -46,7 +46,7 @@
   op     = browse -- pulls
   p      = push
   pf     = push --force
-  pr     = pull-request
+  opr    = 'pull-request'
   rename = branch -m
   s      = status
   st     = stash

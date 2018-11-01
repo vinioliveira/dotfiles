@@ -82,7 +82,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher fasd rbenv rbenv-bundler ruby-build fzf nvm python3}
+  run %{ brew install ctags fasd fzf git ghostscript graphviz heroku httpie hub ifstat imagemagick mongodb node nvm openssl python pgcli rbenv rbenv-bundler readline redis ruby reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim }
   puts
   puts
   puts "======================================================"

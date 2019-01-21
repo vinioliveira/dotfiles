@@ -1,10 +1,11 @@
 source ~/.dotfiles/vim/vimrc.bundler
 
 " ======    GENERAL CONFIGURATIONS  ==========
-set nocompatible            " not compatible with vi
-set autoread                " detect when a file is changed
+" https://github.com/neovim/neovim/blob/bddcbbb5716a005001da3bacb4c1df4ae05e51bc/runtime/doc/vim_diff.txt
+" set nocompatible            " always set in neovim
+" set autoread                " detect when a file is changed
 
- " these are gruvbox specifics
+" these are gruvbox specifics
 if (has('nvim') && has("termguicolors"))
   set termguicolors
   set t_8f=^[[38;2;%lu;%lu;%lum
@@ -18,7 +19,7 @@ if (!has('nvim'))
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 end
 
-set synmaxcol=250
+set synmaxcol=200
 syntax sync minlines=50
 set background=dark
 
@@ -26,7 +27,7 @@ let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 
 try
-  colorscheme gruvbox
+  colorscheme base16-google-light
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
@@ -35,9 +36,9 @@ hi LineNr guifg=#979ba3
 
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
-set regexpengine=1
+" set regexpengine=1
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
-set list
+set list " Useful to see the difference between tabs and spaces and for trailing blanks
 set guicursor=
 set backspace=indent,eol,start
 
@@ -58,17 +59,17 @@ set clipboard=unnamed
 " General perfomance Improvment
 set ttyfast                 " faster redrawing
 set lazyredraw              " don't redraw while executing macros
-set re=1
+" set re=1
 
 set laststatus=2            " show the satus line all the time
 set so=7                    " set 7 lines to the cursors - when moving vertical
 set wildmenu                " enhanced command line completion
-set hidden                  " current buffer can be put into background
+" set hidden                  " current buffer can be put into background
 set showcmd                 " show incomplete commands
-set wildmode=list:longest   " complete files like a shell
+" set wildmode=list:longest   " complete files like a shell
 set shell=$SHELL
 set nocursorcolumn
-set nocursorline
+set cursorline
 
 " Searching
 set ignorecase              " case insensitive searching

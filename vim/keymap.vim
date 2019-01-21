@@ -11,7 +11,7 @@ nnoremap P P=`]<C-o>
 
 "========== Remaping Record Key ================
 noremap <Leader>q q
-noremap q <Nop>
+" noremap q <Nop>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
@@ -54,12 +54,12 @@ nnoremap <leader>z za
 nnoremap <leader>S :%Subvert//gc<Left><Left><Left>
 
 " " Visual linewise up and down by default (and use gj gk to go quicker)
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 nnoremap gj 5j
 nnoremap gk 5k
-vnoremap j gj
-vnoremap k gk
+" vnoremap j gj
+" vnoremap k gk
 vnoremap gj 5j
 vnoremap gk 5k
 

@@ -44,7 +44,7 @@ set -g pane-border-fg colour237
 
 # Active pane border
 set -g pane-active-border-bg default
-set -g pane-active-border-fg colour7
+set -g pane-active-border-fg green
 
 # Pane number indicator
 set -g display-panes-colour default

@@ -11,9 +11,11 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
 Plug 'tpope/vim-rails'
+Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
+Plug 'nikvdp/ejs-syntax'
 
 " tests
 Plug 'janko-m/vim-test'

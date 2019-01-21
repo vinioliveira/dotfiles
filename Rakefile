@@ -86,9 +86,14 @@ def install_homebrew
   puts
   puts
   puts "======================================================"
+  puts "Installing Homebrew packages that helps bluetooth issue
+  puts "======================================================"
+  run %{ brew install blueutil sleepwatcher }
+  puts
+  puts "======================================================"
   puts "Installing Homebrew cask packages...There may be some warnings."
   puts "======================================================"
-  run %{brew cask install keepingyouawake}
+  run %{brew cask install keepingyouawake }
   puts
   puts
 end
@@ -122,6 +127,10 @@ def install_prezto
   run %{ touch $HOME/.dotfiles/zsh/secrets.zsh }
   run %{ echo "export HOMEBREW_GITHUB_API_TOKEN=\"\"\nexport GITHUB_TOKEN=\"\"" >> $HOME/.dotfiles/zsh/secrets.zsh }
 
+  puts
+  puts "Linking bluetooth restart scripts"
+  run %{ ln -nfs "$HOME/.dotfiles/scripts/restart-bluetooth.sh" "/usr/local/bin" }
+  run %{ chmod -x "/usr/local/bin/restart-bluetooth.sh" }
 
   if ENV["SHELL"].include? 'zsh' then
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"

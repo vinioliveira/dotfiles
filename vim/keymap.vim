@@ -45,7 +45,7 @@ vnoremap <C-K> :m '<-2<CR>gv=gv
 "============== CTAGS ========================
 " hit ,f to find the definition of the current class
 " this uses ctags. the standard way to get this is Ctrl-]
-nnoremap <silent> <leader>f <C-]>
+" nnoremap <silent> <leader>f <C-]>
 
 " Easier fold toggling
 nnoremap <leader>z za

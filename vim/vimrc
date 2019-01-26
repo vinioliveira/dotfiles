@@ -26,7 +26,7 @@ let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 
 try
-  colorscheme gruvbox
+  colorscheme base16-monokai
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

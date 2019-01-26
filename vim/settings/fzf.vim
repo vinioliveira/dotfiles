@@ -1,5 +1,8 @@
 let g:fzf_layout = { 'down': '~30%' }
 
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'belowright 15sp enew' }
+
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-x': 'split',
@@ -32,8 +35,8 @@ let g:fzf_prefer_tmux = 1
 " ============ MAPS ==============
 nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
-nnoremap <leader>F :BTags<CR>
-nnoremap <leader>? :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+nnoremap <leader>f :BTags<CR>
+nnoremap <leader>F :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)

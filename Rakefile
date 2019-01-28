@@ -26,12 +26,14 @@ task :install_homebrew => [:submodules] do
 end
 
 task :copy_files => [:install_homebrew] do
-  install_files(Dir.glob('git/*'))
-  install_files(Dir.glob('irb/*'))
-  install_files(Dir.glob('ruby/*'))
-  install_files(Dir.glob('ctags/*'))
-  install_files(Dir.glob('tmux/*'))
-  install_files(Dir.glob('vim/{vimrc,gvimrc}'))
+  install_file(Dir.glob('git/*'))
+  install_file(Dir.glob('irb/*'))
+  install_file(Dir.glob('ruby/*'))
+  install_file(Dir.glob('ctags/*'))
+  install_file(Dir.glob('tmux/*'))
+  install_files(Dir.glob('karabiner/*'), "#{ENV["HOME"]}/.config")
+  install_files(Dir.glob('vim/init.vim'), "#{ENV["HOME"]}/.config")
+  install_file(Dir.glob('vim/{vimrc,gvimrc}'))
 end
 
 task :install_pip_depdencies => [:copy_files] do
@@ -82,19 +84,26 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{ brew install ctags fasd fzf git ghostscript graphviz heroku httpie hub ifstat imagemagick mongodb node nvm openssl python pgcli rbenv rbenv-bundler readline redis ruby reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim }
+  run %{ brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick mongodb node nvm openssl python pgcli rbenv rbenv-bundler readline redis ruby reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim }
   puts
   puts
   puts "======================================================"
-  puts "Installing Homebrew packages that helps bluetooth issue
+  puts "Installing Homebrew packages that helps bluetooth issue"
   puts "======================================================"
   run %{ brew install blueutil sleepwatcher }
   puts
   puts "======================================================"
   puts "Installing Homebrew cask packages...There may be some warnings."
   puts "======================================================"
-  run %{brew cask install keepingyouawake }
+  run %{brew cask install keepingyouawake 1password postman google-chrome postgress studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp googlenbackup-and-sync docker istat-menu karabiner-elements spark microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote}
   puts
+  puts
+
+  puts "======================================================"
+  puts "Installing tap fonts cask packages...There may be some warnings."
+  puts "======================================================"
+  run %{ brew tap caskroom/fonts }
+  run %{ brew cask install font-firacode-nerd-font }
   puts
 end
 
@@ -105,7 +114,7 @@ def install_prezto
   run %{ ln -nfs "$HOME/.dotfiles/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
 
   # The prezto runcoms are only going to be installed if zprezto has never been installed
-  install_files(Dir.glob('zsh/prezto/runcoms/z*'))
+  install_file(Dir.glob('zsh/prezto/runcoms/z*'))
 
   puts
   puts "Overriding prezto ~/.zpreztorc with Dotfile's zpreztorc"
@@ -148,11 +157,38 @@ def install_prezto
   end
 end
 
-def install_files(files)
+def install_karabiner
+  Dir.glob('karabiner/*').each do |f|
+    file = f.split('/').last
+    source = "#{ENV["PWD"]}/#{f}"
+    target = "#{ENV["HOME"]}/.config/karabiner/#{file}"
+
+    puts "======================#{file}=============================="
+    puts "Source: #{source}"
+    puts "Target: #{target}"
+
+    if File.exists?(target) && (!File.symlink?(target) || (File.symlink?(target) && File.readlink(target) != source))
+      puts "[Overwriting] #{target}...leaving original at #{target}.backup..."
+      run %{ mv "$HOME/.#{file}" "$HOME/.#{file}.backup" }
+    end
+
+    run %{ ln -nfs "#{source}" "#{target}" }
+
+    puts "=========================================================="
+    puts
+  end
+end
+
+def install_file(files)
+  install_files(files, ENV["HOME"])
+end
+
+def install_files(files, destination)
+
   files.each do |f|
     file = f.split('/').last
     source = "#{ENV["PWD"]}/#{f}"
-    target = "#{ENV["HOME"]}/.#{file}"
+    target = "#{destination}/.#{file}"
 
     puts "======================#{file}=============================="
     puts "Source: #{source}"

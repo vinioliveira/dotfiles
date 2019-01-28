@@ -3,6 +3,7 @@ source ~/.dotfiles/vim/vimrc.bundler
 " ======    GENERAL CONFIGURATIONS  ==========
 set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
+set encoding=utf-8
 
  " these are gruvbox specifics
 if (has('nvim') && has("termguicolors"))

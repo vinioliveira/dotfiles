@@ -26,10 +26,6 @@ function prompt_vini_precmd {
   fi
 }
 
-rbenv_version() {
-  rbenv version 2>/dev/null | awk '{print $1}'
-}
-
 
 function prompt_vini_setup {
   setopt LOCAL_OPTIONS

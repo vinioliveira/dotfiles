@@ -1,9 +1,14 @@
+let g:test#preserve_screen = 0
 let g:dispatch_quickfix_height=15
-let g:test#runner_commands = ['Mocha', 'jest']
 let test#strategy = "dispatch"
-let g:test#javascript#mocha#file_pattern = '\v.*.(test|spec)s?\.(js|jsx|coffee)$'
-let g:test#javascript#jest#file_pattern = '\v.*.(test|spec)s?\.(js|jsx|coffee)$'
+let g:test#runner_commands = ['RSpec', 'Mocha', 'jest']
+
+
+let g:test#javascript#mocha#file_pattern = '\v.*.(test|spec)s?\.(js|jsx|coffee|ts)$'
+let g:test#javascript#jest#file_pattern = '\v.*.(test|spec)s?\.(js|jsx|coffee|ts)$'
 let test#javascript#jest#executable = 'CI=true npm test'
+
+" let test#javascript#mocha#options =  '--exit'
 
 "=========== VIm - Test ==========================
 nnoremap <silent> <Leader>t :TestFile<CR>

@@ -3,10 +3,7 @@ ca Ag Ag!
 ca ag Ag!
 
 " from Rails
-ca a A
-ca av Av
-ca r R
-ca rv Rv
+ca rails Rils
 
 " from Dispatch
 ca ! Dispatch

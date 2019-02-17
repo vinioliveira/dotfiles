@@ -1,4 +1,5 @@
 "============== Maps  ===========================
-nnoremap <silent> <Leader>g :Gstatus<CR>
-nnoremap <silent> <Leader>? :Gdiff<CR>
-nnoremap <silent> <Leader>bl :Gblame<CR>
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>go :Gbrowse<CR>
+nnoremap <silent> <Leader>gd :Gdiff<CR>
+nnoremap <silent> <Leader>gb :Gblame<CR>

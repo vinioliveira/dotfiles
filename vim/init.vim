@@ -92,7 +92,7 @@ let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 
 try
-  colorscheme base16-eighties
+  colorscheme base16-material
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

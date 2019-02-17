@@ -90,7 +90,7 @@ let mapleader = ','
 source ~/.dotfiles/vim/vimrc.bundler
 
 try
-  colorscheme base16-eighties
+  colorscheme base16-material
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

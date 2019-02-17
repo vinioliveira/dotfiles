@@ -1,23 +1,12 @@
-source ~/.dotfiles/vim/vimrc.bundler
-
 " ======    GENERAL CONFIGURATIONS  ==========
 set nocompatible            " not compatible with vi
 set autoread                " detect when a file is changed
 set encoding=utf-8
 
- " these are gruvbox specifics
-if (has('nvim') && has("termguicolors"))
-  set termguicolors
-  set t_8f=^[[38;2;%lu;%lu;%lum
-  set t_8b=^[[48;2;%lu;%lu;%lum
-endif
-
-if (!has('nvim'))
-  " set Vim-specific sequences for RGB colors
-  set termguicolors
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-end
+" set Vim-specific sequences for RGB colors
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set synmaxcol=250
 syntax sync minlines=50
@@ -25,11 +14,6 @@ set background=dark
 
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
-
-try
-  colorscheme base16-monokai
-catch /^Vim\%((\a\+)\)\=:E185/
-endtry
 
 hi Visual  guifg=#000000 guibg=#c1c4c9 gui=none
 hi LineNr guifg=#979ba3
@@ -102,6 +86,13 @@ endfunc
 au BufWrite * :call DeleteTrailingWS()
 
 let mapleader = ','
+
+source ~/.dotfiles/vim/vimrc.bundler
+
+try
+  colorscheme base16-eighties
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 
 " load plugin settings
 for fpath in split(globpath('~/.dotfiles/vim/settings', '*.vim'), '\n')

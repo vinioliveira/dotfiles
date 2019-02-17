@@ -1,35 +1,18 @@
-source ~/.dotfiles/vim/vimrc.bundler
-
 " ======    GENERAL CONFIGURATIONS  ==========
 " https://github.com/neovim/neovim/blob/bddcbbb5716a005001da3bacb4c1df4ae05e51bc/runtime/doc/vim_diff.txt
 " set nocompatible            " always set in neovim
 " set autoread                " detect when a file is changed
 
 " these are gruvbox specifics
-if (has('nvim') && has("termguicolors"))
+if (has("termguicolors"))
   set termguicolors
   set t_8f=^[[38;2;%lu;%lu;%lum
   set t_8b=^[[48;2;%lu;%lu;%lum
 endif
 
-if (!has('nvim'))
-  " set Vim-specific sequences for RGB colors
-  set termguicolors
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-end
-
 set synmaxcol=200
 syntax sync minlines=50
 set background=dark
-
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_contrast_light='soft'
-
-try
-  colorscheme base16-monokai
-catch /^Vim\%((\a\+)\)\=:E185/
-endtry
 
 hi Visual  guifg=#000000 guibg=#c1c4c9 gui=none
 hi LineNr guifg=#979ba3
@@ -102,6 +85,16 @@ endfunc
 au BufWrite * :call DeleteTrailingWS()
 
 let mapleader = ','
+
+source ~/.dotfiles/vim/nvimrc.bundler
+
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_light='soft'
+
+try
+  colorscheme base16-eighties
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 
 " load plugin settings
 for fpath in split(globpath('~/.dotfiles/vim/settings', '*.vim'), '\n')

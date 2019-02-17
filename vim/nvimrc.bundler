@@ -1,13 +1,14 @@
-if empty(glob($HOME."/.vim/autoload/plug.vim"))
+if empty(glob($HOME."/.local/share/nvim/site/autoload"))
   " Ensure all needed directories exist  (Thanks @kapadiamush)
+  " For Neovim: ~/.local/share/nvim/plugged
   echom "This will install vim plgin"
-  silent execute '!mkdir -p ~/.vim/plugged'
-  silent execute '!mkdir -p ~/.vim/autoload'
+  silent execute '!mkdir -p ~/.local/share/nvim/plugged'
+  silent execute '!mkdir -p ~/.local/share/nvim/site/autoload'
   echom "Download the actual plugin manager"
-  silent execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  silent execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax checking + Languages & Framework
 Plug 'tpope/vim-rails'
@@ -17,6 +18,8 @@ Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/echodoc.vim'
 
 " tests
 Plug 'janko-m/vim-test'
@@ -38,10 +41,8 @@ Plug 'prettier/vim-prettier', {
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/defx.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Others
 Plug 'SirVer/ultisnips'
@@ -62,6 +63,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
+
 
 Plug 'will133/vim-dirdiff'
 

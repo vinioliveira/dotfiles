@@ -1,7 +1,8 @@
-let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_layout = { 'up': '~40%' }
+let g:fzf_history_dir = '~/.config/nvim/fzf-history'
 
 " In Neovim, you can set up fzf window using a Vim command
-let g:fzf_layout = { 'window': 'belowright 15sp enew' }
+" let g:fzf_layout = { 'window': 'belowright 15sp enew' }
 
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
@@ -28,7 +29,6 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
-let g:fzf_prefer_tmux = 1
 
 
 

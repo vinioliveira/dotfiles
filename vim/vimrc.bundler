@@ -51,16 +51,13 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 
-" check to install https://github.com/Shougo/defx.nvim later
-Plug 'Shougo/unite.vim' " vimfiler dependency
-Plug 'Shougo/vimfiler.vim'
-
 " Themes
 Plug 'nightsense/carbonized'
 Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'Shougo/defx.nvim'
 
 " Others
 Plug 'SirVer/ultisnips'

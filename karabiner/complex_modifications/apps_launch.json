@@ -16,7 +16,7 @@
           },
           "to": [
             {
-              "shell_command": "open ~/Applications/iTerm.app"
+              "shell_command": "open /Applications/iTerm.app"
             }
           ]
         },
@@ -48,7 +48,7 @@
           },
           "to": [
             {
-              "shell_command": "open ~/Applications/Slack.app"
+              "shell_command": "open /Applications/Slack.app"
             }
           ]
         },

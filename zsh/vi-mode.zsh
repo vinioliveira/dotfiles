@@ -1,6 +1,6 @@
 # set -o vi
 
-export EDITOR="v"
+export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export KEYTIMEOUT=1

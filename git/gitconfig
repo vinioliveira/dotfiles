@@ -38,6 +38,7 @@
   c                      = commit -m
   cp                     = cherry-pick
   co                     = checkout
+  pco                    = pr checkout
   d                      = diff
   delete-merged-branches = !git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
   m                      = merge --no-ff

@@ -11,9 +11,7 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax checking + Languages & Framework
 Plug 'tpope/vim-rails'
-Plug 'othree/yajs.vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mxw/vim-jsx'
+Plug 'neoclide/vim-jsx-improve'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
@@ -52,7 +50,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tpope/vim-abolish'
 Plug 'junegunn/vim-slash'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'vim-scripts/IndexedSearch'

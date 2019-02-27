@@ -12,14 +12,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax checking + Languages & Framework
 Plug 'tpope/vim-rails'
-Plug 'othree/yajs.vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mxw/vim-jsx'
+Plug 'neoclide/vim-jsx-improve'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'Shougo/echodoc.vim'
 
 " tests
 Plug 'janko-m/vim-test'
@@ -43,6 +40,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
 
 " Others
 Plug 'SirVer/ultisnips'
@@ -51,9 +49,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tpope/vim-abolish'
 Plug 'junegunn/vim-slash'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'vim-scripts/IndexedSearch'

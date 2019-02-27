@@ -6,23 +6,18 @@
 " these are gruvbox specifics
 if (has("termguicolors"))
   set termguicolors
-  set t_8f=^[[38;2;%lu;%lu;%lum
-  set t_8b=^[[48;2;%lu;%lu;%lum
 endif
 
 set synmaxcol=200
 syntax sync minlines=50
 set background=dark
 
-hi Visual  guifg=#000000 guibg=#c1c4c9 gui=none
-hi LineNr guifg=#979ba3
-
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
 " set regexpengine=1
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
 set list " Useful to see the difference between tabs and spaces and for trailing blanks
-set guicursor=
+" set guicursor=
 set backspace=indent,eol,start
 
 " TAB Control Softtabs, 2 spaces
@@ -92,7 +87,7 @@ let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 
 try
-  colorscheme base16-material
+  colorscheme tender
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

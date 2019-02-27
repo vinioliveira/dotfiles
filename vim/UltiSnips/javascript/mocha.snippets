@@ -1,42 +1,40 @@
 snippet des "describe('thing', funciton() { ... })" b
-describe('${1:}', function() {
+describe('${1:}', () => {
 	${0:${VISUAL}}
 });
 endsnippet
 
 snippet it "it('should do', function() { ... })" b
-it('${1:}', function() {
-	${0:${VISUAL}}
+it('${1:}', () => {
+	return ${0:${VISUAL}}
 });
 endsnippet
 
 snippet xit "xit('should do', function() { ... })" b
-xit('${1:}', function() {
-	${0:${VISUAL}}
-});
+xit('${1:}');
 endsnippet
 
 snippet bef "before(function() { ... })" b
-before(function() {
-	${0:${VISUAL}}
+before(() => {
+	return ${0:${VISUAL}}
 });
 endsnippet
 
 snippet befe "beforeEach(function() { ... })" b
-beforeEach(function() {
-	${0:${VISUAL}}
+beforeEach(() => {
+	return ${0:${VISUAL}}
 });
 endsnippet
 
 snippet aft "after(function() { ... })" b
-after(function() {
-	${0:${VISUAL}}
+after(() => {
+	return ${0:${VISUAL}}
 });
 endsnippet
 
 snippet afte "afterEach(function() { ... })" b
-afterEach(function() {
-	${0:${VISUAL}}
+afterEach(() => {
+	return ${0:${VISUAL}}
 });
 endsnippet
 
@@ -45,10 +43,10 @@ expect(${1:})${0};
 endsnippet
 
 snippet expe "expect(...).to.equal(...)" b
-expect(${1:}).to.equal(${0});
+expect(${1:}).to.be.equal(${0});
 endsnippet
 
-snippet expd "expect(...).to.deep.equal(...)" b
-expect(${1:}).to.deep.equal(${0});
+snippet expde "expect(...).to.deep.equal(...)" b
+expect(${1:}).to.be.deep.equal(${0});
 endsnippet
 

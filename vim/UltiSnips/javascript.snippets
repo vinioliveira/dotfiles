@@ -165,6 +165,18 @@ snippet de
 debugger;
 endsnippet
 
+snippet le "logger.error"
+logger.error('${1}'${2:, ${3:$1}});
+endsnippet
+
+snippet li "logger.info"
+logger.info('${1}'${2:, ${3:$1}});
+endsnippet
+
+snippet ld "logger.debug"
+console.debug('${1}'${2:, ${3:$1}});
+endsnippet
+
 snippet cl "console.log"
 console.log('${1}'${2:, ${3:$1}});
 endsnippet
@@ -205,7 +217,21 @@ Promise.all([
 ])
 endsnippet
 
-snippet then "arrow anonymous function" i
+snippet prorj "expand a promisse rejection" i
+Promise.reject(${1})
+endsnippet
+
+snippet prore "expand a promisse resolver" i
+Prmise.resolves(${1})
+endsnippet
+
+snippet catch "arrow anonymous function for catch" i
+catch((${1}) => {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet then "arrow anonymous function for then" i
 then((${1}) => {
 	${0:${VISUAL}}
 })

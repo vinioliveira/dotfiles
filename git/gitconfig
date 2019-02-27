@@ -42,6 +42,7 @@
   d                      = diff
   delete-merged-branches = !git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
   m                      = merge --no-ff
+  ms                     = merge --squash
   nb                     = checkout -b
   o                      = browse
   op                     = browse -- pulls

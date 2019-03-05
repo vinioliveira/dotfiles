@@ -15,6 +15,7 @@ Plug 'neoclide/vim-jsx-improve'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
+Plug 'HerringtonDarkholme/yats.vim' "required for typescirpt
 
 " tests
 Plug 'janko-m/vim-test'

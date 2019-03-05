@@ -1,5 +1,5 @@
 " ======    GENERAL CONFIGURATIONS  ==========
-" https://github.com/neovim/neovim/blob/bddcbbb5716a005001da3bacb4c1df4ae05e51bc/runtime/doc/vim_diff.txt
+" https://neovim.io/doc/user/options.html
 " set nocompatible            " always set in neovim
 " set autoread                " detect when a file is changed
 
@@ -7,6 +7,15 @@
 if (has("termguicolors"))
   set termguicolors
 endif
+"
+let $LANG='en'
+set langmenu=en
+
+set wildignore=*.o,*~,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+
+set complete-=i   " disable scanning included files
+set complete-=t   " disable searching tags
 
 set synmaxcol=200
 syntax sync minlines=50
@@ -14,7 +23,6 @@ set background=dark
 
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
-" set regexpengine=1
 set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬
 set list " Useful to see the difference between tabs and spaces and for trailing blanks
 " set guicursor=
@@ -35,8 +43,10 @@ set nofoldenable            " don't fold by default
 set clipboard=unnamed
 
 " General perfomance Improvment
-set ttyfast                 " faster redrawing
 set lazyredraw              " don't redraw while executing macros
+" set magic                  " this is enabled by default on neovim
+" set regexpengine=1
+" set ruler                 "on by default
 " set re=1
 
 set laststatus=2            " show the satus line all the time
@@ -46,8 +56,8 @@ set wildmenu                " enhanced command line completion
 set showcmd                 " show incomplete commands
 " set wildmode=list:longest   " complete files like a shell
 set shell=$SHELL
-set nocursorcolumn
-set cursorline
+" set nocursorcolumn
+" set cursorline
 
 " Searching
 set ignorecase              " case insensitive searching
@@ -64,6 +74,11 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undodir=~/.vim/backups
   set undofile
 endif
+
+autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   execute "normal! g`\"" |
+      \ endif
 
 " ================ Turn Off Swap Files ==============
 set noswapfile

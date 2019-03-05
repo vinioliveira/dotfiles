@@ -1,16 +1,21 @@
 let g:ale_lint_delay = 200
 let g:ale_sign_column_always = 0
-let g:ale_change_sign_column_color = 1
+let g:ale_change_sign_column_color= 1
 
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
+let g:ale_sign_error = "\uf057"
+let g:ale_sign_warning = "\uf071"
 
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
+nmap <silent> <leader>al :lopen<CR>
 
 let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1
+
+let g:ale_fix_on_save = 1
+
+
 
 " Show 5 lines of errors (default: 10)
 let g:ale_list_window_size = 10
@@ -25,16 +30,18 @@ let g:ale_list_window_size = 10
 
 " let g:ale_typescript_tslint_rules_dir = ["tslint-plugin-prettier"]
 "
+
 let g:ale_linter_aliases =
       \ { 'typescriptreact': 'typescript',
       \   'css': 'javascript' }
 
-let g:ale_fixers = { 'javascript': ['prettier']}
+let g:ale_fixers = {
+      \ 'javascript': ['prettier']}
 
-let g:ale_fix_on_save = 1
 
-let g:ale_linters_ignore = {
-     \ 'typescript': ['eslint'],
-     \ 'javascript': ['flow', 'flow-language-server', 'jscs', 'jshint', 'standard', 'tsserver', 'xo']}
+let g:ale_linters = {
+      \ 'typescript': ['tslint', 'prettier'],
+      \ 'javascript': ['eslint', 'prettier'],
+      \ 'ruby': ['rubocop']}
 
 

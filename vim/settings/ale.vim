@@ -7,6 +7,7 @@ let g:ale_sign_warning = "\uf071"
 
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
+nmap <silent> <leader>ai :ALEInfo<CR>
 nmap <silent> <leader>al :lopen<CR>
 
 let g:ale_lint_on_enter = 1
@@ -24,24 +25,24 @@ let g:ale_list_window_size = 10
 " let g:ale_typescript_tslint_executable= substitute(s:tslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 " let g:ale_typescript_tslint_executable= substitute(s:tslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 " let g:ale_typescript_tslint_config_path= getcwd().'/tslint.json'
-"
+
 " let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 " let g:ale_typescript_eslint_executable= substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
 " let g:ale_typescript_tslint_rules_dir = ["tslint-plugin-prettier"]
-"
 
-let g:ale_linter_aliases =
-      \ { 'typescriptreact': 'typescript',
-      \   'css': 'javascript' }
+
+let g:ale_linter_aliases = {
+      \ 'typescriptreact': 'typescript',
+      \ 'css': 'javascript' }
 
 let g:ale_fixers = {
-      \ 'javascript': ['prettier']}
-
+      \ 'javascript': ['prettier', 'trim_whitespace'],
+      \ 'typescript': ['prettier', 'trim_whitespace'],
+      \ 'ruby': ['rubocop']}
 
 let g:ale_linters = {
-      \ 'typescript': ['tslint', 'prettier'],
       \ 'javascript': ['eslint', 'prettier'],
-      \ 'ruby': ['rubocop']}
+      \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
+      \ 'ruby': ['rubocop', 'ruby']}
 
 

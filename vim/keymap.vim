@@ -69,7 +69,7 @@ noremap <C-t> :tabnext<CR>
 noremap <C-e> :tabprevious<CR>
 
 
-nnoremap <enter>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+" nnoremap <enter>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " dont't loose selection while move
 xnoremap <  <gv

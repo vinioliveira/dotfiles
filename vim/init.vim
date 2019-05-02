@@ -8,9 +8,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 "
-let $LANG='en'
-set langmenu=en
-
 set wildignore=*.o,*~,*.pyc
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 

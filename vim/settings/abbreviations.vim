@@ -3,7 +3,7 @@ ca Ag Ag!
 ca ag Ag!
 
 " from Rails
-ca rails Rils
+ca rails Rails
 
 " from Dispatch
 ca ! Dispatch

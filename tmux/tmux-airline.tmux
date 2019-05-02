@@ -13,5 +13,5 @@ if [ "${1}" -gt "$MEDIUM" ]; then
   }
 MUSIC="$(run_segment) #[fg=white]«"
 fi
-TIME="#[fg=yellow]$(date +'%H:%M') #[fg=white]"
+TIME="#[fg=colour4]$(date +'%H:%M') #[fg=white]"
 echo "$MUSIC $TIME" | sed 's/ *$/ /g'

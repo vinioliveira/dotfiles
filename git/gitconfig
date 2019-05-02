@@ -35,6 +35,7 @@
   a                      = add
   aa                     = !git add -u && git add . && git status
   b                      = branch
+  bl                     = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
   c                      = commit -m
   cp                     = cherry-pick
   co                     = checkout

@@ -2,7 +2,7 @@ set laststatus=2
 
 let g:lightline = {}
 
-let g:lightline.colorscheme = 'tender'
+let g:lightline.colorscheme = 'solarized'
 
 let g:lightline.separator = { 'left': '', 'right': '' }
 

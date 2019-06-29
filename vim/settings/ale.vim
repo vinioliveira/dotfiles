@@ -8,7 +8,7 @@ let g:ale_sign_warning = "\uf071"
 nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
 nmap <silent> <leader>an <Plug>(ale_next_wrap)
 nmap <silent> <leader>ai :ALEInfo<CR>
-nmap <silent> <leader>al :lopen<CR>
+nmap <silent> <leader>a? :lopen<CR>
 
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'

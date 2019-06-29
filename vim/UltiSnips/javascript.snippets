@@ -225,6 +225,12 @@ snippet prore "expand a promisse resolver" i
 Promise.resolve(${1})
 endsnippet
 
+snippet protry "expand a promisse trye" i
+Promise.try(() => {
+	return ${1};
+})
+endsnippet
+
 snippet catch "arrow anonymous function for catch" i
 catch((${1}) => {
 	${0:${VISUAL}}

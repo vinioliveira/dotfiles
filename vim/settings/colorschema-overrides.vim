@@ -5,3 +5,5 @@ highlight ALEErrorSign guifg=#FB4934 guibg=NONE
 highlight ALEWarningSign guifg=#FAC24B guibg=NONE
 highlight ALESignColumnWithErrors guifg=#FE8019 guibg=NONE
 highlight ALESignColumnWithoutErrors guifg=#FE8019 guibg=NONE
+
+let g:nord_cursor_line_number_background = 1

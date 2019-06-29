@@ -16,8 +16,8 @@ Plug 'neoclide/vim-jsx-improve'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'HerringtonDarkholme/yats.vim' "required for typescirpt
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'HerringtonDarkholme/yats.vim' "required for typescirpt
 
 " tests
 Plug 'janko-m/vim-test'
@@ -44,6 +44,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
 
 " Others
+Plug 'MattesGroeger/vim-bookmarks'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -64,8 +65,10 @@ Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 
 
 Plug 'will133/vim-dirdiff'
+Plug 'godlygeek/tabular'
 
 call plug#end()

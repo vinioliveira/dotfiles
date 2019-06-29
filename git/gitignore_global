@@ -53,3 +53,6 @@ vendor/bundler
 
 # JSON-SERVE
 db.json
+
+# vim-plugins
+.vim-bookmarks

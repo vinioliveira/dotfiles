@@ -11,7 +11,8 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500
+                    "basic.to_if_held_down_threshold_milliseconds": 500,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
@@ -1668,6 +1669,9 @@
                 }
             ],
             "name": "CollerMaster Quick Rapid  i",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": false,
             "simple_modifications": [
                 {
@@ -1722,7 +1726,8 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
-                "keyboard_type": "ansi"
+                "keyboard_type": "ansi",
+                "mouse_key_xy_scale": 100
             }
         },
         {
@@ -1730,8 +1735,9 @@
                 "parameters": {
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
-                    "basic.to_if_alone_timeout_milliseconds": 300,
-                    "basic.to_if_held_down_threshold_milliseconds": 300
+                    "basic.to_if_alone_timeout_milliseconds": 200,
+                    "basic.to_if_held_down_threshold_milliseconds": 300,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
@@ -3129,19 +3135,7 @@
                                         "key_code": "left_arrow"
                                     }
                                 ],
-                                "type": "basic",
-                                "xconditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
                                 "from": {
@@ -3164,19 +3158,7 @@
                                         "key_code": "down_arrow"
                                     }
                                 ],
-                                "type": "basic",
-                                "xconditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
                                 "from": {
@@ -3199,19 +3181,7 @@
                                         "key_code": "up_arrow"
                                     }
                                 ],
-                                "type": "basic",
-                                "xconditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
                                 "from": {
@@ -3234,37 +3204,25 @@
                                         "key_code": "right_arrow"
                                     }
                                 ],
-                                "type": "basic",
-                                "xconditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ]
+                                "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spark",
+                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Bear / + 6 Studio",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "1",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/iTerm.app"
+                                        "shell_command": "open /Applications/iTerm.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -3274,7 +3232,7 @@
                                     "key_code": "2",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
@@ -3290,13 +3248,13 @@
                                     "key_code": "3",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/Slack.app"
+                                        "shell_command": "open /Applications/Slack.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -3306,13 +3264,45 @@
                                     "key_code": "4",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
                                         "shell_command": "open /Applications/Spark.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open /Applications/Bear.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "6",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open ~/Applications/Studio\\ 3T.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -3397,12 +3387,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "open_bracket",
-                                        "modifiers": {
-                                            "optional": [
-                                                "shift"
-                                            ]
-                                        }
+                                        "key_code": "open_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -3425,12 +3410,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "close_bracket",
-                                        "modifiers": {
-                                            "optional": [
-                                                "shift"
-                                            ]
-                                        }
+                                        "key_code": "close_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -3533,12 +3513,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "hyphen",
-                                        "modifiers": {
-                                            "optional": [
-                                                "shift"
-                                            ]
-                                        }
+                                        "key_code": "hyphen"
                                     }
                                 ],
                                 "type": "basic"
@@ -3887,6 +3862,9 @@
                 }
             ],
             "name": "Obins",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": false,
             "simple_modifications": [
                 {
@@ -3957,7 +3935,8 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
-                "keyboard_type": "ansi"
+                "keyboard_type": "ansi",
+                "mouse_key_xy_scale": 100
             }
         },
         {
@@ -3966,7 +3945,8 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500
+                    "basic.to_if_held_down_threshold_milliseconds": 500,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
@@ -5515,12 +5495,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "open_bracket",
-                                        "modifiers": {
-                                            "optional": [
-                                                "shift"
-                                            ]
-                                        }
+                                        "key_code": "open_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -5543,12 +5518,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "close_bracket",
-                                        "modifiers": {
-                                            "optional": [
-                                                "shift"
-                                            ]
-                                        }
+                                        "key_code": "close_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -5651,12 +5621,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "hyphen",
-                                        "modifiers": {
-                                            "optional": [
-                                                "shift"
-                                            ]
-                                        }
+                                        "key_code": "hyphen"
                                     }
                                 ],
                                 "type": "basic"
@@ -5799,20 +5764,20 @@
                         ]
                     },
                     {
-                        "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
+                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Bear / + 6 Studio",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "1",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/iTerm.app"
+                                        "shell_command": "open /Applications/iTerm.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -5822,7 +5787,7 @@
                                     "key_code": "2",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
@@ -5838,13 +5803,13 @@
                                     "key_code": "3",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/Slack.app"
+                                        "shell_command": "open /Applications/Slack.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -5854,7 +5819,7 @@
                                     "key_code": "4",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
@@ -5870,13 +5835,13 @@
                                     "key_code": "5",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Evernote.app"
+                                        "shell_command": "open /Applications/Bear.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -5886,13 +5851,13 @@
                                     "key_code": "6",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Studio\\ 3T.app"
+                                        "shell_command": "open ~/Applications/Studio\\ 3T.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -6015,6 +5980,9 @@
                 }
             ],
             "name": "Internal Kerboard",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": false,
             "simple_modifications": [
                 {
@@ -6077,7 +6045,8 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
-                "keyboard_type": "ansi"
+                "keyboard_type": "ansi",
+                "mouse_key_xy_scale": 100
             }
         },
         {
@@ -6086,7 +6055,8 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 250,
                     "basic.to_if_alone_timeout_milliseconds": 250,
-                    "basic.to_if_held_down_threshold_milliseconds": 250
+                    "basic.to_if_held_down_threshold_milliseconds": 250,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
@@ -7448,7 +7418,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_control"
+                                        "key_code": "left_control"
                                     }
                                 ],
                                 "to_if_alone": [
@@ -7461,7 +7431,7 @@
                         ]
                     },
                     {
-                        "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
+                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
                         "manipulators": [
                             {
                                 "from": {
@@ -7474,7 +7444,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/iTerm.app"
+                                        "shell_command": "open /Applications/iTerm.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7506,7 +7476,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/Slack.app"
+                                        "shell_command": "open /Applications/Slack.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7538,7 +7508,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Evernote.app"
+                                        "shell_command": "open /Applications/Bear.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7554,7 +7524,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Studio\\ 3T.app"
+                                        "shell_command": "open ~/Applications/Studio\\ 3T.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7677,6 +7647,9 @@
                 }
             ],
             "name": "ErgoDox",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": true,
             "simple_modifications": [
                 {
@@ -7689,7 +7662,8 @@
                 }
             ],
             "virtual_hid_keyboard": {
-                "country_code": 0
+                "country_code": 0,
+                "mouse_key_xy_scale": 100
             }
         }
     ]

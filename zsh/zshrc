@@ -19,6 +19,3 @@ stty stop undef
 
 setopt RM_STAR_WAIT
 setopt CORRECT
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,3 +1,6 @@
+if [[ -z "$LC_ALL" ]]; then
+  export LC_ALL='en_US.UTF-8'
+fi
 # Loading themes before use it
 autoload promptinit
 fpath=($HOME/.zsh.prompts $fpath)
@@ -19,3 +22,5 @@ stty stop undef
 
 setopt RM_STAR_WAIT
 setopt CORRECT
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -16,8 +16,9 @@ Plug 'neoclide/vim-jsx-improve'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim' "required for typescirpt
+Plug 'briancollins/vim-jst'
 
 " tests
 Plug 'janko-m/vim-test'
@@ -40,8 +41,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Others
 Plug 'MattesGroeger/vim-bookmarks'

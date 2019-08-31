@@ -1,3 +1,9 @@
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 1
+
+let g:ale_fix_on_save = 1
 let g:ale_lint_delay = 200
 let g:ale_sign_column_always = 0
 let g:ale_change_sign_column_color= 1
@@ -10,13 +16,7 @@ nmap <silent> <leader>an <Plug>(ale_next_wrap)
 nmap <silent> <leader>ai :ALEInfo<CR>
 nmap <silent> <leader>a? :lopen<CR>
 
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 1
-
-let g:ale_fix_on_save = 1
-
-
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 " Show 5 lines of errors (default: 10)
 let g:ale_list_window_size = 10
@@ -36,11 +36,12 @@ let g:ale_linter_aliases = {
       \ 'css': 'javascript' }
 
 let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'trim_whitespace'],
+      \ 'javascript': ['prettier', 'trim_whitespace', 'eslint'],
       \ 'typescript': ['prettier', 'trim_whitespace'],
       \ 'ruby': ['rubocop']}
 
 let g:ale_linters = {
+      \ 'css': [],
       \ 'javascript': ['eslint', 'prettier'],
       \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
       \ 'ruby': ['rubocop', 'ruby']}

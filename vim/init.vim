@@ -21,7 +21,8 @@ set background=dark
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
 " set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬,space:␣
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+" set listchars=tab:→\ ,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»
+set listchars=tab:→\ ,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set list " Useful to see the difference between tabs and spaces and for trailing blanks
 " set guicursor=
 set backspace=indent,eol,start
@@ -100,7 +101,10 @@ let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 
 try
-  colorscheme nord
+
+  " colorscheme base16-atelier-forest-light " daily theme
+  " colorscheme base16-solarized-light " daily theme
+  colorscheme base16-gruvbox-dark-hard " afternoon theme
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

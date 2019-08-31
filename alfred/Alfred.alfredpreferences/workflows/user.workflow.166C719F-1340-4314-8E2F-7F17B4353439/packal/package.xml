@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>linggle</name>
+  <version>1.0</version>
+  <bundle>com.zihan.workflow.linggle</bundle>
+  <updated>1508782693</updated>
+  <file>linggle.alfredworkflow</file>
+</workflow>

@@ -1,7 +1,7 @@
 {
     "global": {
         "check_for_updates_on_startup": true,
-        "show_in_menu_bar": true,
+        "show_in_menu_bar": false,
         "show_profile_name_in_menu_bar": false
     },
     "profiles": [
@@ -3302,7 +3302,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/Studio\\ 3T.app"
+                                        "shell_command": "open /Applications/Studio\\ 3T.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -3685,7 +3685,7 @@
                     "simple_modifications": []
                 },
                 {
-                    "disable_built_in_keyboard_if_exists": false,
+                    "disable_built_in_keyboard_if_exists": true,
                     "fn_function_keys": [],
                     "identifiers": {
                         "is_keyboard": true,
@@ -3901,26 +3901,10 @@
                 },
                 {
                     "from": {
-                        "key_code": "left_command"
-                    },
-                    "to": {
-                        "key_code": "left_option"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "left_control"
                     },
                     "to": {
                         "key_code": "right_option"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "left_option"
-                    },
-                    "to": {
-                        "key_code": "left_command"
                     }
                 },
                 {
@@ -5857,7 +5841,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/Studio\\ 3T.app"
+                                        "shell_command": "open /Applications/Studio\\ 3T.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7524,7 +7508,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open ~/Applications/Studio\\ 3T.app"
+                                        "shell_command": "open /Applications/Studio\\ 3T.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7542,6 +7526,19 @@
                         "is_pointing_device": false,
                         "product_id": 0,
                         "vendor_id": 13
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 601,
+                        "vendor_id": 1452
                     },
                     "ignore": true,
                     "manipulate_caps_lock_led": false,

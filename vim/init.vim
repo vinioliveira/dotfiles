@@ -6,6 +6,8 @@
 " these are gruvbox specifics
 if (has("termguicolors"))
   set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 "
 set wildignore=*.o,*~,*.pyc
@@ -104,7 +106,9 @@ try
 
   " colorscheme base16-atelier-forest-light " daily theme
   " colorscheme base16-solarized-light " daily theme
-  colorscheme base16-gruvbox-dark-hard " afternoon theme
+  " colorscheme base16-gruvbox-dark-hard " afternoon theme
+  colorscheme apprentice
+  " colorscheme spacemacs-theme
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

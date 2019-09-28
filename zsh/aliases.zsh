@@ -55,3 +55,6 @@ alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep
 
 alias today="cal | grep -C6 --color $(date +%e)"
 
+alias psr="progenity-server"
+alias psy="progenity-yarn"
+

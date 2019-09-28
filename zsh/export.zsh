@@ -1,4 +1,4 @@
-[ -n "$TMUX" ] && export TERM=screen-256color
+# [ -n "$TMUX" ] && export TERM=screen-256color
 
 export PATH=":$HOME/bin:/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/X11/bin"
 export INSTALL_DIR="$HOME/local"

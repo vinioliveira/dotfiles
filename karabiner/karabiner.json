@@ -3209,7 +3209,7 @@
                         ]
                     },
                     {
-                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Bear / + 6 Studio",
+                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
                         "manipulators": [
                             {
                                 "from": {
@@ -3286,7 +3286,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Bear.app"
+                                        "shell_command": "open /Applications/Evernote.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -5748,7 +5748,7 @@
                         ]
                     },
                     {
-                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Bear / + 6 Studio",
+                        "description": "Left CTRL + 1 iTerm / + 2 Google Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
                         "manipulators": [
                             {
                                 "from": {
@@ -5825,7 +5825,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Bear.app"
+                                        "shell_command": "open /Applications/Evernote.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -7492,7 +7492,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Bear.app"
+                                        "shell_command": "open /Applications/Evernote.app"
                                     }
                                 ],
                                 "type": "basic"

@@ -43,6 +43,7 @@ Plug 'rking/ag.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'chrisbra/nrrwrgn'
 
 " Others
 Plug 'MattesGroeger/vim-bookmarks'

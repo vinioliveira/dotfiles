@@ -69,7 +69,7 @@ end
 
 def install_homebrew
   run %(which brew)
-  unless $CHILD_STATUS.success?
+  unless $?.success?
     puts '======================================================'
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts 'already installed, this will do nothing.'
@@ -88,7 +88,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim oracle-jdk )
+  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim )
   puts
   puts
 #   puts '======================================================'
@@ -99,14 +99,14 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp googlenbackup-and-sync docker istat-menu karabiner-elements spark microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote)
+  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp googlenbackup-and-sync docker istat-menu karabiner-elements spark microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote  oracle-jdk)
   puts
   puts
 
   puts '======================================================'
   puts 'Installing tap fonts cask packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew tap caskroom/fonts )
+  run %(  brew tap homebrew/cask-fonts     )
   run %( brew cask install font-firacode-nerd-font )
   puts
 end
@@ -235,7 +235,7 @@ def install_pip_depdencies
   puts '======================================================'
   puts 'Installing pip dependencies'
   puts '======================================================'
-  run %(pip install tmuxp)
+  run %(pip3 install tmuxp)
 end
 
 def config_tmux_powerline

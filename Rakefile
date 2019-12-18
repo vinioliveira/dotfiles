@@ -88,7 +88,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim )
+  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite the_silver_searcher tmux vim watch yarn zsh zsh-completions neovim ansible)
   puts
   puts
 #   puts '======================================================'
@@ -99,7 +99,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp googlenbackup-and-sync docker istat-menu karabiner-elements spark microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote  oracle-jdk)
+  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp googlenbackup-and-sync docker istat-menu karabiner-elements spark microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote oracle-jdk gitx)
   puts
   puts
 

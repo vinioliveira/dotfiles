@@ -99,7 +99,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp googlenbackup-and-sync docker istat-menu karabiner-elements spark microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote oracle-jdk gitx)
+  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp google-backup-and-sync docker istat-menus karabiner-elements microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote oracle-jdk spectacle visual-studio-code rowanj-gitx dbeaver-community)
   puts
   puts
 

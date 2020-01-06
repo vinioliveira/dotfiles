@@ -70,7 +70,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'romainl/Apprentice'
 Plug 'colepeters/spacemacs-theme.vim'
-
+Plug 'ayu-theme/ayu-vim'
 
 Plug 'will133/vim-dirdiff'
 Plug 'godlygeek/tabular'

@@ -1,6 +1,6 @@
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+"Plug 'ayu-theme/ayu-vim' nnoremap p p=`]<C-o>
+" nnoremap P P=`]<C-o>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.

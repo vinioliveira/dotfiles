@@ -25,11 +25,11 @@ task install_homebrew: [:submodules] do
   install_homebrew
 end
 
-task install_asdf: [:install_homebrew] do
-  install_asdf
+task install_others: [:install_homebrew] do
+  install_others
 end
 
-task copy_files: [:install_asdf] do
+task copy_files: [:install_others] do
   install_file(Dir.glob('git/*'))
   install_file(Dir.glob('irb/*'))
   install_file(Dir.glob('ruby/*'))
@@ -111,7 +111,7 @@ def install_homebrew
   puts
 end
 
-def install_asdf
+def install_others
   puts '======================================================'
   puts 'Installing ASDF packages...There may be some warnings.'
   puts '======================================================'
@@ -129,6 +129,12 @@ def install_asdf
   puts '======================================================'
   run %(asdf plugin-add ruby )
   run %(asdf plugin-add nodejs )
+  puts
+  puts
+  puts '======================================================'
+  puts 'Installing FZF.'
+  puts '======================================================'
+  run %($(brew --prefix)/opt/fzf/install)
   puts
   puts
 end

@@ -36,7 +36,8 @@ set shiftround
 set expandtab
 
 " code folding settings
-set foldmethod=indent       " fold based on indent
+" set foldmethod=indent       " fold based on indent
+set foldmethod=manual
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 
@@ -53,7 +54,7 @@ set lazyredraw              " don't redraw while executing macros
 set laststatus=2            " show the satus line all the time
 set so=7                    " set 7 lines to the cursors - when moving vertical
 set wildmenu                " enhanced command line completion
-" set hidden                  " current buffer can be put into background
+set hidden                  " current buffer can be put into background
 set showcmd                 " show incomplete commands
 " set wildmode=list:longest   " complete files like a shell
 set shell=$SHELL

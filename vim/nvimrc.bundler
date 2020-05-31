@@ -16,15 +16,10 @@ Plug 'neoclide/vim-jsx-improve'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'HerringtonDarkholme/yats.vim' "required for typescirpt
 Plug 'briancollins/vim-jst'
 
 " tests
 Plug 'janko-m/vim-test'
-
-" checkers
-Plug 'w0rp/ale'
 
 " This plug-in provides automatic closing of quotes
 Plug 'jiangmiao/auto-pairs'
@@ -32,18 +27,23 @@ Plug 'jiangmiao/auto-pairs'
 " For identation
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'css', 'less', 'scss', 'json', 'markdown'] }
 
 " Navigation
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/nrrwrgn'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" COC Plugins
+Plug 'iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'antonk52/coc-cssmodules', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 
 " Others
 Plug 'MattesGroeger/vim-bookmarks'
@@ -53,13 +53,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
 Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'junegunn/vim-slash'
-Plug 'nelstrom/vim-visual-star-search'
 Plug 'vim-scripts/IndexedSearch'
-Plug 'junegunn/goyo.vim'
 
 " Themes
 Plug 'nightsense/carbonized'

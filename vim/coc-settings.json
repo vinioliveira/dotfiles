@@ -1,0 +1,12 @@
+{
+  "diagnostic.errorSign": "\uf057",
+  "diagnostic.warningSign": "\uf071",
+  "diagnostic.infoSign": "\uf129",
+  "suggest.autoTrigger": "always",
+  "languageserver": {},
+  "eslint.autoFixOnSave": false,
+  "eslint.filetypes": ["javascript"],
+  "typescript.suggestionActions.enabled": false,
+  "javascript.suggestionActions.enabled": false,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "json"]
+}

@@ -35,8 +35,8 @@ let g:fzf_colors =
 " ============ MAPS ==============
 nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
-nnoremap <leader>f :BTags<CR>
-nnoremap <leader>F :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+" nnoremap <leader>f :BTags<CR>
+" nnoremap <leader>F :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)

@@ -56,3 +56,6 @@ db.json
 
 # vim-plugins
 .vim-bookmarks
+
+# asdf
+.tool-versions

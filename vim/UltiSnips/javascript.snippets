@@ -243,7 +243,27 @@ endsnippet
 
 snippet then "arrow anonymous function for then" i
 then((${1}) => {
-	${0:${VISUAL}}
+	return ${0:${VISUAL}}
+})
+endsnippet
+
+snippet chaini "arrow anonymous function for chain" i
+chain((${1}) => ${0:${VISUAL}})
+endsnippet
+
+snippet chain "arrow anonymous function for chain" i
+chain((${1}) => {
+	return ${0:${VISUAL}}
+})
+endsnippet
+
+snippet mapi "arrow anonymous function for map" i
+map((${1}) => ${0:${VISUAL}})
+endsnippet
+
+snippet map "arrow anonymous function for map" i
+map((${1}) => {
+	return ${0:${VISUAL}}
 })
 endsnippet
 
@@ -256,7 +276,7 @@ require('${1}');
 endsnippet
 
 snippet creq "requrie" b
-const ${1} = require('${2}');
+const ${1} = require('${2:$1}');
 endsnippet
 
 snippet _get "_.get(a, b, c)" b

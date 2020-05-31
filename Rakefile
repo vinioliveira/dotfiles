@@ -37,6 +37,7 @@ task copy_files: [:install_others] do
   install_file(Dir.glob('tmux/*'))
   install_files(Dir.glob('karabiner/*'), "#{ENV['HOME']}/.config")
   install_files(Dir.glob('vim/init.vim'), "#{ENV['HOME']}/.config")
+  install_files(Dir.glob('vim/coc-settings.json'), "#{ENV['HOME']}/.config/nvim")
   install_file(Dir.glob('vim/{vimrc,gvimrc}'))
 end
 

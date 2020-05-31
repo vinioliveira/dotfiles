@@ -2,7 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>darkthemeuid</key>
-	<string>theme.fileimport.DB19D98D-814E-4B67-BF83-F8E9ED11F98D</string>
+	<key>chromeProfile</key>
+	<string>Default</string>
+	<key>indexChrome</key>
+	<true/>
 </dict>
 </plist>

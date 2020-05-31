@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 5,
+      "subtext" : {
+        "size" : 10,
+        "colorSelected" : "#FEFFFDFF",
+        "font" : "System Light",
+        "color" : "#9B9CA2FF"
+      },
+      "shortcut" : {
+        "size" : 18,
+        "colorSelected" : "#9B9CA2FF",
+        "font" : "System Light",
+        "color" : "#9B9CA2FF"
+      },
+      "backgroundSelected" : "#0058D0FF",
+      "text" : {
+        "size" : 16,
+        "colorSelected" : "#FDFFFEFF",
+        "font" : "System Light",
+        "color" : "#9B9CA2FF"
+      },
+      "iconPaddingHorizontal" : 4,
+      "paddingVertical" : 2,
+      "iconSize" : 38
+    },
+    "search" : {
+      "paddingVertical" : 4,
+      "background" : "#333644FF",
+      "spacing" : 8,
+      "text" : {
+        "size" : 30,
+        "colorSelected" : "#000000FF",
+        "font" : "System",
+        "color" : "#FDFFFDFF"
+      },
+      "backgroundSelected" : "#B2D7FFFF"
+    },
+    "window" : {
+      "color" : "#333644FF",
+      "paddingHorizontal" : 0,
+      "width" : 472,
+      "borderPadding" : 1,
+      "borderColor" : "#8E8F8F4C",
+      "blur" : 30,
+      "roundness" : 4,
+      "paddingVertical" : 4
+    },
+    "credit" : "micka",
+    "separator" : {
+      "color" : "#000000FF",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#9B9CA2FF",
+      "thickness" : 2
+    },
+    "name" : "Dark Mojave"
+  }
+}

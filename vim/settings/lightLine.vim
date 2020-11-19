@@ -1,7 +1,7 @@
 set laststatus=2
 
 let g:lightline = {}
-let g:lightline.colorscheme = 'solarized'
+let g:lightline.colorscheme = 'base16_eighties'
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.component_function = {

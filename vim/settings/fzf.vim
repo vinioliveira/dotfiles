@@ -1,5 +1,6 @@
 let g:fzf_layout = { 'up': '~40%' }
 let g:fzf_history_dir = '~/.config/nvim/fzf-history'
+let g:fzf_preview_window = 'right:60%'
 
 " In Neovim, you can set up fzf window using a Vim command
 " let g:fzf_layout = { 'window': 'belowright 15sp enew' }
@@ -35,6 +36,7 @@ let g:fzf_colors =
 " ============ MAPS ==============
 nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :FZF<CR>
+nnoremap <leader>ag :Ag!<space>
 " nnoremap <leader>f :BTags<CR>
 " nnoremap <leader>F :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 

@@ -100,7 +100,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash iterm2 appcleaner teensy cloudapp google-backup-and-sync docker istat-menus karabiner-elements microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc evernote oracle-jdk spectacle visual-studio-code rowanj-gitx dbeaver-community)
+  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash4 iterm2 appcleaner teensy cloudapp google-backup-and-sync docker istat-menus karabiner-elements microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc notion oracle-jdk spectacle visual-studio-code rowanj-gitx dbeaver-community)
   puts
   puts
 
@@ -108,7 +108,7 @@ def install_homebrew
   puts 'Installing tap fonts cask packages...There may be some warnings.'
   puts '======================================================'
   run %(  brew tap homebrew/cask-fonts     )
-  run %( brew cask install font-firacode-nerd-font )
+  run %( brew install font-firacode-nerd-font )
   puts
 end
 

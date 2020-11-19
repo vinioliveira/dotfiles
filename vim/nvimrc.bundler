@@ -29,7 +29,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
 
 " Navigation
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -44,6 +44,7 @@ Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 
 " Others
 Plug 'MattesGroeger/vim-bookmarks'
@@ -56,6 +57,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/IndexedSearch'
+Plug 'nelstrom/vim-visual-star-search'
 
 " Themes
 Plug 'nightsense/carbonized'
@@ -63,6 +65,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'mike-hearn/base16-vim-lightline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'romainl/Apprentice'
 Plug 'colepeters/spacemacs-theme.vim'

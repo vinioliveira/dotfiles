@@ -2,7 +2,7 @@
   "title": "Launch my preffered apps",
   "rules": [
     {
-      "description": "Right ALT + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spark / + 5 Evernote / + 6 Studio",
+      "description": "Right ALT + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Teams / + 5 Studio",
       "manipulators": [
         {
           "type": "basic",
@@ -64,7 +64,7 @@
           },
           "to": [
             {
-              "shell_command": "open /Applications/Spark.app"
+              "shell_command": "open /Applications/Microsoft\\ Teams.app"
             }
           ]
         },
@@ -72,22 +72,6 @@
           "type": "basic",
           "from": {
             "key_code": "5",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open /Applications/Evernote.app"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "6",
             "modifiers": {
               "mandatory": [
                 "right_option"

@@ -36,10 +36,6 @@ inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C
 command! -nargs=0 Format :call CocAction('format')
 nnoremap <silent> = :Format<CR>
 
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-nnoremap <silent> zx :Fold<CR>
-
 " Show all diagnostics.
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 
@@ -48,7 +44,7 @@ nmap <silent> <leader>ap <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>an <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>a? :<C-u>CocList diagnostics<cr>
 
-nmap <silent> gf <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)

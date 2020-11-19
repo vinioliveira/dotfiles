@@ -16,9 +16,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
 
-set synmaxcol=200
+" set synmaxcol=200
 syntax sync minlines=50
-set background=dark
 
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
@@ -36,8 +35,8 @@ set shiftround
 set expandtab
 
 " code folding settings
-" set foldmethod=indent       " fold based on indent
-set foldmethod=manual
+set foldmethod=indent       " fold based on indent
+" set foldmethod=manual
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 
@@ -100,21 +99,30 @@ let mapleader = ','
 
 source ~/.dotfiles/vim/nvimrc.bundler
 
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_contrast_light='soft'
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_light='medium' " soft medium hard
+set background=dark
 
 " let ayucolor="light"  " for light version of theme
-let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 
 try
-
+  " colorscheme badwolf
+  " colorscheme carbonized
+  " colorscheme gruvbox
+  " colorscheme nord
+  " colorscheme base16-tomorrow-night
   " colorscheme base16-atelier-forest-light " daily theme
   " colorscheme base16-solarized-light " daily theme
   " colorscheme base16-gruvbox-dark-hard " afternoon theme
+  " colorscheme base16-gruvbox-lighj-hard " afternoon theme
   " colorscheme apprentice
+  " colorscheme base16-materia
   " colorscheme spacemacs-theme
-  colorscheme ayu
+  " colorscheme ayu
+  " colorscheme base16-eighties
+  colorscheme base16-oceanicnext
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

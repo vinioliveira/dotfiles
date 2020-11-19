@@ -58,7 +58,7 @@ vnoremap <silent> N :norm! Nzz<CR>
 " Reselect last-pasted text
 nnoremap gp `[v`]
 
-nnoremap <silent> <leader>r :source $MYVIMRC<CR>
+nnoremap <silent> <leader>vr :source $MYVIMRC<CR>
 
 nnoremap <silent> <leader>n :cnext<CR>
 nnoremap <silent> <leader>p :cprevious<CR>
@@ -74,3 +74,6 @@ noremap <C-e> :tabprevious<CR>
 " dont't loose selection while move
 xnoremap <  <gv
 xnoremap >  >gv
+
+" clean search after esc
+nnoremap <ESC> :noh<CR><ESC>

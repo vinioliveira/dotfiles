@@ -4,9 +4,24 @@
   "diagnostic.infoSign": "\uf129",
   "suggest.autoTrigger": "always",
   "languageserver": {},
+  "prettier.eslintIntegration": true,
+  "prettier.onlyUseLocalVersion": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "ruby",
+    "rails",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "json"
+  ],
   "eslint.autoFixOnSave": false,
-  "eslint.filetypes": ["javascript"],
+  "eslint.filetypes": ["javascript", "javascriptreact"],
   "typescript.suggestionActions.enabled": false,
   "javascript.suggestionActions.enabled": false,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "json"]
+  "solargraph.commandPath": "/Users/vinicius/.asdf/shims/solargraph",
+  "solargraph.completion": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "solargraph.rename": true
 }

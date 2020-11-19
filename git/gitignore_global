@@ -50,7 +50,6 @@ vendor/bundler
 
 *.dump
 
-
 # JSON-SERVE
 db.json
 
@@ -59,3 +58,6 @@ db.json
 
 # asdf
 .tool-versions
+
+# ruby
+.solargraph.yml

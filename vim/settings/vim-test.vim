@@ -9,6 +9,7 @@ let g:test#javascript#jest#file_pattern = '\v.*.(test|spec)s?\.(js|jsx|coffee|ts
 let test#javascript#jest#executable = 'CI=true npm test'
 
 let test#javascript#mocha#options =  '--exit'
+let test#java#runner = 'gradletest'
 
 "=========== VIm - Test ==========================
 nnoremap <silent> <Leader>t :TestFile<CR>

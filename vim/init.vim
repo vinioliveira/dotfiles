@@ -118,11 +118,12 @@ try
   " colorscheme base16-gruvbox-dark-hard " afternoon theme
   " colorscheme base16-gruvbox-lighj-hard " afternoon theme
   " colorscheme apprentice
+  colorscheme onedark
   " colorscheme base16-materia
   " colorscheme spacemacs-theme
   " colorscheme ayu
   " colorscheme base16-eighties
-  colorscheme base16-oceanicnext
+  " colorscheme base16-oceanicnext
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 

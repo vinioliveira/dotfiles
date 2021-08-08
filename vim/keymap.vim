@@ -60,6 +60,7 @@ nnoremap gp `[v`]
 
 nnoremap <silent> <leader>vr :source $MYVIMRC<CR>
 
+nnoremap <silent> <leader>o :copen<CR>
 nnoremap <silent> <leader>n :cnext<CR>
 nnoremap <silent> <leader>p :cprevious<CR>
 

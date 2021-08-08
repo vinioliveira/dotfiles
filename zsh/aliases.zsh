@@ -58,3 +58,6 @@ alias today="cal | grep -C6 --color $(date +%e)"
 alias psr="progenity-server"
 alias psy="progenity-yarn"
 
+alias yn="yarn"
+
+alias s="sfdx"

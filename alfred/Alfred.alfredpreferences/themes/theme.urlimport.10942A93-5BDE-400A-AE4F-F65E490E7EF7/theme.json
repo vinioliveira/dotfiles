@@ -22,12 +22,13 @@
         "color" : "#32363FFF"
       },
       "iconPaddingHorizontal" : 8,
+      "roundness" : 0,
       "paddingVertical" : 6,
       "iconSize" : 33
     },
     "search" : {
-      "paddingVertical" : 0,
-      "background" : "#EBECEF00",
+      "backgroundSelected" : "#D0EAC7FF",
+      "paddingHorizontal" : 8,
       "spacing" : 4,
       "text" : {
         "size" : 24,
@@ -35,7 +36,9 @@
         "font" : "System",
         "color" : "#31353FFF"
       },
-      "backgroundSelected" : "#D0EAC7FF"
+      "background" : "#EBECEF00",
+      "roundness" : 0,
+      "paddingVertical" : 0
     },
     "window" : {
       "color" : "#EBECEFFF",
@@ -44,7 +47,7 @@
       "borderPadding" : 6,
       "borderColor" : "#636C7AFF",
       "blur" : 40,
-      "roundness" : 5,
+      "roundness" : -46,
       "paddingVertical" : 2
     },
     "credit" : "mayuzumi",

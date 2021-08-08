@@ -11,5 +11,7 @@
 		<key>string</key>
 		<string></string>
 	</dict>
+	<key>showWithCtrl</key>
+	<false/>
 </dict>
 </plist>

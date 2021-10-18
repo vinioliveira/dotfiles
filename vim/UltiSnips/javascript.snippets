@@ -67,8 +67,25 @@ function ${1:function_name}(${2}) {
 }
 endsnippet
 
-snippet caf "arrow anonymous function" b
+snippet caf "arrow anonymous function" i
 const ${1:function_name} = (${2}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet caaf "arrow async anonymous function" i
+const ${1:function_name} = async (${2}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+
+snippet afi "arrow anonymous function" w
+(${1}) => ${0:${VISUAL}}
+endsnippet
+
+snippet aaf "async arrow anonymous function" w
+async (${1}) => {
 	${0:${VISUAL}}
 }
 endsnippet
@@ -283,3 +300,12 @@ snippet _get "_.get(a, b, c)" b
 _.get(${1}, '${2}'${3:, ${4:'${5:value}'}})${6:; }
 endsnippet
 
+snippet td "TODO (todo)"
+/** TODO:
+* [ ] $1
+*/
+endsnippet
+
+snippet tdi "TODO (todo)"
+[ ] $1
+endsnippet

@@ -40,7 +40,7 @@ vnoremap <C-K> :m '<-2<CR>gv=gv
 nnoremap <leader>z za
 
 " Start substitute on current word under the cursor
-nnoremap <leader>S :%Subvert//gc<Left><Left><Left>
+nnoremap <leader>S :%s//gc<Left><Left><Left>
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
 nnoremap gj 5j

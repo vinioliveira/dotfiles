@@ -25,6 +25,9 @@ augroup javascriptfiletype
   autocmd BufRead,BufNewFile *.js.es6 set filetype=javascript.jsx
 augroup END
 
+" augroup typescript
+"   autocmd BufRead,BufNewFile *.cls set filetype=typescript
+" augroup END
 
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline

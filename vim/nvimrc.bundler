@@ -18,6 +18,8 @@ Plug 'slim-template/vim-slim'
 Plug 'nikvdp/ejs-syntax'
 Plug 'briancollins/vim-jst'
 Plug 'wsdjeg/JavaUnit.vim'
+Plug 'ejholmes/vim-forcedotcom'
+Plug 'hashivim/vim-terraform'
 
 " tests
 Plug 'janko-m/vim-test'
@@ -36,6 +38,7 @@ Plug 'rking/ag.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/nrrwrgn'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'kristijanhusak/defx-icons'
 
 " COC Plugins
 Plug 'iamcco/coc-actions', {'do': 'yarn install --frozen-lockfile'}
@@ -59,9 +62,11 @@ Plug 'tpope/vim-dispatch'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/IndexedSearch'
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'pantharshit00/vim-prisma'
+Plug 'will133/vim-dirdiff'
+Plug 'godlygeek/tabular'
 
 " Themes
-Plug 'nightsense/carbonized'
 Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'jacoborus/tender.vim'
@@ -72,8 +77,5 @@ Plug 'romainl/Apprentice'
 Plug 'colepeters/spacemacs-theme.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
-
-Plug 'will133/vim-dirdiff'
-Plug 'godlygeek/tabular'
 
 call plug#end()

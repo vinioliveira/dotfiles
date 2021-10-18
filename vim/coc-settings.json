@@ -10,12 +10,11 @@
     "ruby",
     "rails",
     "javascript",
-    "javascriptreact",
     "typescript",
+    "javascriptreact",
     "json"
   ],
   "eslint.autoFixOnSave": false,
-  "eslint.filetypes": ["javascript", "javascriptreact"],
   "typescript.suggestionActions.enabled": false,
   "javascript.suggestionActions.enabled": false,
   "solargraph.commandPath": "/Users/vinicius/.asdf/shims/solargraph",

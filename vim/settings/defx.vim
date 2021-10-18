@@ -19,11 +19,21 @@ imap <Leader>e Defx `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
 map <leader>E :Defx -split=vertical -winwidth=50 -direction=topleft<CR><esc>
 imap <leader>E :Defx -split=vertical -winwidth=50 -direction=topleft<CR><esc>
 
+call defx#custom#option('_', {
+    \ 'columns' :  'icons:indent:filename:type',
+    \ 'buffer_name': 'defxplorer',
+    \ 'listed': 1,
+    \ 'toggle': 0,
+    \ 'resume': 1
+    \ })
+
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
+        \ defx#is_directory() ?
+        \ defx#do_action('open_or_close_tree','recursive:10') :
         \ defx#do_action('open')
   nnoremap <silent><buffer><expr> c
         \ defx#do_action('copy')
@@ -34,7 +44,9 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> l
         \ defx#do_action('open')
   nnoremap <silent><buffer><expr> o
-        \ defx#do_action('open_directory')
+        \ defx#is_directory() ?
+        \ defx#do_action('open_or_close_tree') :
+        \ defx#do_action('open')
   nnoremap <silent><buffer><expr> E
         \ defx#do_action('open', 'vsplit')
   nnoremap <silent><buffer><expr> P
@@ -47,7 +59,7 @@ function! s:defx_my_settings() abort
         \ defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> C
         \ defx#do_action('toggle_columns',
-        \                'mark:filename:type:size:time')
+        \                'mark:filename:type:time')
   nnoremap <silent><buffer><expr> S
         \ defx#do_action('toggle_sort', 'time')
   nnoremap <silent><buffer><expr> d

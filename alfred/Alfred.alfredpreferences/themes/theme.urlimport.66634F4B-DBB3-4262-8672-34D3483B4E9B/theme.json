@@ -1,0 +1,65 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#FEFFFE65",
+        "font" : "System",
+        "color" : "#FEFFFE65"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#FEFFFE67",
+        "font" : "System",
+        "color" : "#FEFFFE65"
+      },
+      "backgroundSelected" : "#00000086",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#FEFFFEE5",
+        "font" : "System",
+        "color" : "#FEFFFEE5"
+      },
+      "iconPaddingHorizontal" : 7,
+      "roundness" : 0,
+      "paddingVertical" : 0,
+      "iconSize" : 35
+    },
+    "search" : {
+      "backgroundSelected" : "#09030AD9",
+      "paddingHorizontal" : 8,
+      "spacing" : 8,
+      "text" : {
+        "size" : 27,
+        "colorSelected" : "#FDFCFFE5",
+        "font" : "System",
+        "color" : "#EDF8F8FF"
+      },
+      "background" : "#F5FFFE00",
+      "roundness" : 0,
+      "paddingVertical" : 6
+    },
+    "window" : {
+      "color" : "#3B3B3D2F",
+      "paddingHorizontal" : 10,
+      "width" : 550,
+      "borderPadding" : 0,
+      "borderColor" : "#0000007F",
+      "blur" : 0,
+      "roundness" : 12,
+      "paddingVertical" : 9
+    },
+    "credit" : "Julian",
+    "visualEffectMode" : 2,
+    "separator" : {
+      "color" : "#00000019",
+      "thickness" : 1
+    },
+    "scrollbar" : {
+      "color" : "#FDFCFF32",
+      "thickness" : 6
+    },
+    "name" : "macOS Big Sur Dark"
+  }
+}

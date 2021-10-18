@@ -43,12 +43,12 @@
     "window" : {
       "color" : "#333437FF",
       "paddingHorizontal" : 0,
-      "width" : 440,
+      "width" : 467,
       "borderPadding" : 6,
       "borderColor" : "#494A4CFF",
       "blur" : 40,
-      "roundness" : -64,
-      "paddingVertical" : 2
+      "roundness" : -60,
+      "paddingVertical" : 9
     },
     "credit" : "mayuzumi",
     "separator" : {

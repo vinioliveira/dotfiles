@@ -8,3 +8,7 @@ bashcompinit
 
 . $(brew --prefix asdf)/asdf.sh
 . $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+source <(kubectl completion zsh)

@@ -19,6 +19,9 @@ eval "$(hub alias -s)"
 # alias git="hub"
 alias g="git"
 
+alias ku="kubectl"
+alias mku="minikube"
+
 
 # Git Alias
 alias ga="g a"
@@ -46,6 +49,7 @@ alias gst="g st"
 alias gup="g up"
 alias gcoi="fbr"
 alias gsync-master="g sync-master"
+alias gx="gitx ."
 
 alias t="tmux"
 alias tn="tmuxp load"

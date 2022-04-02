@@ -1,6 +1,7 @@
 let g:test#preserve_screen = 0
 let g:dispatch_quickfix_height=15
 let test#strategy = "dispatch"
+" let test#strategy = "vimux"
 let g:test#runner_commands = ['RSpec', 'Mocha', 'jest']
 
 

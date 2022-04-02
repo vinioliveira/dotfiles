@@ -101,9 +101,9 @@ source ~/.dotfiles/vim/nvimrc.bundler
 
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='medium' " soft medium hard
-set background=dark
+set background=light
 
-" let ayucolor="light"  " for light version of theme
+let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 
@@ -118,10 +118,10 @@ try
   " colorscheme base16-gruvbox-dark-hard " afternoon theme
   " colorscheme base16-gruvbox-lighj-hard " afternoon theme
   " colorscheme apprentice
-  colorscheme onedark
+  " colorscheme onedark
   " colorscheme base16-materia
   " colorscheme spacemacs-theme
-  " colorscheme ayu
+  colorscheme ayu
   " colorscheme base16-eighties
   " colorscheme base16-oceanicnext
 catch /^Vim\%((\a\+)\)\=:E185/

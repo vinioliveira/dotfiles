@@ -8,12 +8,12 @@ call defx#custom#column('mark', {
       \ })
 
 "====================  Maps =================================
-map <leader>d <esc>:Defx <C-R>=getcwd()<CR><esc>
-imap <leader>d <esc>:Defx <C-R>=getcwd()<CR><esc>
+map <leader>d <esc>:Defx -new <C-R>=getcwd()<CR><esc>
+imap <leader>d <esc>:Defx -new <C-R>=getcwd()<CR><esc>
 
 "Open in the current directory
-map <Leader>e :Defx `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
-imap <Leader>e Defx `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
+map <Leader>e :Defx -new `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
+imap <Leader>e Defx  -new `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
 
 "Open
 map <leader>E :Defx -split=vertical -winwidth=50 -direction=topleft<CR><esc>
@@ -23,10 +23,9 @@ call defx#custom#option('_', {
     \ 'columns' :  'icons:indent:filename:type',
     \ 'buffer_name': 'defxplorer',
     \ 'listed': 1,
-    \ 'toggle': 0,
-    \ 'resume': 1
+    \ 'toggle': 1,
+    \ 'resume': 1,
     \ })
-
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
@@ -34,7 +33,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree','recursive:10') :
-        \ defx#do_action('open')
+        \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> c
         \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m

@@ -79,3 +79,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Use <cr> to confirm completion
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+

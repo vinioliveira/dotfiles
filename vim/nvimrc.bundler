@@ -1,4 +1,5 @@
 if empty(glob($HOME."/.local/share/nvim/site/autoload"))
+
   " Ensure all needed directories exist  (Thanks @kapadiamush)
   " For Neovim: ~/.local/share/nvim/plugged
   echom "This will install vim plgin"
@@ -59,6 +60,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-dispatch'
+
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/IndexedSearch'
 Plug 'nelstrom/vim-visual-star-search'

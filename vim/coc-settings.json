@@ -3,8 +3,8 @@
   "diagnostic.warningSign": "\uf071",
   "diagnostic.infoSign": "\uf129",
   "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter":true,
   "languageserver": {},
-  "prettier.eslintIntegration": true,
   "prettier.onlyUseLocalVersion": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "ruby",

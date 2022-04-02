@@ -1,1 +1,27 @@
 extends javascript
+
+
+snippet pbfm "public class method" b
+public ${1:method_name}(${2}:${3} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet pbafm "public async class method" b
+public async ${1:method_name}(${2}):${3}{
+	${0:${VISUAL}}
+}
+endsnippet
+
+
+snippet pvfm "private class method" b
+private ${1:method_name}(${2}:${3} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet pvafm "private async class method" b
+private ${1:method_name}(${2}:${3} {
+	${0:${VISUAL}}
+}
+endsnippet

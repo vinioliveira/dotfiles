@@ -82,10 +82,10 @@
   var tax = incoming * 0.04;
   var discounts = [
     tax,
-    490, // pro-labore
+    540, // pro-labore
     607.5, // plano de saude
-    60, // agilize
-    62, // inss
+    65, // agilize
+    67, // inss
   ];
 
   var profit = incoming - discounts.reduce((sum, discount) =&gt; sum + discount);

@@ -1,0 +1,23 @@
+{
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.enableMessage": "jump",
+  "diagnostic.checkCurrentLine": true,
+  "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter":true,
+  "languageserver": {},
+  "prettier.onlyUseLocalVersion": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "ruby",
+    "rails",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "json"
+  ],
+  "eslint.autoFixOnSave": false,
+  "typescript.suggestionActions.enabled": false,
+  "javascript.suggestionActions.enabled": false
+}

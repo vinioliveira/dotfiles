@@ -1,3 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # # Init the fasd
 eval "$(fasd --init auto hub alias -s)"
 

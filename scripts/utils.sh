@@ -102,3 +102,6 @@ colortab() {
     fi
   done
 }
+
+# autoload -U add-zsh-hook
+# add-zsh-hook -Uz chpwd (){ ls -a; }

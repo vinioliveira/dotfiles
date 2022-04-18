@@ -35,10 +35,8 @@ task copy_files: [:install_others] do
   install_file(Dir.glob('ruby/*'))
   install_file(Dir.glob('ctags/*'))
   install_file(Dir.glob('tmux/*'))
-  install_files(Dir.glob('karabiner/*'), "#{ENV['HOME']}/.config")
-  install_files(Dir.glob('vim/init.vim'), "#{ENV['HOME']}/.config")
-  install_files(Dir.glob('vim/coc-settings.json'), "#{ENV['HOME']}/.config/nvim")
-  install_file(Dir.glob('vim/{vimrc,gvimrc}'))
+  install_files(Dir.glob('nvim'), "#{ENV['HOME']}/.config", false) # need to check if this is going to work
+  install_karabiner
 end
 
 task install_pip_depdencies: [:copy_files] do
@@ -75,7 +73,7 @@ def install_homebrew
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts 'already installed, this will do nothing.'
     puts '======================================================'
-    run %{ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
+    run %{bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"}
   end
 
   puts
@@ -100,7 +98,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew cask install keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred dash4 iterm2 appcleaner cloudapp google-backup-and-sync docker istat-menus karabiner-elements microsoft-teams rescuetime spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code rowanj-gitx dbeaver-community)
+  run %(brew install --cask keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred  iterm2 appcleaner cloudapp docker istat-menus karabiner-elements rescuetime spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code rowanj-gitx dbeaver-community pdf-expert)
   puts
   puts
 
@@ -108,7 +106,7 @@ def install_homebrew
   puts 'Installing tap fonts cask packages...There may be some warnings.'
   puts '======================================================'
   run %(  brew tap homebrew/cask-fonts     )
-  run %( brew install font-firacode-nerd-font )
+  run %( brew install --cask font-iosevka-nerd-font font-hack-nerd-font font-fantasque-sans-mono-nerd-font font-fira-code-nerd-font)
   puts
 end
 
@@ -171,8 +169,8 @@ def install_prezto
 
   puts
   puts 'Linking bluetooth restart scripts'
-  run %( ln -nfs "$HOME/.dotfiles/scripts/restart-bluetooth.sh" "/usr/local/bin" )
-  run %( chmod -x "/usr/local/bin/restart-bluetooth.sh" )
+  # run %( ln -nfs "$HOME/.dotfiles/scripts/restart-bluetooth.sh" "/usr/local/bin" )
+  # run %( chmod -x "/usr/local/bin/restart-bluetooth.sh" )
 
   if ENV['SHELL'].include? 'zsh'
     puts 'Zsh is already configured as your shell of choice. Restart your session to load the new settings'
@@ -216,11 +214,11 @@ def install_file(files)
   install_files(files, ENV['HOME'])
 end
 
-def install_files(files, destination)
+def install_files(files, destination, hidden=true)
   files.each do |f|
     file = f.split('/').last
     source = "#{ENV['PWD']}/#{f}"
-    target = "#{destination}/.#{file}"
+    target = "#{destination}/#{hidden ? '.' : ''}#{file}"
 
     puts "======================#{file}=============================="
     puts "Source: #{source}"

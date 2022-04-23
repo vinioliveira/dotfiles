@@ -130,7 +130,7 @@ local enhance_server_opts = {
           eslint = {
             command = 'eslint_d',
             rootPatterns = { '.git' },
-            debounce = 100,
+            debounce = 2000,
             args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
             sourceName = 'eslint_d',
             parseJson = {
@@ -182,11 +182,16 @@ local enhance_server_opts = {
   end
 }
 
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
-    -- This sets the spacing and the prefix, obviously.
     virtual_text = {
       spacing = 4,
       prefix = ''

@@ -2,7 +2,7 @@
 " let g:gruvbox_contrast_light='medium' " soft medium hard
 set background=dark
 
-let ayucolor="light"  " for light version of theme
+" let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 
@@ -36,3 +36,8 @@ let g:neosolarized_italic = 0
 " text output by commands like `ls` aren't what you expect, you might want to
 " try disabling this option. Default value:
 let g:neosolarized_termBoldAsBright = 1
+
+
+" set transparent background
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red

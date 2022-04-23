@@ -7,8 +7,12 @@ treesitter.setup {
     enable = true,
     disable = {},
   },
+  incremental_selection = {
+    enable = false
+  },
+  additional_vim_regex_highlighting = false,
   indent = {
-    enable = true,
+    enable = false,
     disable = {},
   },
   ensure_installed = {
@@ -22,9 +26,9 @@ treesitter.setup {
     "lua",
     "scss"
   },
-  autotag = {
-    enable = true,
-  }
+  -- autotag = {
+  --   enable = true,
+  -- }
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

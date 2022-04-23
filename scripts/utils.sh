@@ -104,4 +104,4 @@ colortab() {
 }
 
 # autoload -U add-zsh-hook
-# add-zsh-hook -Uz chpwd (){ ls -a; }
+# add-zsh-hook -Uz chpwd (){ ls -lhF; }

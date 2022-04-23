@@ -17,7 +17,6 @@ export TODO_DB_PATH="$HOME/.todos"
 export FZF_DEFAULT_COMMAND='ag -s -g ""'
 
 ruby_version="$(ruby --version | awk  '{print $2}')"
-echo  "$ruby_version"
 if [[ "$ruby_version" == "2.7"* ]]; then
   echo "SET"
   export RUBYOPT='-W:no-deprecated -W:no-experimental'

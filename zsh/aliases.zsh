@@ -1,5 +1,5 @@
-alias ll="ls -Glahs"
-alias ls="ls -G"
+alias ll="exa -lFa --icons "
+alias ls="exa --sort Name -F --icons"
 alias make="make -j2"
 alias ni="lsof -Pn -i"
 alias psgrep="ps aux | egrep -v egrep | egrep"

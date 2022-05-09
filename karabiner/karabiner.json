@@ -1484,48 +1484,11 @@
                         ]
                     },
                     {
-                        "description": "Midia Control I",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "fast_forward",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "volume_up"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "rewind",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "volume_down"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Teams / + 5 Studio",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "1",
+                                    "key_code": "2",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -1541,7 +1504,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "2",
+                                    "key_code": "3",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -1557,7 +1520,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "3",
+                                    "key_code": "4",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -1570,7 +1533,7 @@
                                     }
                                 ],
                                 "type": "basic"
-                            },
+                            }
                         ]
                     }
                 ]
@@ -1881,41 +1844,11 @@
                 },
                 {
                     "from": {
-                        "key_code": "home"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "play_or_pause"
-                        }
-                    ]
-                },
-                {
-                    "from": {
                         "key_code": "left_control"
                     },
                     "to": [
                         {
                             "key_code": "right_option"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "page_down"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "volume_decrement"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "page_up"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "volume_increment"
                         }
                     ]
                 },

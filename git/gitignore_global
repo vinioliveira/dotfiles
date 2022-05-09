@@ -61,3 +61,10 @@ db.json
 
 # ruby
 .solargraph.yml
+
+
+_todo.txt
+
+node_modules/
+
+dist/

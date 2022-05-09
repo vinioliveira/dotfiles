@@ -121,5 +121,8 @@ ${editor_info[keymap]}'
   # RPROMPT='$POWERLINE_COLOR_FG_WHITE$POWERLINE_R_SEPARATOR%F$POWERLINE_COLOR_BG_WHITE${node_info[version]} %F{7}%K{10} %t%K%F{10}$POWERLINE_SEPARATOR%f%k'
 
 }
+
+# changing color of autosegestion
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 prompt_vini_setup "$@"
 

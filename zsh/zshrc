@@ -12,6 +12,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 source $HOME/.dotfiles/scripts/utils.sh
+# source $HOME/.dotfiles/scripts/tmux.sh
 
 # Customize to your needs...
 for config_file (~/.dotfiles/zsh/*.zsh) source $config_file

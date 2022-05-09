@@ -24,7 +24,8 @@ treesitter.setup {
     "yaml",
     "html",
     "lua",
-    "scss"
+    "scss",
+    "solidity"
   },
   -- autotag = {
   --   enable = true,

@@ -1,54 +1,54 @@
 local status_lspconfig, _ = pcall(require, "lspconfig")
 if (not status_lspconfig) then return end
 
+local lspconfig = require('lspconfig');
 local status_lsp_install, lsp_installer = pcall(require, "nvim-lsp-installer")
 if (not status_lsp_install) then return end
 
 
+-- vim.lsp.set_log_level("trace")
+
+
+-- Always display sign column
 vim.o.signcolumn = "yes"
 
-local servers = {
-  "tsserver",
-  "diagnosticls",
-  "sumneko_lua"
-}
+local servers = { "tsserver", "diagnosticls", "sumneko_lua" }
 
-
-for _, name in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found and not server:is_installed() then
-    print("Installing " .. name)
-    server:install()
-  end
-end
+lsp_installer.setup({
+  ensure_installed = servers, -- ensure these servers are always installed
+  automatic_installation = true
+})
 
 local protocol = require('vim.lsp.protocol')
 
-local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<leader>?', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ap', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>an', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>a?', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
+local mopts = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gk', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', mopts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
+  buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
+  buf_set_keymap('n', 'sf', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', mopts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', mopts)
 
-  buf_set_keymap('n', '<leader>k', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- utils
+  buf_set_keymap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
+  buf_set_keymap('n', '<space>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
+  buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.document_symbol<CR>', mopts)
 
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  -- diagnostic
+  buf_set_keymap('n', '?', '<cmd>lua vim.diagnostic.open_float()<CR>', mopts)
+  buf_set_keymap('n', '<leader>ap', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mopts)
+  buf_set_keymap('n', '<leader>an', '<cmd>lua vim.diagnostic.goto_next()<CR>', mopts)
+  buf_set_keymap('n', '<leader>a?', '<cmd>lua vim.diagnostic.setloclist()<CR>', mopts)
 
   -- formatting
   if client.name == 'tsserver' then
-    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_formatting = true
   end
 
   if client.resolved_capabilities.document_formatting then
@@ -88,99 +88,118 @@ local on_attach = function(client, bufnr)
   }
 end
 
+-- for _, lsp in pairs(servers) do
+--   require('lspconfig')[lsp].setup {
+--     on_attach = on_attach,
+--     flags = {
+--       -- This will be the default in neovim 0.7+
+--       debounce_text_changes = 150,
+--     }
+--   }
+-- end
+
+
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-local enhance_server_opts = {
-  ['tsserver'] = function(opts)
-    opts.settings = {
-      on_attach = on_attach,
-      filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-      capabilities = capabilities,
-    }
-  end,
-
-  ['sumneko_lua'] = function(opts)
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
-    opts.settings = {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-        },
-      }
-    }
-  end,
-
-  ['diagnosticls'] = function(opts)
-    opts.settings = {
-      on_attach = on_attach,
-      filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'pandoc' },
-      init_options = {
-        linters = {
-          eslint = {
-            command = 'eslint_d',
-            rootPatterns = { '.git' },
-            debounce = 2000,
-            args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-            sourceName = 'eslint_d',
-            parseJson = {
-              errorsRoot = '[0].messages',
-              line = 'line',
-              column = 'column',
-              endLine = 'endLine',
-              endColumn = 'endColumn',
-              message = '[eslint] ${message} [${ruleId}]',
-              security = 'severity'
-            },
-            securities = {
-              [2] = 'error',
-              [1] = 'warning'
-            }
-          },
-        },
-        filetypes = {
-          javascript = 'eslint',
-          javascriptreact = 'eslint',
-          typescript = 'eslint',
-          typescriptreact = 'eslint',
-        },
-        formatters = {
-          eslint_d = {
-            command = 'eslint_d',
-            rootPatterns = { '.git' },
-            args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-          },
-          prettier = {
-            command = 'prettier_d_slim',
-            rootPatterns = { '.git' },
-            -- requiredFiles: { 'prettier.config.js' },
-            args = { '--stdin', '--stdin-filepath', '%filename' }
-          }
-        },
-        formatFiletypes = {
-          css = 'prettier',
-          javascript = 'prettier',
-          javascriptreact = 'prettier',
-          json = 'prettier',
-          scss = 'prettier',
-          less = 'prettier',
-          typescript = 'prettier',
-          typescriptreact = 'prettier',
-        }
-      }
-    }
-  end
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
 }
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+}
+
+lspconfig.diagnosticls.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
+  init_options = {
+    linters = {
+      eslint = {
+        command = './node_modules/.bin/eslint',
+        rootPatterns = { '.git' },
+        debounce = 600,
+        args = { '--stdin', '--stdin-filename', '%filepath', "--format", "json", "--debug" },
+        sourceName = 'eslint',
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '[eslint] ${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+    },
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+    },
+    formatters = {
+      eslint = {
+        command = './node_modules/.bin/eslint',
+        rootPatterns = { '.git' },
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+      },
+      prettier = {
+        command = './node_modules/.bin/prettier',
+        rootPatterns = { '.prettierrc' },
+        args = { '--stdin', '--stdin-filepath', '%filename' },
+      }
+    },
+    formatFiletypes = {
+      css = 'prettier',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
+      json = 'prettier',
+      scss = 'prettier',
+      less = 'prettier',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
+    }
+  }
+}
+
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -197,18 +216,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       prefix = ''
     }
   }
+
 )
 
-
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach
-  }
-
-  if enhance_server_opts[server.name] then
-    -- Enhance the default opts with the server-specific ones
-    enhance_server_opts[server.name](opts)
-  end
-
-  server:setup(opts)
-end)
+-- Mappings

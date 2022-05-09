@@ -39,8 +39,18 @@ vnoremap <C-K> :m '<-2<CR>gv=gv
 " Easier fold toggling
 nnoremap <leader>z za
 
-" Start substitute on current word under the cursor
 nnoremap <leader>S :%s//gc<Left><Left><Left>
+
+
+nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+xnoremap <silent> s* "sy:let @/=@s<CR>cgn
+
+" Start substitute on current word under the cursor
+nnoremap <Leader>r :%s///g<Left><Left>
+nnoremap <Leader>rc :%s///gc<Left><Left>
+
+nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>
+
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
 nnoremap gj 5j

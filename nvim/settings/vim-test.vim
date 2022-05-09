@@ -7,8 +7,10 @@ let g:test#runner_commands = ['RSpec', 'Mocha', 'jest']
 
 let g:test#javascript#mocha#file_pattern = '\v.*.(test|spec)s?\.(js|ts)$'
 let g:test#javascript#mocha#environment = {'NODE_ENV': 'test'}
-let g:test#javascript#jest#file_pattern = '\v.*.(test|spec)s?\.(jsx|tsx)$'
+let g:test#javascript#jest#file_pattern = '\v(test|spec)s?\.(jsx|tsx)$'
 let test#javascript#jest#executable = 'CI=true npm test'
+
+let test#javascript#nx#executable = 'npm run jest'
 
 let test#javascript#mocha#options =  '--exit'
 

@@ -1,7 +1,8 @@
 
 
-# Left side of status bar
-set -g status-left "#[fg=colour4]#S #[fg=white]» #[fg=colour7]#I #[fg=colour3]#P"
+# Left side of status rar
+
+set -g status-left "#[bg=colour7]#[fg=colour0]#[bold] #S #[fg=colour7]#[bg=colour11]#[bg=colour11]#[fg=colour7]#I #[fg=colour8]#P #[fg=colour11]#[bg=colour237]"
 set -g status-left-style bg=colour237,fg=colour6
 set -g status-left-length 40
 
@@ -15,11 +16,11 @@ set -g status-right-length 140
 set -g window-status-format " #I. #W "
 set -g window-status-style fg=colour7,bg=colour237
 
-set -g window-status-current-format " #I. #W "
-set -g window-status-current-style bg=colour4,fg=colour0
+set -g window-status-current-format "#[fg=colour6]#[bg=colour237]#[bg=colour6]#[fg=colour0] #I. #W #[fg=colour237]#[bg=colour6]"
+# set -g window-status-current-style bg=colour6,fg=colour0
 
 # Window with activity status
-set -g window-status-activity-style bg=yellow,fg=colour237
+set -g window-status-activity-style bg=colour237,fg=colour5
 
 # Window separator
 set -g window-status-separator ""

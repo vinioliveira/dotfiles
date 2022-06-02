@@ -1488,7 +1488,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "2",
+                                    "key_code": "1",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -1504,7 +1504,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "3",
+                                    "key_code": "2",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -1520,7 +1520,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "4",
+                                    "key_code": "3",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"

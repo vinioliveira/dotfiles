@@ -33,6 +33,7 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/nrrwrgn'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
+Plug 'karb94/neoscroll.nvim'
 
 " LSP NVim options
 Plug 'williamboman/nvim-lsp-installer'
@@ -43,6 +44,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
+" Plug 'jose-elias-alvarez/null-ls.nvim'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " COC Plugins
@@ -76,7 +80,7 @@ Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
 " Plug 'sjl/badwolf'
 " Plug 'jacoborus/tender.vim'
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 " Plug 'mike-hearn/base16-vim-lightline'
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'romainl/Apprentice'

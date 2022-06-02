@@ -6,13 +6,13 @@ local status_lsp_install, lsp_installer = pcall(require, "nvim-lsp-installer")
 if (not status_lsp_install) then return end
 
 
--- vim.lsp.set_log_level("trace")
+-- vim.lsp.set_log_level("debug")
 
 
 -- Always display sign column
 vim.o.signcolumn = "yes"
 
-local servers = { "tsserver", "diagnosticls", "sumneko_lua" }
+local servers = { "tsserver", "sumneko_lua", "tailwindcss", "eslint" }
 
 lsp_installer.setup({
   ensure_installed = servers, -- ensure these servers are always installed
@@ -37,7 +37,6 @@ local on_attach = function(client, bufnr)
   -- utils
   buf_set_keymap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
   buf_set_keymap('n', '<space>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
-  buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.document_symbol<CR>', mopts)
 
 
   -- diagnostic
@@ -142,17 +141,18 @@ lspconfig.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
 
-lspconfig.diagnosticls.setup {
+lspconfig.diagnosticls.setup = {
   on_attach = on_attach,
+  capabilities = capabilities,
   flags = { debounce_text_changes = 150 },
   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
   init_options = {
     linters = {
       eslint = {
-        command = './node_modules/.bin/eslint',
+        command = 'eslint_d',
         rootPatterns = { '.git' },
-        debounce = 600,
-        args = { '--stdin', '--stdin-filename', '%filepath', "--format", "json", "--debug" },
+        debounce = 100,
+        args = { '--stdin', '--stdin-filename', '%filepath', "--format", "json" },
         sourceName = 'eslint',
         parseJson = {
           errorsRoot = '[0].messages',
@@ -200,6 +200,36 @@ lspconfig.diagnosticls.setup {
   }
 }
 
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  capabilities = capabilities,
+  filetypes = { "typescriptreact", "typescript.tsx", "css" },
+  tailwindCSS = {
+    classAttributes = { "class", "className" },
+    lint = {
+      cssConflict = "warning",
+      invalidApply = "error",
+      invalidConfigPath = "error",
+      invalidScreen = "error",
+      invalidTailwindDirective = "error",
+      invalidVariant = "error",
+      recommendedVariantOrder = "warning"
+    },
+    validate = true
+  }
+}
+
+lspconfig.eslint.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  capabilities = capabilities,
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
+  settings = {
+    run = "onType"
+  },
+}
+
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -218,5 +248,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 
 )
-
--- Mappings

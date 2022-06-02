@@ -11,15 +11,15 @@ let ${1} = ${0};
 endsnippet
 
 snippet im "import xyz from 'xyz'"
-import ${1} from '${2:$1}';
+import ${1} from "${2:$1}";
 endsnippet
 
 snippet imas "import * as xyz from 'xyz'"
-import * as ${1} from '${2:$1}';
+import * as ${1} from "${2:$1}";
 endsnippet
 
 snippet imm "import { member } from 'xyz'"
-import { ${1} } from '${2}';
+import { ${1} } from "${2}";
 endsnippet
 
 snippet cla "Class"
@@ -191,31 +191,31 @@ logger.info('${1}'${2:, ${3:$1}});
 endsnippet
 
 snippet ld "logger.debug"
-console.debug('${1}'${2:, ${3:$1}});
+console.debug("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet cl "console.log"
-console.log('${1}'${2:, ${3:$1}});
+console.log("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet cd "console.debug"
-console.debug('${1}'${2:, ${3:$1}});
+console.debug("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet ce "console.error"
-console.error('${1}'${2:, ${3:$1}});
+console.error("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet cw "console.warn"
-console.warn('${1}'${2:, ${3:$1}});
+console.warn("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet ci "console.info"
-console.info('${1}'${2:, ${3:$1}});
+console.info("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet ct "console.trace"
-console.trace('${1:label}'${2:, ${3:$1}});
+console.trace("${1:label}"${2:, ${3:$1}});
 endsnippet
 
 snippet timeout "timout"

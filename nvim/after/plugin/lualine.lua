@@ -28,12 +28,11 @@ lualine.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = {
-      { 'branch', fmt = trunc(10, 4, nil, true) },
-      { 'diff', colored = false },
+      { 'branch', fmt = function(str) return str:sub(1, 10) .. (str:len() > 10 and "..." or "") end },
       'diagnostics',
     },
-    lualine_c = { { 'filename', path = 1 } },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_c = { { 'filename', path = 1, shorting_target = 30 } },
+    lualine_x = { 'encoding', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },

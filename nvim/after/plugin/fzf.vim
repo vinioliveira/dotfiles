@@ -36,6 +36,17 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Ag<space>
 nnoremap <leader>ag :Ag<space>
+
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+
+command! BufferDelete call CloseAllBuffersButCurrent()
+
 " nnoremap <leader>f :BTags<CR>
 " nnoremap <leader>F :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 
@@ -45,3 +56,20 @@ nnoremap <leader>ag :Ag<space>
 " " imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 " " imap <c-x><c-l> <plug>(fzf-complete-line)
 " " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BufferList call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))

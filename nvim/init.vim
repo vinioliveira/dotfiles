@@ -1,28 +1,19 @@
-" ======    GENERAL CONFIGURATIONS  ==========
-" https://neovim.io/doc/user/options.html
-" set nocompatible            " always set in neovim
-" set autoread                " detect when a file is changed
+" autocmd!
 
-" these are gruvbox specifics
-if (has("termguicolors"))
-  set termguicolors
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-"
 set wildignore=*.o,*~,*.pyc
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
 
-" set synmaxcol=200
-syntax sync minlines=50
+set title
+set inccommand=split
 
+set synmaxcol=200
+" syntax sync minlines=50
+"
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
-" set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮,eol:¬,space:␣
-" set listchars=tab:→\ ,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»
 set listchars=tab:→\ ,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set list " Useful to see the difference between tabs and spaces and for trailing blanks
 " set guicursor=
@@ -39,6 +30,9 @@ set foldmethod=indent       " fold based on indent
 " set foldmethod=manual
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
+filetype plugin indent on
+set formatoptions+=r
+set smartindent
 
 " Copy settings
 set clipboard=unnamed
@@ -51,14 +45,14 @@ set lazyredraw              " don't redraw while executing macros
 " set re=1
 
 set laststatus=2            " show the satus line all the time
-set so=7                    " set 7 lines to the cursors - when moving vertical
+set so=10                    " set 7 lines to the cursors - when moving vertical
 set wildmenu                " enhanced command line completion
 set hidden                  " current buffer can be put into background
 set showcmd                 " show incomplete commands
 " set wildmode=list:longest   " complete files like a shell
-set shell=$SHELL
+" set shell=$SHELL
 " set nocursorcolumn
-" set cursorline
+set cursorline
 
 " Searching
 set ignorecase              " case insensitive searching
@@ -97,7 +91,6 @@ au BufWrite * :call DeleteTrailingWS()
 
 let mapleader = ','
 
-
 runtime ./nvimrc.bundler
 
 
@@ -105,18 +98,15 @@ runtime ./nvimrc.bundler
 for fpath in split(globpath('~/.config/nvim/settings', '*.vim'), '\n')
   exe 'source' fpath
 endfor
+syntax enable
 
 "========== Others ===============
 " source ~/.dotfiles/vim/filetype.vim
 runtime ./keymap.vim
 
-" true color
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=5
-  set background=dark
-  colorscheme gruvbox
-endif
+set termguicolors
+set wildoptions=pum
+set background=dark
+let $BAT_THEME="gruvbox"
+colorscheme gruvbox
+

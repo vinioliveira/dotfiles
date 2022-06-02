@@ -1,3 +1,4 @@
+
 let g:test#preserve_screen = 0
 let g:dispatch_quickfix_height=15
 let test#strategy = "dispatch"
@@ -10,7 +11,8 @@ let g:test#javascript#mocha#environment = {'NODE_ENV': 'test'}
 let g:test#javascript#jest#file_pattern = '\v(test|spec)s?\.(jsx|tsx)$'
 let test#javascript#jest#executable = 'CI=true npm test'
 
-let test#javascript#nx#executable = 'npm run jest'
+" let test#javascript#nx#executable = 'npm run jest'
+
 
 let test#javascript#mocha#options =  '--exit'
 

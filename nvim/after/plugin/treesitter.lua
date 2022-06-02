@@ -17,6 +17,7 @@ treesitter.setup {
   },
   ensure_installed = {
     "tsx",
+    "typescript",
     "json",
     "python",
     "go",

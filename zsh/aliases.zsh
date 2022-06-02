@@ -5,6 +5,9 @@ alias ni="lsof -Pn -i"
 alias psgrep="ps aux | egrep -v egrep | egrep"
 alias k9="kill -9"
 alias cat="bat"
+alias cd="z"
+alias cdi="zi"
+alias zz="z -"
 
 alias r="rails"
 alias n="node"
@@ -62,9 +65,13 @@ alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep
 
 alias today="cal | grep -C6 --color $(date +%e)"
 
-alias psr="progenity-server"
-alias psy="progenity-yarn"
+alias validate_pr="npm run format:check -- --base=origin/develop && npm run typecheck:webapp && npm run affected:lint -- --base=origin/develop"
+alias copyai_servers="copyai_server.sh"
+
 
 alias yn="yarn"
+alias np="npm"
+alias npi="npm i"
+alias npif="npm i -f"
+alias npr="npm run"
 
-alias s="sfdx"

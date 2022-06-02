@@ -87,7 +87,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite ripgrep tmux vim watch yarn zsh zsh-completions neovim ansible axa)
+  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite ripgrep tmux vim watch yarn zsh zsh-completions neovim ansible axazoxide)
   puts
   puts
 #   puts '======================================================'

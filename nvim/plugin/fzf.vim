@@ -32,7 +32,7 @@ command! -bang -nargs=+ -complete=file Ag call fzf#vim#ag_raw(<q-args>, fzf#vim#
 
 
 " ============ MAPS ==============
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>bb :Buffers<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Ag<space>
 nnoremap <leader>ag :Ag<space>

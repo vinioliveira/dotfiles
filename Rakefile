@@ -87,7 +87,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install ctags fasd fzf git ghostscript graphviz httpie hub ifstat imagemagick openssl python pgcli readline redis reattach-to-user-namespace sqlite ripgrep tmux vim watch yarn zsh zsh-completions neovim ansible axazoxide)
+  run %( brew install  fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim axazoxide bat)
   puts
   puts
 #   puts '======================================================'
@@ -98,7 +98,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew install --cask keepingyouawake 1password postman google-chrome fantastical studio-3t muzzle slack alfred  iterm2 appcleaner cloudapp docker istat-menus karabiner-elements rescuetime spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code rowanj-gitx dbeaver-community pdf-expert numi grammarly-desktop)
+  run %(brew install --cask keepingyouawake 1password postman google-chrome fantastical muzzle slack alfred  iterm2 appcleaner cloudapp docker istat-menus karabiner-elements spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code dbeaver-community pdf-expert numi grammarly-desktop)
   puts
   puts
 
@@ -114,7 +114,7 @@ def install_others
   puts '======================================================'
   puts 'Installing ASDF packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install asdf coreutils automake autoconf libyaml libxslt libtool unixodbc unzip gpg )
+  run %( brew install asdf)
   puts
   puts
   puts '======================================================'

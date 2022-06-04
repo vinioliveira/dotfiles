@@ -12,8 +12,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax checking + Languages & Framework
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'elzr/vim-json'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " tests
@@ -24,7 +22,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " For identation
 Plug 'tpope/vim-commentary'
-" Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Navigation
@@ -45,20 +42,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
-" Plug 'jose-elias-alvarez/null-ls.nvim'
-" post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" COC Plugins
-" let g:coc_global_extensions = [
-"   \ 'coc-tsserver',
-"   \ 'coc-css',
-"   \ 'coc-cssmodules',
-"   \ 'coc-eslint',
-"   \ 'coc-json',
-"   \ 'coc-prettier',
-"   \ ]
 
 " Others
 Plug 'vuciv/vim-bujo'

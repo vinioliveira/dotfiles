@@ -29,10 +29,6 @@ noremap q <Nop>
 " nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
 " move lines through the file
-nnoremap <C-J> :m .+1<CR>==
-nnoremap <C-K> :m .-2<CR>==
-inoremap <C-J> <Esc>:m .+1<CR>==gi
-inoremap <C-K> <Esc>:m .-2<CR>==gi
 vnoremap <C-J> :m '>+1<CR>gv=gv
 vnoremap <C-K> :m '<-2<CR>gv=gv
 

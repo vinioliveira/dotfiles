@@ -78,7 +78,13 @@ nnoremap <silent> <leader>p :cprevious<CR>
 " CTRL-Tab is next tab
 noremap <C-t> :tabnext<CR>
 " CTRL-SHIFT-Tab is previous tab
-noremap <C-e> :tabprevious<CR>
+noremap <C-T> :tabprevious<CR>
+noremap <leader>nt :tabe <CR>
+
+noremap <leader>bn :bnext <CR>
+noremap <leader>bp :bprevious <CR>
+noremap <leader>bd :BufferDelete <CR>
+
 
 
 " nnoremap <enter>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>

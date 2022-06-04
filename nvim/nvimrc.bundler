@@ -24,7 +24,8 @@ Plug 'jiangmiao/auto-pairs'
 
 " For identation
 Plug 'tpope/vim-commentary'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -60,6 +61,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 "   \ ]
 
 " Others
+Plug 'vuciv/vim-bujo'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'

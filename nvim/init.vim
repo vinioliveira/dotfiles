@@ -14,8 +14,8 @@ set synmaxcol=200
 "
 set number                  " show line numbers
 set relativenumber          " show relative line numbers
-set listchars=tab:→\ ,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set list " Useful to see the difference between tabs and spaces and for trailing blanks
+set listchars=tab:→\ ,nbsp:␣,trail:•,eol:↴,precedes:«,extends:»
 " set guicursor=
 set backspace=indent,eol,start
 
@@ -33,7 +33,7 @@ set nofoldenable            " don't fold by default
 filetype plugin indent on
 set formatoptions+=r
 set smartindent
-
+set conceallevel=0
 " Copy settings
 set clipboard=unnamed
 

@@ -12,7 +12,7 @@ if (not status_lsp_install) then return end
 -- Always display sign column
 vim.o.signcolumn = "yes"
 
-local servers = { "tsserver", "sumneko_lua", "tailwindcss", "eslint" }
+local servers = { "tsserver", "sumneko_lua", "tailwindcss", "diagnosticls" }
 
 lsp_installer.setup({
   ensure_installed = servers, -- ensure these servers are always installed
@@ -21,6 +21,7 @@ lsp_installer.setup({
 
 local protocol = require('vim.lsp.protocol')
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local mopts = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -29,14 +30,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', mopts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
-  buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
   buf_set_keymap('n', 'sf', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', mopts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', mopts)
+  buf_set_keymap('n', '<c-k>', '<Cmd>lua vim.lsp.buf.hover()<CR>', mopts)
+  buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
 
   -- utils
   buf_set_keymap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
-  buf_set_keymap('n', '<space>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
+  buf_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
 
 
   -- diagnostic
@@ -47,14 +47,20 @@ local on_attach = function(client, bufnr)
 
   -- formatting
   if client.name == 'tsserver' then
-    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.document_formatting = false
+    -- client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[augroup Format]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-    vim.api.nvim_command [[augroup END]]
+  if client.name == 'diagnosticls' and client.supports_method('textDocument/formatting') then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+        vim.lsp.buf.formatting_sync()
+      end,
+    })
   end
 
   --protocol.SymbolKind = { }
@@ -86,16 +92,6 @@ local on_attach = function(client, bufnr)
     '', -- TypeParameter
   }
 end
-
--- for _, lsp in pairs(servers) do
---   require('lspconfig')[lsp].setup {
---     on_attach = on_attach,
---     flags = {
---       -- This will be the default in neovim 0.7+
---       debounce_text_changes = 150,
---     }
---   }
--- end
 
 
 -- Set up completion using nvim_cmp with LSP source
@@ -141,7 +137,7 @@ lspconfig.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
 
-lspconfig.diagnosticls.setup = {
+lspconfig.diagnosticls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = { debounce_text_changes = 150 },
@@ -220,15 +216,15 @@ lspconfig.tailwindcss.setup {
   }
 }
 
-lspconfig.eslint.setup {
-  on_attach = on_attach,
-  flags = { debounce_text_changes = 150 },
-  capabilities = capabilities,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
-  settings = {
-    run = "onType"
-  },
-}
+-- lspconfig.eslint.setup {
+--   on_attach = on_attach,
+--   flags = { debounce_text_changes = 150 },
+--   capabilities = capabilities,
+--   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
+--   settings = {
+--     run = "onType"
+--   },
+-- }
 
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

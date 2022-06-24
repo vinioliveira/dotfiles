@@ -79,13 +79,13 @@
 				<key>script</key>
 				<string>function run(argv) {
   var incoming = argv;
-  var tax = incoming * 0.04;
+  var tax = incoming * 0.05;
   var discounts = [
     tax,
-    540, // pro-labore
-    607.5, // plano de saude
-    65, // agilize
-    67, // inss
+    600, // pro-labore
+    650, // plano de saude
+    70, // agilize
+    70, // inss
   ];
 
   var profit = incoming - discounts.reduce((sum, discount) =&gt; sum + discount);

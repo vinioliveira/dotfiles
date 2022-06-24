@@ -4,55 +4,26 @@
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-map <C-s> <esc>:w<CR><esc>
-imap <C-s> <esc>:w<CR><esc>
+map<C-s> <esc>:w<CR><esc>
+imap<C-s> <esc>:w<CR><esc>
 
 " Save and exit shortcut
 map <leader>x <esc>:x<CR><esc>
-imap <leader>x <esc>:x<CR><esc>
 
 " quit all
 map <leader>q <esc>:qa!<CR><esc>
-imap <leader>q <esc>:qa!<CR><esc>
 
 
 noremap <S-q> q
 noremap q <Nop>
 
-
-"============== CTAGS ========================
-" hit ,f to find the definition of the current class
-" this uses ctags. the standard way to get this is Ctrl-]
-" nnoremap <silent> <leader>f <C-]>
-"
-" use ,F to jump to tag in a vertical split
-" nnoremap <silent> <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
-
 " move lines through the file
 vnoremap <C-J> :m '>+1<CR>gv=gv
 vnoremap <C-K> :m '<-2<CR>gv=gv
 
-" Easier fold toggling
-nnoremap <leader>z za
-
-nnoremap <leader>S :%s//gc<Left><Left><Left>
-
-
-nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
-xnoremap <silent> s* "sy:let @/=@s<CR>cgn
-
-" Start substitute on current word under the cursor
-nnoremap <Leader>r :%s///g<Left><Left>
-nnoremap <Leader>rc :%s///gc<Left><Left>
-
-nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>
-
-
 " Visual linewise up and down by default (and use gj gk to go quicker)
 nnoremap gj 5j
 nnoremap gk 5k
-vnoremap gj 5j
-vnoremap gk 5k
 
 " When jump to next match also center screen
 " Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
@@ -60,9 +31,6 @@ nnoremap <silent> n :norm! nzz<CR>
 nnoremap <silent> N :norm! Nzz<CR>
 vnoremap <silent> n :norm! nzz<CR>
 vnoremap <silent> N :norm! Nzz<CR>
-
-" Reselect last-pasted text
-nnoremap gp `[v`]
 
 nnoremap <silent> <leader>vr :source $MYVIMRC<CR>
 nnoremap <silent> <leader>vs :vsplit $MYVIMRC<CR>
@@ -80,8 +48,6 @@ noremap <leader>nt :tabe <CR>
 noremap <leader>bn :bnext <CR>
 noremap <leader>bp :bprevious <CR>
 noremap <leader>bd :BufferDelete <CR>
-
-
 
 " nnoremap <enter>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 

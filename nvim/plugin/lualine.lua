@@ -16,26 +16,27 @@ end
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'nord',
     -- component_separators = { left = '', right = '' },
     -- section_separators = { left = '', right = '' },
     component_separators = '',
     disabled_filetypes = {},
     section_separators = { left = '', right = '' },
-    always_divide_middle = true,
+    always_divide_middle = false,
     globalstatus = false,
   },
   sections = {
     lualine_a = { 'mode' },
     lualine_b = {
       { 'branch', fmt = function(str) return str:sub(1, 10) .. (str:len() > 10 and "..." or "") end },
-      'diagnostics',
+      {'diagnostics', sources = { 'nvim_lsp' }},
     },
     lualine_c = { { 'filename', path = 1, shorting_target = 30 } },
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
+  tabline = { },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
@@ -44,6 +45,5 @@ lualine.setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
   extensions = {}
 }

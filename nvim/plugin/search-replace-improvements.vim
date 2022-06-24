@@ -22,7 +22,7 @@ function! Get_visual_selection_rg()
   let lines[0] = lines[0][col1 - 1:]
   let selection = join(lines,'\n')
   " let change = input('Replace with: ')
-  execute ":Ag ".selection
+  execute ":Ag \"".selection."\""
 endfunction
 
 
@@ -47,11 +47,29 @@ endfunction
 " if normal mode differnt command: grap word
 
 
+" makes * and # work on visual mode too.
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " Mappings
 vnoremap <leader>r :call Get_visual_selection()<cr>
-vnoremap <leader>ag :call Get_visual_selection_rg()<cr>
+vnoremap <leader>* :call Get_visual_selection_rg()<cr>
 vnoremap <leader>af :call Get_visual_selection_ag_folder()<cr>
-nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left>
+" nnoremap <leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left>
 
-
+" Easier fold toggling
+nnoremap <leader>z za
+nnoremap <leader>S :%s//gc<Left><Left><Left>
+nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+xnoremap <silent> s* "sy:let @/=@s<CR>cgn
+" Start substitute on current word under the cursor
+nnoremap <Leader>r :%s///g<Left><Left>
+nnoremap <Leader>rc :%s///gc<Left><Left>
+nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>

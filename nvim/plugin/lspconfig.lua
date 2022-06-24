@@ -6,13 +6,13 @@ local status_lsp_install, lsp_installer = pcall(require, "nvim-lsp-installer")
 if (not status_lsp_install) then return end
 
 
--- vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("debug")
 
 
 -- Always display sign column
 vim.o.signcolumn = "yes"
 
-local servers = { "tsserver", "sumneko_lua", "tailwindcss", "diagnosticls" }
+local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls" }
 
 lsp_installer.setup({
   ensure_installed = servers, -- ensure these servers are always installed
@@ -37,13 +37,13 @@ local on_attach = function(client, bufnr)
   -- utils
   buf_set_keymap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
   buf_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
+  buf_set_keymap('n', 'ff', '<Cmd>lua vim.lsp.buf.formatting()<CR>', mopts)
 
 
   -- diagnostic
   buf_set_keymap('n', '?', '<cmd>lua vim.diagnostic.open_float()<CR>', mopts)
   buf_set_keymap('n', '<leader>ap', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mopts)
   buf_set_keymap('n', '<leader>an', '<cmd>lua vim.diagnostic.goto_next()<CR>', mopts)
-  buf_set_keymap('n', '<leader>a?', '<cmd>lua vim.diagnostic.setloclist()<CR>', mopts)
 
   -- formatting
   if client.name == 'tsserver' then
@@ -106,6 +106,7 @@ lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   flags = { debounce_text_changes = 150 },
   capabilities = capabilities,
+  filetypes = { 'lua' },
   settings = {
     Lua = {
       runtime = {
@@ -141,7 +142,7 @@ lspconfig.diagnosticls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = { debounce_text_changes = 150 },
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
   init_options = {
     linters = {
       eslint = {
@@ -172,11 +173,6 @@ lspconfig.diagnosticls.setup {
       typescriptreact = 'eslint',
     },
     formatters = {
-      eslint = {
-        command = './node_modules/.bin/eslint',
-        rootPatterns = { '.git' },
-        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-      },
       prettier = {
         command = './node_modules/.bin/prettier',
         rootPatterns = { '.prettierrc' },
@@ -184,14 +180,15 @@ lspconfig.diagnosticls.setup {
       }
     },
     formatFiletypes = {
-      css = 'prettier',
-      javascript = 'prettier',
-      javascriptreact = 'prettier',
-      json = 'prettier',
-      scss = 'prettier',
-      less = 'prettier',
-      typescript = 'prettier',
-      typescriptreact = 'prettier',
+      ["*"]  = 'prettier',
+      -- css = 'prettier',
+      -- javascript = 'prettier',
+      -- javascriptreact = 'prettier',
+      -- json = 'prettier',
+      -- scss = 'prettier',
+      -- less = 'prettier',
+      -- typescript = 'prettier',
+      -- typescriptreact = 'prettier',
     }
   }
 }
@@ -215,6 +212,18 @@ lspconfig.tailwindcss.setup {
     validate = true
   }
 }
+--Enable (broadcasting) snippet capability for completion
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  capabilities = capabilities,
+  filetypes = { "json" },
+  init_options = {
+    provideFormatter = true
+  }
+}
 
 -- lspconfig.eslint.setup {
 --   on_attach = on_attach,
@@ -225,7 +234,6 @@ lspconfig.tailwindcss.setup {
 --     run = "onType"
 --   },
 -- }
-
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -242,5 +250,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       prefix = ''
     }
   }
-
 )
+-- vim.cmd [[
+--   highlight! DiagnosticVirtualTextError guibg=none guifg=#EEDD00 gui=none
+-- DiagnosticVirtualTextWarn
+-- DiagnosticVirtualTextInfo
+-- DiagnosticVirtualTextHint
+-- ]]

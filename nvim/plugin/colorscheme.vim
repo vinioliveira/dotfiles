@@ -11,7 +11,6 @@
 " highlight ALESignColumnWithoutErrors guifg=#FE8019 guibg=NONE
 
 " let g:nord_cursor_line_number_background = 1
-
 " let g:gruvbox_contrast_dark='medium'
 " let g:gruvbox_contrast_light='medium' " soft medium hard
 

@@ -6,6 +6,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
 
+set mouse=a
+
 set title
 set inccommand=split
 
@@ -26,9 +28,10 @@ set shiftround
 set expandtab
 
 " code folding settings
-set foldmethod=indent       " fold based on indent
 " set foldmethod=manual
-set foldnestmax=10          " deepest fold is 10 levels
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+" set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 filetype plugin indent on
 set formatoptions+=r
@@ -88,11 +91,28 @@ func! DeleteTrailingWS()
 endfunc
 
 au BufWrite * :call DeleteTrailingWS()
-
-let mapleader = ','
+let loaded_matchparen = 1
+let mapleader=" "
 
 runtime ./nvimrc.bundler
+lua << EOF
+vim.g.loaded_gzip = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
 
+vim.g.loaded_getscript = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_2html_plugin = 1
+
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_logiPat = 1
+vim.g.loaded_rrhelper = 1
+EOF
 
 " load plugin settings
 for fpath in split(globpath('~/.config/nvim/settings', '*.vim'), '\n')
@@ -104,9 +124,30 @@ syntax enable
 " source ~/.dotfiles/vim/filetype.vim
 runtime ./keymap.vim
 
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_invert_selection=0
+let g:gruvbox_improved_strings=0
+let g:gruvbox_bold=0
+
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+
+" let g:everforest_background = 'medium'
+" " For better performance
+" let g:everforest_better_performance = 1
+let g:nord_contrast = v:true
+let g:nord_borders = v:true
+" let g:nord_disable_background = v:false
+let g:nord_italic = v:false
+
 set termguicolors
 set wildoptions=pum
 set background=dark
 let $BAT_THEME="gruvbox"
-colorscheme gruvbox
+colorscheme  nord
 

@@ -5,15 +5,13 @@ if (not status) then return end
 treesitter.setup {
   highlight = {
     enable = true,
-    disable = {},
+    additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     enable = false
   },
-  additional_vim_regex_highlighting = false,
   indent = {
     enable = false,
-    disable = {},
   },
   ensure_installed = {
     "tsx",
@@ -31,6 +29,9 @@ treesitter.setup {
   -- autotag = {
   --   enable = true,
   -- }
+   context_commentstring = {
+    enable = true
+  }
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

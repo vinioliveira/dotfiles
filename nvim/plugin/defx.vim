@@ -9,15 +9,12 @@ call defx#custom#column('mark', {
 
 "====================  Maps =================================
 map <leader>d <esc>:Defx -new <C-R>=getcwd()<CR><esc>
-imap <leader>d <esc>:Defx -new <C-R>=getcwd()<CR><esc>
 
 "Open in the current directory
 map <Leader>e :Defx -new `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
-imap <Leader>e Defx  -new `expand('%:p:h')` -search=`expand('%:p')<CR><esc>
 
 "Open
 map <leader>E :Defx -split=vertical -winwidth=50 -direction=topleft<CR><esc>
-imap <leader>E :Defx -split=vertical -winwidth=50 -direction=topleft<CR><esc>
 
 call defx#custom#option('_', {
     \ 'columns' :  'git:icons:indent:filename:type',

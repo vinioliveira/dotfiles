@@ -10,6 +10,19 @@ if empty(glob($HOME."/.local/share/nvim/site/autoload"))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
+" Themes
+Plug 'gruvbox-community/gruvbox'
+Plug 'sjl/badwolf'
+" Plug 'jacoborus/tender.vim'
+Plug 'chriskempson/base16-vim'
+" Plug 'mike-hearn/base16-vim-lightline'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'romainl/Apprentice'
+" Plug 'colepeters/spacemacs-theme.vim'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'joshdick/onedark.vim'
+" Plug 'overcache/NeoSolarized'
+" Plug 'sainnhe/gruvbox-material'
 
 " Syntax checking + Languages & Framework
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -22,6 +35,7 @@ Plug 'jiangmiao/auto-pairs'
 
 " For identation
 Plug 'tpope/vim-commentary'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Navigation
@@ -31,7 +45,6 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/nrrwrgn'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
-Plug 'karb94/neoscroll.nvim'
 
 " LSP NVim options
 Plug 'williamboman/nvim-lsp-installer'
@@ -43,6 +56,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'folke/trouble.nvim'
 
 " Others
 Plug 'vuciv/vim-bujo'
@@ -55,24 +69,13 @@ Plug 'tpope/vim-rhubarb'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-dispatch'
+Plug 'skywind3000/asyncrun.vim'
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/IndexedSearch'
-Plug 'nelstrom/vim-visual-star-search'
 Plug 'will133/vim-dirdiff'
 Plug 'godlygeek/tabular'
 
-" Themes
-Plug 'gruvbox-community/gruvbox'
-" Plug 'sjl/badwolf'
-" Plug 'jacoborus/tender.vim'
-Plug 'chriskempson/base16-vim'
-" Plug 'mike-hearn/base16-vim-lightline'
-" Plug 'arcticicestudio/nord-vim'
-" Plug 'romainl/Apprentice'
-" Plug 'colepeters/spacemacs-theme.vim'
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'joshdick/onedark.vim'
-" Plug 'overcache/NeoSolarized'
-
+"
 call plug#end()
+

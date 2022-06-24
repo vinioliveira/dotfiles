@@ -5,7 +5,7 @@ let g:fzf_history_dir = '~/.config/nvim/fzf-history'
 " " In Neovim, you can set up fzf window using a Vim command
 " " let g:fzf_layout = { 'window': 'belowright 15sp enew' }
 
-" let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:half-page-down,ctrl-u:half-page-up'
 
 " function! s:build_quickfix_list(lines)
 "   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -34,7 +34,7 @@ command! -bang -nargs=+ -complete=file Ag call fzf#vim#ag_raw(<q-args>, fzf#vim#
 " ============ MAPS ==============
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-f> :Ag<space>
+" nnoremap <C-f> :Ag<space>
 nnoremap <leader>ag :Ag<space>
 
 function! CloseAllBuffersButCurrent()

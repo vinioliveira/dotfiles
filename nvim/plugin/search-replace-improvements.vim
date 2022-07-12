@@ -58,9 +58,9 @@ endfunction
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
+vnoremap <leader>* :call Get_visual_selection_rg()<cr>
 " Mappings
 vnoremap <leader>r :call Get_visual_selection()<cr>
-vnoremap <leader>* :call Get_visual_selection_rg()<cr>
 vnoremap <leader>af :call Get_visual_selection_ag_folder()<cr>
 " nnoremap <leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left>
 
@@ -70,6 +70,6 @@ nnoremap <leader>S :%s//gc<Left><Left><Left>
 nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 " Start substitute on current word under the cursor
-nnoremap <Leader>r :%s///g<Left><Left>
-nnoremap <Leader>rc :%s///gc<Left><Left>
+" nnoremap <Leader>r :%s///g<Left><Left>
+" nnoremap <Leader>rc :%s///gc<Left><Left>
 nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>

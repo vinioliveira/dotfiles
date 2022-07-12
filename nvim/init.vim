@@ -28,10 +28,10 @@ set shiftround
 set expandtab
 
 " code folding settings
-" set foldmethod=manual
+" set foldmethod=indent
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-" set foldnestmax=10          " deepest fold is 10 levels
+set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 filetype plugin indent on
 set formatoptions+=r
@@ -92,7 +92,7 @@ endfunc
 
 au BufWrite * :call DeleteTrailingWS()
 let loaded_matchparen = 1
-let mapleader=" "
+let mapleader=","
 
 runtime ./nvimrc.bundler
 lua << EOF
@@ -148,6 +148,6 @@ let g:nord_italic = v:false
 set termguicolors
 set wildoptions=pum
 set background=dark
-let $BAT_THEME="gruvbox"
+let $BAT_THEME="Nord"
 colorscheme  nord
 

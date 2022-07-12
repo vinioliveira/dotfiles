@@ -6,7 +6,7 @@ local status_lsp_install, lsp_installer = pcall(require, "nvim-lsp-installer")
 if (not status_lsp_install) then return end
 
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 
 -- Always display sign column
@@ -27,18 +27,16 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', mopts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
-  buf_set_keymap('n', 'sf', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', mopts)
+  buf_set_keymap('n', 'td', '<Cmd>lua vim.lsp.buf.definition()<CR>', mopts)
+  buf_set_keymap('n', 'ti', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
+  buf_set_keymap('n', 'tr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
   buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', mopts)
   buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
 
   -- utils
-  buf_set_keymap('n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
-  buf_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
-  buf_set_keymap('n', 'ff', '<Cmd>lua vim.lsp.buf.formatting()<CR>', mopts)
-
+  buf_set_keymap('n', '<leader>r', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
+  buf_set_keymap('n', '<leader>i', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
+  buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', mopts)
 
   -- diagnostic
   buf_set_keymap('n', '?', '<cmd>lua vim.diagnostic.open_float()<CR>', mopts)
@@ -47,21 +45,21 @@ local on_attach = function(client, bufnr)
 
   -- formatting
   if client.name == 'tsserver' then
-    client.resolved_capabilities.document_formatting = false
     -- client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    client.resolved_capabilities.document_formatting = false
   end
 
-  if client.name == 'diagnosticls' and client.supports_method('textDocument/formatting') then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-        vim.lsp.buf.formatting_sync()
-      end,
-    })
-  end
+  --   if client.name == 'diagnosticls' and client.supports_method('textDocument/formatting') then
+  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --     vim.api.nvim_create_autocmd("BufWritePre", {
+  --       group = augroup,
+  --       buffer = bufnr,
+  --       callback = function()
+  --         -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+  --         vim.lsp.buf.formatting_sync()
+  --       end,
+  --     })
+  --   end
 
   --protocol.SymbolKind = { }
   protocol.CompletionItemKind = {
@@ -180,7 +178,7 @@ lspconfig.diagnosticls.setup {
       }
     },
     formatFiletypes = {
-      ["*"]  = 'prettier',
+      ["*"] = 'prettier',
       -- css = 'prettier',
       -- javascript = 'prettier',
       -- javascriptreact = 'prettier',

@@ -24,7 +24,8 @@ vnoremap <C-K> :m '<-2<CR>gv=gv
 " Visual linewise up and down by default (and use gj gk to go quicker)
 nnoremap gj 5j
 nnoremap gk 5k
-
+vnoremap gj 5j
+vnoremap gk 5k
 " When jump to next match also center screen
 " Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
 nnoremap <silent> n :norm! nzz<CR>
@@ -57,3 +58,6 @@ xnoremap >  >gv
 
 " clean search after esc
 nnoremap <ESC> :noh<CR><ESC>
+
+
+nmap <leader>p "0p

@@ -53,7 +53,7 @@
   op                     = browse -- pulls
   ops                    = pr show
   rename                 = branch -m
-  rs                     = restore
+  rs                     = restore --staged
   s                      = status
   st                     = stash
   up                     = !git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"

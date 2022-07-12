@@ -16,7 +16,7 @@ set -g pane-border-style bg=default,fg=colour8
 #set -g pane-active-border-bg colour0
 
 # Active pane border
-set -g pane-active-border-style bg=default,fg=colour11
+set -g pane-active-border-style bg=default,fg=colour15
 
 # Pane number indicator
 set -g display-panes-colour default

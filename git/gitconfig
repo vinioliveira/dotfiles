@@ -41,7 +41,7 @@
   co                     = checkout
   pco                    = pr checkout
   d                      = diff
-  delete-merged-branches = !git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+  delete-merged-branches = !git co develop && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
   m                      = merge --no-ff
   ms                     = merge --squash
   wt                     = worktree

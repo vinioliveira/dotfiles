@@ -3,6 +3,37 @@ reload() {
   exec zsh;
 }
 
+gwcoi() {
+  local GIT_WT_BASE_PATH=~/dev/projects/copyai/copy-ai.git
+  local origin=`pwd`
+  builtin cd $GIT_WT_BASE_PATH
+  local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
+  if [[ ! -z $gwt_path ]]; then
+    cd $gwt_path
+  else
+    cd $origin
+  fi
+}
+
+gwcoid() {
+  local GIT_WT_BASE_PATH=~/dev/projects/copyai/copy-ai.git
+  local origin=`pwd`
+  builtin cd $GIT_WT_BASE_PATH
+  local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
+  if [[ ! -z $gwt_path ]]; then
+    echo $gwt_path
+    echo "Deleting ... "
+    cd $gwt_path
+    git wt remove $gwt_path
+    if [[ "$origin" == "$gwt_path" ]]; then
+      cd ..
+    else
+      cd $origin
+    fi
+  fi
+}
+  # PATH=$(g wt list | sed  "$SED_REGEX/$SED_OUTPUT" | fzf | sed 's/^\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\).*\[\(.*\)\]$/\3 \[\2\] \1/g')
+  # "cd $(g wt list | sed  's/\([^[:space:]]*\).\([^[:space:]]*\).*\[\(.*\)\]$/\3 \[\2\] \1/g' | fzf | sed  'ss/\([^[:space:]]*\).*$/\1/g')/\([^[:space:]]*\).*$/\1/g')"
 # Check if given url is giving gzipped content
 #
 #   $ gzipped http://simplesideias.com.br

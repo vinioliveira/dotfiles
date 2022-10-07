@@ -1,68 +1,33 @@
 local status_lspconfig, _ = pcall(require, "lspconfig")
 if (not status_lspconfig) then return end
 
+require "plugs.lsp"
+
 local lspconfig = require('lspconfig');
 local status_lsp_install, lsp_installer = pcall(require, "nvim-lsp-installer")
 if (not status_lsp_install) then return end
 
-
 -- vim.lsp.set_log_level("debug")
 
-
--- Always display sign column
-vim.o.signcolumn = "yes"
-
 local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls" }
-
 lsp_installer.setup({
   ensure_installed = servers, -- ensure these servers are always installed
   automatic_installation = true
 })
 
 local protocol = require('vim.lsp.protocol')
+local signature_help_cfg = require('plugs.signature_helper')
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local mopts = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'td', '<Cmd>lua vim.lsp.buf.definition()<CR>', mopts)
-  buf_set_keymap('n', 'ti', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
-  buf_set_keymap('n', 'tr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
-  buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', mopts)
-  buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
-
-  -- utils
-  buf_set_keymap('n', '<leader>r', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
-  buf_set_keymap('n', '<leader>i', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
-  buf_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', mopts)
-
-  -- diagnostic
-  buf_set_keymap('n', '?', '<cmd>lua vim.diagnostic.open_float()<CR>', mopts)
-  buf_set_keymap('n', '<leader>ap', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mopts)
-  buf_set_keymap('n', '<leader>an', '<cmd>lua vim.diagnostic.goto_next()<CR>', mopts)
-
   -- formatting
   if client.name == 'tsserver' then
     -- client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
     client.resolved_capabilities.document_formatting = false
   end
 
-  --   if client.name == 'diagnosticls' and client.supports_method('textDocument/formatting') then
-  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-  --     vim.api.nvim_create_autocmd("BufWritePre", {
-  --       group = augroup,
-  --       buffer = bufnr,
-  --       callback = function()
-  --         -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-  --         vim.lsp.buf.formatting_sync()
-  --       end,
-  --     })
-  --   end
-
-  --protocol.SymbolKind = { }
-  protocol.CompletionItemKind = {
+  require "lsp_signature".on_attach(signature_help_cfg, bufnr)
+  -- protocol.CompletionItemKind = {}
+  protocol.SymbolKind = {
     '', -- Text
     '', -- Method
     '', -- Function
@@ -97,37 +62,9 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  flags = { debounce_text_changes = 150 },
-  capabilities = capabilities,
-  filetypes = { 'lua' },
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+local sumneko_opts = require('plugs.lsp_sumneko');
+sumneko_opts.on_attach = on_attach
+lspconfig.sumneko_lua.setup(sumneko_opts)
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
@@ -136,108 +73,27 @@ lspconfig.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
 
-lspconfig.diagnosticls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = { debounce_text_changes = 150 },
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
-  init_options = {
-    linters = {
-      eslint = {
-        command = 'eslint_d',
-        rootPatterns = { '.git' },
-        debounce = 100,
-        args = { '--stdin', '--stdin-filename', '%filepath', "--format", "json" },
-        sourceName = 'eslint',
-        parseJson = {
-          errorsRoot = '[0].messages',
-          line = 'line',
-          column = 'column',
-          endLine = 'endLine',
-          endColumn = 'endColumn',
-          message = '[eslint] ${message} [${ruleId}]',
-          security = 'severity'
-        },
-        securities = {
-          [2] = 'error',
-          [1] = 'warning'
-        }
-      },
-    },
-    filetypes = {
-      javascript = 'eslint',
-      javascriptreact = 'eslint',
-      typescript = 'eslint',
-      typescriptreact = 'eslint',
-    },
-    formatters = {
-      prettier = {
-        command = './node_modules/.bin/prettier',
-        rootPatterns = { '.prettierrc' },
-        args = { '--stdin', '--stdin-filepath', '%filename' },
-      }
-    },
-    formatFiletypes = {
-      ["*"] = 'prettier',
-      -- css = 'prettier',
-      -- javascript = 'prettier',
-      -- javascriptreact = 'prettier',
-      -- json = 'prettier',
-      -- scss = 'prettier',
-      -- less = 'prettier',
-      -- typescript = 'prettier',
-      -- typescriptreact = 'prettier',
-    }
-  }
-}
+local diagnosticls_opts = require('plugs.lsp_diagnosticls');
+diagnosticls_opts.on_attach = on_attach
+lspconfig.diagnosticls.setup(diagnosticls_opts)
 
-lspconfig.tailwindcss.setup {
-  on_attach = on_attach,
-  flags = { debounce_text_changes = 150 },
-  capabilities = capabilities,
-  filetypes = { "typescriptreact", "typescript.tsx", "css" },
-  tailwindCSS = {
-    classAttributes = { "class", "className" },
-    lint = {
-      cssConflict = "warning",
-      invalidApply = "error",
-      invalidConfigPath = "error",
-      invalidScreen = "error",
-      invalidTailwindDirective = "error",
-      invalidVariant = "error",
-      recommendedVariantOrder = "warning"
-    },
-    validate = true
-  }
-}
---Enable (broadcasting) snippet capability for completion
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local tailwindcss_opts = require('plugs.lsp_tailwindcss');
+tailwindcss_opts.on_attach = on_attach
+lspconfig.tailwindcss.setup(tailwindcss_opts)
 
 lspconfig.jsonls.setup {
   on_attach = on_attach,
   flags = { debounce_text_changes = 150 },
-  capabilities = capabilities,
   filetypes = { "json" },
-  init_options = {
-    provideFormatter = true
-  }
+  init_options = { provideFormatter = true }
 }
-
--- lspconfig.eslint.setup {
---   on_attach = on_attach,
---   flags = { debounce_text_changes = 150 },
---   capabilities = capabilities,
---   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
---   settings = {
---     run = "onType"
---   },
--- }
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
 
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -249,9 +105,35 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
   }
 )
--- vim.cmd [[
---   highlight! DiagnosticVirtualTextError guibg=none guifg=#EEDD00 gui=none
--- DiagnosticVirtualTextWarn
--- DiagnosticVirtualTextInfo
--- DiagnosticVirtualTextHint
--- ]]
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/documentSymbol"] = function(_, result, ctx)
+  -- export const Class = 5;
+  -- export const Method = 6;
+  --export const Function = 12;
+  -- const filter only classe kind = 5 then 6 or 12
+  local new_results = {}
+  for _, v in pairs(result) do
+    if (v.kind == 12 or v.kind == 14) then
+      v.children = {}
+      table.insert(new_results, v)
+    end
+
+    if (v.kind == 5) then
+      for _, child in pairs(v.children) do
+        if (child.kind == 6) then
+          child.children = {}
+          table.insert(new_results, child);
+        end
+      end
+    end
+  end
+
+  local title = 'random title'
+  local items = vim.lsp.util.symbols_to_items(new_results, ctx.bufnr)
+  vim.fn.setqflist({}, ' ', { title = title, items = items, context = ctx })
+  vim.api.nvim_command('botright copen')
+end

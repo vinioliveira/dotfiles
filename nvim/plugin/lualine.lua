@@ -13,6 +13,19 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   end
 end
 
+local function hello()
+
+  if (vim.g.test_all_status == -1) then
+    return ''
+  elseif (vim.g.test_all_status == 1) then
+    return ''
+  elseif (vim.g.test_all_status == 0) then
+    return ''
+  end
+
+  return ''
+end
+
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -29,17 +42,34 @@ lualine.setup {
     lualine_a = { 'mode' },
     lualine_b = {
       { 'branch', fmt = function(str) return str:sub(1, 10) .. (str:len() > 10 and "..." or "") end },
-      {'diagnostics', sources = { 'nvim_lsp' }},
+      { 'diagnostics', sources = { 'nvim_lsp' } },
     },
     lualine_c = { { 'filename', path = 1, shorting_target = 30 } },
-    lualine_x = { 'encoding', 'filetype' },
-    lualine_y = { 'progress' },
+    lualine_x = {
+      'encoding',
+      'filetype',
+    },
+    lualine_y = {
+      {
+        hello,
+        separator = { left = '', right = '' },
+        color = function(section)
+          if (vim.g.test_all_status == -1) then
+            return { fg = "#ffffff", bg = "#916BDD" }
+          elseif (vim.g.test_all_status == 1) then
+            return { bg = "#bf616a", fg = "#d8dee9" }
+          elseif (vim.g.test_all_status == 0) then
+            return { bg = "#8fbcbb", fg = "#d8dee9" }
+          end
+        end
+      },
+      'progress'
+    },
     lualine_z = { 'location' }
   },
-  tabline = { },
+  tabline = {},
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
     lualine_c = { 'filename' },
     lualine_x = { 'location' },
     lualine_y = {},

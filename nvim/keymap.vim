@@ -4,8 +4,8 @@
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-map<C-s> <esc>:w<CR><esc>
-imap<C-s> <esc>:w<CR><esc>
+map<C-s> <esc>:up<CR><esc>
+imap<C-s> <esc>:up<CR><esc>
 
 " Save and exit shortcut
 map <leader>x <esc>:x<CR><esc>

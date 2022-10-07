@@ -5,6 +5,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
+set completeopt=menu,menuone,noselect
 
 set mouse=a
 
@@ -28,9 +29,9 @@ set shiftround
 set expandtab
 
 " code folding settings
-" set foldmethod=indent
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=indent
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 filetype plugin indent on
@@ -140,14 +141,17 @@ endif
 " let g:everforest_background = 'medium'
 " " For better performance
 " let g:everforest_better_performance = 1
-let g:nord_contrast = v:true
-let g:nord_borders = v:true
-" let g:nord_disable_background = v:false
-let g:nord_italic = v:false
+
+let g:nord_uniform_status_lines = 0
+let g:nord_cursor_line_number_background = 0
+let g:nord_uniform_diff_background = 0
+let g:nord_bold_vertical_split_line = 1
+let g:nord_italic = 0
+let g:nord_italic_comments = 0
 
 set termguicolors
 set wildoptions=pum
 set background=dark
 let $BAT_THEME="Nord"
-colorscheme  nord
+colorscheme nord
 

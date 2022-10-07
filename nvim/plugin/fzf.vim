@@ -1,5 +1,7 @@
-" " let g:fzf_layout = { 'up': '~40%' }
+let g:fzf_layout = { 'up': '~30%' }
 let g:fzf_history_dir = '~/.config/nvim/fzf-history'
+let $BAT_THEME="Nord"
+
 " let g:fzf_preview_window = 'right:60%'
 
 " " In Neovim, you can set up fzf window using a Vim command

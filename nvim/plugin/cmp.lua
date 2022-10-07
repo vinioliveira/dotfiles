@@ -40,7 +40,6 @@ cmp.setup({
   mapping = {
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
     ['<C-n>'] = cmp.mapping({
       c = function()
         if cmp.visible() then
@@ -74,8 +73,9 @@ cmp.setup({
       end
     }),
     ['<C-e>'] = cmp.mapping.close(),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete()),
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
+      -- behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
   },
@@ -89,9 +89,9 @@ cmp.setup({
   ),
   formatting = {
     format = lspkind.cmp_format({
-      maxwidth = 50,
-      mode = 'symbol',
-      preset = 'codicons',
+      maxwidth = 70,
+      mode = 'symbol_text',
+      preset = 'default',
       symbol_map = {
         Text = "",
         Method = "",

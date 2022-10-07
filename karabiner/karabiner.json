@@ -1497,7 +1497,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/iTerm.app/"
+                                        "shell_command": "open /Applications/Alacritty.app/"
                                     }
                                 ],
                                 "type": "basic"

@@ -1,6 +1,5 @@
 #
 # modified 2021-06-28
-#
 
 env:
   # This value is used to set the `$TERM` environment variable for
@@ -12,14 +11,15 @@ env:
 window:
   # Spread additional padding evenly around the terminal content.
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
   # Remove buttons
   decorations: buttonless
   # Dimensions if not SimpleFullscreen
   dimensions:
     columns: 140
     lines: 38
+  opacity: 1
 
 cursor:
   # Block Underline or Beam
@@ -28,14 +28,22 @@ cursor:
 font:
   normal:
     # Needs to be powerline font if using zsh theme with powerline
-    family: FiraCode Nerd Font Mono
-    style: Light
+    family: DejaVuSansMono Nerd Font Mono
+    style: Book
   bold:
     # Needs to be powerline font if using zsh theme with powerline
-    family: FiraCode Nerd Font Mono
+    family: DejaVuSansMono Nerd Font Mono
     style: Bold
   # Font size
   size: 12
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 1
 
   # Better font rendering for mac
   use_thin_strokes: true

@@ -21,8 +21,7 @@ local signature_help_cfg = require('plugs.signature_helper')
 local on_attach = function(client, bufnr)
   -- formatting
   if client.name == 'tsserver' then
-    -- client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
   end
 
   require "lsp_signature".on_attach(signature_help_cfg, bufnr)
@@ -56,9 +55,8 @@ local on_attach = function(client, bufnr)
   }
 end
 
-
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 

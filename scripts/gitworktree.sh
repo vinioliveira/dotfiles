@@ -38,6 +38,5 @@ else
 fi
 cd $GWT_PATH
 pnpm i
-echo "DATABASE_URL=postgres://postgres:postgres@localhost:5433/copy-ai-test" > .env.test
 
 exec $SHELL

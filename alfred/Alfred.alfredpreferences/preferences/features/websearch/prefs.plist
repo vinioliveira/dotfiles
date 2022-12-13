@@ -4,6 +4,17 @@
 <dict>
 	<key>customSites</key>
 	<dict>
+		<key>0891A628-946A-4954-A6D8-23BFD016EAE2</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>fas</string>
+			<key>text</key>
+			<string>Font Awesome</string>
+			<key>url</key>
+			<string>https://fontawesome.com/search?q={query}</string>
+		</dict>
 		<key>AF8E46DE-B0FC-4253-BB4A-099654248879</key>
 		<dict>
 			<key>enabled</key>
@@ -14,8 +25,6 @@
 			<string>Mercado Livre</string>
 			<key>url</key>
 			<string>https://lista.mercadolivre.com.br/{query}</string>
-			<key>utf8</key>
-			<true/>
 		</dict>
 		<key>C8BB21D9-0FDA-42C1-B00E-F0A66401A7BE</key>
 		<dict>

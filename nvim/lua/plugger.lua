@@ -1,4 +1,3 @@
-
 vim.cmd([[
 if empty(glob($HOME."/.local/share/nvim/site/autoload"))
 
@@ -19,6 +18,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rebelot/kanagawa.nvim'
 
 -- Plug 'jacoborus/tender.vim'
 -- Plug 'mike-hearn/base16-vim-lightline'
@@ -30,7 +30,7 @@ Plug 'arcticicestudio/nord-vim'
 -- Plug 'sainnhe/gruvbox-material'
 
 -- Syntax checking + Languages & Framework
-Plug ('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
 -- tests
 Plug 'janko-m/vim-test'
@@ -44,9 +44,9 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
 -- Navigation
-Plug ('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
+Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
 Plug 'junegunn/fzf.vim'
-Plug ('Shougo/defx.nvim', { ['do'] = ':UpdateRemotePlugins' })
+Plug('Shougo/defx.nvim', { ['do'] = ':UpdateRemotePlugins' })
 Plug 'chrisbra/nrrwrgn'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'

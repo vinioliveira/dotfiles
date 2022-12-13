@@ -175,6 +175,10 @@
 				<false/>
 				<key>focusedappvariablename</key>
 				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -288,9 +292,7 @@ fi
 				<key>runningsubtext</key>
 				<string>Loading results...</string>
 				<key>script</key>
-				<string>query=$*
-
-osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
+				<string>osascript -l JavaScript emoji.js "$1" 2&gt;&amp;1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -453,13 +455,57 @@ https://github.com/jsumners/alfred-emoji/issues
 			<integer>180</integer>
 		</dict>
 	</dict>
-	<key>variables</key>
-	<dict>
-		<key>skin_tone</key>
-		<string></string>
-	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>👍</string>
+						<string></string>
+					</array>
+					<array>
+						<string>👍🏻</string>
+						<string>0</string>
+					</array>
+					<array>
+						<string>👍🏼</string>
+						<string>1</string>
+					</array>
+					<array>
+						<string>👍🏽</string>
+						<string>2</string>
+					</array>
+					<array>
+						<string>👍🏾</string>
+						<string>3</string>
+					</array>
+					<array>
+						<string>👍🏿</string>
+						<string>4</string>
+					</array>
+					<array>
+						<string>Random</string>
+						<string>random</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Skin Tone</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>skin_tone</string>
+		</dict>
+	</array>
 	<key>version</key>
-	<string>1.12.0</string>
+	<string>2.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/jsumners/alfred-emoji</string>
 </dict>

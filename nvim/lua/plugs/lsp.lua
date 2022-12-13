@@ -14,7 +14,7 @@ nvim_set_keymap('n', 'tf', " <cmd> lua vim.lsp.buf.document_symbol()<CR>", mopts
 -- utils
 nvim_set_keymap('n', '<leader>r', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
 nvim_set_keymap('n', '<leader>i', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)
-nvim_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', mopts)
+nvim_set_keymap('n', '<leader>f', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', mopts)
 
 -- diagnostic
 nvim_set_keymap('n', '?', '<cmd>lua vim.diagnostic.open_float()<CR>', mopts)

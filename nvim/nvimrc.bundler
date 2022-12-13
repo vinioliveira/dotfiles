@@ -11,6 +11,7 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 Plug 'gruvbox-community/gruvbox'
 Plug 'sjl/badwolf'
 " Plug 'jacoborus/tender.vim'

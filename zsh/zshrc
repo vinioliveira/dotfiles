@@ -29,4 +29,4 @@ setopt CORRECT
 # pnpm
 export PNPM_HOME="/Users/vinicius/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+# pnpm endexport PATH="/usr/local/opt/libpq/bin:$PATH"

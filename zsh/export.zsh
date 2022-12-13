@@ -23,3 +23,6 @@ if [[ "$ruby_version" == "2.7"* ]]; then
 else
   unset RUBYOPT
 fi
+
+
+export JQPATH=/opt/homebrew/bin

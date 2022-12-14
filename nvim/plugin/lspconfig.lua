@@ -1,22 +1,21 @@
+local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls", "eslint_d" }
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = servers,
+  automatic_installation = true,
+})
+
 local status_lspconfig, _ = pcall(require, "lspconfig")
 if (not status_lspconfig) then return end
 
-require "plugs.lsp"
-
+require "plugs.lsp_keybinds"
 local lspconfig = require('lspconfig');
-local status_lsp_install, lsp_installer = pcall(require, "nvim-lsp-installer")
-if (not status_lsp_install) then return end
 
--- vim.lsp.set_log_level("debug")
-
-local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls" }
-lsp_installer.setup({
-  ensure_installed = servers, -- ensure these servers are always installed
-  automatic_installation = true
-})
+-- vim.lsp.set_log_level("DEBUG")
+-- tail -f  $HOME/.cache/nvim/lsp.log
 
 local protocol = require('vim.lsp.protocol')
-local signature_help_cfg = require('plugs.signature_helper')
+local signature_help_cfg = require('plugs.lsp_signature_helper')
 
 local on_attach = function(client, bufnr)
   -- formatting

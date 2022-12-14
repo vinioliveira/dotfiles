@@ -52,10 +52,15 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 
 -- LSP NVim options
-Plug 'williamboman/nvim-lsp-installer'
+-- Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
+-- Plug 'nvim-lua/plenary.nvim'
+-- Plug ('jose-elias-alvarez/null-ls.nvim', { ['do'] = 'brew install prettierd' })
+
+-- Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'

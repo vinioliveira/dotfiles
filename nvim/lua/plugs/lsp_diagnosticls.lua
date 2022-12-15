@@ -5,7 +5,8 @@ return {
 
     linters = {
       eslint = {
-        command = 'eslint_d',
+        command = 'eslint_d', -- check later what's wrong with it
+        -- command = './node_modules/.bin/eslint',
         rootPatterns = { '.git' },
         debounce = 100,
         args = { '--stdin', '--stdin-filename', '%filepath', "--format", "json" },

@@ -1,4 +1,4 @@
-local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls", "eslint_d" }
+local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls" }
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
@@ -13,6 +13,7 @@ local lspconfig = require('lspconfig');
 
 -- vim.lsp.set_log_level("DEBUG")
 -- tail -f  $HOME/.cache/nvim/lsp.log
+-- v $HOME/.local/share/nvim/lsp_servers/diagnosticls/node_modules/diagnostic-languageserver/lib/handles/handleDiagnostic.jsj
 
 local protocol = require('vim.lsp.protocol')
 local signature_help_cfg = require('plugs.lsp_signature_helper')

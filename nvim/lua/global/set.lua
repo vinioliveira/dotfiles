@@ -10,7 +10,7 @@ vim.api.nvim_command("set complete-=i") -- disable scanning included files
 vim.api.nvim_command("set complete-=t") --disable searching tags
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-vim.opt.mouse = "a"
+vim.opt.mouse = "n"
 
 vim.api.nvim_command("set title")
 vim.api.nvim_command("set inccommand=split")

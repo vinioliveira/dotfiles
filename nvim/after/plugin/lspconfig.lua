@@ -8,7 +8,8 @@ require("mason-lspconfig").setup({
 local status_lspconfig, _ = pcall(require, "lspconfig")
 if (not status_lspconfig) then return end
 
-require "plugs.lsp_keybinds"
+local bind_keys = require "plugs.lsp_keybinds"
+-- require "plugs.lsp_keybinds"
 local lspconfig = require('lspconfig');
 
 -- vim.lsp.set_log_level("DEBUG")
@@ -25,6 +26,7 @@ local on_attach = function(client, bufnr)
   end
 
   require "lsp_signature".on_attach(signature_help_cfg, bufnr)
+
   -- protocol.CompletionItemKind = {}
   protocol.SymbolKind = {
     '', -- Text
@@ -53,6 +55,7 @@ local on_attach = function(client, bufnr)
     'ﬦ', -- Operator
     '', -- TypeParameter
   }
+  bind_keys(bufnr)
 end
 
 -- Set up completion using nvim_cmp with LSP source
@@ -71,9 +74,9 @@ lspconfig.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
 
-local diagnosticls_opts = require('plugs.lsp_diagnosticls');
-diagnosticls_opts.on_attach = on_attach
-lspconfig.diagnosticls.setup(diagnosticls_opts)
+-- local diagnosticls_opts = require('plugs.lsp_diagnosticls');
+-- diagnosticls_opts.on_attach = on_attach
+-- lspconfig.diagnosticls.setup(diagnosticls_opts)
 
 local tailwindcss_opts = require('plugs.lsp_tailwindcss');
 tailwindcss_opts.on_attach = on_attach
@@ -96,12 +99,12 @@ end
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
+  underline = true,
+  virtual_text = {
+    spacing = 4,
+    prefix = ''
   }
+}
 )
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

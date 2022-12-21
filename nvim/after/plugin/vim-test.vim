@@ -2,7 +2,6 @@
 " https://github.com/vim-test/vim-test/blob/master/doc/test.txt
 let g:test#preserve_screen = 0
 let g:dispatch_quickfix_height=15
-let g:test#runner_commands = ['RSpec', 'Mocha', 'jest']
 
 
 let g:test#javascript#mocha#file_pattern = '\v.*.(test|spec)s?\.(js|ts)$'
@@ -21,7 +20,12 @@ let test#strategy = {
   \ 'file':    'dispatch',
   \ 'suite':   'neomake',
 \}
+
 let test#javascript#nx#options = '--skip-nx-cache --unhandled-rejections=strict --no-cache'
+
+" function! g:test#javascript#nx#build_options(args, options) abort
+"   return  a:args + options
+" endfunction
 " let test#javascript#nx#executable = 'npm run jest'
 
 

@@ -48,7 +48,6 @@ font:
   # Better font rendering for mac
   use_thin_strokes: true
 
-# Colors (Gruvbox dark)
 # colors:
 #    # Default colors
 #   primary:
@@ -80,7 +79,7 @@ font:
 #   cursor:
 #     text: CellBackground
 #     cursor: '0xebdbb2'
-# Kanagawa Alacritty Colors
+# # Kanagawa Alacritty Colors
 colors:
   primary:
     background: '0x1f1f28'

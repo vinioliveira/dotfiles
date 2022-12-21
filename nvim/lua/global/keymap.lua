@@ -18,8 +18,8 @@ map('n', '<leader>q', '<esc>:qa!<CR><esc>')
 map('n', '<S-q>', 'q', { noremap = true })
 map('n', 'q', '<Nop>', { noremap = true })
 
-map('v', '<C-J>', ":m '>+1<CR>gv=gv", { noremap = true })
-map('v', '<C-K>', ":m '<-2<CR>gv=gv", { noremap = true })
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Visual linewise up and down by default (and use gj gk to go quicker)
 map('n', 'gj', '5j', { noremap = true });
@@ -59,3 +59,13 @@ map('x', '>' , '>gv', { noremap =true });
 -- clean search after esc
 map('n', '<ESC>' , ':noh<CR><ESC>', { noremap =true });
 map('n', '<leader>p' , '0p');
+
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+-- map("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- map("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- map("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- map("n", "<leader>j", "<cmd>lprev<CR>zz")

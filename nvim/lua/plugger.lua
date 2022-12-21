@@ -63,6 +63,9 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'onsails/lspkind-nvim'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug('jose-elias-alvarez/null-ls.nvim', { ['do'] = 'brew install prettierd' })
+
 -- Others
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'SirVer/ultisnips'

@@ -11,14 +11,14 @@
 
 
 
-vim.g.nord_uniform_status_lines = 0
-vim.g.nord_cursor_line_number_background = 0
-vim.g.nord_uniform_diff_background = 0
-vim.g.nord_bold_vertical_split_line = 1
-vim.g.nord_italic = 0
-vim.g.nord_italic_comments = 0
+-- vim.g.nord_uniform_status_lines = 0
+-- vim.g.nord_cursor_line_number_background = 0
+-- vim.g.nord_uniform_diff_background = 0
+-- vim.g.nord_bold_vertical_split_line = 1
+-- vim.g.nord_italic = 0
+-- vim.g.nord_italic_comments = 0
 
-vim.api.nvim_command([[colorscheme nord]])
+-- vim.api.nvim_command([[colorscheme nightfox]])
 
 
 -- vim.api.nvim_command([[ hi Normal guibg=NONE ctermbg=NONE ]])

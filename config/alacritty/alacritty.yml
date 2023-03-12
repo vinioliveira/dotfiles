@@ -147,5 +147,6 @@ hints:
           mods: Command
 
 key_bindings:
-- { key: Slash,   mods: Control,       chars: "\x1f"                 }
+- { key: Slash,   mods: Control,       chars: "\x1f"  }
+- { key: Space,   mods: Control,       chars: "\x00"  }
 

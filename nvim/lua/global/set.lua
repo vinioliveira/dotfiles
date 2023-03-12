@@ -20,7 +20,7 @@ vim.opt.relativenumber = true
 
 vim.o.backspace = [[indent,eol,start]]
 vim.opt.list = true
-vim.opt.listchars = [[tab:→\ ,nbsp:␣,trail:•,eol:↴,precedes:«,extends:»]]
+vim.opt.listchars = [[tab:→\ ,nbsp:␣,trail:•,precedes:«,extends:»]]
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true

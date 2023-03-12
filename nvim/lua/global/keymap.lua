@@ -18,8 +18,8 @@ map('n', '<leader>q', '<esc>:qa!<CR><esc>')
 map('n', '<S-q>', 'q', { noremap = true })
 map('n', 'q', '<Nop>', { noremap = true })
 
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "<C-J>", ":m '>+1<CR>gv=gv")
+map("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
 -- Visual linewise up and down by default (and use gj gk to go quicker)
 map('n', 'gj', '5j', { noremap = true });

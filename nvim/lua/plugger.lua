@@ -54,17 +54,19 @@ Plug 'kristijanhusak/defx-git'
 -- LSP NVim options
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
+Plug 'j-hui/fidget.nvim'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'onsails/lspkind-nvim'
+Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
 
 Plug 'nvim-lua/plenary.nvim'
-Plug('jose-elias-alvarez/null-ls.nvim', { ['do'] = 'brew install prettierd' })
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 -- Others
 Plug 'MattesGroeger/vim-bookmarks'

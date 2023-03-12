@@ -60,7 +60,7 @@ xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 vnoremap <leader>* :call Get_visual_selection_rg()<cr>
 " Mappings
-vnoremap <leader>r :call Get_visual_selection()<cr>
+" vnoremap <leader>r :call Get_visual_selection()<cr>
 vnoremap <leader>af :call Get_visual_selection_ag_folder()<cr>
 " nnoremap <leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left>
 

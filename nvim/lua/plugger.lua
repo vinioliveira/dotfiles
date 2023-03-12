@@ -13,27 +13,15 @@ endif
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
--- Themes
-Plug 'gruvbox-community/gruvbox'
-Plug 'sjl/badwolf'
-Plug 'chriskempson/base16-vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'rebelot/kanagawa.nvim'
 
--- Plug 'jacoborus/tender.vim'
--- Plug 'mike-hearn/base16-vim-lightline'
--- Plug 'romainl/Apprentice'
--- Plug 'colepeters/spacemacs-theme.vim'
--- Plug 'ayu-theme/ayu-vim'
--- Plug 'joshdick/onedark.vim'
--- Plug 'overcache/NeoSolarized'
--- Plug 'sainnhe/gruvbox-material'
+-- Themes
+Plug 'folke/tokyonight.nvim'
 
 -- Syntax checking + Languages & Framework
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
 -- tests
-Plug 'janko-m/vim-test'
+Plug('janko-m/vim-test', { ['on'] = { 'TestFile', 'TestNearest' } })
 
 -- This plug-in provides automatic closing of quotes
 Plug 'jiangmiao/auto-pairs'
@@ -54,35 +42,40 @@ Plug 'kristijanhusak/defx-git'
 -- LSP NVim options
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'j-hui/fidget.nvim'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
-Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
-Plug 'nvim-lua/plenary.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+-- Plug 'onsails/lspkind-nvim'
+--
+Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+--Utils
+Plug 'j-hui/fidget.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 -- Others
-Plug 'MattesGroeger/vim-bookmarks'
+Plug('MattesGroeger/vim-bookmarks', { ['on'] = { '<Plug>BookmarkToggle', '<Plug>BookmarkShowAll' } })
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-dispatch'
-Plug 'kevinhwang91/nvim-bqf'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/IndexedSearch'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'github/copilot.vim'
 
--- if need re-enable it
--- Plug 'will133/vim-dirdiff'
--- Plug 'godlygeek/tabular'
+-- Debug
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug "mxsdev/nvim-dap-vscode-js"
+
 vim.call('plug#end')

@@ -14,7 +14,6 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
 end
 
 local function hello()
-
   if (vim.g.test_all_status == -1) then
     return ''
   elseif (vim.g.test_all_status == 1) then
@@ -29,7 +28,7 @@ end
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'kanagawa',
+    theme = 'nord',
     -- component_separators = { left = '', right = '' },
     -- section_separators = { left = '', right = '' },
     component_separators = '',

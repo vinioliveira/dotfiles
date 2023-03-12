@@ -1,20 +1,20 @@
 vim.g.wildignore = '*.o,*~,*.pyc'
 vim.g.wildignore = '*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store'
 
-vim.g.mapleader=","
+vim.g.mapleader = ","
 
 vim.opt.termguicolors = true
-vim.opt.clipboard="unnamed"
+vim.opt.clipboard = "unnamed"
 
 vim.api.nvim_command("set complete-=i") -- disable scanning included files
 vim.api.nvim_command("set complete-=t") --disable searching tags
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-vim.opt.mouse = "n"
+vim.opt.mouse = "a"
 
 vim.api.nvim_command("set title")
 vim.api.nvim_command("set inccommand=split")
-vim.api.synmaxcol = "200"
+vim.apiesynmaxcol = "200"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -26,7 +26,10 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
-vim.opt.foldmethod = "indent"
+
+-- vim.opt.foldmethod = "indent"
+vim.opt.foldmethod   = "expr"
+vim.opt.foldexpr     = "nvim_treesitter#foldexpr()"
 
 vim.o.foldnestmax = 10 --         " deepest fold is 10 levels
 --vim.g.formatoptions = '+=r'
@@ -76,3 +79,7 @@ vim.g.loaded_rrhelper = 1
 
 -- vim.opt.termguicolors=true
 vim.opt.wildoptions = 'pum'
+
+-- Disable default netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

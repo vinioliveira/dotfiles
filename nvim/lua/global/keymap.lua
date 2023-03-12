@@ -18,8 +18,8 @@ map('n', '<leader>q', '<esc>:qa!<CR><esc>')
 map('n', '<S-q>', 'q', { noremap = true })
 map('n', 'q', '<Nop>', { noremap = true })
 
-map("v", "<C-J>", ":m '>+1<CR>gv=gv")
-map("v", "<C-K>", ":m '<-2<CR>gv=gv")
+map("v", "<C-j>", ":m '>+1<CR>gv=gv")
+map("v", "<C-k>", ":m '<-2<CR>gv=gv")
 
 -- Visual linewise up and down by default (and use gj gk to go quicker)
 map('n', 'gj', '5j', { noremap = true });
@@ -34,12 +34,11 @@ map('n', 'N', ':norm! nzz<CR>', { noremap =true, silent = true })
 map('v', 'n', ':norm! nzz<CR>', { noremap =true, silent = true })
 map('v', 'n', ':norm! nzz<CR>', { noremap =true, silent = true })
 
-
 map('n', '<leader>vr', ':source $MYVIMRC<CR>', { noremap =true, silent = true })
 map('n', '<leader>vs', ':vsplit $MYVIMRC<CR>', { noremap =true, silent = true })
 
 map('n', '<leader>g', ':copen<CR>', { noremap =true, silent = true })
-map('n', '<leader>n', ':cnext<CR>', { noremap =true, silent = true })
+map('n', '<leader>nn', ':cnext<CR>', { noremap =true, silent = true })
 map('n', '<leader>p', ':cprevious<CR>', { noremap =true, silent = true })
 
 -- CTRL-Tab is next tab
@@ -47,9 +46,9 @@ map('n', '<C-t>', ':tabnext<CR>', { noremap =true })
 -- CTRL-SHIFT-Tab is previous tab
 map('n', '<C-T>', ':tabprevious<CR>', { noremap =true })
 
+-- map('n', '<leader>bn', ':bnext<CR>', { noremap =true })
+-- map('n', '<leader>bp', ':bprevious<CR>', { noremap =true })
 map('n', '<leader>nt', ':tabe<CR>', { noremap =true })
-map('n', '<leader>bn', ':bnext<CR>', { noremap =true })
-map('n', '<leader>bp', ':bprevious<CR>', { noremap =true })
 map('n', '<leader>bd', ':BufferDelete<CR>', { noremap =true })
 
 -- dont't loose selection while move
@@ -62,6 +61,7 @@ map('n', '<leader>p' , '0p');
 
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 

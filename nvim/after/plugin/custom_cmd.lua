@@ -1,5 +1,5 @@
 vim.api.nvim_create_user_command("VPR", function()
-  local command = "Dispatch npm run format:check -- --base=origin/develop && npm run typecheck  && npm run affected:lint -- --base=origin/develop"
+  local command = "Dispatch npm run format:check -- --base=origin/develop && npm run typecheck  && npm run lint -- --base=origin/develop"
   vim.fn.execute(command)
 end, {})
 

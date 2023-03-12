@@ -1,4 +1,5 @@
-local servers = { "tsserver", "diagnosticls", "sumneko_lua", "tailwindcss", "jsonls" }
+local servers = { "tsserver", "diagnosticls", "lua_ls", "tailwindcss", "jsonls", "pyright" }
+
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
@@ -24,6 +25,28 @@ local on_attach = function(client, bufnr)
   if client.name == 'tsserver' then
     client.server_capabilities.documentFormattingProvider = false
   end
+
+  if (client.name == 'lua_ls') then
+    vim.api.nvim_create_augroup("lsp_format_on_save", {})
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = "lsp_format_on_save",
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
+  end
+
+  -- if client.supports_method("textDocument/formatting") then
+  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --   vim.api.nvim_create_autocmd("BufWritePre", {
+  --     group = augroup,
+  --     buffer = bufnr,
+  --     callback = function()
+  --       lsp_formatting(bufnr)
+  --     end,
+  --   })
+  -- end
 
   require "lsp_signature".on_attach(signature_help_cfg, bufnr)
 
@@ -65,7 +88,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 
 local sumneko_opts = require('plugs.lsp_sumneko');
 sumneko_opts.on_attach = on_attach
-lspconfig.sumneko_lua.setup(sumneko_opts)
+lspconfig.lua_ls.setup(sumneko_opts)
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
@@ -86,6 +109,13 @@ lspconfig.jsonls.setup {
   on_attach = on_attach,
   flags = { debounce_text_changes = 150 },
   filetypes = { "json" },
+  init_options = { provideFormatter = true }
+}
+
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  filetypes = { "python" },
   init_options = { provideFormatter = true }
 }
 

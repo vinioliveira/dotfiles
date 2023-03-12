@@ -15,6 +15,7 @@ treesitter.setup {
   },
   ensure_installed = {
     "markdown",
+    "markdown_inline",
     "tsx",
     "typescript",
     "json",

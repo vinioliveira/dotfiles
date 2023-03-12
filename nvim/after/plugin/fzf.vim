@@ -1,6 +1,6 @@
 let g:fzf_layout = { 'up': '~30%' }
 let g:fzf_history_dir = '~/.config/nvim/fzf-history'
-let $BAT_THEME="Nord"
+let $BAT_THEME="TwoDark"
 
 " let g:fzf_preview_window = 'right:60%'
 
@@ -34,7 +34,7 @@ command! -bang -nargs=+ -complete=file Ag call fzf#vim#ag_raw(<q-args>, fzf#vim#
 
 
 " ============ MAPS ==============
-nnoremap <leader>bb :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-p> :Files<CR>
 " nnoremap <C-f> :Ag<space>
 nnoremap <leader>ag :Ag<space>

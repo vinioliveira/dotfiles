@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Find2kill</name>
-  <version>0.1.0</version>
-  <bundle>com.github.xeric.alfred-find2kill</bundle>
-  <updated>1587786706</updated>
-  <file>alfred-find2kill.alfredworkflow</file>
-</workflow>

@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Alfred Bitly</name>
-  <version>0.9.1</version>
-  <bundle>hchs.alfred.bitly</bundle>
-  <updated>1591870817</updated>
-  <file>shorten.alfredworkflow</file>
-</workflow>

@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>IP</name>
-  <version>0.1</version>
-  <bundle>me.nicola.cavallazzi.ip</bundle>
-  <updated>1466198720</updated>
-  <file>ip.alfredworkflow</file>
-</workflow>

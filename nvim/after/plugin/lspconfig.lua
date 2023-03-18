@@ -97,10 +97,6 @@ lspconfig.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
 
--- local diagnosticls_opts = require('plugs.lsp_diagnosticls');
--- diagnosticls_opts.on_attach = on_attach
--- lspconfig.diagnosticls.setup(diagnosticls_opts)
-
 local tailwindcss_opts = require('plugs.lsp_tailwindcss');
 tailwindcss_opts.on_attach = on_attach
 lspconfig.tailwindcss.setup(tailwindcss_opts)

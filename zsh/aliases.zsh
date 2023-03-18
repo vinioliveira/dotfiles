@@ -65,7 +65,7 @@ alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep
 
 alias today="cal | grep -C6 --color $(date +%e)"
 
-alias validate_pr="npm run format:check -- --base=origin/develop && npm run typecheck:webapp && npm run typecheck:api && npm run typecheck:models && npm run affected:lint -- --base=origin/develop"
+alias validate_pr="npm run format:check -- --base=origin/develop && npm run typecheck && npm run lint -- --base=origin/develop"
 alias copyai_servers="copyai_server.sh"
 alias gwco="gitworktree.sh"
 

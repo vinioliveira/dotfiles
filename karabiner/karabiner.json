@@ -28,7 +28,8 @@
                                             "com.googlecode.iterm2",
                                             "^co\\.zeit\\.hyperterm$",
                                             "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$"
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1822,7 +1823,7 @@
                         "product_id": 18804,
                         "vendor_id": 12951
                     },
-                    "ignore": true,
+                    "ignore": false,
                     "manipulate_caps_lock_led": false,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false

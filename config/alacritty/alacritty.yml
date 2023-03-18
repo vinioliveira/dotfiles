@@ -29,16 +29,18 @@ font:
   normal:
     # Needs to be powerline font if using zsh theme with powerline
     # family: DejaVuSansMono Nerd Font Mono
-    family: VictorMono Nerd Font
+    # family: FantasqueSansMono Nerd Font
+    # family: VictorMono Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
-  bold:
-    family: VictorMono Nerd Font
-    style: Bold
-  italic:
-    family: VictorMono Nerd Font
-    style: Italic
+  # bold:
+  #   family: VictorMono Nerd Font
+  #   style: Bold
+  # italic:
+  #   family: VictorMono Nerd Font
+  #   style: Italic
   # Font size
-  size: 13
+  size: 12.0
 
   offset:
     x: 0
@@ -49,7 +51,7 @@ font:
     y: 1
 
   # Better font rendering for mac
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 # Nord
 # colors:

@@ -30,3 +30,7 @@ setopt CORRECT
 export PNPM_HOME="/Users/vinicius/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm endexport PATH="/usr/local/opt/libpq/bin:$PATH"
+
+source /Users/vinicius/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+defaults write -g AppleFontSmoothing -int 0

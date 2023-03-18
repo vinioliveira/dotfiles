@@ -15,4 +15,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_command([[colorscheme tokyonight-night]])
+vim.api.nvim_command([[colorscheme tokyonight-moon]])

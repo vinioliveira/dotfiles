@@ -3,7 +3,7 @@ return function(bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- vim.keymap.set('n', 'td', '<cmd>lua vim.lsp.buf.definition()<CR>', mopts)
-  vim.keymap.set('n', 'ti', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
+  -- vim.keymap.set('n', 'ti', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
   -- vim.keymap.set('n', 'tr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
   -- vim.keymap.set('i', '<c-j>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
   -- saga is handle it

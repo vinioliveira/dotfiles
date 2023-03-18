@@ -6,7 +6,7 @@ lspsaga.setup({
     enable = false,
   },
   symbol_in_winbar = {
-    enable = true,
+    enable = false,
     border = 'single',
     color_mode = false,
     hide_keyword = true
@@ -22,8 +22,29 @@ lspsaga.setup({
     custom_sort = nil,
     keys = {
       jump = '<enter>',
-      expand_collapse = 'u',
+      expand_collapse = 'zx',
       quit = 'q',
+    },
+  },
+  scroll_preview = {
+    scroll_down = '<c-d>',
+    scroll_up = '<c-u>',
+  },
+  diagnostic = {
+    on_insert = false,
+    on_insert_follow = false,
+    insert_winblend = 0,
+    show_virt_line = true,
+    show_code_action = false,
+    show_source = false,
+    jump_num_shortcut = false,
+    max_width = 0.7,
+    text_hl_follow = true,
+    border_follow = true,
+    keys = {
+      exec_action = 'o',
+      quit = 'q',
+      go_action = 'g',
     },
   },
 })
@@ -52,7 +73,7 @@ keymap("n", "t?", "<cmd>Lspsaga peek_type_definition<CR>", opts)
 -- Diagnostic
 keymap("n", "?", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 keymap("n", "<leader>cc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-keymap("n", "<leader>al", "<cmd>Lspsaga show_diagnostics<CR>", opts)
+keymap("n", "<leader>al", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
 keymap("n", "<leader>ap", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 keymap("n", "<leader>an", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 

@@ -91,8 +91,14 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<c-u>'] = cmp.mapping(function()
+      cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = -4 })
+    end, { 'i' }),
+    ['<C-d>'] = cmp.mapping({
+      i = function()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 })
+      end
+    }),
     ['<C-n>'] = cmp.mapping({
       c = function()
         if cmp.visible() then
@@ -101,7 +107,7 @@ cmp.setup({
           vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
         end
       end,
-      i = function(fallback)
+      i = function(_fallback)
         if cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
         elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
@@ -200,7 +206,7 @@ cmp.setup({
       end
       vim_item.menu = source_names[entry.source.name]
       vim_item.dup = duplicates[entry.source.name]
-      or 0
+          or 0
       return vim_item
     end,
   }

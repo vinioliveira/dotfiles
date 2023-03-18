@@ -28,8 +28,8 @@ vim.opt.expandtab = true
 
 
 -- vim.opt.foldmethod = "indent"
-vim.opt.foldmethod   = "expr"
-vim.opt.foldexpr     = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
 
 vim.o.foldnestmax = 10 --         " deepest fold is 10 levels
 --vim.g.formatoptions = '+=r'
@@ -81,5 +81,5 @@ vim.g.loaded_rrhelper = 1
 vim.opt.wildoptions = 'pum'
 
 -- Disable default netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 0
+-- vim.g.loaded_netrwPlugin = 0

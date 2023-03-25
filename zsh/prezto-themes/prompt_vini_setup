@@ -72,8 +72,8 @@ function prompt_vini_setup {
 
   # search for icons https://nerdfonts.com/
 # Set editor-info parameters.
-  zstyle ':prezto:module:editor:info:keymap:primary' format '%F{15} %f'  #fae
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{9} %f'
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%F{15}󰁕 %f'  #fae
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{9}󰁕 %f'
 
   # Set git-info parameters.
   zstyle ':prezto:module:git:info' verbose 'yes'

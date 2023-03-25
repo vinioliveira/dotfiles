@@ -1,4 +1,4 @@
-#
+
 # modified 2021-06-28
 
 env:
@@ -32,13 +32,14 @@ font:
     # family: FantasqueSansMono Nerd Font
     # family: VictorMono Nerd Font
     family: FiraCode Nerd Font
-    style: Regular
-  # bold:
-  #   family: VictorMono Nerd Font
-  #   style: Bold
-  # italic:
-  #   family: VictorMono Nerd Font
-  #   style: Italic
+    style: Light
+  bold:
+    family: FiraCode Nerd Font
+    style: SemiBold
+  italic:
+    family: FiraCode Nerd Font
+    style: Light
+
   # Font size
   size: 12.0
 

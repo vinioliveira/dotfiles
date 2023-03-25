@@ -24,7 +24,7 @@ Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 Plug('janko-m/vim-test', { ['on'] = { 'TestFile', 'TestNearest' } })
 
 -- This plug-in provides automatic closing of quotes
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 
 -- For identation
 Plug 'tpope/vim-commentary'

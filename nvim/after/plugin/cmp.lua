@@ -1,6 +1,5 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
-
 -- local lspkind = require("lspkind")
 
 vim.o.completeopt = "menuone,noinsert,noselect"
@@ -57,34 +56,49 @@ local kind_icons = {
   Variable = "",
 }
 
-local lspkind_comparator = function(conf)
-  local lsp_types = require('cmp.types').lsp
-  return function(entry1, entry2)
-    if entry1.source.name ~= 'nvim_lsp' then
-      if entry2.source.name == 'nvim_lsp' then
-        return false
-      else
-        return nil
-      end
-    end
-    local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
-    local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+-- local lspkind_comparator = function(conf)
+--   local lsp_types = require('cmp.types').lsp
+--   return function(entry1, entry2)
+--     if entry1.source.name ~= 'nvim_lsp' then
+--       if entry2.source.name == 'nvim_lsp' then
+--         return false
+--       else
+--         return nil
+--       end
+--     end
+--     local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
+--     local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
 
-    local priority1 = conf.kind_priority[kind1] or 0
-    local priority2 = conf.kind_priority[kind2] or 0
-    if priority1 == priority2 then
-      return nil
-    end
-    return priority2 < priority1
-  end
+--     local priority1 = conf.kind_priority[kind1] or 0
+--     local priority2 = conf.kind_priority[kind2] or 0
+--     if priority1 == priority2 then
+--       return nil
+--     end
+--     return priority2 < priority1
+--   end
+-- end
+
+-- local label_comparator = function(entry1, entry2)
+--   return entry1.completion_item.label < entry2.completion_item.label
+-- end
+
+
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local label_comparator = function(entry1, entry2)
-  return entry1.completion_item.label < entry2.completion_item.label
-end
-
-
+-- defaults https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua#L36
 cmp.setup({
+  performance = {
+    debounce = 100,
+    throttle = 50,
+    fetching_timeout = 700,
+  },
+  completion = {
+    keyword_length = 1,
+    autocomplete = false,
+  },
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
@@ -94,11 +108,11 @@ cmp.setup({
     ['<c-u>'] = cmp.mapping(function()
       cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = -4 })
     end, { 'i' }),
-    ['<C-d>'] = cmp.mapping({
-      i = function()
+    ['<C-d>'] = cmp.mapping(
+      function()
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 })
-      end
-    }),
+      end, { "i" }
+    ),
     ['<C-n>'] = cmp.mapping({
       c = function()
         if cmp.visible() then
@@ -107,24 +121,40 @@ cmp.setup({
           vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
         end
       end,
-      i = function(_fallback)
+      i = function()
         if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         else
           cmp.complete()
-          -- fallback()
-        end
-      end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
-        else
-          fallback()
         end
       end
     }),
+    -- ['<C-n>'] = cmp.mapping({
+    --   c = function()
+    --     if cmp.visible() then
+    --       cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+    --     else
+    --       vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
+    --     end
+    --   end,
+    --   i = function()
+    --     if cmp.visible() then
+    --       cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+    --       -- elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+    --       --   vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+    --     else
+    --       cmp.complete()
+    --       -- fallback()
+    --     end
+    --   end,
+    --   s = function(fallback)
+    --     if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+    --       vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+    --     else
+    --       fallback()
+    --     end
+    --   end
+    -- }),
     ['<C-p>'] = cmp.mapping({
       c = function()
         if cmp.visible() then
@@ -142,7 +172,6 @@ cmp.setup({
       end
     }),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<C-space>'] = cmp.mapping(cmp.mapping.complete()),
     ['<CR>'] = cmp.mapping.confirm({
       -- behavior = cmp.ConfirmBehavior.Replace,
       select = true

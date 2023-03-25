@@ -29,35 +29,35 @@ map('v', 'gk', '5k', { noremap = true });
 
 -- When jump to next match also center screen
 -- Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
-map('n', 'n', ':norm! nzz<CR>', { noremap =true, silent = true })
-map('n', 'N', ':norm! nzz<CR>', { noremap =true, silent = true })
-map('v', 'n', ':norm! nzz<CR>', { noremap =true, silent = true })
-map('v', 'n', ':norm! nzz<CR>', { noremap =true, silent = true })
+map('n', 'n', ':norm! nzz<CR>', { noremap = true, silent = true })
+map('n', 'N', ':norm! nzz<CR>', { noremap = true, silent = true })
+map('v', 'n', ':norm! nzz<CR>', { noremap = true, silent = true })
+map('v', 'n', ':norm! nzz<CR>', { noremap = true, silent = true })
 
-map('n', '<leader>vr', ':source $MYVIMRC<CR>', { noremap =true, silent = true })
-map('n', '<leader>vs', ':vsplit $MYVIMRC<CR>', { noremap =true, silent = true })
+map('n', '<leader>vr', ':source $MYVIMRC<CR>', { noremap = true, silent = true })
+map('n', '<leader>vs', ':vsplit $MYVIMRC<CR>', { noremap = true, silent = true })
 
-map('n', '<leader>g', ':copen<CR>', { noremap =true, silent = true })
-map('n', '<leader>nn', ':cnext<CR>', { noremap =true, silent = true })
-map('n', '<leader>p', ':cprevious<CR>', { noremap =true, silent = true })
+map('n', '<leader>g', ':copen<CR>', { noremap = true, silent = true })
+map('n', '<leader>nn', ':cnext<CR>', { noremap = true, silent = true })
+map('n', '<leader>p', ':cprevious<CR>', { noremap = true, silent = true })
 
 -- CTRL-Tab is next tab
-map('n', '<C-t>', ':tabnext<CR>', { noremap =true })
+map('n', '<C-t>', ':tabnext<CR>', { noremap = true })
 -- CTRL-SHIFT-Tab is previous tab
-map('n', '<C-T>', ':tabprevious<CR>', { noremap =true })
+map('n', '<C-T>', ':tabprevious<CR>', { noremap = true })
 
 -- map('n', '<leader>bn', ':bnext<CR>', { noremap =true })
 -- map('n', '<leader>bp', ':bprevious<CR>', { noremap =true })
-map('n', '<leader>nt', ':tabe<CR>', { noremap =true })
-map('n', '<leader>bd', ':BufferDelete<CR>', { noremap =true })
+map('n', '<leader>nt', ':tabe<CR>', { noremap = true })
+map('n', '<leader>bd', ':BufferDelete<CR>', { noremap = true })
 
 -- dont't loose selection while move
-map('x', '<' , '<gv', { noremap =true });
-map('x', '>' , '>gv', { noremap =true });
+map('x', '<', '<gv', { noremap = true });
+map('x', '>', '>gv', { noremap = true });
 
 -- clean search after esc
-map('n', '<ESC>' , ':noh<CR><ESC>', { noremap =true });
-map('n', '<leader>p' , '0p');
+map('n', '<ESC>', ':noh<CR><ESC>', { noremap = true });
+map('n', '<leader>p', '0p');
 
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")

@@ -12,7 +12,8 @@ return function(bufnr)
 
 
   -- utils
-  vim.keymap.set('n', '<leader>f', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', mopts)
+  vim.keymap.set({ 'n', 'v' }, '<leader>f', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', mopts)
+  vim.keymap.set({ 'n', 'v' }, '<leader>f', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', mopts)
   -- saga is handle it
   -- vim.keymap.set('n', '<leader>r', '<Cmd>lua vim.lsp.buf.rename()<CR>', mopts)
   -- vim.keymap.set('n', '<leader>i', '<Cmd>lua vim.lsp.buf.code_action()<CR>', mopts)

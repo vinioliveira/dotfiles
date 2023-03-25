@@ -1,0 +1,116 @@
+snippet rrcc "React Redux Class Component" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import styles from './${2:$1}.css';
+
+class ${1:`!v expand('%:t:r')`} extends Component {
+	static propTypes = {
+children: PropTypes.node,
+					className: PropTypes.string,
+					dispatch: PropTypes.func.isRequired,
+	};
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+				<div className={styles.base}>
+				$3
+				</div>
+				);
+	}
+}
+
+function mapStateToProps(state) {
+	return {};
+}
+
+export default connect(mapStateToProps)($1);
+endsnippet
+
+snippet rcc "React Class Component" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './${2:$1}.css';
+
+class ${1:`!v expand('%:t:r')`} extends Component {
+	static propTypes = {
+children: PropTypes.node,
+					className: PropTypes.string,
+	};
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+				<div className={styles.base}>
+				$3
+				</div>
+				);
+	}
+}
+
+export default $1;
+endsnippet
+
+snippet rfc "React Functional Component" b
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './${2:$1}.css';
+
+function ${1:`!v expand('%:t:r')`}(${3:{...props}}) {
+	return (
+			<div className={styles.base}>
+			$4
+			</div>
+			);
+}
+
+$1.defaultProps = {};
+
+$1.propTypes = {};
+
+export default $1;
+endsnippet
+
+snippet ir "import react"
+import React from 'react';
+endsnippet
+
+snippet irc "import react with component"
+import React, { Component } from 'react';
+endsnippet
+
+snippet prop "Expand this.props" w
+this.props.${1}
+endsnippet
+
+snippet st "Expand this.sate" w
+this.state.${1}
+endsnippet
+
+# React constructor
+snippet rcon
+constructor(props) {
+  super(props)
+    this.state = {
+     ${1}: ${0},
+    }
+  }
+}
+endsnippet
+
+# State
+snippet sst "Expand this.setState({})" w
+this.setState({ ${1}: ${0:$1} });
+endsnippet
+
+snippet cln "className attribute"
+className="$1"
+endsnippet
+

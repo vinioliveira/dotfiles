@@ -1,0 +1,162 @@
+
+# modified 2021-06-28
+
+env:
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: xterm-256color
+
+window:
+  # Spread additional padding evenly around the terminal content.
+  padding:
+    x: 5
+    y: 5
+  # Remove buttons
+  decorations: buttonless
+  # Dimensions if not SimpleFullscreen
+  dimensions:
+    columns: 140
+    lines: 38
+  opacity: 1
+
+cursor:
+  # Block Underline or Beam
+  style: Block
+
+font:
+  normal:
+    # Needs to be powerline font if using zsh theme with powerline
+    # family: DejaVuSansMono Nerd Font Mono
+    # family: FantasqueSansMono Nerd Font
+    # family: VictorMono Nerd Font
+    family: FiraCode Nerd Font
+    style: Light
+  bold:
+    family: FiraCode Nerd Font
+    style: SemiBold
+  italic:
+    family: FiraCode Nerd Font
+    style: Light
+
+  # Font size
+  size: 12.0
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 1
+
+  # Better font rendering for mac
+  # use_thin_strokes: true
+
+# Nord
+# colors:
+#    # Default colors
+#   primary:
+#     background: '#2E3440'
+#     foreground: '#D8DEE9'
+
+#   # Normal colors
+#   normal:
+#     black:   '#3B4252'
+#     red:     '#BF616A'
+#     green:   '#A3BE8C'
+#     yellow:  '#EBCB8B'
+#     blue:    '#81A1C1'
+#     magenta: '#B48EAD'
+#     cyan:    '#88C0D0'
+#     white:   '#E5E9F0'
+
+#   # Bright colors
+#   bright:
+#     black:   '#4C566A'
+#     red:     '#BF616A'
+#     green:   '#A3BE8C'
+#     yellow:  '#EBCB8B'
+#     blue:    '#81A1C1'
+#     magenta: '#B48EAD'
+#     cyan:    '#8FBCBB'
+#     white:   '#ECEFF4'
+
+#   cursor:
+#     text: CellBackground
+#     cursor: '0xebdbb2'
+
+# Colors (Tokyo Night)
+# Source: https://github.com/zatchheems/tokyo-night-alacritty-theme
+colors:
+  # Default colors
+  primary:
+    background: '0x1a1b26'
+    foreground: '0xa9b1d6'
+
+  # Normal colors
+  normal:
+    black:   '0x32344a'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xad8ee6'
+    cyan:    '0x449dab'
+    white:   '0x787c99'
+
+  # Bright colors
+  bright:
+    black:   '0x444b6a'
+    red:     '0xff7a93'
+    green:   '0xb9f27c'
+    yellow:  '0xff9e64'
+    blue:    '0x7da6ff'
+    magenta: '0xbb9af7'
+    cyan:    '0x0db9d7'
+    white:   '0xacb0d0'
+  cursor:
+    text: CellBackground
+    cursor: '0xebdbb2'
+
+
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+
+  # When true, selected text will be copied to the primary clipboard
+  save_to_clipboard: true
+
+# Login shell with arguments
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+# Startup directory, unset or None for home directory
+working_directory: None
+
+hints:
+  enabled:
+    - regex: "(magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+      command: open
+      post_processing: true
+      mouse:
+          enabled: true
+          mods: Command
+      binding:
+          key: U
+          mods: Command
+
+key_bindings:
+- { key: Slash,      mods: Control,       chars: "\x1f"    }
+- { key: Space,      mods: Control,       chars: "\x00"    }
+- { key: Semicolon,  mods: Alt,           chars: "\x1b;"   } # Alt + ;
+- { key: N,          mods: Alt,           chars: "\x1bn"   }
+- { key: L,          mods: Alt,           chars: "\x1bl"   }
+- { key: LBracket,   mods: Alt,           chars: "\x1b["   }
+- { key: RBracket,   mods: Alt,           chars: "\x1b]"   }
+- { key: LBracket,   mods: Alt|Shift,     chars: "\x1b{"   }
+- { key: RBracket,   mods: Alt|Shift,     chars: "\x1b}"   }

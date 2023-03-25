@@ -1,0 +1,66 @@
+[user]
+	name = Vinícius Oliveira
+	email = marcus@copy.ai
+[core]
+	excludesfile = ~/.gitignore_global
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[color]
+  ui = auto
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = cyan
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[push]
+	default = current
+
+[alias]
+  a                      = add
+  aa                     = !git add -u && git add . && git status
+  b                      = branch
+  bl                     = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
+  c                      = commit -m
+  cp                     = cherry-pick
+  co                     = checkout
+  pco                    = pr checkout
+  d                      = diff
+  delete-merged-branches = !git co develop && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+  m                      = merge --no-ff
+  ms                     = merge --squash
+  wt                     = worktree
+  nb                     = checkout -b
+  o                      = browse
+  p                      = push
+  pf                     = push --force
+  opr                    = pull-request
+  op                     = browse -- pulls
+  ops                    = pr show
+  rename                 = branch -m
+  rs                     = restore --staged
+  s                      = status
+  st                     = stash
+  up                     = !git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\"
+  nf                     = !git st save -u && git co master && git up && git delete-merged-branches
+  sync-master            = !git st save -u "syncing-workspace-before" && git co master && git up && git co - && git m master && git st list --format=format:%gd --grep="syncing-workspace-before" -n 1 | xargs -n 1 git stash pop
+  sync-develop           = !git st save -u "syncing-workspace-before" && git co develop && git up && git co - && git rebase develop && git st list --format=format:%gd --grep="syncing-workspace-before" -n 1 | xargs -n 1 git stash pop
+  lg                     = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[merge]
+	tool = gitx

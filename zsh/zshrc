@@ -1,0 +1,36 @@
+if [[ -z "$LC_ALL" ]]; then
+  export LC_ALL='en_US.UTF-8'
+fi
+# Loading themes before use it
+autoload promptinit
+fpath=($HOME/.zsh.prompts $fpath)
+promptinit
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+source $HOME/.dotfiles/scripts/utils.sh
+# source $HOME/.dotfiles/scripts/tmux.sh
+
+# Customize to your needs...
+for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
+
+# Disable flow control commands (keeps C-s from freezing everything)
+stty start undef
+stty stop undef
+
+setopt RM_STAR_WAIT
+setopt CORRECT
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pnpm
+export PNPM_HOME="/Users/vinicius/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm endexport PATH="/usr/local/opt/libpq/bin:$PATH"
+
+source /Users/vinicius/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+defaults write -g AppleFontSmoothing -int 0

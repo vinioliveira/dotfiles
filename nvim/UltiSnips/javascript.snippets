@@ -1,0 +1,341 @@
+snippet : "Object key key: 'value'" i
+${1:key}: ${2:'${3:value}'}${4:, }
+endsnippet
+
+snippet const "const"
+const ${1} = ${0};
+endsnippet
+
+snippet let "let"
+let ${1} = ${0};
+endsnippet
+
+snippet im "import xyz from 'xyz'"
+import ${1} from "${2:$1}";
+endsnippet
+
+snippet imas "import * as xyz from 'xyz'"
+import * as ${1} from "${2:$1}";
+endsnippet
+
+snippet imm "import { member } from 'xyz'"
+import { ${1} } from "${2}";
+endsnippet
+
+snippet cla "Class"
+class ${1} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet clax "Class with extends"
+class ${1} extends ${2} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet clac "Clas with constructor"
+class ${1} {
+	constructor(${2}) {
+		${0:${VISUAL}}
+	}
+}
+endsnippet
+
+snippet con "Contructor method class"
+constructor(${1}) {
+	${2}
+}
+endsnippet
+
+snippet foro "for (const prop of object}) { ... }"
+for (const ${1:prop} of ${2:object}) {
+	${0:$1}
+}
+endsnippet
+
+# Generator
+snippet fun* "anonymous function" i
+function* ${1:function_name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fun "named anonymous function" i
+function ${1:function_name}(${2}) {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet caf "arrow anonymous function" i
+const ${1:function_name} = (${2}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet caaf "arrow async anonymous function" i
+const ${1:function_name} = async (${2}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+
+snippet afi "arrow anonymous function" w
+(${1}) => ${0:${VISUAL}}
+endsnippet
+
+snippet aaf "async arrow anonymous function" w
+async (${1}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet af "arrow anonymous function" w
+(${1}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fm "class method" b
+${1:method_name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet mode "Module exports"
+module.exports = ${0}
+endsnippet
+
+snippet ed "Export default"
+export default ${0}
+endsnippet
+
+# Flow control
+# if
+snippet if "if (condition) { ... }"
+if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+# if ... else
+snippet ife "if (condition) { ... } else { ... }"
+if (${1:true}) {
+	${0:${VISUAL}}
+} else {
+	${2}
+}
+endsnippet
+
+#
+snippet ter "tertiary conditional" w
+${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
+endsnippet
+
+snippet switch "switch" w
+switch (${1:expression}) {
+	case '${3:case}':
+		${4}
+		break;
+		${0}
+	default:
+		${2}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break" w
+case '${1:case}':
+	${0:${VISUAL}}
+	break;
+endsnippet
+
+snippet try "try { ... } catch(e) { ... }"
+try {
+	${0:${VISUAL}}
+} catch (${1:e}) {
+	${2:/* handle error */}
+}
+endsnippet
+
+snippet tryf "try { ... } catch(e) { ... } finally { ... }"
+try {
+	${0:${VISUAL}}
+} catch (${1:e}) {
+	${2:/* handle error */}
+} finally {
+	${3:/* be executed regardless of the try / catch result*/}
+}
+endsnippet
+
+# JSON.parse
+snippet jsonp "JSON parse" i
+JSON.parse(${0:jstr})
+endsnippet
+
+# JSON.stringify
+snippet jsons "JSON strinfy" i
+JSON.stringify(${0:object})
+endsnippet
+
+# Debugging
+snippet de
+debugger;
+endsnippet
+
+snippet le "logger.error"
+logger.error('${1}'${2:, ${3:$1}});
+endsnippet
+
+snippet li "logger.info"
+logger.info('${1}'${2:, ${3:$1}});
+endsnippet
+
+snippet ld "logger.debug"
+console.debug("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet cl "console.log"
+console.log("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet cd "console.debug"
+console.debug("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet ce "console.error"
+console.error("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet cw "console.warn"
+console.warn("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet ci "console.info"
+console.info("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet ct "console.trace"
+console.trace("${1:label}"${2:, ${3:$1}});
+endsnippet
+
+snippet timeout "timout"
+setTimeout(function () {${0}}${2}, ${1:10});
+endsnippet
+
+snippet pro "expand a new promisse" i
+new Promise((resolve, reject) => {
+	${1}
+})
+endsnippet
+
+snippet proa "expand a promisse all" i
+Promise.all([
+	${1},
+])
+endsnippet
+
+snippet prorj "expand a promisse rejection" i
+Promise.reject(${1})
+endsnippet
+
+snippet prore "expand a promisse resolver" i
+Promise.resolve(${1})
+endsnippet
+
+snippet protry "expand a promisse trye" i
+Promise.try(() => {
+	return ${1};
+})
+endsnippet
+
+snippet catch "arrow anonymous function for catch" i
+catch((${1}) => {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet theni "arrow anonymous function for then" i
+then((${1}) => ${0:${VISUAL}})
+endsnippet
+
+snippet then "arrow anonymous function for then" i
+then((${1}) => {
+	return ${0:${VISUAL}}
+})
+endsnippet
+
+snippet chaini "arrow anonymous function for chain" i
+chain((${1}) => ${0:${VISUAL}})
+endsnippet
+
+snippet chain "arrow anonymous function for chain" i
+chain((${1}) => {
+	return ${0:${VISUAL}}
+})
+endsnippet
+
+snippet mapi "arrow anonymous function for map" i
+map((${1}) => ${0:${VISUAL}})
+endsnippet
+
+snippet map "arrow anonymous function for map" i
+map((${1}) => {
+	return ${0:${VISUAL}}
+})
+endsnippet
+
+snippet ret "return"
+return ${0:result};
+endsnippet
+
+snippet req "requrie" b
+require('${1}');
+endsnippet
+
+snippet creq "requrie" b
+const ${1} = require('${2:$1}');
+endsnippet
+
+snippet _get "_.get(a, b, c)" b
+_.get(${1}, '${2}'${3:, ${4:'${5:value}'}})${6:; }
+endsnippet
+
+snippet td "TODO (todo)"
+/** TODO:
+* [ ] $1
+*/
+endsnippet
+
+snippet tdi "TODO (todo)"
+[ ] $1
+endsnippet
+
+snippet div "<div>" w
+<div ${1:className="${2:class}"}>
+	${3:${VISUAL}}
+</div>
+endsnippet
+
+snippet h1 "HTML <h1>" w
+<h1 ${1:className="${2:class}"}>${3:${VISUAL}}</h1>
+endsnippet
+
+snippet h2 "HTML <h2>" w
+<h2 ${1:className="${2:class}"}>${3:${VISUAL}}</h2>
+endsnippet
+
+snippet h3 "HTML <h3>" w
+<h3 ${1:className="${2:class}"}>${3:${VISUAL}}</h3>
+endsnippet
+
+snippet i "<i>" w
+<i ${1:className="${2:class}"}>${3:${VISUAL}}</i>
+endsnippet
+
+snippet span "<i>" w
+<span ${1:className="${2:class}"}>${3:${VISUAL}}</span>
+endsnippet
+
+snippet id "id global attribute"
+id="$1"
+endsnippet

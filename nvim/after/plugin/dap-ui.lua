@@ -22,8 +22,8 @@ dapui.setup({
     {
       elements = {
         { id = "breakpoints", size = 0.20 },
-        { id = "stacks", size = 0.40 },
-        { id = "scopes", size = 0.40 },
+        { id = "stacks",      size = 0.40 },
+        { id = "scopes",      size = 0.40 },
       },
       size = 0.25,
       position = "right",
@@ -54,7 +54,7 @@ dapui.setup({
   },
   floating = {
     max_height = 0.9,
-    max_width = 0.5, -- Floats will be treated as percentage of your screen.
+    max_width = 0.5,             -- Floats will be treated as percentage of your screen.
     border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
     mappings = {
       close = { "q", "<Esc>" },
@@ -80,6 +80,5 @@ end
 
 
 
-vim.api.nvim_set_keymap('n', '<leader>d?', '<cmd>lua require("dapui").eval()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>du', '<cmd>lua require("dapui").toggle({ reset = true })<CR>',
-  { noremap = true, silent = true })
+vim.keymap.set({ 'n', "v" }, '<leader>d?', '<cmd>lua require("dapui").eval()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>du', '<cmd>lua require("dapui").toggle({ reset = true })<CR>', { noremap = true, silent = true })

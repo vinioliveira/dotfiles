@@ -15,4 +15,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_command([[colorscheme tokyonight-night]])
+-- vim.cmd('colorscheme rose-pine-moon')
+vim.cmd('colorscheme rose-pine-dawn')
+-- vim.cmd('colorscheme rose-pine')

@@ -15,7 +15,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
 -- Themes
-Plug 'folke/tokyonight.nvim'
+Plug 'rose-pine/neovim'
 
 -- Syntax checking + Languages & Framework
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
@@ -49,7 +49,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 Plug 'ray-x/lsp_signature.nvim'
--- Plug 'onsails/lspkind-nvim'
 --
 Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
 Plug 'jose-elias-alvarez/null-ls.nvim'
@@ -58,6 +57,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'j-hui/fidget.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ThePrimeagen/harpoon'
 
 -- Others
 Plug('MattesGroeger/vim-bookmarks', { ['on'] = { '<Plug>BookmarkToggle', '<Plug>BookmarkShowAll' } })

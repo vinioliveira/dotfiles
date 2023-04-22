@@ -37,17 +37,19 @@ map('v', 'n', ':norm! nzz<CR>', { noremap = true, silent = true })
 map('n', '<leader>vr', ':source $MYVIMRC<CR>', { noremap = true, silent = true })
 map('n', '<leader>vs', ':vsplit $MYVIMRC<CR>', { noremap = true, silent = true })
 
-map('n', '<leader>g', ':copen<CR>', { noremap = true, silent = true })
-map('n', '<leader>nn', ':cnext<CR>', { noremap = true, silent = true })
-map('n', '<leader>p', ':cprevious<CR>', { noremap = true, silent = true })
+map('n', '<leader>gg', ':Copen<CR> | :cbo<CR>', { noremap = true, silent = true })
+map('n', '<leader>gt', ':ToggleQuickFix<CR>', { noremap = true, silent = true })
+map('n', '<leader>gn', ':cnext<CR>', { noremap = true, silent = true })
+map('n', '<leader>gp', ':cprevious<CR>', { noremap = true, silent = true })
+
 
 -- CTRL-Tab is next tab
-map('n', '<C-t>', ':tabnext<CR>', { noremap = true })
+map('n', '<C-T>', ':tabnext<CR>', { noremap = true })
 -- CTRL-SHIFT-Tab is previous tab
-map('n', '<C-T>', ':tabprevious<CR>', { noremap = true })
+map('n', '<C-S-T>', ':tabprevious<CR>', { noremap = true })
 
--- map('n', '<leader>bn', ':bnext<CR>', { noremap =true })
--- map('n', '<leader>bp', ':bprevious<CR>', { noremap =true })
+map('n', '<leader>bn', ':bnext<CR>', { noremap = true })
+map('n', '<leader>bp', ':bprevious<CR>', { noremap = true })
 map('n', '<leader>nt', ':tabe<CR>', { noremap = true })
 map('n', '<leader>bd', ':BufferDelete<CR>', { noremap = true })
 
@@ -62,10 +64,17 @@ map('n', '<leader>p', '0p');
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+-- map("n", "n", "nzzzv")
+-- map("n", "N", "Nzzzv")
+
+map("n", "zx", "za");
+map("n", "zX", "zA");
+
+map("n", "<leader>nn", ":e notes.md<CR>")
 
 -- map("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- map("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- map("n", "<leader>j", "<cmd>lprev<CR>zz")
+--
+--

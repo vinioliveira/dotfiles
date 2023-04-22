@@ -7,13 +7,19 @@
 
 
 
+--gruvbox
+-- vim.g.gruvbox_bold = 0
+-- vim.g.gruvbox_italic = 1
+-- vim.g.gruvbox_contrast_dark = 'medium'
 
-vim.g.nord_uniform_status_lines = 0
-vim.g.nord_cursor_line_number_background = 0
-vim.g.nord_uniform_diff_background = 0
-vim.g.nord_bold_vertical_split_line = 1
-vim.g.nord_italic = 0
-vim.g.nord_italic_comments = 0
+
+-- nord
+-- vim.g.nord_uniform_status_lines = 0
+-- vim.g.nord_cursor_line_number_background = 0
+-- vim.g.nord_uniform_diff_background = 0
+-- vim.g.nord_bold_vertical_split_line = 1
+-- vim.g.nord_italic = 0
+-- vim.g.nord_italic_comments = 0
 
 -- vim.api.nvim_command([[colorscheme nightfox]])
 
@@ -26,9 +32,11 @@ vim.g.nord_italic_comments = 0
 -- if below gets too light can use the one above
 -- hi Visual guibg=#5c616b ctermbg=0
 -- vim.highlight.create('Visual', {ctermbg=0, guibg='#5c616b'}, false)
-vim.api.nvim_set_hl(0, 'Visual', {ctermbg=0, bg='#5c616b'})
-vim.api.nvim_set_hl(0, 'Comment', {ctermbg=14, fg='#7b88a1'})
-vim.api.nvim_set_hl(0, 'Folded', {ctermbg=14, fg='#7b8eb3'})
+
+-- enable this for better color on selection
+-- vim.api.nvim_set_hl(0, 'Visual', { ctermbg = 0, bg = '#5c616b' })
+-- vim.api.nvim_set_hl(0, 'Comment', { ctermbg = 14, fg = '#7b88a1' })
+-- vim.api.nvim_set_hl(0, 'Folded', { ctermbg = 14, fg = '#7b8eb3' })
 
 -- augroup nord-theme-overrides
 --   autocmd!

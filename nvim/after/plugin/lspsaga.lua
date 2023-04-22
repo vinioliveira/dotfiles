@@ -5,6 +5,13 @@ lspsaga.setup({
   lightbulb = {
     enable = false,
   },
+  rename = {
+    quit = "q",
+    exec = "<CR>",
+    mark = "x",
+    confirm = "<CR>",
+    in_select = true,
+  },
   symbol_in_winbar = {
     enable = false,
     border = 'single',

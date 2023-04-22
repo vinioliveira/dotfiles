@@ -96,8 +96,10 @@ cmp.setup({
     fetching_timeout = 700,
   },
   completion = {
-    keyword_length = 1,
-    autocomplete = false,
+    keyword_length = 3,
+    autocomplete = {
+      cmp.TriggerEvent.TextChanged,
+    },
   },
   snippet = {
     expand = function(args)

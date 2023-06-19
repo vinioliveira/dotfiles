@@ -69,6 +69,9 @@ alias validate_pr="npm run format:check -- --base=origin/develop && npm run type
 alias copyai_servers="copyai_server.sh"
 alias gwco="gitworktree.sh"
 
+alias darkmode="~/.dotfiles/scripts/swap-theme.sh dark"
+alias lightmode="~/.dotfiles/scripts/swap-theme.sh light"
+alias toggle-darkmode="~/.dotfiles/scripts/swap-theme.sh toggle"
 
 
 alias yn="yarn"

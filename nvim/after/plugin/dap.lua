@@ -2,7 +2,7 @@ local status_ok, dap = pcall(require, "dap")
 if not status_ok then
   return
 end
-dap.set_log_level("DEBUG")
+-- dap.set_log_level("DEBUG")
 
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
 vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })

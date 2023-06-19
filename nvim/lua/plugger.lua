@@ -16,6 +16,7 @@ vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
 -- Themes
 Plug 'rose-pine/neovim'
+Plug 'folke/tokyonight.nvim'
 
 -- Syntax checking + Languages & Framework
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
@@ -40,17 +41,21 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 
 -- LSP NVim options
+Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
+
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
+-- Plug 'hrsh7th/cmp-buffer'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-
+Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/lsp_signature.nvim'
 --
-Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
+Plug 'rmagatti/goto-preview'
+-- Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
 --Utils
@@ -58,6 +63,7 @@ Plug 'j-hui/fidget.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 -- Others
 Plug('MattesGroeger/vim-bookmarks', { ['on'] = { '<Plug>BookmarkToggle', '<Plug>BookmarkShowAll' } })

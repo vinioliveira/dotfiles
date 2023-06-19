@@ -70,7 +70,9 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "zx", "za");
 map("n", "zX", "zA");
 
-map("n", "<leader>nn", ":e notes.md<CR>")
+map("n", "<leader>nn", ":lua require('plugs/notes').open_win_notes()<CR>")
+map("n", "<leader>ng", ":lua require('plugs/notes').open_win_notes(true)<CR>")
+
 
 -- map("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")

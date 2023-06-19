@@ -4,9 +4,20 @@ if (not status) then return end
 
 vim.o.completeopt = "menuone,noinsert,noselect"
 
+require 'cmp'.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline({
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item()),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item()),
+    ['<CR>'] = cmp.mapping(cmp.mapping.confirm()),
+    ['<Tab>'] = cmp.config.disable
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' }
+  })
+})
+
 
 local duplicates = {
-  buffer = 1,
   path = 1,
   nvim_lsp = 0,
   ultisnips = 1,

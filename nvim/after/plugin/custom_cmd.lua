@@ -80,6 +80,7 @@ end, {})
 
 vim.api.nvim_set_keymap('n', 'ta', ':Alternate<CR>', { noremap = true })
 
+
 -- local function stdout(_, data)
 --   print("success");
 -- end

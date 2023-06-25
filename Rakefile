@@ -43,11 +43,7 @@ task install_pip_depdencies: [:copy_files] do
   install_pip_depdencies
 end
 
-task config_tmux_powerline: [:install_pip_depdencies] do
-  config_tmux_powerline
-end
-
-task install_vim_plugins: [:config_tmux_powerline] do
+task install_vim_plugins: [:install_pip_depdencies] do
   install_vim_plugins
 end
 
@@ -87,7 +83,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install  fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim axazoxide bat)
+  run %( brew install  fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim axa zoxide bat the_silver_searcher)
   puts
   puts
 #   puts '======================================================'
@@ -98,7 +94,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
-  run %(brew install --cask keepingyouawake 1password postman google-chrome fantastical muzzle slack alfred  iterm2 appcleaner cloudapp docker istat-menus karabiner-elements spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code dbeaver-community pdf-expert numi grammarly-desktop)
+  run %(brew install --cask keepingyouawake 1password postman google-chrome fantastical muzzle slack alfred  iterm2 appcleaner docker istat-menus karabiner-elements spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code dbeaver-community pdf-expert numi grammarly-desktop studio-3t readdle-spark zoom dash flameshot )
   puts
   puts
 
@@ -150,6 +146,15 @@ def install_prezto
   puts
   puts "Overriding prezto ~/.zpreztorc with Dotfile's zpreztorc"
   run %( ln -nfs "$HOME/.dotfiles/zsh/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" )
+
+  puts
+  puts "Adding script links"
+  run %( sudo ln -nfs ~/.dotfiles/scripts/gitworktree.sh /usr/local/bin/ )
+
+
+  puts
+  puts "Overriding alacritty config"
+  run %( ln -nfs "$HOME/.dotfiles/config/.alacritty.yml $HOME/.config/" )
 
   puts
   puts "Overriding prezto ~/.zshrc with Dotfile's zshrc"
@@ -243,14 +248,6 @@ def install_pip_depdencies
   run %(pip3 install tmuxp)
 end
 
-def config_tmux_powerline
-  puts '======================================================'
-  puts 'Customizing tmux-powerline'
-  puts '======================================================'
-
-  puts 'Linking custom theme'
-  run %( ln -nfs "$HOME/.dotfiles/tmux/themes/powerline-theme.sh" "${ZDOTDIR:-$HOME}/.dotfiles/tmux/tmux-powerline/themes" )
-end
 
 def install_vim_plugins
   puts '======================================================'

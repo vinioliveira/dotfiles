@@ -18,9 +18,6 @@ alias mosquitto="mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf"
 alias mongod="mongod --config /usr/local/etc/mongod.conf --fork"
 alias top="top -o cpu"
 
-#Adding hub alias to git
-eval "$(hub alias -s)"
-# alias git="hub"
 alias g="git"
 
 alias ku="kubectl"

@@ -72,7 +72,7 @@ font:
     family: FiraCode Nerd Font
     style: Light
   # Font size
-  size: 12.0
+  size: 12.5
   offset:
     x: 0
     y: 0
@@ -80,48 +80,84 @@ font:
     x: 0
     y: 0
 
-# rose-pine-moon
+# tokyo day
 colors:
+  name: TokyoNight Day
+  author: Folke
+  # Default colors
   primary:
-    background: "0xfaf4ed"
-    foreground: "0x575279"
-  cursor:
-    text: "0x575279"
-    cursor: "0xcecacd"
-  vi_mode_cursor:
-    text: "0x575279"
-    cursor: "0xcecacd"
-  line_indicator:
-    foreground: None
-    background: None
-  selection:
-    text: "0x575279"
-    background: "0xdfdad9"
+    background: '0xe1e2e7'
+    foreground: '0x3760bf'
+
+  # Normal colors
   normal:
-    black: "0xf2e9e1"
-    red: "0xb4637a"
-    green: "0x286983"
-    yellow: "0xea9d34"
-    blue: "0x56949f"
-    magenta: "0x907aa9"
-    cyan: "0xd7827e"
-    white: "0x575279"
+    black: '0xe9e9ed'
+    red: '0xf52a65'
+    green: '0x587539'
+    yellow: '0x8c6c3e'
+    blue: '0x2e7de9'
+    magenta: '0x9854f1'
+    cyan: '0x007197'
+    white: '0x6172b0'
+
+  # Bright colors
   bright:
-    black: "0x9893a5"
-    red: "0xb4637a"
-    green: "0x286983"
-    yellow: "0xea9d34"
-    blue: "0x56949f"
-    magenta: "0x907aa9"
-    cyan: "0xd7827e"
-    white: "0x575279"
-  hints:
-    start:
-      foreground: "#797593"
-      background: "#fffaf3"
-    end:
-      foreground: "#9893a5"
-      background: "#fffaf3"
+    black: '0xa1a6c5'
+    red: '0xf52a65'
+    green: '0x587539'
+    yellow: '0x8c6c3e'
+    blue: '0x2e7de9'
+    magenta: '0x9854f1'
+    cyan: '0x007197'
+    white: '0x3760bf'
+
+  indexed_colors:
+    - { index: 16, color: '0xb15c00' }
+    - { index: 17, color: '0xc64343' }
+      #
+# rose-pine-moon
+# colors:
+#   primary:
+#     background: "0xfaf4ed"
+#     foreground: "0x575279"
+#   cursor:
+#     text: "0x575279"
+#     cursor: "0xcecacd"
+#   vi_mode_cursor:
+#     text: "0x575279"
+#     cursor: "0xcecacd"
+#   line_indicator:
+#     foreground: None
+#     background: None
+#   selection:
+#     text: "0x575279"
+#     background: "0xdfdad9"
+#   normal:
+#     black: "0xf2e9e1"
+#     red: "0xb4637a"
+#     green: "0x286983"
+#     yellow: "0xea9d34"
+#     blue: "0x56949f"
+#     magenta: "0x907aa9"
+#     cyan: "0xd7827e"
+#     white: "0x575279"
+#   bright:
+#     black: "0x9893a5"
+#     red: "0xb4637a"
+#     green: "0x286983"
+#     yellow: "0xea9d34"
+#     blue: "0x56949f"
+#     magenta: "0x907aa9"
+#     cyan: "0xd7827e"
+#     white: "0x575279"
+#   hints:
+#     start:
+#       foreground: "#797593"
+#       background: "#fffaf3"
+#     end:
+#       foreground: "#9893a5"
+#       background: "#fffaf3"
+
 selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.

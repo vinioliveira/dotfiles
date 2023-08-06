@@ -27,16 +27,16 @@ vim.opt.shiftround = true
 vim.opt.expandtab = true
 
 
--- vim.opt.foldmethod = "indent"
-vim.opt.foldmethod   = "expr"
-vim.opt.foldexpr     = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod   = "indent"
+-- vim.opt.foldmethod   = "expr"
+-- vim.opt.foldexpr     = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel    = 99
 
-vim.o.foldnestmax    = 10         --         " deepest fold is 10 levels
+vim.o.foldnestmax    = 10 --         " deepest fold is 10 levels
 --vim.g.formatoptions = '+=r'
 vim.opt.smartindent  = true
 vim.opt.conceallevel = 0
-vim.opt.foldenable   = false         -- don't fold by default
+vim.opt.foldenable   = false -- don't fold by default
 
 
 vim.opt.scrolloff            = 8

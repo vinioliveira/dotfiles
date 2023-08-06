@@ -53,25 +53,25 @@ vim.api.nvim_create_user_command("Alternate", function()
   -- if currentPath contains .spec.ts or .spec.tsx then remove spec and open the file
   -- if currentPath contains .ts or .tsx then add spec and open the file
   if currentPath:find(".spec") then
-    local possibleTSFilePath = currentPath:gsub(".spec.ts", ".ts")
+    local possibleTSFilePath = currentPath:gsub("%.spec.ts", ".ts")
     if vim.fn.filereadable(possibleTSFilePath) == 1 then
       vim.cmd("e " .. possibleTSFilePath)
       return
     end
 
-    local possibleTSXFilePath = currentPath:gsub(".spec.tsx", ".tsx")
+    local possibleTSXFilePath = currentPath:gsub("%.spec.tsx", ".tsx")
     if vim.fn.filereadable(possibleTSXFilePath) == 1 then
       vim.cmd("e " .. possibleTSFilePath)
       return
     end
   else
     if currentPath:find(".tsx") then
-      local possibleSpecTSXFilePath = currentPath:gsub(".tsx", ".spec.tsx")
+      local possibleSpecTSXFilePath = currentPath:gsub("%.tsx", ".spec.tsx")
       vim.cmd("e " .. possibleSpecTSXFilePath)
       return
     end
     if currentPath:find(".ts") then
-      local possibleSpecTSFilePath = currentPath:gsub(".ts", ".spec.ts")
+      local possibleSpecTSFilePath = currentPath:gsub("%.ts", ".spec.ts")
       vim.cmd("e " .. possibleSpecTSFilePath)
       return
     end

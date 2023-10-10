@@ -7,7 +7,6 @@ return function(bufnr)
   -- vim.keymap.set('n', 'ti', '<cmd>lua vim.lsp.buf.implementation()<CR>', mopts)
   vim.keymap.set('n', 'tr', '<cmd>lua vim.lsp.buf.references()<CR>', mopts)
   vim.keymap.set('i', '<c-j>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
-  -- saga is handle it
   vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', mopts)
   vim.keymap.set('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', mopts)
 

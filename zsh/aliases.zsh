@@ -55,9 +55,9 @@ alias gwt="g wt"
 alias gx="gitx ."
 
 alias t="tmux"
-alias tn="tmuxp load"
 alias tls="tmux ls"
 alias tkill="tmux kill-session -t"
+alias tnew="tmux new-session -A -s"
 alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep \"^1\" | cut -d \" \" -f 2"
 
 alias today="cal | grep -C6 --color $(date +%e)"

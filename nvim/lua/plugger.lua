@@ -17,6 +17,14 @@ vim.call('plug#begin', '~/.local/share/nvim/plugged')
 -- Themes
 Plug 'rose-pine/neovim'
 Plug 'folke/tokyonight.nvim'
+Plug 'w0ng/vim-hybrid'
+-- Plug 'chriskempson/base16-vim'
+Plug 'RRethy/nvim-base16'
+Plug 'catppuccin/nvim'
+Plug "morhetz/gruvbox"
+Plug 'sainnhe/gruvbox-material'
+Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
+Plug 'shaunsingh/nord.nvim'
 
 -- Syntax checking + Languages & Framework
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
@@ -59,14 +67,14 @@ Plug 'rmagatti/goto-preview'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
 --Utils
-Plug 'j-hui/fidget.nvim'
+Plug('j-hui/fidget.nvim', { ['tag'] = 'legacy' })
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
 -- Others
-Plug('MattesGroeger/vim-bookmarks', { ['on'] = { '<Plug>BookmarkToggle', '<Plug>BookmarkShowAll' } })
+Plug('MattesGroeger/vim-bookmarks')
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'

@@ -37,6 +37,9 @@ else
   git worktree add $GWT_PATH -b $BRANCH
 fi
 cd $GWT_PATH
+
+# copy .env file
+cp $GIT_WT_BASE_PATH/branches/develop/.env .
 pnpm i
 
 exec $SHELL

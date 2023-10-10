@@ -12,12 +12,11 @@ require("mason-lspconfig").setup({
   ensure_installed = servers,
 })
 
-local status_lspconfig, _ = pcall(require, "lspconfig")
+local status_lspconfig, lspconfig = pcall(require, "lspconfig")
 if (not status_lspconfig) then return end
 
 -- local bind_keys = require "plugs.lsp_keybinds"
 -- require "plugs.lsp_keybinds"
-local lspconfig = require('lspconfig');
 
 -- vim.lsp.set_log_level('debug')
 -- tail -f  $HOME/.cache/nvim/lsp.log

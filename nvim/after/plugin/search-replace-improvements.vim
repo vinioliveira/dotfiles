@@ -1,39 +1,32 @@
-function! Get_visual_selection()
+function! Get_Selection()
   " Why is this not a built-in Vim script function?!
   let [lnum1, col1] = getpos("'<")[1:2]
   let [lnum2, col2] = getpos("'>")[1:2]
   let lines = getline(lnum1, lnum2)
   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][col1 - 1:]
-  let selection = join(lines,'\n')
+  return join(lines,'\n')
+endfunction
+
+function! Get_visual_selection()
+  " Why is this not a built-in Vim script function?!
+  let selection = Get_Selection()
   let change = input('Replace with: ')
   if change !=  ""
     execute ":%s/".selection."/".change."/g"
   endif
 endfunction
 
-
 function! Get_visual_selection_rg()
   " Why is this not a built-in Vim script function?!
-  let [lnum1, col1] = getpos("'<")[1:2]
-  let [lnum2, col2] = getpos("'>")[1:2]
-  let lines = getline(lnum1, lnum2)
-  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-  let lines[0] = lines[0][col1 - 1:]
-  let selection = join(lines,'\n')
+  let selection = Get_Selection()
   " let change = input('Replace with: ')
   execute ":Ag \"".selection."\""
 endfunction
 
-
 function! Get_visual_selection_ag_folder()
   " Why is this not a built-in Vim script function?!
-  let [lnum1, col1] = getpos("'<")[1:2]
-  let [lnum2, col2] = getpos("'>")[1:2]
-  let lines = getline(lnum1, lnum2)
-  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-  let lines[0] = lines[0][col1 - 1:]
-  let selection = join(lines,'\n')
+  let selection = Get_Selection()
   let folder = input('Folder: ', "", "file")
   if folder !=  ""
     execute ":Ag ".selection." ".folder
@@ -41,11 +34,9 @@ function! Get_visual_selection_ag_folder()
 endfunction
 
 
-
 " if selection mode : grab selection
 " if normal mode: prompt command
 " if normal mode differnt command: grap word
-
 
 " makes * and # work on visual mode too.
 function! s:VSetSearch(cmdtype)
@@ -59,8 +50,10 @@ xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 vnoremap <leader>* :call Get_visual_selection_rg()<cr>
+" vnoremap <leader>f :call FZF_visual_selection()<cr>
+vnoremap <silent><leader>F <Esc>:FZF -q <C-R>=Get_Selection()<CR><CR>
 " Mappings
-" vnoremap <leader>r :call Get_visual_selection()<cr>
+vnoremap <leader>r :call Get_visual_selection()<cr>
 vnoremap <leader>af :call Get_visual_selection_ag_folder()<cr>
 " nnoremap <leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left>
 

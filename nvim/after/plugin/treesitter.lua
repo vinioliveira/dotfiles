@@ -13,6 +13,12 @@ treesitter.setup {
   indent = {
     enable = false,
   },
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+  -- List of parsers to ignore installing (or "all")
+  ignore_install = { "all" },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = true,
   ensure_installed = {
     "markdown",
     "markdown_inline",
@@ -31,7 +37,7 @@ treesitter.setup {
   -- autotag = {
   --   enable = true,
   -- }
-   context_commentstring = {
+  context_commentstring = {
     enable = true
   },
 }

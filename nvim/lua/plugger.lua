@@ -24,7 +24,9 @@ Plug 'catppuccin/nvim'
 Plug "morhetz/gruvbox"
 Plug 'sainnhe/gruvbox-material'
 Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
-Plug 'shaunsingh/nord.nvim'
+Plug 'nordtheme/vim/'
+Plug 'Verf/deepwhite.nvim'
+Plug "rebelot/kanagawa.nvim"
 
 -- Syntax checking + Languages & Framework
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })

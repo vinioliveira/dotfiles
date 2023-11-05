@@ -1,8 +1,8 @@
 local null_ls = require("null-ls")
 
 null_ls.setup({
-  debug = true,
-  debounce = 2000,
+  debug = false,
+  debounce = 1000,
   sources = {
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.diagnostics.eslint_d,

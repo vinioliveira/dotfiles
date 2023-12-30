@@ -16,10 +16,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 require('kanagawa').setup({
-  theme = "wave",  -- Load "wave" theme when 'background' option is not set
-  transparent = true,  -- Disable transparency
-  background = {   -- map the value of 'background' option to a theme
-    dark = "wave", -- try "dragon" !
+  theme = "wave",     -- Load "wave" theme when 'background' option is not set
+  transparent = true, -- Disable transparency
+  background = {      -- map the value of 'background' option to a theme
+    dark = "wave",    -- try "dragon" !
     light = "lotus"
   },
 });
@@ -27,9 +27,9 @@ require('kanagawa').setup({
 -- vim.o.background = "light"
 -- vim.cmd('colorscheme gruvbox')
 -- vim.cmd('colorscheme tokyonight-storm')
--- vim.cmd('colorscheme tokyonight-day')
+vim.cmd('colorscheme tokyonight-day')
 -- vim.cmd('colorscheme rose-pine-moon')
 -- vim.cmd('colorscheme rose-pine-dawn')
 -- vim.cmd('colorscheme deepwhite')
-vim.cmd('colorscheme kanagawa-lotus')
+-- vim.cmd('colorscheme kanagawa-lotus')
 -- vim.cmd('colorscheme rose-pine')

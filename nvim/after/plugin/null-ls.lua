@@ -1,5 +1,8 @@
 local null_ls = require("null-ls")
 
+-- if you want to set up formatting on save, you can use this as a callback
+-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 null_ls.setup({
   debug = false,
   debounce = 1000,
@@ -10,6 +13,18 @@ null_ls.setup({
     -- null_ls.builtins.diagnostics.flake8,
   },
   -- on_attach = function(client, bufnr)
+  --   if client.supports_method("textDocument/formatting") then
+  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --     vim.api.nvim_create_autocmd("BufWritePre", {
+  --       group = augroup,
+  --       buffer = bufnr,
+  --       callback = function()
+  --         -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+  --         -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+  --         vim.lsp.buf.formatting_sync()
+  --       end,
+  --     })
+  --   end
   -- end,
 })
 
@@ -22,6 +37,3 @@ null_ls.setup({
 --     bufnr = bufnr,
 --   })
 -- end
-
--- if you want to set up formatting on save, you can use this as a callback
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

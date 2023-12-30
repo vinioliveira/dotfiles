@@ -24,8 +24,9 @@ require('kanagawa').setup({
 });
 -- vim.cmd('colorscheme gruvbox-material')
 -- vim.cmd('colorscheme nordic')
-vim.cmd('colorscheme kanagawa')
--- vim.cmd('colorscheme tokyonight-night')
+-- vim.cmd('colorscheme kanagawa')
+-- vim.cmd('colorscheme nord')
+vim.cmd('colorscheme tokyonight-night')
 -- vim.cmd('colorscheme tokyonight-storm')
 -- vim.cmd('colorscheme tokyonight-day')
 -- vim.cmd('colorscheme rose-pine-moon')

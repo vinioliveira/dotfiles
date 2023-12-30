@@ -24,7 +24,7 @@ Plug 'catppuccin/nvim'
 Plug "morhetz/gruvbox"
 Plug 'sainnhe/gruvbox-material'
 Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
-Plug 'nordtheme/vim/'
+Plug 'nordtheme/vim'
 Plug 'Verf/deepwhite.nvim'
 Plug "rebelot/kanagawa.nvim"
 

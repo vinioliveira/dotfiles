@@ -233,4 +233,4 @@ key_bindings:
   - { key: T, mods: Control|Shift, chars: "\e[84;6u" }
 
 import:
- - ~/.config/alacritty/themes/themes/kanagawa_wave.yaml
+ - ~/.config/alacritty/themes/themes/tokyo-night.yaml

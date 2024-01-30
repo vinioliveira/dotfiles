@@ -5,6 +5,7 @@ local servers = {
   "tailwindcss",
   "jsonls",
   "pyright",
+  "gopls"
 }
 
 require("mason").setup()
@@ -97,6 +98,12 @@ lspconfig.pyright.setup {
   flags = { debounce_text_changes = 150 },
   filetypes = { "python" },
   init_options = { provideFormatter = true }
+}
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  filetypes = { "go" },
 }
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

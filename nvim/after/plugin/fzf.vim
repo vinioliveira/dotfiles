@@ -1,6 +1,6 @@
 let g:fzf_layout = { 'up': '~30%' }
 let g:fzf_history_dir = '~/.config/nvim/fzf-history'
-let $BAT_THEME="TwoDark"
+let $BAT_THEME="gruvbox-dark"
 
 " let g:fzf_preview_window = 'right:60%'
 

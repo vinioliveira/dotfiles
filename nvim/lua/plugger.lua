@@ -65,14 +65,13 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/lsp_signature.nvim'
 --
 Plug 'rmagatti/goto-preview'
--- Plug('glepnir/lspsaga.nvim', { ["branch"] = 'main' })
-Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'nvimtools/none-ls.nvim'
 
 --Utils
 Plug('j-hui/fidget.nvim', { ['tag'] = 'legacy' })
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ThePrimeagen/harpoon'
+Plug('ThePrimeagen/harpoon', { ["branch"] = 'harpoon2' })
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
 -- Others

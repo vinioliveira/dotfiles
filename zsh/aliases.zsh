@@ -1,5 +1,5 @@
-alias ll="exa -lFa --icons "
-alias ls="exa --sort Name -F --icons"
+alias ll="eza -la --icons --classify "
+alias ls="eza --sort Name -F --icons"
 alias make="make -j2"
 alias ni="lsof -Pn -i"
 alias psgrep="ps aux | egrep -v egrep | egrep"
@@ -73,4 +73,3 @@ alias toggle-darkmode="~/.dotfiles/scripts/swap-theme.sh toggle"
 alias yn="yarn"
 alias np="npm"
 alias pn="pnpm"
-

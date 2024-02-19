@@ -19,6 +19,15 @@ let test#strategy = 'dispatch_background'
 " let test#javascript#nx#executable = 'node --inspect-brk ./node_modules/@nrwl/cli/bin/nx'
 " let test#javascript#nx#options = '--skip-nx-cache --unhandled-rejections=strict --no-cache'
 
+function! TypeScriptTransform(cmd) abort
+  let acmd = substitute(a:cmd, '\[', '\\[', 'g')
+  return acmd
+endfunction
+
+let g:test#custom_transformations = { 'typescript': function('TypeScriptTransform')}
+let g:test#custom_transformations = { 'javascript': function('TypeScriptTransform')}
+let g:test#transformation = 'typescript'
+let g:test#transformation = 'javascript'
 
 function! RunDebugger(cmd) abort
   let testName = matchlist(a:cmd, '\v -t ''(.*)''')[1]
@@ -29,6 +38,7 @@ function! RunDebugger(cmd) abort
 
   call luaeval("require'plugs.debug'.debugJest([[" . testName . "]], [[" . fileName . "]])")
 endfunction
+
 let g:test#custom_strategies = { 'jest-debug': function('RunDebugger') }
 
 

@@ -27,4 +27,5 @@ return function(bufnr)
   vim.keymap.set('n', '?', '<cmd>lua vim.diagnostic.open_float()<CR>', mopts)
   vim.keymap.set('n', '<leader>ap', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mopts)
   vim.keymap.set('n', '<leader>an', '<cmd>lua vim.diagnostic.goto_next()<CR>', mopts)
+  vim.keymap.set('n', '<leader>al', '<cmd>lua vim.diagnostic.setloclist()<CR>', mopts)
 end

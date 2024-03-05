@@ -5,7 +5,7 @@ export INSTALL_DIR="$HOME/local"
 export MANPATH=/usr/local/git/man:$MANPATH
 
 export HISTCONTROL=ignoreboth
-export HISTFILESIZE=1000000
+export HISTFILESIZE=1000000000000
 export HISTSIZE=${HISTFILESIZE}
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"

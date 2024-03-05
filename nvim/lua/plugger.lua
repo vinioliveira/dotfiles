@@ -21,7 +21,7 @@ Plug 'w0ng/vim-hybrid'
 -- Plug 'chriskempson/base16-vim'
 Plug 'RRethy/nvim-base16'
 Plug 'catppuccin/nvim'
-Plug "morhetz/gruvbox"
+Plug "ellisonleao/gruvbox.nvim"
 Plug 'sainnhe/gruvbox-material'
 Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
 Plug 'nordtheme/vim'
@@ -43,8 +43,9 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
 -- Navigation
-Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
-Plug 'junegunn/fzf.vim'
+-- Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
+-- Plug 'junegunn/fzf.vim'
+Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.5' })
 Plug('Shougo/defx.nvim', { ['do'] = ':UpdateRemotePlugins' })
 Plug 'chrisbra/nrrwrgn'
 Plug 'kristijanhusak/defx-icons'
@@ -73,6 +74,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug('ThePrimeagen/harpoon', { ["branch"] = 'harpoon2' })
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvimdev/dashboard-nvim'
 
 -- Others
 Plug('MattesGroeger/vim-bookmarks')

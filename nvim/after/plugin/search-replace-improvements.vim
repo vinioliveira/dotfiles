@@ -49,7 +49,7 @@ endfunction
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
-vnoremap <leader>* :call Get_visual_selection_rg()<cr>
+" vnoremap <leader>* :call Get_visual_selection_rg()<cr>
 " vnoremap <leader>f :call FZF_visual_selection()<cr>
 vnoremap <silent><leader>F <Esc>:FZF -q <C-R>=Get_Selection()<CR><CR>
 " Mappings

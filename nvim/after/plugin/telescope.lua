@@ -1,30 +1,122 @@
+local telescope = require('telescope')
 local actions = require('telescope.actions')
+local resolve = require "telescope.config.resolve"
+local p_window = require "telescope.pickers.window"
+local calc_tabline = function(max_lines)
+  local tbln = (vim.o.showtabline == 2) or (vim.o.showtabline == 1 and #vim.api.nvim_list_tabpages() > 1)
+  if tbln then
+    max_lines = max_lines - 1
+  end
+  return max_lines, tbln
+end
 
-require('telescope').setup {
+local get_border_size = function(opts)
+  if opts.window.border == false then
+    return 0
+  end
 
+  return 1
+end
+
+local calc_size_and_spacing = function(cur_size, max_size, bs, w_num, b_num, s_num)
+  local spacing = s_num * (1 - bs) + b_num * bs
+  cur_size = math.min(cur_size, max_size)
+  cur_size = math.max(cur_size, w_num + spacing)
+  return cur_size, spacing
+end
+
+-- Custom layout strategy
+require("telescope.pickers.layout_strategies").fzf_upper_layout = function(self, max_columns, max_lines, layout_config)
+  local initial_options = p_window.get_initial_window_options(self)
+  local results = initial_options.results
+  local prompt = initial_options.prompt
+  local preview = initial_options.preview
+  layout_config = layout_config or self.layout_config.bottom_pane
+
+  local tbln
+  max_lines, tbln = calc_tabline(max_lines)
+
+  local height = vim.F.if_nil(resolve.resolve_height(layout_config.height)(self, max_columns, max_lines), 25)
+  if type(layout_config.height) == "table" and type(layout_config.height.padding) == "number" then
+    -- Since bottom_pane only has padding at the top, we only need half as much padding in total
+    -- This doesn't match the vim help for `resolve.resolve_height`, but it matches expectations
+    height = math.floor((max_lines + height) / 2)
+  end
+
+  local bs = get_border_size(self)
+
+  -- Cap over/undersized height
+  height, _ = calc_size_and_spacing(height, max_lines, bs, 2, 3, 0)
+
+  -- Height
+  prompt.height = 1
+  results.height = height - prompt.height - (2 * bs)
+  preview.height = results.height - bs
+
+  -- Width
+  prompt.width = max_columns - 2 * bs
+  if self.previewer and max_columns >= layout_config.preview_cutoff then
+    -- Cap over/undersized width (with preview)
+    local width, w_space = calc_size_and_spacing(max_columns, max_columns, bs, 2, 4, 0)
+
+    preview.width = resolve.resolve_width(vim.F.if_nil(layout_config.preview_width, 0.5))(self, width, max_lines)
+    results.width = width - preview.width - w_space
+  else
+    results.width = prompt.width
+    preview.width = 0
+  end
+
+  results.line = 1 + bs
+  prompt.line = results.height + 1 + bs + 1
+  -- results.line = prompt.line + 1
+  preview.line = results.line
+  if results.border == true then
+    results.border = { 1, 1, 0, 1 }
+  end
+  if type(results.title) == "string" then
+    results.title = { { pos = "S", text = results.title } }
+  end
+  if type(preview.title) == "string" then
+    preview.title = { { pos = "S", text = preview.title } }
+  end
+  -- Col
+  prompt.col = 0 -- centered
+  if layout_config.mirror and preview.width > 0 then
+    results.col = preview.width + (3 * bs) + 1
+    preview.col = bs + 1
+  else
+    results.col = bs + 1
+    preview.col = results.width + (3 * bs) + 1
+  end
+
+  if tbln then
+    prompt.line = prompt.line + 1
+    results.line = results.line + 1
+    preview.line = preview.line + 1
+  end
+
+  return {
+    preview = self.previewer and preview.width > 0 and preview,
+    prompt = prompt,
+    results = results,
+  }
+end
+
+
+telescope.setup {
   defaults = {
-    layout_strategy = "bottom_pane",
+    layout_strategy = "fzf_upper_layout",
     layout_config = {
       bottom_pane = {
-        height = .3,
-        prompt_position = "bottom",
+        height = .4,
       },
-      -- width = 0.75,
-      -- height = 0.75,
-      -- horizontal = {
-      --   width = 0.75,
-      --   height = 0.75,
-      -- },
-      -- vertical = {
-      --   width = 0.75,
-      --   height = 0.75,
-      -- },
     },
     -- Default configuration for telescope goes here:
     -- config_key = value,
     mappings = {
       i = {
         -- ["<esc>"] = require('telescope.actions').close,
+        ["q"] = require('telescope.actions').close,
         ["<c-a>"] = actions.toggle_all,
         ["<C-u>"] = false,
         ["<c-j>"] = actions.move_selection_next,
@@ -33,23 +125,17 @@ require('telescope').setup {
       }
     }
   },
-  -- pickers = {
-  --   find_files = {
-  --     theme = "ivy",
-  --   }
-  -- },
 }
 
 
-
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<c-p>', builtin.find_files, {})
-vim.keymap.set('n', '<c-b>', builtin.buffers, {})
-vim.keymap.set('n', '<leader>ag', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<c-p>', function() builtin.find_files() end, {})
+vim.keymap.set('n', '<c-b>', function() builtin.buffers() end, {})
+vim.keymap.set('n', '<leader>ag', function() builtin.live_grep() end, {})
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files() end, {})
+vim.keymap.set('n', '<leader>fg', function() builtin.live_grep() end, {})
+vim.keymap.set('n', '<leader>fb', function() builtin.buffers() end, {})
+vim.keymap.set('n', '<leader>fh', function() builtin.help_tags() end, {})
 
 local function getVisualSelection()
   vim.cmd('noau normal! "vy"')
@@ -66,84 +152,5 @@ end
 
 vim.keymap.set('v', '<leader>*', function()
   local text = getVisualSelection()
-  builtin.grep_string({ default_text = text })
+  builtin.grep_string({ search = text })
 end, {})
-
-
--- "let g:fzf_layout = { 'up': '~30%' }
--- "let g:fzf_history_dir = '~/.config/nvim/fzf-history'
--- "let $BAT_THEME="gruvbox-dark"
-
--- "" let g:fzf_preview_window = 'right:60%'
-
--- "" " In Neovim, you can set up fzf window using a Vim command
--- "" " let g:fzf_layout = { 'window': 'belowright 15sp enew' }
-
--- "let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:half-page-down,ctrl-u:half-page-up'
-
--- "" function! s:build_quickfix_list(lines)
--- ""   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
--- ""   copen
--- ""   cc
--- "" endfunction
-
--- "let g:fzf_action = {
--- "      \ 'ctrl-t': 'tab split',
--- "      \ 'ctrl-x': 'split',
--- "      \ 'ctrl-v': 'vsplit' }
-
-
--- "let g:fzf_preview_window = ['right:40%', 'ctrl-/']
--- "" [Buffers] Jump to the existing window if possible
--- "let g:fzf_buffers_jump = 1
-
-
--- "" command! -bang -nargs=* -complete=dir Ag
--- ""   \ call fzf#vim#grep('ag --nogroup --column --color '.join(map([<f-args>], 'shellescape(v:val)')), 0
--- ""   \   fzf#vim#with_preview(), <bang>0)
--- ""
--- "command! -bang -nargs=+ -complete=file Ag call fzf#vim#ag_raw(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-
--- "" ============ MAPS ==============
--- "nnoremap <C-b> :Buffers<CR>
--- "nnoremap <C-p> :Files<CR>
--- "" nnoremap <C-f> :Ag<space>
--- "nnoremap <leader>ag :Ag<space>
-
--- "function! CloseAllBuffersButCurrent()
--- "  let curr = bufnr("%")
--- "  let last = bufnr("$")
-
--- "  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
--- "  if curr < last | silent! execute (curr+1).",".last."bd" | endif
--- "endfunction
-
--- "command! BufferDelete call CloseAllBuffersButCurrent()
-
--- "" nnoremap <leader>f :BTags<CR>
--- "" nnoremap <leader>F :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
-
--- "" " Insert mode completion
--- "" " imap <c-x><c-k> <plug>(fzf-complete-word)
--- "" " imap <c-x><c-f> <plug>(fzf-complete-path)
--- "" " imap <c-x><c-j> <plug>(fzf-complete-file-ag)
--- "" " imap <c-x><c-l> <plug>(fzf-complete-line)
--- "" " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
--- "function! s:list_buffers()
--- "  redir => list
--- "  silent ls
--- "  redir END
--- "  return split(list, "\n")
--- "endfunction
-
--- "function! s:delete_buffers(lines)
--- "  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
--- "endfunction
-
--- "command! BufferList call fzf#run(fzf#wrap({
--- "  \ 'source': s:list_buffers(),
--- "  \ 'sink*': { lines -> s:delete_buffers(lines) },
--- "  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
--- "\ }))

@@ -20,7 +20,7 @@ dashboard.setup({
         desc = 'Files',
         group = 'Label',
         action = 'Telescope find_files',
-        key = 'f',
+        key = 'p',
       },
       {
         desc = ' Apps',
@@ -33,6 +33,18 @@ dashboard.setup({
         group = 'Number',
         action = 'Telescope dotfiles',
         key = 'd',
+      },
+      {
+        desc = ' Git Status',
+        group = 'Number',
+        action = 'Git',
+        key = 'g',
+      },
+      {
+        icon = ' ',
+        desc = 'Quit',
+        action = 'q!',
+        key = 'q',
       },
     },
   },

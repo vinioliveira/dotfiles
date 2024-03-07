@@ -81,6 +81,20 @@ end, {})
 vim.api.nvim_set_keymap('n', 'ta', ':Alternate<CR>', { noremap = true })
 
 
+
+
+vim.api.nvim_create_user_command("Ag", function(params)
+  local builtin = require('telescope.builtin')
+  local fullArgs = params.args
+  local search, glob_pattern = unpack(vim.split(fullArgs, " "))
+
+  builtin.grep_string({
+    search = search,
+    additional_args = {"--glob", glob_pattern or "*" }
+  })
+end, { nargs = '?' })
+
+
 -- local function stdout(_, data)
 --   print("success");
 -- end

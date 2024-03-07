@@ -66,7 +66,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/lsp_signature.nvim'
 --
 Plug 'rmagatti/goto-preview'
-Plug 'nvimtools/none-ls.nvim'
+Plug('nvimtools/none-ls.nvim', { ['commit'] = '7274b0d58127ce09ba67bf73e3e2645179ccaae2' })
 
 --Utils
 Plug('j-hui/fidget.nvim', { ['tag'] = 'legacy' })

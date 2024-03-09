@@ -80,7 +80,17 @@ end, {})
 
 vim.api.nvim_set_keymap('n', 'ta', ':Alternate<CR>', { noremap = true })
 
+vim.api.nvim_create_user_command("Quickfix", function()
+  require('telescope.builtin').quickfix()
+end, {})
 
+vim.api.nvim_create_user_command("Maps", function()
+  require('telescope.builtin').keymaps()
+end, {})
+
+vim.api.nvim_create_user_command("Colorscheme", function()
+  require('telescope.builtin').colorscheme()
+end, {})
 
 
 vim.api.nvim_create_user_command("Ag", function(params)
@@ -88,9 +98,13 @@ vim.api.nvim_create_user_command("Ag", function(params)
   local fullArgs = params.args
   local search, glob_pattern = unpack(vim.split(fullArgs, " "))
 
+  print("fullArgs", fullArgs)
+  print("search", search)
+  print("search", glob_pattern or "*")
+
   builtin.grep_string({
     search = search,
-    additional_args = {"--glob", glob_pattern or "*" }
+    additional_args = { "--glob", glob_pattern or "" }
   })
 end, { nargs = '?' })
 

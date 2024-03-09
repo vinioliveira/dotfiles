@@ -45,7 +45,12 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 -- Navigation
 -- Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install'] })
 -- Plug 'junegunn/fzf.vim'
-Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.5' })
+Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.5', frozen = true })
+Plug('nvim-telescope/telescope-fzf-native.nvim',
+  {
+    ['do'] =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  })
 Plug('Shougo/defx.nvim', { ['do'] = ':UpdateRemotePlugins' })
 Plug 'chrisbra/nrrwrgn'
 Plug 'kristijanhusak/defx-icons'

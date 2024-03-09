@@ -8,13 +8,6 @@ dashboard.setup({
     },
     shortcut = {
       {
-        icon = '󰊳 ',
-        desc = 'Update Plugins',
-        group = '@property',
-        action = 'PlugUpdate',
-        key = 'u',
-      },
-      {
         icon = ' ',
         icon_hl = '@variable',
         desc = 'Files',

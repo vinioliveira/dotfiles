@@ -8,6 +8,13 @@ dashboard.setup({
     },
     shortcut = {
       {
+        icon = '󱧘 ',
+        desc = 'Install Plugins',
+        group = 'Plugger',
+        action = 'PlugInstall',
+        key = 'i',
+      },
+      {
         icon = ' ',
         icon_hl = '@variable',
         desc = 'Files',

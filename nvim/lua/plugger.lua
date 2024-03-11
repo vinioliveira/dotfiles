@@ -27,6 +27,8 @@ Plug('AlexvZyl/nordic.nvim', { ['branch'] = 'main' })
 Plug 'nordtheme/vim'
 Plug 'Verf/deepwhite.nvim'
 Plug "rebelot/kanagawa.nvim"
+Plug 'NLKNguyen/papercolor-theme'
+
 
 -- Syntax checking + Languages & Framework
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })

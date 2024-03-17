@@ -116,7 +116,7 @@ telescope.setup {
     mappings = {
       i = {
         -- ["<esc>"] = require('telescope.actions').close,
-        ["q"] = require('telescope.actions').close,
+        -- ["q"] = require('telescope.actions').close,
         ["<c-a>"] = actions.toggle_all,
         ["<c-j>"] = actions.move_selection_next,
         ["<c-k>"] = actions.move_selection_previous,

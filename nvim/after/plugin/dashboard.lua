@@ -24,7 +24,7 @@ dashboard.setup({
       },
       {
         desc = ' Apps',
-        group = 'DiagnosticHint',
+        group = 'Explore',
         action = "Defx -new `expand('%:p:h')` -search=`expand('%:p')<CR><esc>",
         key = 'a',
       },
@@ -36,7 +36,7 @@ dashboard.setup({
       },
       {
         desc = ' Git Status',
-        group = 'Number',
+        group = 'Git',
         action = 'Git',
         key = 'g',
       },

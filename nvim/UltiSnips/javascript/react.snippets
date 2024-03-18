@@ -1,10 +1,10 @@
 snippet rrcc "React Redux Class Component" b
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import styles from './${2:$1}.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import styles from "./${2:$1}.css";
 
-class ${1:`!v expand('%:t:r')`} extends Component {
+class ${1:`!v expand("%:t:r")`} extends Component {
 	static propTypes = {
 children: PropTypes.node,
 					className: PropTypes.string,
@@ -32,11 +32,11 @@ export default connect(mapStateToProps)($1);
 endsnippet
 
 snippet rcc "React Class Component" b
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styles from './${2:$1}.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import styles from "./${2:$1}.css";
 
-class ${1:`!v expand('%:t:r')`} extends Component {
+class ${1:`!v expand("%:t:r")`} extends Component {
 	static propTypes = {
 children: PropTypes.node,
 					className: PropTypes.string,
@@ -59,11 +59,11 @@ export default $1;
 endsnippet
 
 snippet rfc "React Functional Component" b
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './${2:$1}.css';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./${2:$1}.css";
 
-function ${1:`!v expand('%:t:r')`}(${3:{...props}}) {
+function ${1:`!v expand("%:t:r")`}(${3:{...props}}) {
 	return (
 			<div className={styles.base}>
 			$4
@@ -79,11 +79,11 @@ export default $1;
 endsnippet
 
 snippet ir "import react"
-import React from 'react';
+import React from "react";
 endsnippet
 
 snippet irc "import react with component"
-import React, { Component } from 'react';
+import React, { Component } from "react";
 endsnippet
 
 snippet prop "Expand this.props" w

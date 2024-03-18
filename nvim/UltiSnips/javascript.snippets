@@ -1,5 +1,5 @@
 snippet : "Object key key: 'value'" w
-${1:key}: ${2:'${3:value}'}${4:, }
+${1:key}: ${2:"${3:value}"}${4:, }
 endsnippet
 
 snippet const "const"
@@ -134,7 +134,7 @@ endsnippet
 
 snippet switch "switch" w
 switch (${1:expression}) {
-	case '${3:case}':
+	case "${3:case}":
 		${4}
 		break;
 		${0}
@@ -144,7 +144,7 @@ switch (${1:expression}) {
 endsnippet
 
 snippet case "case 'xyz': ... break" w
-case '${1:case}':
+case "${1:case}":
 	${0:${VISUAL}}
 	break;
 endsnippet
@@ -183,11 +183,11 @@ debugger;
 endsnippet
 
 snippet le "logger.error"
-logger.error('${1}'${2:, ${3:$1}});
+logger.error("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet li "logger.info"
-logger.info('${1}'${2:, ${3:$1}});
+logger.info("${1}"${2:, ${3:$1}});
 endsnippet
 
 snippet ld "logger.debug"
@@ -289,15 +289,15 @@ return ${0:result};
 endsnippet
 
 snippet req "requrie" b
-require('${1}');
+require("${1}");
 endsnippet
 
 snippet creq "requrie" b
-const ${1} = require('${2:$1}');
+const ${1} = require("${2:$1}");
 endsnippet
 
 snippet _get "_.get(a, b, c)" b
-_.get(${1}, '${2}'${3:, ${4:'${5:value}'}})${6:; }
+_.get(${1}, "${2}"${3:, ${4:"${5:value}"}})${6:; }
 endsnippet
 
 snippet td "TODO (todo)"

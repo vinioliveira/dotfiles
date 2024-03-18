@@ -125,6 +125,11 @@ telescope.setup {
       }
     }
   },
+  pickers = {
+    buffers = {
+      sort_lastused = true
+    }
+  },
   extensions = {
     fzf = {
       fuzzy = true,                   -- false will only do exact matching
@@ -145,6 +150,9 @@ vim.keymap.set('n', '<leader>ff', function() builtin.find_files() end, {})
 vim.keymap.set('n', '<leader>fg', function() builtin.live_grep() end, {})
 vim.keymap.set('n', '<leader>fb', function() builtin.buffers() end, {})
 vim.keymap.set('n', '<leader>fh', function() builtin.help_tags() end, {})
+vim.keymap.set('n', '<leader>!', function() builtin.command_history() end, {})
+vim.keymap.set('n', '<leader>/', function() builtin.search_history() end, {})
+vim.keymap.set('n', '<leader>gl', function() builtin.git_commits() end, {})
 
 local function getVisualSelection()
   vim.cmd('noau normal! "vy"')

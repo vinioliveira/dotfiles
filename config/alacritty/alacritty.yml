@@ -233,4 +233,4 @@ key_bindings:
   - { key: T, mods: Control|Shift, chars: "\e[84;6u" }
 
 import:
- - ~/.config/alacritty/themes/themes/papercolor_dark.yaml
+ - ~/.config/alacritty/themes/themes/one_dark.yaml

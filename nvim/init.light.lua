@@ -27,9 +27,9 @@ require('kanagawa').setup({
 vim.o.background = "light"
 -- vim.cmd('colorscheme gruvbox')
 -- vim.cmd('colorscheme tokyonight-storm')
-vim.cmd('colorscheme onedark')
+-- vim.cmd('colorscheme onedark')
 -- vim.cmd('colorscheme rose-pine-moon')
--- vim.cmd('colorscheme rose-pine-dawn')
+vim.cmd('colorscheme rose-pine-dawn')
 -- vim.cmd('colorscheme deepwhite')
 -- vim.cmd('colorscheme kanagawa-lotus')
 -- vim.cmd('colorscheme rose-pine')

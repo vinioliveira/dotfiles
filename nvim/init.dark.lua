@@ -16,8 +16,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 
-vim.g.onedark_config = {
-  ['style'] = 'warmer',
-}
+-- vim.g.onedark_config = {
+--   ['style'] = 'darker',
+-- }
 
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme rose-pine')

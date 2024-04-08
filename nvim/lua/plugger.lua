@@ -84,7 +84,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvimdev/dashboard-nvim'
 
 -- Others
-Plug('MattesGroeger/vim-bookmarks')
+Plug 'tomasky/bookmarks.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'

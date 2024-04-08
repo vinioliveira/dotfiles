@@ -125,9 +125,15 @@ telescope.setup {
       }
     }
   },
+  -- lua require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })
   pickers = {
     buffers = {
-      sort_lastused = true
+      sort_lastused = true,
+      sort_mru = true,
+      ignore_current_buffer = true
+    },
+    lsp_document_symbols = {
+      theme = "dropdown",
     }
   },
   extensions = {
@@ -153,6 +159,8 @@ vim.keymap.set('n', '<leader>fh', function() builtin.help_tags() end, {})
 vim.keymap.set('n', '<leader>!', function() builtin.command_history() end, {})
 vim.keymap.set('n', '<leader>/', function() builtin.search_history() end, {})
 vim.keymap.set('n', '<leader>gl', function() builtin.git_commits() end, {})
+vim.keymap.set('n', '<leader>@', function() builtin.lsp_document_symbols({ symbols = 'method' }) end, {})
+vim.keymap.set('n', '<leader>$', function() builtin.lsp_document_symbols() end, {})
 
 local function getVisualSelection()
   vim.cmd('noau normal! "vy"')

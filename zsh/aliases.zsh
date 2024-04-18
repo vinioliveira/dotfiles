@@ -7,7 +7,7 @@ alias k9="kill -9"
 alias cat="bat"
 alias cd="z"
 alias cdi="zi"
-alias zz="z -"
+alias zz="zoxide query --list | fzf"
 
 alias r="rails"
 alias n="node"

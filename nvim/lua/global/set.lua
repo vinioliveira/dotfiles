@@ -41,6 +41,7 @@ vim.opt.foldenable   = false -- don't fold by default
 
 vim.opt.scrolloff            = 8
 vim.opt.signcolumn           = "yes"
+vim.opt.colorcolumn          = 120
 
 -- vim.api.nvim_command("filetype plugin indent on")
 

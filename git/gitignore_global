@@ -56,6 +56,9 @@ db.json
 # vim-plugins
 .vim-bookmarks
 
+# undotree
+.undodir
+
 # asdf
 .tool-versions
 

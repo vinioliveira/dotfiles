@@ -18,7 +18,7 @@ vim.call('plug#begin', '~/.local/share/nvim/plugged')
 Plug 'rose-pine/neovim'
 Plug 'folke/tokyonight.nvim'
 Plug 'w0ng/vim-hybrid'
--- Plug 'chriskempson/base16-vim'
+Plug 'sainnhe/everforest'
 Plug 'RRethy/nvim-base16'
 Plug 'catppuccin/nvim'
 Plug "ellisonleao/gruvbox.nvim"
@@ -82,6 +82,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug('ThePrimeagen/harpoon', { ["branch"] = 'harpoon2' })
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvimdev/dashboard-nvim'
+Plug 'folke/todo-comments.nvim'
+Plug 'mbbill/undotree'
 
 -- Others
 Plug 'tomasky/bookmarks.nvim'

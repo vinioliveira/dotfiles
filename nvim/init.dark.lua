@@ -20,4 +20,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --   ['style'] = 'darker',
 -- }
 
-vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme rose-pine-moon')

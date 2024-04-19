@@ -4,8 +4,8 @@ local servers = {
   "lua_ls",
   "tailwindcss",
   "jsonls",
-  "pyright",
-  "gopls"
+  -- "pyright",
+  -- "gopls"
 }
 
 require("mason").setup()

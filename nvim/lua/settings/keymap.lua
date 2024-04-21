@@ -16,7 +16,7 @@ map("i", "<C-s>", "<esc>:up<CR><esc>")
 map("n", "<leader>x", "<esc>:x<CR><esc>")
 
 -- quit all
--- map("n", "<leader>q", "<esc>:qa!<CR><esc>")
+map("n", "<leader>q", "<esc>:qa!<CR><esc>")
 
 map("n", "<S-q>", "q", { noremap = true })
 map("n", "q", "<Nop>", { noremap = true })

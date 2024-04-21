@@ -45,7 +45,8 @@ return {
     "quangnguyen30192/cmp-nvim-ultisnips",
     "hrsh7th/cmp-nvim-lsp-document-symbol",
     "hrsh7th/cmp-cmdline",
-    'github/copilot.vim',
+    "github/copilot.vim",
+    -- "hrsh7th/cmp-copilot",
   },
   init = function()
     vim.g.UltiSnipsSnippetDirectories = { '~/.config/nvim/UltiSnips' }
@@ -200,6 +201,7 @@ return {
         },
         { name = "ultisnips" },
         { name = "path" },
+        -- { name = 'copilot' }
       }),
       formatting = {
         fields = { "kind", "abbr", "menu" },

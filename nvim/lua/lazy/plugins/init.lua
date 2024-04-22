@@ -24,6 +24,9 @@ return {
   {
     'tpope/vim-dispatch',
     cmd = { 'Dispatch', 'Make', 'Focus', 'Start' },
+    keys = {
+      { "<leader>vx", "<cmd>Dispatch<CR>", { noremap = true } },
+    },
     config = function()
       vim.cmd([[
         autocmd FileType java let b:dispatch = 'java %; java `basename % .java`'
@@ -32,6 +35,7 @@ return {
         autocmd FileType javascript let b:dispatch = 'node %'
         autocmd FileType typescript let b:dispatch = 'ts-node %'
         autocmd FileType python let b:dispatch = 'python3 %'
+        autocmd FileType lua let b:dispatch = 'lua %'
       ]])
     end
   },

@@ -1,3 +1,5 @@
+vim.cmd("abbreviate ag Ag")
+
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup('TrailingSpaces', {}),
   pattern = { "*" },
@@ -113,20 +115,24 @@ end, {})
 vim.api.nvim_create_user_command("Ag", function(params)
   local builtin = require('telescope.builtin')
   local fullArgs = params.args
-  -- if the there's a quote or double quote get it's content as search
-  -- if no quotes or double quotes first string is the search term and the other is the glob
-  -- then the rest of the the string split by space is the glob pattern
   local search = fullArgs:match("\"(.-)\"") or fullArgs:match("'(.-)'")
-  local glob_pattern = fullArgs:match("\"(.-)\" (.*)") or fullArgs:match("'(.-)' (.*)")
+  local glob_pattern = nil
 
+  local glob_index = string.find(fullArgs, " --glob ")
 
-  print("fullArgs", fullArgs)
-  print("search", search)
-  print("search", glob_pattern or "*")
+  if (glob_index) then
+    glob_pattern = string.sub(fullArgs, glob_index + 6)
+  end
+
+  if search == nil then
+    search = glob_index and string.sub(fullArgs, 1, glob_index - 2) or fullArgs
+  end
+
+  search = search:gsub("^%s*(.-)%s*$", "%1")
 
   builtin.grep_string({
     search = search,
-    additional_args = { "--glob", glob_pattern or "" }
+    additional_args = { "--glob", glob_pattern or "*" }
   })
 end, { nargs = '?' })
 
@@ -175,8 +181,8 @@ local function get_selection()
   local lnum1, col1 = unpack(vim.api.nvim_buf_get_mark(0, "<"))
   local lnum2, col2 = unpack(vim.api.nvim_buf_get_mark(0, ">"))
   local lines = vim.api.nvim_buf_get_lines(0, lnum1 - 1, lnum2, false)
-  lines[#lines] = lines[#lines]:sub(1, col2 - 1)
-  lines[1] = lines[1]:sub(col1)
+  lines[#lines] = lines[#lines]:sub(1, col2 + 1)
+  lines[1] = lines[1]:sub(col1+1)
   return table.concat(lines, "\n")
 end
 
@@ -240,7 +246,7 @@ function VSetSearch(cmdtype)
   local temp = vim.fn.getreg('s')
   vim.cmd('normal! gv"sy')
   local s = vim.fn.getreg('s')
-  local escaped_s = vim.fn.substitute(vim.fn.escape(s, cmdtype..'\\'), '\n', '\\\\n', 'g')
+  local escaped_s = vim.fn.substitute(vim.fn.escape(s, cmdtype .. '\\'), '\n', '\\\\n', 'g')
   vim.fn.setreg('/', '\\V' .. escaped_s)
   vim.fn.setreg('s', temp)
 end

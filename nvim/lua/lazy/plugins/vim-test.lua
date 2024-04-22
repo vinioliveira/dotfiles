@@ -33,9 +33,7 @@ return {
       nnoremap <silent> tt :TestFile<CR>
       nnoremap <silent> ts :TestNearest<CR>
       nnoremap <silent> tl :TestLast<CR>
-      nnoremap <silent> ta :TestSuit<CR>
       nnoremap <silent> tgt :TestVisit<CR>
-      nnoremap <silent> <leader>td :TestNearest -strategy=jest-debug<CR>
     ]], true);
   end
 }

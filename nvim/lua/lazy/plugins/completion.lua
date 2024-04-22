@@ -55,6 +55,7 @@ return {
     vim.cmd "autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript"
   end,
   config = function()
+
     -- See `:help cmp`
     local cmp = require("cmp")
 

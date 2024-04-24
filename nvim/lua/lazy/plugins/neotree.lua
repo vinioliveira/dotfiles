@@ -100,6 +100,12 @@ return {
       mappings = {
         ["/"] = "none",
         ["o"] = "open",
+        ["X"] = {
+          function(state)
+            require("lazy.util").open(state.tree:get_node().path, { system = true })
+          end,
+          desc = "open with system application",
+        },
         ["<esc>"] = "cancel",
         ["S"] = "open_split",
         ["s"] = "open_vsplit",

@@ -130,9 +130,20 @@ vim.api.nvim_create_user_command("Ag", function(params)
 
   search = search:gsub("^%s*(.-)%s*$", "%1")
 
+  local aditional_args =  {}
+
+  if glob_pattern then
+    table.insert(aditional_args, "--glob")
+    table.insert(aditional_args, glob_pattern)
+
+    --ignore hidden files
+    table.insert(aditional_args, "--glob")
+    table.insert(aditional_args, "!.*")
+  end
+
   builtin.grep_string({
     search = search,
-    additional_args = { "--glob", glob_pattern or "*" }
+    additional_args = aditional_args
   })
 end, { nargs = '?' })
 

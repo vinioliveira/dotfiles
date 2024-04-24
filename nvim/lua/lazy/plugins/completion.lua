@@ -4,14 +4,14 @@ local kind_icons = {
   Class = "",
   Color = "",
   Constant = "",
-  Constructor = "",
+  Constructor = "󰑃",
   Enum = "",
   EnumMember = "",
   Event = "",
   Field = "",
   File = "",
   Folder = "",
-  Function = "",
+  Function = "󰘧",
   Interface = "",
   Key = "",
   Keyword = "",
@@ -37,7 +37,6 @@ local kind_icons = {
 
 return {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
@@ -195,7 +194,7 @@ return {
       formatting = {
         fields = { "kind", "abbr", "menu" },
         max_width = 0,
-        -- kind_icons = kind_icons,
+        kind_icons = kind_icons,
         source_names = source_names,
         duplicates = duplicates,
         duplicates_default = 0,
@@ -205,7 +204,7 @@ return {
             vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. ""
           end
 
-          -- vim_item.kind = kind_icons[vim_item.kind]
+          vim_item.kind = kind_icons[vim_item.kind]
 
           if entry.source.name == "copilot" then
             vim_item.kind = ""

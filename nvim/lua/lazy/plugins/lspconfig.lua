@@ -19,15 +19,13 @@ return {
 
     local servers = {
       tsserver = {
-        flags = { debounce_text_changes = 300 },
-        single_file_support = false,
+        -- single_file_support = false,
         filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
         capabilities = {
           documentFormattingProvider = false,
         },
       },
       tailwindcss = {
-        flags = { debounce_text_changes = 150 },
         filetypes = { "typescriptreact", "typescript.tsx", "css" },
         tailwindCSS = {
           classAttributes = { "class", "className" },

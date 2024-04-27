@@ -43,8 +43,6 @@ return {
     "hrsh7th/cmp-path",
     "SirVer/ultisnips",
     "quangnguyen30192/cmp-nvim-ultisnips",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    "hrsh7th/cmp-cmdline",
     "github/copilot.vim",
     -- "hrsh7th/cmp-copilot",
   },
@@ -65,23 +63,12 @@ return {
     }
 
 
+
     vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
 
     local replace_term = function(str)
       return vim.api.nvim_replace_termcodes(str, true, true, true)
     end
-
-    cmp.setup.cmdline("/", {
-      mapping = cmp.mapping.preset.cmdline({
-        ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
-        ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
-        ["<CR>"] = cmp.mapping(cmp.mapping.confirm()),
-        ["<Tab>"] = cmp.config.disable,
-      }),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp_document_symbol" },
-      }),
-    })
 
     local duplicates = {
       path = 1,
@@ -97,13 +84,14 @@ return {
     }
 
     cmp.setup({
-      performance = {
-        debounce = 100,
-        throttle = 50,
-        fetching_timeout = 700,
-      },
+      -- will use defaults
+      -- performance = {
+      --   debounce = 100,
+      --   throttle = 50,
+      --   fetching_timeout = 700,
+      -- },
       completion = {
-        keyword_length = 3,
+        keyword_length = 2,
         autocomplete = {
           cmp.TriggerEvent.TextChanged,
         },

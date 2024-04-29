@@ -2,11 +2,76 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
+local servers = {
+  tsserver = {
+    flags = { debounce_text_changes = 300 },
+    single_file_support = false,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    capabilities = {
+      documentFormattingProvider = false,
+    },
+  },
+  tailwindcss = {
+    flags = { debounce_text_changes = 150 },
+    filetypes = { "typescriptreact", "typescript.tsx", "css" },
+    tailwindCSS = {
+      classAttributes = { "class", "className" },
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning",
+      },
+      validate = true,
+    },
+  },
+  jsonls = {
+    flags = { debounce_text_changes = 150 },
+    filetypes = { "json" },
+    init_options = { provideFormatter = true },
+  },
+  lua_ls = {
+    flags = { debounce_text_changes = 150 },
+    filetypes = { "lua" },
+    capabilities = {
+      documentFormattingProvider = false,
+    },
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+          -- Setup your lua path
+          path = runtime_path,
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim" },
+          disable = { "missing-fields" }
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+          checkThirdParty = false,
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  },
+}
+
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    'rmagatti/goto-preview',
     { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
@@ -17,68 +82,6 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-    local servers = {
-      tsserver = {
-        -- single_file_support = false,
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-        capabilities = {
-          documentFormattingProvider = false,
-        },
-      },
-      tailwindcss = {
-        filetypes = { "typescriptreact", "typescript.tsx", "css" },
-        tailwindCSS = {
-          classAttributes = { "class", "className" },
-          lint = {
-            cssConflict = "warning",
-            invalidApply = "error",
-            invalidConfigPath = "error",
-            invalidScreen = "error",
-            invalidTailwindDirective = "error",
-            invalidVariant = "error",
-            recommendedVariantOrder = "warning",
-          },
-          validate = true,
-        },
-      },
-      jsonls = {
-        flags = { debounce_text_changes = 150 },
-        filetypes = { "json" },
-        init_options = { provideFormatter = true },
-      },
-      lua_ls = {
-        flags = { debounce_text_changes = 150 },
-        filetypes = { "lua" },
-        capabilities = {
-          documentFormattingProvider = false,
-        },
-        settings = {
-          Lua = {
-            runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = "LuaJIT",
-              -- Setup your lua path
-              path = runtime_path,
-            },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = { "vim" },
-              disable = { "missing-fields" }
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      },
-    }
-
     require("mason").setup()
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
@@ -87,6 +90,8 @@ return {
       "eslint_d", -- typescript , javascript
       "stylua",   -- Used to format Lua code
     })
+
+    require('goto-preview').setup();
 
     -- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -150,6 +155,9 @@ return {
         map("n", "<leader>ap", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
         map("n", "<leader>an", "<cmd>lua vim.diagnostic.goto_next()<CR>")
         map("n", "<leader>al", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+
+        map("n", "tp", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>")
+        map("n", "ti", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
 
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         if client and client.server_capabilities.documentHighlightProvider then

@@ -45,16 +45,14 @@ return {
     "github/copilot.vim",
     -- "hrsh7th/cmp-copilot",
   },
-  init = function()
+  config = function()
+
     vim.g.UltiSnipsSnippetDirectories = { '~/.config/nvim/UltiSnips' }
     vim.g.UltiSnipsExpandTrigger = '<Tab>'
     vim.g.UltiSnipsListSnippets = '<C-Tab>'
     vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
     vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
     vim.cmd "autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript"
-  end,
-  config = function()
-
     -- See `:help cmp`
     local cmp = require("cmp")
 

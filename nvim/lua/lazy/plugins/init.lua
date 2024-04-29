@@ -1,5 +1,6 @@
 return {
   'rose-pine/neovim',
+  'sainnhe/everforest',
   "tpope/vim-repeat",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",

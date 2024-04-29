@@ -3,9 +3,9 @@ require("settings.keymap")
 require("settings.commands")
 require("lazy.setup")
 
-vim.cmd.colorscheme 'rose-pine-moon'
+-- vim.cmd.colorscheme 'rose-pine-moon'
 
-vim.g.everforest_background = 'medium'
+vim.g.everforest_background = 'hard'
 vim.o.background = "light"
 
-vim.cmd.colorscheme 'everforest'
+vim.cmd.colorscheme 'rose-pine-dawn'

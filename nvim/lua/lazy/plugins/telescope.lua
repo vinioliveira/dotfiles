@@ -157,6 +157,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       },
       -- lua require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })
       pickers = {
+        command_history = {
+          theme = "dropdown",
+        },
+        search_history = {
+          theme = "dropdown",
+        },
         buffers = {
           sort_lastused = true,
           sort_mru = true,
@@ -184,33 +190,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<c-p>", function() builtin.find_files() end, {})
     vim.keymap.set("n", "<c-b>", function() builtin.buffers() end, {})
-    vim.keymap.set("n", "<leader>ag", function() builtin.live_grep() end, {})
-    vim.keymap.set("n", "<leader>ff", function() builtin.find_files() end, {})
-    vim.keymap.set("n", "<leader>fg", function() builtin.live_grep() end, {})
-    vim.keymap.set("n", "<leader>fb", function() builtin.buffers() end, {})
-    vim.keymap.set("n", "<leader>fh", function() builtin.help_tags() end, {})
-    vim.keymap.set("n", "<leader>!", function() builtin.command_history() end, {})
-    vim.keymap.set("n", "<leader>/", function() builtin.search_history() end, {})
-    vim.keymap.set("n", "<leader>gl", function() builtin.git_commits() end, {})
-    vim.keymap.set("n", "<leader>@", function() builtin.lsp_document_symbols({ symbols = "method" }) end, {})
-    vim.keymap.set("n", "<leader>$", function() builtin.lsp_document_symbols() end, {})
-
-    local function getVisualSelection()
-      vim.cmd('noau normal! "vy"')
-      local text = vim.fn.getreg("v")
-      vim.fn.setreg("v", {})
-
-      text = string.gsub(text, "\n", "")
-      if #text > 0 then
-        return text
-      else
-        return ""
-      end
-    end
-
-    vim.keymap.set("v", "<leader>*", function()
-      local text = getVisualSelection()
-      builtin.grep_string({ search = text })
-    end, {})
+    vim.keymap.set("n", "<leader>ta", function() builtin.live_grep() end, {})
+    vim.keymap.set("n", "<leader>tc", function() builtin.command_history({ theme = "dropdown" }) end, {})
+    vim.keymap.set("n", "<leader>ts", function() builtin.search_history() end, {})
+    vim.keymap.set("n", "<leader>tg", function() builtin.git_commits() end, {})
+    vim.keymap.set("n", "ff", function() builtin.lsp_document_symbols({ symbols = "method" }) end, {})
+    vim.keymap.set("n", "fa", function() builtin.lsp_document_symbols() end, {})
   end,
 }

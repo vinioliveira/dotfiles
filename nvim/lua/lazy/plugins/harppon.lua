@@ -4,6 +4,10 @@ return {
   config = function()
     local harpoon = require("harpoon")
     harpoon.setup({
+      settitngs = {
+        save_on_toggle = true,
+        sync_on_ui_close = true,
+      },
       menu = {
         width = 120,
       }

@@ -130,7 +130,7 @@ vim.api.nvim_create_user_command("Ag", function(params)
 
   search = search:gsub("^%s*(.-)%s*$", "%1")
 
-  local aditional_args =  {}
+  local aditional_args = {}
 
   if glob_pattern then
     table.insert(aditional_args, "--glob")
@@ -193,7 +193,7 @@ local function get_selection()
   local lnum2, col2 = unpack(vim.api.nvim_buf_get_mark(0, ">"))
   local lines = vim.api.nvim_buf_get_lines(0, lnum1 - 1, lnum2, false)
   lines[#lines] = lines[#lines]:sub(1, col2 + 1)
-  lines[1] = lines[1]:sub(col1+1)
+  lines[1] = lines[1]:sub(col1 + 1)
   return table.concat(lines, "\n")
 end
 
@@ -278,3 +278,23 @@ vim.keymap.set('x', 's*', '"sy:let @/=@s<CR>cgn', { noremap = true, silent = tru
 -- " nnoremap <Leader>rc :%s///gc<Left><Left>
 -- nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>
 vim.keymap.set('n', '<leader>R', ':cfdo %s//g \\| update<C-Left><C-Left><Left><Left><Left><Left>', { noremap = true })
+
+
+
+local function getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg("v")
+  vim.fn.setreg("v", {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ""
+  end
+end
+
+vim.keymap.set("v", "<leader>*", function()
+  local text = getVisualSelection()
+  require('telescope.builtin').grep_string({ search = text })
+end, {})

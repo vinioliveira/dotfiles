@@ -5,7 +5,7 @@ vim.g.mapleader              = ","
 vim.g.maplocalleader         = " "
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
--- vim.opt.termguicolors = true
+vim.opt.termguicolors        = true
 
 -- Sync clipboard between OS and Neovim.
 --  See `:help 'clipboard'`

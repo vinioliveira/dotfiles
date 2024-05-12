@@ -9,7 +9,7 @@ end
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-map("n", "<C-s>", "<esc>:up<CR><esc>")
+map("n", "<C-s>", ":up<CR><esc>")
 map("i", "<C-s>", "<esc>:up<CR><esc>")
 
 -- Save and exit shortcut

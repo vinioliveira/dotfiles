@@ -1,0 +1,121 @@
+import = ["/Users/vinicius/.config/alacritty/themes/themes/gruvbox_material_hard_light.toml"]
+working_directory = "None"
+
+[cursor]
+blink_interval = 750
+blink_timeout = 5
+thickness = 0.15
+unfocused_hollow = true
+vi_mode_style = "None"
+
+[cursor.style]
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[hints.enabled]]
+command = "open"
+post_processing = true
+regex= "(magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Command"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001F"
+key = "Slash"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0000"
+key = "Space"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B;"
+key = "Semicolon"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bn"
+key = "N"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B["
+key = "LBracket"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B]"
+key = "RBracket"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B{"
+key = "LBracket"
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B}"
+key = "RBracket"
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[84;6u"
+key = "T"
+mods = "Control|Shift"
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[window]
+decorations = "buttonless"
+opacity = 1
+
+[window.dimensions]
+columns = 140
+lines = 38
+
+[window.padding]
+x = 5
+y = 5

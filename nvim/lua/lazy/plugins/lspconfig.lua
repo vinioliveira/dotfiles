@@ -64,6 +64,14 @@ local servers = {
       },
     },
   },
+  terraformls = {
+    flags = { debounce_text_changes = 150 },
+    filetypes = { "terraform", "terraform-vars" },
+    capabilities = {
+      documentFormattingProvider = false,
+    },
+    settings = {}
+  }
 }
 
 return {

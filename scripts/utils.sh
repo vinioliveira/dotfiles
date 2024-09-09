@@ -21,10 +21,27 @@ gwcoid() {
   builtin cd $GIT_WT_BASE_PATH
   local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
   if [[ ! -z $gwt_path ]]; then
-    echo $gwt_path
-    echo "Deleting ... "
     cd $gwt_path
-    git wt remove $gwt_path
+    local branch=`git rev-parse --abbrev-ref HEAD`
+    echo "\e[1;41m Deleting worktree (  $branch ) \e[0m"
+
+    if [[ `git status --porcelain` ]]; then
+      echo "There are uncommitted changes. Do you want to continue? (y/n)"
+      read -k 1 REPLY
+      echo
+
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Deleting ... "
+        git wt remove $gwt_path -f
+      else
+        echo "Aborted"
+        return 1
+      fi
+    else
+      echo "Deleting ... "
+      git wt remove $gwt_path
+    fi
+
     if [[ "$origin" == "$gwt_path" ]]; then
       cd ..
     else

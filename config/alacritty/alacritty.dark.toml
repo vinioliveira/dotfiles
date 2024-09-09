@@ -1,4 +1,4 @@
-import = ["/Users/vinicius/.config/alacritty/custom-theme/gruvbox-material.toml"]
+import = ["/Users/vinicius/.config/alacritty/custom-theme/solarized-ozaka.toml"]
 working_directory = "None"
 
 [cursor]

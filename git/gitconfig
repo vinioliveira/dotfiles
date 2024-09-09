@@ -53,6 +53,7 @@
   op                     = browse -- pulls
   ops                    = pr show
   rename                 = branch -m
+  rss                    = restore --staged
   rs                     = restore --staged
   s                      = status
   st                     = stash

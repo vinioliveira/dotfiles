@@ -1,7 +1,4 @@
 return {
-  'rose-pine/neovim',
-  'sainnhe/everforest',
-  "sainnhe/gruvbox-material",
   "tpope/vim-repeat",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
@@ -11,7 +8,16 @@ return {
   'AndrewRadev/splitjoin.vim',
   'vim-scripts/IndexedSearch',
   'norcalli/nvim-colorizer.lua',
-  { 'chrisbra/nrrwrgn', cmd = { "NrrwrgnDo" } },
+  'chrisbra/nrrwrgn',
+  'towolf/vim-helm',
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
   {
     "tpope/vim-surround",
     init = function()

@@ -174,7 +174,7 @@ endsnippet
 
 # JSON.stringify
 snippet jsons "JSON strinfy" i
-JSON.stringify(${0:object})
+JSON.stringify(${0:object}, null, 2)
 endsnippet
 
 # Debugging
@@ -192,6 +192,11 @@ endsnippet
 
 snippet ld "logger.debug"
 console.debug("${1}"${2:, ${3:$1}});
+endsnippet
+
+
+snippet clj "console.log"
+console.log("${1}"${2:, JSON.stringify(${3:$1}, null, 2)});
 endsnippet
 
 snippet cl "console.log"
@@ -300,13 +305,13 @@ snippet _get "_.get(a, b, c)" b
 _.get(${1}, "${2}"${3:, ${4:"${5:value}"}})${6:; }
 endsnippet
 
-snippet td "TODO (todo)"
+snippet td "TODO (todo)" b
 /** TODO:
 * [ ] $1
 */
 endsnippet
 
-snippet tdi "TODO (todo)"
+snippet tdi "TODO (todo)" b
 [ ] $1
 endsnippet
 

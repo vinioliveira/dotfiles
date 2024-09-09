@@ -2085,7 +2085,7 @@
             ]
           },
           {
-            "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Teams / + 5 Studio",
+            "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spotify / + 5 Roam",
             "manipulators": [
               {
                 "from": {
@@ -2162,7 +2162,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open /Applications/Notion.app/"
+                    "shell_command": "open /Applications/Roam.app/"
                   }
                 ],
                 "type": "basic"
@@ -4705,7 +4705,7 @@
             ]
           },
           {
-            "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Teams / + 5 Studio",
+            "description": "Left CTRL + 1 iTerm / + 2 Chrome / + 3 Slack / + 4 Spotify / + 5 Roam",
             "manipulators": [
               {
                 "from": {
@@ -4782,7 +4782,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open /Applications/Notion.app/"
+                    "shell_command": "open /Applications/Roam.app/"
                   }
                 ],
                 "type": "basic"

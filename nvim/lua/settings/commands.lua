@@ -277,7 +277,8 @@ vim.keymap.set('x', 's*', '"sy:let @/=@s<CR>cgn', { noremap = true, silent = tru
 -- " nnoremap <Leader>r :%s///g<Left><Left>
 -- " nnoremap <Leader>rc :%s///gc<Left><Left>
 -- nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>
-vim.keymap.set('n', '<leader>R', ':cfdo %s//g \\| update<C-Left><C-Left><Left><Left><Left><Left>', { noremap = true })
+vim.keymap.set('n', '<leader>R', ':cfdo %s///g | update<C-Left><C-Left><Left><Left><Left><Left>',
+  { noremap = true })
 
 
 

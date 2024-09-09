@@ -1,4 +1,4 @@
-import = ["/Users/vinicius/.config/alacritty/themes/themes/gruvbox_light.toml"]
+import = ["/Users/vinicius/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
 working_directory = "None"
 
 [cursor]

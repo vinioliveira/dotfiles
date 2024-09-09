@@ -167,6 +167,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
           sort_lastused = true,
           sort_mru = true,
           ignore_current_buffer = true,
+          mappings = {
+            i = {
+              ["<c-d>"] = actions.delete_buffer,
+            },
+          },
         },
         lsp_document_symbols = {
           theme = "dropdown",

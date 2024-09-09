@@ -2,6 +2,7 @@ return {
   'janko-m/vim-test',
   cmd = { 'TestFile', 'TestNearest' },
   init = function()
+    -- vimscript
     vim.api.nvim_exec([[
       let g:test#preserve_screen = 0
       let g:dispatch_quickfix_height=15
@@ -13,7 +14,7 @@ return {
       let g:test#javascript#mocha#environment = {'NODE_ENV': 'test'}
 
       let g:test#javascript#jest#file_pattern = '\v(test|spec)s?\.(jsx|tsx|ts|js)$'
-      let test#javascript#jest#executable = 'COLORS=false DEBUG_PRINT_LIMIT=100000 pnpm jest'
+      let test#javascript#jest#executable = 'COLORS=false DEBUG_PRINT_LIMIT=100000 pnpm jest '
 
       let g:neomake_list_height = -1
       let test#strategy = 'dispatch_background'

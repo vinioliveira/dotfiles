@@ -69,9 +69,6 @@ map("n", "<C-u>", "<C-u>zz")
 -- map("n", "n", "nzzzv")
 -- map("n", "N", "Nzzzv")
 
-map("n", "zx", "za")
-map("n", "zX", "zA")
-
 map("n", "<leader>nn", ":lua require('plugs/notes').open_win_notes()<CR>")
 map("n", "<leader>ng", ":lua require('plugs/notes').open_win_notes(true)<CR>")
 

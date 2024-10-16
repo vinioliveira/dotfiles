@@ -71,7 +71,15 @@ local servers = {
       documentFormattingProvider = false,
     },
     settings = {}
-  }
+  },
+  kotlin_language_server = {
+    flags = { debounce_text_changes = 150 },
+    filetypes = { "kotlin" },
+  },
+  java_language_server = {
+    flags = { debounce_text_changes = 150 },
+    filetypes = { "java" },
+  },
 }
 
 return {

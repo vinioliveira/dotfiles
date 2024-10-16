@@ -1,5 +1,16 @@
 vim.cmd("abbreviate ag Ag")
 
+
+-- Delete all buffer files except current
+vim.api.nvim_create_user_command("BufferDelete", function()
+  local currentBuffer = vim.api.nvim_get_current_buf()
+  for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+    if buffer ~= currentBuffer then
+      vim.api.nvim_buf_delete(buffer, { force = true })
+    end
+  end
+end, {})
+
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup('TrailingSpaces', {}),
   pattern = { "*" },

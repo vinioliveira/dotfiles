@@ -2,7 +2,8 @@
 
 # read -p "Commit SHA1: " SHA1
 
-BRANCH="marcus/verisoul"
+PR_NUMBER="5643"
+BRANCH="ben/package-bumps"
 TEAM="team_nMhna6Q3TW6ksYrX8PRuT8P4"
 VERCEL_TOKEN="F7TMGHopC2pdVq0H0blJ9bAt"
 TARGET="production"

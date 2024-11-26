@@ -1,11 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter-context",
-    keys = {
-      { '<leader>ct', ':TSContextToggle<CR>', { noremap = true, silent = true, desc = "Toggle context", mode = "n" } }
-    },
     opts = {
-      enable = false,           -- Enable this plugin (Can be enabled/disabled later via commands)
+      enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+      multiwindow = false,      -- Enable multiwindow support.
       max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
       min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
       line_numbers = true,
@@ -16,6 +14,13 @@ return {
       -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
       separator = nil,
       zindex = 20, -- The Z-index of the context window
-    }
+    },
+    -- keys disable the plugin
+    -- keys = {
+    --   { '<leader>ct', ':TSContextToggle<CR>', { noremap = true, silent = true, desc = "Toggle context", mode = "n" } }
+    -- },
+    config = function()
+      vim.api.nvim_set_keymap("n", "<leader>ct", ":TSContextToggle<CR>", { noremap = true, silent = true })
+    end,
   }
 }

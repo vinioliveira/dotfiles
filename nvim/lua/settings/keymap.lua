@@ -55,6 +55,8 @@ map("n", "<leader>bp", ":bprevious<CR>", { noremap = true })
 map("n", "<leader>nt", ":tabe<CR>", { noremap = true })
 map("n", "<leader>bd", ":BufferDelete<CR>", { noremap = true })
 
+map("n", "<C-e>", "<C-e>k", { noremap = true })
+
 -- dont't loose selection while move
 map("x", "<", "<gv", { noremap = true })
 map("x", ">", ">gv", { noremap = true })
@@ -63,8 +65,12 @@ map("x", ">", ">gv", { noremap = true })
 map("n", "<ESC>", ":noh<CR><ESC>", { noremap = true })
 map("n", "<leader>p", "0p")
 
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+-- map("n", "<C-d>", "<C-d>zz")
+-- map("n", "<C-u>", "<C-u>zz")
+
+map("n", "<C-e>", "j<C-E>", { noremap = true, silent = true })
+map("n", "<C-y>", "k<C-y>", { noremap = true, silent = true })
+
 
 -- map("n", "n", "nzzzv")
 -- map("n", "N", "Nzzzv")
@@ -80,4 +86,4 @@ map("n", "<leader>vl", ":lua require('plugs/notes').open_win_notes(true)<CR>")
 -- map("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- nnoremap <leader>z za
-vim.api.nvim_set_keymap('n', '<leader>z', 'za', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>z', 'za', { noremap = true })

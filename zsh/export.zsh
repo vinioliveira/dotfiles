@@ -1,6 +1,6 @@
 # [ -n "$TMUX" ] && export TERM=screen-256color
 
-export PATH=":$HOME/bin:/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/X11/bin"
+export PATH=":$HOME/bin:$HOME/.local/bin:/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/X11/bin"
 export INSTALL_DIR="$HOME/local"
 export MANPATH=/usr/local/git/man:$MANPATH
 

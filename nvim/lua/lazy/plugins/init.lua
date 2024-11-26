@@ -10,6 +10,7 @@ return {
   'norcalli/nvim-colorizer.lua',
   'chrisbra/nrrwrgn',
   'towolf/vim-helm',
+  'junegunn/goyo.vim',
   {
     "folke/zen-mode.nvim",
     opts = {

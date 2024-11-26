@@ -42,29 +42,25 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = {
-          { 'branch',      fmt = function(str) return str:sub(1, 10) .. (str:len() > 10 and "..." or "") end },
-          { 'diagnostics', sources = { 'nvim_lsp' } },
+          -- split branch name by slash and grab the last bit
+          {
+            'branch',
+            fmt = function(str)
+              -- split branch name by slash and grab the last bit
+              local branch = str:match('([^/]+)$')
+              -- return branch:sub(1, 15) .. (str:len() > 15 and "..." or "")
+              return branch
+            end,
+          },
         },
         lualine_c = { { 'filename', path = 1, shorting_target = 30 } },
         lualine_x = {
           'encoding',
           'filetype',
+          { 'diagnostics', sources = { 'nvim_lsp' } },
         },
         lualine_y = {
-          {
-            hello,
-            separator = { left = '', right = '' },
-            color = function(section)
-              if (vim.g.test_all_status == -1) then
-                return { fg = "#ffffff", bg = "#916BDD" }
-              elseif (vim.g.test_all_status == 1) then
-                return { bg = "#bf616a", fg = "#d8dee9" }
-              elseif (vim.g.test_all_status == 0) then
-                return { bg = "#8fbcbb", fg = "#d8dee9" }
-              end
-            end
-          },
-          'progress'
+          'progress',
         },
         lualine_z = { 'location' }
       },

@@ -3,6 +3,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
+  codespell = {},
   tsserver = {
     flags = { debounce_text_changes = 300 },
     single_file_support = false,
@@ -98,7 +99,9 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-    require("mason").setup()
+    require("mason").setup({
+      log_level = vim.log.levels.DEBUG
+    })
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})

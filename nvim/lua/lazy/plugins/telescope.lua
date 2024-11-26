@@ -151,7 +151,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             ["<c-a>"] = actions.toggle_all,
             ["<c-j>"] = actions.move_selection_next,
             ["<c-k>"] = actions.move_selection_previous,
-            -- ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+            ["<c-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
           },
         },
       },

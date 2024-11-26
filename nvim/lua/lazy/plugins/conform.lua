@@ -22,10 +22,10 @@ return {
     formatters_by_ft = {
       -- lua = { "stylua" },
       -- Use a sub-list to run only the first available formatter
-      javascript = { { "prettier" } },
-      javascriptreact = { { "prettier" } },
-      typescript = { { "prettier" } },
-      typescriptreact = { { "prettier" } },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
     },
   },
   init = function()

@@ -14,7 +14,10 @@ return {
     })
 
     vim.keymap.set("n", "<leader>ht", function() harpoon:list():toggle() end)
-    vim.keymap.set("n", "<leader>hi", function() harpoon:list():add() end)
+    vim.keymap.set("n", "<leader>hi", function()
+      harpoon:list():add()
+      vim.notify("File: " .. vim.fn.expand('%') .. " Added")
+    end)
     vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
     vim.keymap.set("n", "<leader>ha", function() harpoon:list():select(1) end)

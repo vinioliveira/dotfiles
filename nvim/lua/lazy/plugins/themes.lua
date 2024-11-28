@@ -13,7 +13,7 @@ return {
 
       -- vim.g.gruvbox_material_background = 'medium'
       -- vim.g.gruvbox_material_statusline_style = 'default'
-      vim.g.gruvbox_material_foreground = 'original'
+      vim.g.gruvbox_material_foreground = 'mix'
       -- vim.g.gruvbox_material_better_performance = 1
     end
   },

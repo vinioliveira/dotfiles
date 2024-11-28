@@ -72,3 +72,5 @@ notes.md
 node_modules/
 
 dist/
+
+cspell.json

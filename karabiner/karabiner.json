@@ -2091,7 +2091,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open /Applications/Zen\\ Browser.app//"
+                    "shell_command": "open /Applications/Firefox.app//"
                   }
                 ],
                 "type": "basic"
@@ -4137,7 +4137,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open /Applications/Zen\\ Browser.app/"
+                    "shell_command": "open /Applications/Firefox.app/"
                   }
                 ],
                 "type": "basic"

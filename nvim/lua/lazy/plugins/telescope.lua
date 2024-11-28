@@ -51,10 +51,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end
     -- Custom layout strategy
     require("telescope.pickers.layout_strategies").fzf_upper_layout = function(
-      self,
-      max_columns,
-      max_lines,
-      layout_config
+        self,
+        max_columns,
+        max_lines,
+        layout_config
     )
       local initial_options = p_window.get_initial_window_options(self)
       local results = initial_options.results
@@ -195,6 +195,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<c-p>", function() builtin.find_files() end, {})
     vim.keymap.set("n", "<c-b>", function() builtin.buffers() end, {})
+    vim.keymap.set("n", "<c-g>", function() builtin.git_status() end, {})
     vim.keymap.set("n", "<leader>ta", function() builtin.live_grep() end, {})
     vim.keymap.set("n", "<leader>tc", function() builtin.command_history({ theme = "dropdown" }) end, {})
     vim.keymap.set("n", "<leader>ts", function() builtin.search_history() end, {})

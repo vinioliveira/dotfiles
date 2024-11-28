@@ -1,5 +1,10 @@
 vim.cmd("abbreviate ag Ag")
 
+vim.api.nvim_create_user_command("Cpp", function()
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
 
 -- Delete all buffer files except current
 vim.api.nvim_create_user_command("BufferDelete", function()

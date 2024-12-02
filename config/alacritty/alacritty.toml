@@ -102,9 +102,9 @@ mods = "Control|Shift"
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[terminal.shell]
-args = ["--login"]
-program = "/bin/zsh"
+# [terminal.shell]
+# args = ["--login"]
+# program = "/bin/zsh"
 
 [window]
 decorations = "buttonless"

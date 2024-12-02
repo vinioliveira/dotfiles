@@ -172,7 +172,8 @@ return {
         -- diagnostic
         map("n", "?", "<cmd>lua vim.diagnostic.open_float()<CR>")
         map("n", "<leader>ap", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-        map("n", "<leader>an", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+        map("n", "<leader>an",
+          "<cmd>lua vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity.WARN }})<CR>")
         map("n", "<leader>al", "<cmd>lua vim.diagnostic.setloclist()<CR>")
 
         map("n", "tp", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>")

@@ -65,3 +65,11 @@
 
 [merge]
 	tool = gitx
+[maintenance]
+	repo = /Users/vinicius/dev/projects/copyai/copy-ai.git/branches/marcus-tab-146
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate

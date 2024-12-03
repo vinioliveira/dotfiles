@@ -31,7 +31,7 @@ local kind_icons = {
   Text = "",
   TypeParameter = "",
   Unit = "",
-  Value = "",
+  Value = "󰫧",
   Variable = "",
 }
 

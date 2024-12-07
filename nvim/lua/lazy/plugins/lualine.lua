@@ -40,7 +40,7 @@ return {
         globalstatus = false,
       },
       sections = {
-        lualine_a = { 'mode' },
+        lualine_a = { { 'mode', fmt = function(res) return res:sub(1, 1) end } },
         lualine_b = {
           -- split branch name by slash and grab the last bit
           {

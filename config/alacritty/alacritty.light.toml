@@ -119,6 +119,6 @@ y = 5
 
 [general]
 working_directory = "None"
-import = ["/Users/vinicius/.config/alacritty/alacritty-theme/themes/everforest_light.toml"]
+import = ["/Users/vinicius/.config/alacritty/alacritty-theme/themes/ayu_light.toml"]
 
 [terminal]

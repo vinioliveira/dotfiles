@@ -7,5 +7,5 @@ require("lazy.setup")
 -- vim.g.gruvbox_material_background = 'medium'
 -- vim.g.gruvbox_material_better_performance = 1
 vim.o.background = "light"
-
-vim.cmd.colorscheme 'everforest'
+vim.g.edge_enable_italic = true
+vim.cmd.colorscheme 'edge'

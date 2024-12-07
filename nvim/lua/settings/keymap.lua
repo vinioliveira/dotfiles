@@ -80,6 +80,10 @@ map("n", "<leader>ng", ":lua require('plugs/notes').open_win_notes(true)<CR>")
 
 map("n", "<leader>vl", ":lua require('plugs/notes').open_win_notes(true)<CR>")
 
+map("n", "<M-S-O>", ":bd<CR>", { noremap = true, silent = true })
+
+
+
 -- map("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- map("n", "<leader>k", "<cmd>lnext<CR>zz")

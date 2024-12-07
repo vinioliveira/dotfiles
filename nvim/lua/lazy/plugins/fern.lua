@@ -24,10 +24,26 @@ return {
 
     vim.cmd [[
      function! s:init_fern() abort
+        nmap <buffer><expr>
+          \ <Plug>(fern-my-open-or-expand-or-collapse)
+          \ fern#smart#leaf(
+          \   "<Plug>(fern-action-open)",
+          \   "<Plug>(fern-action-open-or-expand)",
+          \   "<Plug>(fern-action-collapse)",
+          \ )
+
+        nmap <buffer><expr>
+          \ <Plug>(fern-my-leave-or-expand)
+          \ fern#smart#leaf(
+          \   "<Plug>(fern-action-open)",
+          \   "<Plug>(fern-action-open-or-expand)",
+          \   "<Plug>(fern-action-enter)",
+          \ )
         nnoremap <buffer> h <Plug>(fern-action-leave)
-        nnoremap <buffer> o <Plug>(fern-action-open-or-expand)
+        nnoremap <buffer> o <Plug>(fern-my-open-or-expand-or-collapse)
         nnoremap <buffer> <Space> <Plug>(fern-action-mark)
 
+        nnoremap <buffer> l <Plug>(fern-my-leave-or-expand)
      endfunction
 
      augroup fern-custom

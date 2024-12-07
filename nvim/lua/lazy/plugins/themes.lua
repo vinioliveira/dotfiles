@@ -1,6 +1,7 @@
 return {
   'rose-pine/neovim',
   'sainnhe/everforest',
+  'sainnhe/edge',
   {
     "sainnhe/gruvbox-material",
     lazy = false,

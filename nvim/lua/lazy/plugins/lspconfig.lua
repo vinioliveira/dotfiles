@@ -4,6 +4,13 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
   codespell = {},
+  gopls = {
+    flags = { debounce_text_changes = 300 },
+    filetypes = { "go" },
+    capabilities = {
+      documentFormattingProvider = false,
+    },
+  },
   tsserver = {
     flags = { debounce_text_changes = 300 },
     single_file_support = false,

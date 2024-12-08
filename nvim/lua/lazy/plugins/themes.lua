@@ -2,6 +2,7 @@ return {
   'rose-pine/neovim',
   'sainnhe/everforest',
   'sainnhe/edge',
+  'rebelot/kanagawa.nvim',
   {
     "sainnhe/gruvbox-material",
     lazy = false,

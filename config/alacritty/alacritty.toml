@@ -1,6 +1,6 @@
 
 [cursor]
-blink_interval = 750
+blink_interval = 1000
 blink_timeout = 5
 thickness = 0.15
 unfocused_hollow = true
@@ -9,18 +9,21 @@ vi_mode_style = "None"
 [cursor.style]
 shape = "Block"
 
+[mouse]
+hide_when_typing = true
+
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 16
+size = 15.5
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.bold]
-family = "Iosevka Nerd Font"
+family = "Iosevka Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
@@ -28,7 +31,7 @@ family = "Iosevka Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka Nerd Font Mono"
+family = "Iosevka Nerd Font"
 style = "Regular"
 
 [font.offset]

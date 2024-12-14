@@ -1,5 +1,6 @@
 vim.cmd("abbreviate ag Ag")
 
+-- Copy current file path to clipboard
 vim.api.nvim_create_user_command("Cpp", function()
   local path = vim.fn.expand("%")
   vim.fn.setreg("+", path)
@@ -16,6 +17,7 @@ vim.api.nvim_create_user_command("BufferDelete", function()
   end
 end, {})
 
+-- Trim trailing whitespace on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup('TrailingSpaces', {}),
   pattern = { "*" },
@@ -45,6 +47,7 @@ vim.api.nvim_create_user_command("TToggleTestStrategy", function()
   end
 end, {})
 
+-- Command to toggle strategy  let test#strategy between "dispatch_background" and "dispatch"
 vim.api.nvim_create_user_command("ToggleQuickFix", function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -62,15 +65,12 @@ vim.api.nvim_create_user_command("ToggleQuickFix", function()
   end
 end, {})
 
-
-
-
+--
 vim.api.nvim_create_user_command("VPR", function()
   local command =
   "Dispatch npm run format:check -- --base=origin/develop && npm run typecheck  && npm run lint -- --base=origin/develop"
   vim.fn.execute(command)
 end, {})
-
 
 
 vim.api.nvim_create_user_command("Outline", function()
@@ -81,7 +81,6 @@ vim.api.nvim_create_user_command("Outline", function()
       print(err, vim.inspect(method), vim.inspect(result))
     end)
 end, {})
-
 
 vim.api.nvim_create_user_command("Alternate", function()
   local currentPath = vim.fn.expand('%')
@@ -113,8 +112,8 @@ vim.api.nvim_create_user_command("Alternate", function()
   end
 end, {})
 
-vim.api.nvim_set_keymap('n', 'ta', ':Alternate<CR>', { noremap = true })
 
+-- Telescoe commands
 vim.api.nvim_create_user_command("Quickfix", function()
   require('telescope.builtin').quickfix()
 end, {})

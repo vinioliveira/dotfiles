@@ -2,7 +2,12 @@ return {
   'rose-pine/neovim',
   'sainnhe/everforest',
   'sainnhe/edge',
-  'rebelot/kanagawa.nvim',
+  {
+    'rebelot/kanagawa.nvim',
+    opts = {
+      transparent = true
+    }
+  },
   {
     "sainnhe/gruvbox-material",
     lazy = false,

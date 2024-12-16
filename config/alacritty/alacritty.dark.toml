@@ -119,6 +119,6 @@ y = 5
 
 [general]
 working_directory = "None"
-import = ["/Users/vinicius/.config/alacritty/alacritty-theme/themes/gruvbox_material.toml"]
+import = ["/Users/vinicius/.config/alacritty/alacritty-theme/themes/tokyo_night_storm.toml"]
 
 [terminal]

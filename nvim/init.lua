@@ -1,1 +1,1 @@
-/Users/vinicius/.dotfiles/nvim/init.dark.lua
+/Users/vinicius/.dotfiles/nvim/init.light.lua

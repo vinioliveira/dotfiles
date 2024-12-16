@@ -2,6 +2,14 @@ return {
   'rose-pine/neovim',
   'sainnhe/everforest',
   'sainnhe/edge',
+  -- install tokyo colorscheme
+  {
+    'folke/tokyonight.nvim',
+    opts = {
+      transparent = true
+    }
+  },
+  -- 'maxmx03/solarized.nvim',
   {
     'rebelot/kanagawa.nvim',
     opts = {
@@ -24,26 +32,10 @@ return {
       -- vim.g.gruvbox_material_better_performance = 1
     end
   },
-  'maxmx03/solarized.nvim',
-  {
-    'Tsuzat/NeoSolarized.nvim',
-    opts = {
-      transparent = false,
-    }
-  },
   -- {
-  --   'maxmx03/solarized.nvim'
-  --   lazy = false,
-  --   config = function()
-  --     vim.cmd.colorscheme 'solarized'
-  --   end
-  -- },
-  -- {
-  --   -- 'maxmx03/solarized.nvim',
-  --   "craftzdog/solarized-osaka.nvim",
+  --   'Tsuzat/NeoSolarized.nvim',
   --   opts = {
-  --     transparent = true,
-  --     style = "storm",
+  --     transparent = false,
   --   }
   -- }
 }

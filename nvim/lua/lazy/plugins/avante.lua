@@ -61,14 +61,17 @@ return {
       },
       submit = {
         normal = "<CR>",
-        insert = "<C-g>",
+        insert = "<C-s>",
       },
       sidebar = {
         apply_all = "A",
         apply_cursor = "a",
-        switch_windows = "<Tab>",
-        reverse_switch_windows = "<S-Tab>",
+        switch_windows = "<C-t>",
+        reverse_switch_windows = "<S-C-t>",
       },
+      ask = "<leader>ca",     -- ask
+      edit = "<leader>ce",    -- edit
+      refresh = "<leader>cr", -- refresh
     },
     hints = { enabled = true },
     windows = {

@@ -20,7 +20,7 @@ return {
     --   { '<leader>ct', ':TSContextToggle<CR>', { noremap = true, silent = true, desc = "Toggle context", mode = "n" } }
     -- },
     config = function()
-      vim.api.nvim_set_keymap("n", "<leader>ct", ":TSContextToggle<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>tc", ":TSContextToggle<CR>", { noremap = true, silent = true })
     end,
   }
 }

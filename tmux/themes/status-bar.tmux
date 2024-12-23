@@ -50,7 +50,7 @@ set -g status-left "#[fg=colour6]\ue0b6#[bg=colour6]#[fg=colour0] #S #[fg=colour
 
 # Right side of status bar
 set -g status-right-length 60
-set -g status-right "#{now_playing} #[bg=colour6]#[fg=colour0]#[bg=colour0]#[fg=colour6] #{cpu_icon} #{cpu_percentage} #[bg=colour0]#[fg=colour6]#[bg=colour6]#[fg=colour0] %H:%M#[bg=colour0]#[fg=colour6]\ue0b4"
+set -g status-right "#[fg=colour10]#[bg=colour10]#[fg=colour6] #{cpu_icon} #{cpu_percentage} #[bg=colour10]#[fg=colour6]#[bg=colour6]#[fg=colour0] %H:%M#[bg=colour0]#[fg=colour6]\ue0b4"
 
 set -g window-status-current-format "#[fg=colour6]#[bg=colour0]#[bg=colour6]#[fg=colour0] #I. #W #[fg=colour0]#[bg=colour6]"
 set -g window-status-current-style bg=colour6,fg=colour0

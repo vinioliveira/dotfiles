@@ -6,7 +6,10 @@ return {
   {
     'folke/tokyonight.nvim',
     opts = {
-      transparent = true
+      transparent = true,
+      styles = {
+        keywords = { italic = false },
+      }
     }
   },
   -- 'maxmx03/solarized.nvim',

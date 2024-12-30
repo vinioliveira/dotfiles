@@ -12,23 +12,23 @@ shape = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 15.0
+size = 14.0
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.bold]
-family = "Iosevka Nerd Font"
+family = "CaskaydiaCove Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Iosevka Nerd Font Mono"
+family = "CaskaydiaCove Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka Nerd Font Mono"
-style = "Regular"
+family = "CaskaydiaCove Nerd Font"
+style = "Light"
 
 [font.offset]
 x = 0

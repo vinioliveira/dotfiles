@@ -3,7 +3,9 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
-  codespell = {},
+  codespell = {
+    filetypes = { "markdown", "text", "tex" },
+  },
   gopls = {
     flags = { debounce_text_changes = 300 },
     filetypes = { "go" },
@@ -148,6 +150,11 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
+        -- we don't want to attach to non-filetype buffers
+        if event.file == '' then
+          return
+        end
+
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
         local map = function(mode, keys, func)

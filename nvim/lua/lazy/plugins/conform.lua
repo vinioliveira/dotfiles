@@ -26,6 +26,7 @@ return {
       javascriptreact = { "prettier" },
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
+      sql = { "sql_formatter" },
     },
   },
   init = function()

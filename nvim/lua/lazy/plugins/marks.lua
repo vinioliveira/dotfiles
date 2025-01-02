@@ -1,5 +1,6 @@
 return {
   'tomasky/bookmarks.nvim',
+  event = "VimEnter",
   opts = {
     sign_priority = 8, --set bookmark sign priority to cover other sign
     save_file = vim.fn.expand(vim.fn.getcwd() .. "/.vim-bookmarks"), -- bookmarks save file path

@@ -1,7 +1,12 @@
 return {
   "yetone/avante.nvim",
-  event = "VeryLazy",
-  lazy = false,
+  keys = {
+    { "<leader>ca", mode = { "n", "i", "x" } },  -- ask
+    { "<leader>ce", mode = { "n", "i", "x" } },  -- edit
+    { "<leader>cr", mode = { "n", "i", "x" } },  -- refresh
+
+  },
+  lazy = true,
   version = false, -- set this if you want to always pull the latest change
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string

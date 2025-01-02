@@ -91,11 +91,12 @@ local servers = {
 
 return {
   "neovim/nvim-lspconfig",
+  event = "BufReadPost",
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    'rmagatti/goto-preview',
-    { "j-hui/fidget.nvim", opts = {} },
+    { 'rmagatti/goto-preview', keys = "tp" },
+    { "j-hui/fidget.nvim",     opts = {} },
   },
   config = function()
     -- vim.lsp.set_log_level('debug')

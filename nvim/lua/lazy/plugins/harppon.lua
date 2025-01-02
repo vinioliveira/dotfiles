@@ -1,6 +1,7 @@
 return {
-  'ThePrimeagen/harpoon',
-  branch = 'harpoon2',
+  "ThePrimeagen/harpoon",
+  keys = { "<leader>hh", "<leader>ha" },
+  branch = "harpoon2",
   config = function()
     local harpoon = require("harpoon")
     harpoon.setup({
@@ -16,7 +17,7 @@ return {
     vim.keymap.set("n", "<leader>ht", function() harpoon:list():toggle() end)
     vim.keymap.set("n", "<leader>hi", function()
       harpoon:list():add()
-      vim.notify("File: " .. vim.fn.expand('%') .. " Added")
+      vim.notify("File: " .. vim.fn.expand("%") .. " Added")
     end)
     vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 

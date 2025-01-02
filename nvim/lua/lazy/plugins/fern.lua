@@ -1,5 +1,6 @@
 return {
   "lambdalisue/fern.vim",
+  keys = { "<leader>e", "<leader>d", "<leader>E" },
   -- update mapping
   config = function()
     --" Use g? to show help instead of ?

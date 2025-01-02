@@ -37,13 +37,13 @@ local kind_icons = {
 
 return {
   "hrsh7th/nvim-cmp",
+  -- event = "Buf",
+  priority = 10,
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "SirVer/ultisnips",
-    "quangnguyen30192/cmp-nvim-ultisnips",
-    "github/copilot.vim",
-    -- "hrsh7th/cmp-copilot",
+    { "quangnguyen30192/cmp-nvim-ultisnips", commit = "24bca5c3e137b28cd87442d4fc51a2b312dd99cc" },
   },
   config = function()
     vim.g.UltiSnipsSnippetDirectories = { '~/.config/nvim/UltiSnips' }
@@ -53,14 +53,8 @@ return {
     vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
     vim.g.UltiSnipsEnableSnipMate = "0"
     vim.cmd "autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript"
-    -- See `:help cmp`
+
     local cmp = require("cmp")
-
-    vim.g.copilot_filetypes = {
-      ['dap-repl'] = false,
-    }
-
-
 
     vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
 

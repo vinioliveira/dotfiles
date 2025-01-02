@@ -1,4 +1,13 @@
-snippet ptf "fmt.Printf" w
+snippet fmtp "fmt.Print" w
+fmt.Print("${1:label}", ${2:$1})
+endsnippet
+
+snippet fmtf "fmt.Printf" w
 fmt.Printf("${1:label}${2: %v\n}", ${3:$1})
 endsnippet
+
+snippet fmtl "fmt.Println" w
+fmt.Println("${1:label}", ${2:$1})
+endsnippet
+
 

@@ -3,9 +3,6 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
-  codespell = {
-    filetypes = { "markdown", "text", "tex" },
-  },
   gopls = {
     flags = { debounce_text_changes = 300 },
     filetypes = { "go" },
@@ -109,19 +106,13 @@ return {
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     require("mason").setup({
-      log_level = vim.log.levels.DEBUG
+      -- log_level = vim.log.levels.DEBUG
     })
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      "eslint_d", -- typescript , javascript
-      "stylua",   -- Used to format Lua code
-    })
 
     require('goto-preview').setup();
 
-    -- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     -- TODO: this is todo
     require("mason-lspconfig").setup({

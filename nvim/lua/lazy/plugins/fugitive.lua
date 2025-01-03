@@ -1,5 +1,8 @@
 return {
   'tpope/vim-fugitive',
+  dependencies = {
+    "tpope/vim-rhubarb",
+  },
   config = function()
     local opts = { noremap = true, silent = true }
     vim.keymap.set("n", "gs", ":abo Git<CR>", opts)

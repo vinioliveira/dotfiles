@@ -131,7 +131,12 @@ return {
       },
     })
 
-    for type, icon in pairs({ Error = " ", Warn = " ", Hint = " ", Info = " " }) do
+    for type, icon in pairs({
+      Error = " ",
+      Warn = " ",
+      Hint = "", -- cspell: make it very noisy
+      Info = " ",
+    }) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
@@ -177,7 +182,8 @@ return {
         -- saga is handle it
         -- diagnostic
         map("n", "?", "<cmd>lua vim.diagnostic.open_float()<CR>")
-        map("n", "<leader>ap", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+        map("n", "<leader>ap",
+          "<cmd>lua vim.diagnostic.goto_prev({ severity = { min = vim.diagnostic.severity.WARN }})<CR>")
         map("n", "<leader>an",
           "<cmd>lua vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity.WARN }})<CR>")
         map("n", "<leader>al", "<cmd>lua vim.diagnostic.setloclist()<CR>")

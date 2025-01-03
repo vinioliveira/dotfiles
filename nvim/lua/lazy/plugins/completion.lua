@@ -158,6 +158,19 @@ return {
             end
           end,
         }),
+
+        ["<Tab>"] = cmp.mapping({
+          i = function()
+            if cmp.visible() then
+              cmp.confirm({
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true,
+              })
+            else
+              vim.api.nvim_feedkeys(replace_term("<Tab>"), "n", true)
+            end
+          end
+        }),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,

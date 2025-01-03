@@ -1,6 +1,5 @@
 return {
   { "tpope/vim-repeat",          event = "InsertEnter" },
-  { "tpope/vim-rhubarb",         cmd = { "Gbrowse" } },
   { "tpope/vim-dispatch",        cmd = { "Dispatch", "Make", "Focus", "Start" } },
   { "AndrewRadev/splitjoin.vim", event = "InsertEnter" },
   { "chrisbra/nrrwrgn",          event = "InsertEnter" },

@@ -149,6 +149,10 @@ def install_prezto
   run %( ln -nfs "$HOME/.dotfiles/zsh/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" )
 
   puts
+  puts "Overriding tool-versions ~/.tool-versions with Dotfile's tool-versions"
+  run %( ln -nfs "$HOME/.dotfiles/tool-versions" "$HOME/.tool-versions" )
+
+  puts
   puts "Adding script links"
   run %( sudo ln -nfs ~/.dotfiles/scripts/gitworktree.sh /usr/local/bin/ )
 

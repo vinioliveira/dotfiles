@@ -1,3 +1,15 @@
+global !p
+def proper_case(filename):
+    # Split by special characters and convert to title case
+    words = ''.join(c if c.isalnum() else ' ' for c in filename).split()
+    # Remove 'spec' from the end of the filename
+    if words[-1].lower() == 'spec':
+      words.pop()
+
+    return ''.join(word.title() for word in words)
+endglobal
+
+
 snippet ttd "test.todo('should do')" b
 test.todo("${1:}");
 endsnippet
@@ -30,3 +42,66 @@ beforeAll(() => {
 	${0}
 });
 endsnippet
+
+snippet des "describe('...', () => { ... })" b
+describe("${1:`!p snip.rv = proper_case(snip.basename)`}", () => {
+	${0}
+});
+endsnippet
+
+snippet it "it('...', () => { ... })" b
+it("${1:should ...}",${2: async} () => {
+	${0:fail("Not implemented")}
+});
+endsnippet
+
+snippet jmock "jest.mock('...')" b
+jest.mock("${1:module}" ${2:, () => {
+	const actualModule = jest.requireActual("$1");
+	return {
+		...actualModule,
+		${0}
+	};
+}});
+endsnippet
+
+snippet xit "xit('should do', function() { ... })" b
+xit("${1:}");
+endsnippet
+
+snippet bef "before(function() { ... })" b
+before(() => {
+	return ${0:${VISUAL}}
+});
+endsnippet
+
+snippet befe "beforeEach(function() { ... })" b
+beforeEach(() => {
+	return ${0:${VISUAL}}
+});
+endsnippet
+
+snippet aft "after(function() { ... })" b
+after(() => {
+	return ${0:${VISUAL}}
+});
+endsnippet
+
+snippet afte "afterEach(function() { ... })" b
+afterEach(() => {
+	return ${0:${VISUAL}}
+});
+endsnippet
+
+snippet exp "expect(...)"
+expect(${1:})${0};
+endsnippet
+
+snippet expe "expect(...).to.equal(...)" b
+expect(${1:}).to.be.equal(${0});
+endsnippet
+
+snippet expde "expect(...).to.deep.equal(...)" b
+expect(${1:}).to.be.deep.equal(${0});
+endsnippet
+

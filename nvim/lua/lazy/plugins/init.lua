@@ -5,9 +5,23 @@ return {
   { "AndrewRadev/splitjoin.vim", event = "InsertEnter" },
   { "chrisbra/nrrwrgn",          event = "InsertEnter" },
   { "junegunn/goyo.vim",         cmd = { "Goyo" } },
+  "stevearc/dressing.nvim",
   "lukas-reineke/indent-blankline.nvim",
   "vim-scripts/IndexedSearch",
-  { "github/copilot.vim", event = "BufReadPost", priority = 15 },
+  {
+    "github/copilot.vim",
+    event    = "BufReadPost",
+    priority = 15,
+    init     = function()
+      -- update shortcut to ctlr+space
+      vim.keymap.set('i', '<C-space>', 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false
+      })
+      -- disable default tab keymap
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
   -- "norcalli/nvim-colorizer.lua",
   {
     "tpope/vim-surround",

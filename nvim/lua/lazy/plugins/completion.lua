@@ -43,7 +43,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "SirVer/ultisnips",
-    { "quangnguyen30192/cmp-nvim-ultisnips", commit = "24bca5c3e137b28cd87442d4fc51a2b312dd99cc" },
+    "quangnguyen30192/cmp-nvim-ultisnips",
   },
   config = function()
     vim.g.UltiSnipsSnippetDirectories = { '~/.config/nvim/UltiSnips' }

@@ -63,9 +63,9 @@ return {
     end
 
     local duplicates = {
-      path = 1,
-      nvim_lsp = 0,
-      ultisnips = 1,
+      path = 2,
+      nvim_lsp = 1,
+      ultisnips = 0,
     }
 
     local source_names = {
@@ -159,18 +159,19 @@ return {
           end,
         }),
 
-        ["<Tab>"] = cmp.mapping({
-          i = function()
-            if cmp.visible() then
-              cmp.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
-              })
-            else
-              vim.api.nvim_feedkeys(replace_term("<Tab>"), "n", true)
-            end
-          end
-        }),
+        -- ["<Tab>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.confirm({
+        --       behavior = cmp.ConfirmBehavior.Replace,
+        --       select = true,
+        --     })
+        --   else
+        --     -- print('super cool')
+        --     -- -- send <Tab> to UltiSnips
+        --     -- vim.api.nvim_feedkeys(replace_term("<Tab>"), "i", true)
+        --     fallback()
+        --   end
+        -- end, { 'i' }),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
@@ -192,8 +193,8 @@ return {
             return true
           end,
         },
-        { name = "ultisnips" },
         { name = "path" },
+        { name = "ultisnips" },
         -- { name = 'copilot' }
       }),
       formatting = {
@@ -210,31 +211,6 @@ return {
           end
 
           vim_item.kind = kind_icons[vim_item.kind]
-
-          if entry.source.name == "copilot" then
-            vim_item.kind = ""
-            vim_item.kind_hl_group = "CmpItemKindCopilot"
-          end
-
-          if entry.source.name == "cmp_tabnine" then
-            vim_item.kind = "ﮧ"
-            vim_item.kind_hl_group = "CmpItemKindTabnine"
-          end
-
-          if entry.source.name == "crates" then
-            vim_item.kind = ""
-            vim_item.kind_hl_group = "CmpItemKindCrate"
-          end
-
-          if entry.source.name == "lab.quick_data" then
-            vim_item.kind = ""
-            vim_item.kind_hl_group = "CmpItemKindConstant"
-          end
-
-          if entry.source.name == "emoji" then
-            vim_item.kind = ""
-            vim_item.kind_hl_group = "CmpItemKindEmoji"
-          end
           vim_item.menu = source_names[entry.source.name]
           vim_item.dup = duplicates[entry.source.name] or 0
           return vim_item

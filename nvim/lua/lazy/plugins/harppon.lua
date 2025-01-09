@@ -1,6 +1,6 @@
 return {
   "ThePrimeagen/harpoon",
-  keys = { "<leader>hh", "<leader>ha" },
+  keys = { "<leader>hh", "<leader>ha", "<leader>hs", "<leader>hd", "<leader>hf", "<leader>hg", "<leader>ht", "<leader>hi" },
   branch = "harpoon2",
   config = function()
     local harpoon = require("harpoon")

@@ -15,5 +15,6 @@ require("lazy.setup")
 -- vim.cmd("colorscheme kanagawa-wave")
 
 
+vim.cmd("colorscheme gruvbox-material")
 -- vim.cmd("colorschem rose-pine")
-vim.cmd("colorschem tokyonight-storm")
+-- vim.cmd("colorschem tokyonight-storm")

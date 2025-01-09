@@ -7,7 +7,11 @@ alias k9="kill -9"
 alias cat="bat"
 alias cd="z"
 alias cdi="zi"
-alias zz="zoxide query --list | fzf"
+
+function _zoxide_fzf() {
+  cd "$(zoxide query --list | fzf)"
+}
+alias zz="_zoxide_fzf"
 
 alias r="rails"
 alias n="node"
@@ -59,7 +63,7 @@ alias tkill="tmux kill-session -t"
 alias tnew="tmux new-session -A -s"
 alias tlayout="tmux list-windows -F \"#{window_active} #{window_layout}\" | grep \"^1\" | cut -d \" \" -f 2"
 
-alias today="cal | grep -C6 --color $(date +%e)"
+alias today="cal"
 
 alias validate_pr="npm run format:check -- --base=origin/develop && npm run typecheck && npm run lint -- --base=origin/develop"
 alias copyai_servers="copyai_server.sh"

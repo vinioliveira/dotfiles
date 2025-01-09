@@ -27,6 +27,7 @@ return {
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
       sql = { "sql_formatter" },
+      python = { "black" },
     },
   },
   init = function()

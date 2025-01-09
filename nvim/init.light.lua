@@ -10,4 +10,5 @@ require("lazy.setup")
 -- vim.g.edge_enable_italic = true
 -- vim.cmd.colorscheme 'edge'
 
-vim.cmd("colorschem tokyonight-day")
+-- vim.cmd("colorschem tokyonight-day")
+vim.cmd("colorscheme gruvbox-material")

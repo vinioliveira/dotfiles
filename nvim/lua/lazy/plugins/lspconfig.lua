@@ -160,7 +160,7 @@ return {
         end
 
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        map("n", "tD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+        map("n", "tD", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
         map("n", "td", "<cmd>lua vim.lsp.buf.definition()<CR>")
         map("n", "ti", "<cmd>lua vim.lsp.buf.implementation()<CR>")
         map("n", "tr", "<cmd>lua vim.lsp.buf.references()<CR>")

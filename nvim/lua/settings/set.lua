@@ -4,6 +4,7 @@ vim.g.wildignore             = '*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store'
 vim.g.mapleader              = ","
 vim.g.maplocalleader         = " "
 
+vim.g.python3_host_prog      = '/opt/homebrew/bin/python3.11'
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.opt.termguicolors        = true
 

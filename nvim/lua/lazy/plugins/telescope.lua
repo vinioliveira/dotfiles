@@ -142,6 +142,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
             height = 0.4,
           },
         },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '-u' -- thats the new thing
+        },
         -- Default configuration for telescope goes here:
         -- config_key = value,
         mappings = {

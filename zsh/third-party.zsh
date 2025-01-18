@@ -12,7 +12,7 @@ bashcompinit
 
 
 . $(brew --prefix asdf)/libexec/asdf.sh
-. $(brew --prefix asdf)/etc/bash_completion.d/asdf
+. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 

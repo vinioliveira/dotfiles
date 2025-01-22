@@ -195,6 +195,19 @@ console.debug("${1}"${2:, ${3:$1}});
 endsnippet
 
 
+snippet log "console.log"
+console.log("${1}"${2:, ${3:$1}});
+endsnippet
+
+snippet logj "console.log"
+console.log("${1}"${2:, JSON.stringify(${3:$1}, null, 2)});
+endsnippet
+
+snippet logt "console.trace"
+console.trace("${1:label}"${2:, ${3:$1}});
+endsnippet
+
+
 snippet clj "console.log"
 console.log("${1}"${2:, JSON.stringify(${3:$1}, null, 2)});
 endsnippet

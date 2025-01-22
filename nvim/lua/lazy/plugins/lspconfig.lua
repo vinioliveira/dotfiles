@@ -35,11 +35,6 @@ local servers = {
       validate = true,
     },
   },
-  jsonls = {
-    flags = { debounce_text_changes = 150 },
-    filetypes = { "json" },
-    init_options = { provideFormatter = true },
-  },
   lua_ls = {
     flags = { debounce_text_changes = 150 },
     filetypes = { "lua" },
@@ -103,19 +98,16 @@ return {
     -- tail -f  $HOME/.local/state/nvim/lsp.log
     -- v $HOME/.local/share/nvim/lsp_servers/diagnosticls/node_modules/diagnostic-languageserver/lib/handles/handleDiagnostic.jsj
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-    require("mason").setup({
-      -- log_level = vim.log.levels.DEBUG
-    })
-    -- You can add other tools here that you want Mason to install
-    -- for you, so that they are available from within Neovim.
 
     require('goto-preview').setup();
 
-
-    -- TODO: this is todo
+    -- You can add other tools here that you want Mason to install
+    -- for you, so that they are available from within Neovim.
+    require("mason").setup({
+      -- log_level = vim.log.levels.DEBUG
+    })
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
     require("mason-lspconfig").setup({
       ensure_installed = servers,
       handlers = {
@@ -142,6 +134,9 @@ return {
     end
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    vim.diagnostic.config({
+      virtual_text = false,
+    })
 
 
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -160,7 +155,7 @@ return {
         end
 
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        map("n", "tD", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+        map("n", "tD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
         map("n", "td", "<cmd>lua vim.lsp.buf.definition()<CR>")
         map("n", "ti", "<cmd>lua vim.lsp.buf.implementation()<CR>")
         map("n", "tr", "<cmd>lua vim.lsp.buf.references()<CR>")

@@ -1,5 +1,11 @@
 vim.cmd("abbreviate ag Ag")
 
+vim.api.nvim_create_autocmd("ExitPre", {
+  group = vim.api.nvim_create_augroup("Exit", { clear = true }),
+  command = "set guicursor=a:ver90",
+  desc = "Set cursor back to beam when leaving Neovim."
+})
+
 -- Copy current file path to clipboard
 vim.api.nvim_create_user_command("Cpp", function()
   local path = vim.fn.expand("%")

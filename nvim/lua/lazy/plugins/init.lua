@@ -12,8 +12,9 @@ return {
     event    = "BufReadPost",
     priority = 15,
     init     = function()
-      -- update shortcut to ctlr+space
-      vim.keymap.set('i', '<C-space>', 'copilot#Accept("\\<CR>")', {
+      -- update the folowing to use ctrl + enter key
+      -- vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
+      vim.keymap.set('i', '<Right>', 'copilot#Accept("\\<CR>")', {
         expr = true,
         replace_keycodes = false
       })

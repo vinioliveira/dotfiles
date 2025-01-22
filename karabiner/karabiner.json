@@ -420,7 +420,8 @@
                                             "^co\\.zeit\\.hyperterm$",
                                             "^co\\.zeit\\.hyper$",
                                             "^io\\.alacritty$",
-                                            "^org\\.alacritty$"
+                                            "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1655,32 +1656,15 @@
                                         "value": 1
                                     }
                                 ],
-                                "from": { "key_code": "r" },
-                                "to": [
-                                    {
-                                        "shell_command": "open /Applications/Roam.app/"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "app-layer",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "from": { "key_code": "d" },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/DBeaver.app/"
+                                        "shell_command": "open /Applications/DBeaver.app//"
                                     }
                                 ],
                                 "type": "basic"
                             }
                         ]
->>>>>>> 937a469 (Stuffs changing mainly karabiner stuff and themes)
                     }
                 ]
             },
@@ -1898,6 +1882,7 @@
                 }
             ],
             "name": "Internal",
+            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "caps_lock" },
@@ -1921,3 +1906,4 @@
         }
     ]
 }
+

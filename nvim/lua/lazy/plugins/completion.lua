@@ -100,6 +100,23 @@ return {
         ["<C-d>"] = cmp.mapping(function()
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 })
         end, { "i" }),
+
+        ["<Down>"] = cmp.mapping({
+          c = function()
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            else
+              vim.api.nvim_feedkeys(replace_term("<Down>"), "n", true)
+            end
+          end,
+          i = function()
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            else
+              cmp.complete()
+            end
+          end,
+        }),
         ["<C-n>"] = cmp.mapping({
           c = function()
             if cmp.visible() then
@@ -142,6 +159,22 @@ return {
         --     end
         --   end
         -- }),
+        ["<Up>"] = cmp.mapping({
+          c = function()
+            if cmp.visible() then
+              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+            else
+              vim.api.nvim_feedkeys(replace_term("<Up>"), "n", true)
+            end
+          end,
+          i = function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+            else
+              fallback()
+            end
+          end,
+        }),
         ["<C-p>"] = cmp.mapping({
           c = function()
             if cmp.visible() then

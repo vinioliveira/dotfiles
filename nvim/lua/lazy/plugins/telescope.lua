@@ -210,7 +210,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sc", function() builtin.command_history({ theme = "dropdown" }) end, {})
     vim.keymap.set("n", "<leader>ss", function() builtin.search_history() end, {})
     vim.keymap.set("n", "<leader>sg", function() builtin.git_commits() end, {})
-    vim.keymap.set("n", "ff", function() builtin.lsp_document_symbols({ symbols = "method" }) end, {})
-    vim.keymap.set("n", "fa", function() builtin.lsp_document_symbols() end, {})
+    vim.keymap.set("n", "<leader>ff", function() builtin.lsp_document_symbols({ symbols = "method" }) end, {})
+    vim.keymap.set("n", "<leader>fa", function() builtin.lsp_document_symbols() end, {})
   end,
 }

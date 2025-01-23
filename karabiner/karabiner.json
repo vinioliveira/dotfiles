@@ -1532,7 +1532,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "slash",
+                                    "key_code": "spacebar",
                                     "modifiers": {}
                                 },
                                 "to": {
@@ -1549,8 +1549,11 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "slash" }],
-                                "type": "basic"
+                                "to_if_alone": [{ "key_code": "spacebar" }],
+                                "type": "basic",
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 150
+                                }
                             },
                             {
                                 "conditions": [

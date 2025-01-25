@@ -1,0 +1,7 @@
+font-family = "CaskaydiaCove Nerd Font Mono"
+font-style = "Light"
+font-size = 16
+theme = gruvbox-material
+
+keybind = ctrl+/=text:\x1f
+

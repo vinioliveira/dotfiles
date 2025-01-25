@@ -162,6 +162,10 @@ def install_prezto
   run %( ln -nfs "$HOME/.dotfiles/config/.alacritty.yml $HOME/.config/" )
 
   puts
+  puts "Overriding Ghostty config"
+  run %( ln -nfs "$HOME/.dotfiles/ghostty $HOME/.config/" )
+
+  puts
   puts "Overriding prezto ~/.zshrc with Dotfile's zshrc"
   run %( ln -nfs "$HOME/.dotfiles/zsh" "$HOME/.zsh" )
   run %( ln -nfs "$HOME/.dotfiles/zsh/zshrc" "$HOME/.zshrc" )

@@ -85,6 +85,11 @@ map("n", "<M-S-O>", ":bd<CR>", { noremap = true, silent = true })
 
 map('n', 'ta', ':Alternate<CR>', { noremap = true })
 
+
+-- prevent jumping when search
+map("n", "*", ":keepjumps normal! mi*`i<CR>", { noremap = true })
+
+
 -- map("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- map("n", "<leader>k", "<cmd>lnext<CR>zz")

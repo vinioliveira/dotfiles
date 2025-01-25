@@ -1531,8 +1531,9 @@
                         "description": "Apps Layout",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "z"
+                                "from": { "key_code": "z" },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 400
                                 },
                                 "to": {
                                     "set_variable": {
@@ -1549,14 +1550,12 @@
                                     }
                                 ],
                                 "to_if_alone": [{ "key_code": "z" }],
-                                "type": "basic",
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 400
-                                }
+                                "type": "basic"
                             },
                             {
-                                "from": {
-                                    "key_code": "slash"
+                                "from": { "key_code": "slash" },
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 400
                                 },
                                 "to": {
                                     "set_variable": {
@@ -1573,10 +1572,7 @@
                                     }
                                 ],
                                 "to_if_alone": [{ "key_code": "slash" }],
-                                "type": "basic",
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 400
-                                }
+                                "type": "basic"
                             },
                             {
                                 "conditions": [
@@ -1891,12 +1887,12 @@
                     "identifiers": { "is_keyboard": true },
                     "simple_modifications": [
                         {
-                            "from": { "key_code": "backslash" },
-                            "to": [{ "key_code": "delete_or_backspace" }]
+                            "from": { "key_code": "delete_or_backspace" },
+                            "to": [{ "key_code": "backslash" }]
                         },
                         {
-                            "from": { "key_code": "delete_forward" },
-                            "to": [{ "key_code": "backslash" }]
+                            "from": { "key_code": "backslash" },
+                            "to": [{ "key_code": "delete_or_backspace" }]
                         }
                     ]
                 }
@@ -1948,3 +1944,4 @@
         }
     ]
 }
+

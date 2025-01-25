@@ -96,6 +96,53 @@
                         ]
                     },
                     {
+                        "description": "Parenteses [right_option + 78] []",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "7",
+                                    "modifiers": {
+                                        "mandatory": ["right_option"],
+                                        "optional": [
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift",
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "8",
+                                    "modifiers": {
+                                        "mandatory": ["right_option"],
+                                        "optional": [
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift",
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Parenteses [right_option + ui] ()",
                         "manipulators": [
                             {
@@ -172,7 +219,7 @@
                         ]
                     },
                     {
-                        "description": "Brakets [right_option + op] []",
+                        "description": "Brakets [right_option + op] {}",
                         "manipulators": [
                             {
                                 "from": {
@@ -188,7 +235,12 @@
                                         ]
                                     }
                                 },
-                                "to": [{ "key_code": "open_bracket" }],
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
@@ -205,13 +257,18 @@
                                         ]
                                     }
                                 },
-                                "to": [{ "key_code": "close_bracket" }],
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Others [right_option + gymn] =*N",
+                        "description": "Others [right_option + gymn] *N",
                         "manipulators": [
                             {
                                 "from": {
@@ -229,8 +286,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "6",
-                                        "modifiers": ["left_shift"]
+                                        "key_code": "equal_sign"
                                     }
                                 ],
                                 "type": "basic"
@@ -254,7 +310,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "m",
+                                    "key_code": "n",
                                     "modifiers": {
                                         "mandatory": ["right_option"],
                                         "optional": [
@@ -276,7 +332,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "n",
+                                    "key_code": "m",
                                     "modifiers": {
                                         "mandatory": ["right_option"],
                                         "optional": [
@@ -1040,33 +1096,6 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "z",
-                                    "modifiers": {
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift",
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "a",
-                                        "modifiers": ["left_control"]
-                                    },
-                                    { "key_code": "z" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tmux_prefix_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
                                     "key_code": "0",
                                     "modifiers": {
                                         "optional": ["caps_lock", "shift"]
@@ -1585,7 +1614,7 @@
                                 "from": { "key_code": "t" },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Alacritty.app"
+                                        "shell_command": "open /Applications/Ghostty.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -1944,4 +1973,3 @@
         }
     ]
 }
-

@@ -293,23 +293,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "g",
-                                    "modifiers": {
-                                        "mandatory": ["right_option"],
-                                        "optional": [
-                                            "caps_lock",
-                                            "command",
-                                            "option",
-                                            "shift",
-                                            "fn"
-                                        ]
-                                    }
-                                },
-                                "to": [{ "key_code": "equal_sign" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": ["right_option"],
@@ -1559,28 +1542,6 @@
                     {
                         "description": "Apps Layout",
                         "manipulators": [
-                            {
-                                "from": { "key_code": "z" },
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 400
-                                },
-                                "to": {
-                                    "set_variable": {
-                                        "name": "app-layer",
-                                        "value": 1
-                                    }
-                                },
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "app-layer",
-                                            "value": 0
-                                        }
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "z" }],
-                                "type": "basic"
-                            },
                             {
                                 "from": { "key_code": "slash" },
                                 "parameters": {

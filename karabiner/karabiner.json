@@ -351,6 +351,28 @@
                                 },
                                 "to": [{ "key_code": "hyphen" }],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                        "mandatory": ["right_option"],
+                                        "optional": [
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift",
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "8",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },

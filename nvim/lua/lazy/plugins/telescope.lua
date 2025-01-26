@@ -17,9 +17,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         return vim.fn.executable("make") == 1
       end,
     },
-    -- { "nvim-telescope/telescope-ui-select.nvim" },
-    -- Useful for getting pretty icons, but requires a Nerd Font.
-    -- { "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
   },
   config = function()
     local actions = require("telescope.actions")
@@ -51,10 +48,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end
     -- Custom layout strategy
     require("telescope.pickers.layout_strategies").fzf_upper_layout = function(
-        self,
-        max_columns,
-        max_lines,
-        layout_config
+      self,
+      max_columns,
+      max_lines,
+      layout_config
     )
       local initial_options = p_window.get_initial_window_options(self)
       local results = initial_options.results

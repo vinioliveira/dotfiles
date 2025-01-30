@@ -5,8 +5,6 @@ require("lazy.setup")
 
 
 vim.o.background = "dark"
-
--- gruvbox
 -- vim.g.gruvbox_material_background = 'medium'
 -- vim.g.gruvbox_material_statusline_style = 'default'
 -- vim.g.gruvbox_material_foreground = 'mix'
@@ -16,7 +14,7 @@ vim.o.background = "dark"
 -- vim.cmd("colorscheme kanagawa-wave")
 
 
-vim.cmd("colorscheme everforest")
--- vim.cmd("colorscheme gruvbox-material")
+-- vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme gruvbox-material")
 -- vim.cmd("colorschem rose-pine")
 -- vim.cmd("colorschem tokyonight-storm")

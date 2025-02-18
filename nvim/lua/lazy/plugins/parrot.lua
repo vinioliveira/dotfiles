@@ -27,9 +27,10 @@ return {
     }
 
     -- keymaps
+    vim.keymap.set({ "n" }, "<leader>cn", "<cmd>PrtChatNew<CR>", { noremap = true, silent = true })
     vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>PrtChatToggle<CR>", { noremap = true, silent = true })
     vim.keymap.set({ "v" }, "<leader>ca", ":<C-u>'<,'>PrtChatPaste<CR>", { noremap = true, silent = true })
-    vim.keymap.set({ "v" }, "<leader>ce", "<cmd>PrtRewrite<CR>", { noremap = true, silent = true })
+    vim.keymap.set({ "v" }, "<leader>ce", ":<C-u>'<,'>PrtRewrite<CR>", { noremap = true, silent = true })
     vim.keymap.set({ "n" }, "<leader>cf", "<cmd>PrtChatFinder<CR>", { noremap = true, silent = true })
     vim.keymap.set({ "v" }, "<leader>ci", ":<C-u>'<,'>PrtImplement<CR>", { noremap = true, silent = true })
     vim.keymap.set("v", "<leader>c?", ":<C-u>'<,'>PrtAsk<CR>", { noremap = true, silent = true })

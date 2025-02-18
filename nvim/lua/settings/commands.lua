@@ -1,11 +1,5 @@
 vim.cmd("abbreviate ag Ag")
 
-vim.api.nvim_create_autocmd("ExitPre", {
-  group = vim.api.nvim_create_augroup("Exit", { clear = true }),
-  command = "set guicursor=a:ver90",
-  desc = "Set cursor back to beam when leaving Neovim."
-})
-
 -- Copy current file path to clipboard
 vim.api.nvim_create_user_command("Cpp", function()
   local path = vim.fn.expand("%")
@@ -136,21 +130,26 @@ end, {})
 
 vim.api.nvim_create_user_command("Ag", function(params)
   local builtin = require('telescope.builtin')
-  local fullArgs = params.args
-  local search = fullArgs:match("\"(.-)\"") or fullArgs:match("'(.-)'")
+  local args = params.args
+  -- fullArgs split by "--"
+  -- we wan't to skip escped quotes given the following example
+  -- Ag "search" -> search has to be the search string
+  -- Ag " search " -> (space)search(space) has to be the search string
+  -- Ag "\"search\"" -> "search" has to be the search string
+  -- Ag " \"search\" " -> (space)"search"(space) has to be the search string
+  -- Ag '"search"' -> "search" has to be the search string
+  local search = string.match(args, "\"(.*)\"") or string.match(args, "'(.*)'")
+  search = search:gsub("\\\"", "\"")
+
   local glob_pattern = nil
-
-  local glob_index = string.find(fullArgs, " --glob ")
-
+  local glob_index = string.find(args, " --glob ")
   if (glob_index) then
-    glob_pattern = string.sub(fullArgs, glob_index + 6)
+    glob_pattern = string.sub(args, glob_index + 6)
   end
 
   if search == nil then
-    search = glob_index and string.sub(fullArgs, 1, glob_index - 2) or fullArgs
+    search = glob_index and string.sub(args, 1, glob_index - 2) or args
   end
-
-  search = search:gsub("^%s*(.-)%s*$", "%1")
 
   local aditional_args = {}
 
@@ -163,11 +162,13 @@ vim.api.nvim_create_user_command("Ag", function(params)
     table.insert(aditional_args, "!.*")
   end
 
+
   builtin.grep_string({
     search = search,
     additional_args = aditional_args
   })
-end, { nargs = '?' })
+end, { nargs = '+' })
+
 
 
 -- local function stdout(_, data)

@@ -4,6 +4,9 @@ font-size = 16
 theme = GruvboxDark
 # theme = GruvboxLightHard
 
+# cursor-style = block
+# cursor-style-blink = false
+shell-integration-features = no-cursor
 
 keybind = ctrl+/=text:\x1f
 

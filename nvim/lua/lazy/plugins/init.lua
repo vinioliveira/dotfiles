@@ -1,9 +1,8 @@
 return {
   { "AndrewRadev/splitjoin.vim", event = "InsertEnter" },
   { "chrisbra/nrrwrgn",          event = "InsertEnter" },
-  "stevearc/dressing.nvim", -- improve markdown
   "nvim-tree/nvim-web-devicons",
-  "MeanderingProgrammer/render-markdown.nvim",
+  "MeanderingProgrammer/render-markdown.nvim", -- improve markdown
   {
     "tpope/vim-surround",
     event = "InsertEnter",

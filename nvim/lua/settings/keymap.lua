@@ -33,7 +33,7 @@ map("v", "gk", "5k", { noremap = true })
 -- When jump to next match also center screen
 -- Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
 map("n", "n", ":norm! nzz<CR>", { noremap = true, silent = true })
-map("n", "N", ":norm! nzz<CR>", { noremap = true, silent = true })
+map("n", "N", ":norm! Nzz<CR>", { noremap = true, silent = true })
 map("v", "n", ":norm! nzz<CR>", { noremap = true, silent = true })
 map("v", "n", ":norm! nzz<CR>", { noremap = true, silent = true })
 

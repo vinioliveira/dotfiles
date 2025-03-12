@@ -20,22 +20,22 @@ return {
   },
   -- 'sainnhe/edge',
   -- install tokyo colorscheme
-  -- {
-  --   'folke/tokyonight.nvim',
-  --   opts = {
-  --     transparent = true,
-  --     styles = {
-  --       keywords = { italic = false },
-  --     }
-  --   }
-  -- },
-  -- 'maxmx03/solarized.nvim',
-  -- {
-  --   'rebelot/kanagawa.nvim',
-  --   opts = {
-  --     transparent = true
-  --   }
-  -- },
+  {
+    'folke/tokyonight.nvim',
+    opts = {
+      transparent = true,
+      styles = {
+        keywords = { italic = false },
+      }
+    }
+  },
+  'maxmx03/solarized.nvim',
+  {
+    'rebelot/kanagawa.nvim',
+    opts = {
+      transparent = true
+    }
+  },
   {
     "sainnhe/gruvbox-material",
     lazy = false,

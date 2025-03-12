@@ -37,18 +37,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Command to toggle strategy  let test#strategy between "dispatch_background" and "dispatch"
-vim.api.nvim_create_user_command("TToggleTestStrategy", function()
-  local strategy = vim.api.nvim_get_var("test#strategy")
-  if strategy == "dispatch_background" then
-    vim.api.nvim_set_var("test#strategy", "dispatch")
-    print("test#strategy set to dispatch")
-  else
-    vim.api.nvim_set_var("test#strategy", "dispatch_background")
-    print("test#strategy set to dispatch_background")
-  end
-end, {})
-
--- Command to toggle strategy  let test#strategy between "dispatch_background" and "dispatch"
 vim.api.nvim_create_user_command("ToggleQuickFix", function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -74,14 +62,6 @@ vim.api.nvim_create_user_command("VPR", function()
 end, {})
 
 
-vim.api.nvim_create_user_command("Outline", function()
-  vim.lsp.buf_request(0,
-    'textDocument/documentSymbol',
-    vim.lsp.util.make_position_params(),
-    function(err, method, result)
-      print(err, vim.inspect(method), vim.inspect(result))
-    end)
-end, {})
 
 vim.api.nvim_create_user_command("Alternate", function()
   local currentPath = vim.fn.expand('%')
@@ -114,102 +94,6 @@ vim.api.nvim_create_user_command("Alternate", function()
 end, {})
 
 
--- Telescoe commands
-vim.api.nvim_create_user_command("Quickfix", function()
-  require('telescope.builtin').quickfix()
-end, {})
-
-vim.api.nvim_create_user_command("Maps", function()
-  require('telescope.builtin').keymaps()
-end, {})
-
-vim.api.nvim_create_user_command("Colorscheme", function()
-  require('telescope.builtin').colorscheme()
-end, {})
-
-
-vim.api.nvim_create_user_command("Ag", function(params)
-  local builtin = require('telescope.builtin')
-  local args = params.args
-  -- fullArgs split by "--"
-  -- we wan't to skip escped quotes given the following example
-  -- Ag "search" -> search has to be the search string
-  -- Ag " search " -> (space)search(space) has to be the search string
-  -- Ag "\"search\"" -> "search" has to be the search string
-  -- Ag " \"search\" " -> (space)"search"(space) has to be the search string
-  -- Ag '"search"' -> "search" has to be the search string
-  local search = string.match(args, "\"(.*)\"") or string.match(args, "'(.*)'")
-  search = search:gsub("\\\"", "\"")
-
-  local glob_pattern = nil
-  local glob_index = string.find(args, " --glob ")
-  if (glob_index) then
-    glob_pattern = string.sub(args, glob_index + 6)
-  end
-
-  if search == nil then
-    search = glob_index and string.sub(args, 1, glob_index - 2) or args
-  end
-
-  local aditional_args = {}
-
-  if glob_pattern then
-    table.insert(aditional_args, "--glob")
-    table.insert(aditional_args, glob_pattern)
-
-    --ignore hidden files
-    table.insert(aditional_args, "--glob")
-    table.insert(aditional_args, "!.*")
-  end
-
-
-  builtin.grep_string({
-    search = search,
-    additional_args = aditional_args
-  })
-end, { nargs = '+' })
-
-
-
--- local function stdout(_, data)
---   print("success");
--- end
-
--- local function stderr(_, err)
---   print("Error")
--- end
-
--- vim.api.nvim_create_user_command("TestsAll", function()
---   vim.g.test_all_status = -1
---   vim.fn.jobstart("npm run jest", {
---     on_exit = function(jid, data)
---       vim.g.test_all_status = data
---       print("result", vim.inspect(jid), vim.inspect(data))
---     end,
---     stdout_buffered = true,
---   })
--- end, {})
-
-
-
--- function CodeRunner()
---   print("got executed")
--- end
-
--- vim.cmd "autocmd QuickFixCmdPost cgetfile * lua CodeRunner()"
-
-
-
--- function! Get_Selection()
---   " Why is this not a built-in Vim script function?!
---   let [lnum1, col1] = getpos("'<")[1:2]
---   let [lnum2, col2] = getpos("'>")[1:2]
---   let lines = getline(lnum1, lnum2)
---   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
---   let lines[0] = lines[0][col1 - 1:]
---   return join(lines,'\n')
--- endfunction
--- translate the above function to lua
 
 local function get_selection()
   local lnum1, col1 = unpack(vim.api.nvim_buf_get_mark(0, "<"))
@@ -285,11 +169,10 @@ function VSetSearch(cmdtype)
   vim.fn.setreg('s', temp)
 end
 
-vim.keymap.set('x', '*', ':<C-u>call v:lua.VSetSearch("/")<CR>/<C-R>=@/<CR><CR>', { noremap = true })
+-- vim.keymap.set('x', '*', ':<C-u>call v:lua.VSetSearch("/")<CR>/<C-R>=@/<CR><CR>', { noremap = true })
 
 -- " Mappings
 vim.keymap.set('v', '<leader>r', ':<C-u>call v:lua.Get_visual_selection()<CR>')
-vim.keymap.set('v', '<leader>af', ':<C-u>call v:lua.Get_visual_selection_ag_folder()<CR>')
 
 
 -- " Easier fold toggling

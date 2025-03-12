@@ -4,6 +4,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
+    'nvim-telescope/telescope-ui-select.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
       "nvim-telescope/telescope-fzf-native.nvim",
 
@@ -48,10 +49,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end
     -- Custom layout strategy
     require("telescope.pickers.layout_strategies").fzf_upper_layout = function(
-      self,
-      max_columns,
-      max_lines,
-      layout_config
+        self,
+        max_columns,
+        max_lines,
+        layout_config
     )
       local initial_options = p_window.get_initial_window_options(self)
       local results = initial_options.results
@@ -139,16 +140,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
             height = 0.4,
           },
         },
-        vimgrep_arguments = {
-          'rg',
-          '--color=never',
-          '--no-heading',
-          '--with-filename',
-          '--line-number',
-          '--column',
-          '--smart-case',
-          '-u' -- thats the new thing
-        },
+        -- vimgrep_arguments = {
+        --   'rg',
+        --   '--color=never',
+        --   '--no-heading',
+        --   '--with-filename',
+        --   '--line-number',
+        --   '--column',
+        --   '--smart-case',
+        --   '-u' -- thats the new thing
+        -- },
         -- Default configuration for telescope goes here:
         -- config_key = value,
         mappings = {
@@ -160,6 +161,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
             ["<c-k>"] = actions.move_selection_previous,
             ["<c-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
           },
+        },
+        path_display = {
+          "truncate",
         },
       },
       -- lua require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })
@@ -185,6 +189,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
       },
       extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown()
+        },
         fzf = {
           fuzzy = true,                   -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
@@ -197,6 +204,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- Enable Telescope extensions if they are installed
     pcall(require("telescope").load_extension, "fzf")
+    pcall(require("telescope").load_extension, "ui-select")
 
     -- See `:help telescope.builtin`
     local builtin = require("telescope.builtin")
@@ -209,5 +217,63 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sg", function() builtin.git_commits() end, {})
     vim.keymap.set("n", "<leader>ff", function() builtin.lsp_document_symbols({ symbols = "method" }) end, {})
     vim.keymap.set("n", "<leader>fa", function() builtin.lsp_document_symbols() end, {})
+
+
+    --Grep string for selection and under the cursor
+    vim.keymap.set("n", "<leader>*", ":Telescope grep_string search=<CR>")
+
+    vim.api.nvim_create_user_command("Quickfix", function()
+      require('telescope.builtin').quickfix()
+    end, {})
+
+    vim.api.nvim_create_user_command("Maps", function()
+      require('telescope.builtin').keymaps()
+    end, {})
+
+    vim.api.nvim_create_user_command("Colorscheme", function()
+      require('telescope.builtin').colorscheme()
+    end, {})
+
+
+    vim.api.nvim_create_user_command("Ag", function(params)
+      local builtin = require('telescope.builtin')
+      local args = params.args
+      -- fullArgs split by "--"
+      -- we wan't to skip escped quotes given the following example
+      -- Ag "search" -> search has to be the search string
+      -- Ag " search " -> (space)search(space) has to be the search string
+      -- Ag "\"search\"" -> "search" has to be the search string
+      -- Ag " \"search\" " -> (space)"search"(space) has to be the search string
+      -- Ag '"search"' -> "search" has to be the search string
+      local search = string.match(args, "\"(.*)\"") or string.match(args, "'(.*)'")
+      search = search:gsub("\\\"", "\"")
+
+      local glob_pattern = nil
+      local glob_index = string.find(args, " --glob ")
+      if (glob_index) then
+        glob_pattern = string.sub(args, glob_index + 6)
+      end
+
+      if search == nil then
+        search = glob_index and string.sub(args, 1, glob_index - 2) or args
+      end
+
+      local aditional_args = {}
+
+      if glob_pattern then
+        table.insert(aditional_args, "--glob")
+        table.insert(aditional_args, glob_pattern)
+
+        --ignore hidden files
+        table.insert(aditional_args, "--glob")
+        table.insert(aditional_args, "!.*")
+      end
+
+
+      builtin.grep_string({
+        search = search,
+        additional_args = aditional_args
+      })
+    end, { nargs = '+' })
   end,
 }

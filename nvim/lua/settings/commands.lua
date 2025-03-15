@@ -185,23 +185,3 @@ vim.keymap.set('x', 's*', '"sy:let @/=@s<CR>cgn', { noremap = true, silent = tru
 -- nnoremap <Leader>R :cfdo %s//g \| update<C-Left><C-Left><Left><Left><Left><Left>
 vim.keymap.set('n', '<leader>R', ':cfdo %s///g | update<C-Left><C-Left><Left><Left><Left><Left>',
   { noremap = true })
-
-
-
-local function getVisualSelection()
-  vim.cmd('noau normal! "vy"')
-  local text = vim.fn.getreg("v")
-  vim.fn.setreg("v", {})
-
-  text = string.gsub(text, "\n", "")
-  if #text > 0 then
-    return text
-  else
-    return ""
-  end
-end
-
-vim.keymap.set("v", "<leader>*", function()
-  local text = getVisualSelection()
-  require('telescope.builtin').grep_string({ search = text })
-end, {})

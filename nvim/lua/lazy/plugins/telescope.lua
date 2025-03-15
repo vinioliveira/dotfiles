@@ -1,3 +1,45 @@
+local function parseSearchString(str)
+  -- Remove everything after --glob if it exists
+  local search = str:match("^(.-)%s-%-%-glob") or str
+
+  -- Trim trailing spaces while preserving intentional spaces
+  search = search:match("^(.-)%s*$")
+
+  -- Case 1: Matches strings with escaped quotes like "\"term\""
+  local escaped_quotes = search:match('^%s*"\\+"([^"]+)\\+""%s*$')
+  if escaped_quotes then
+    return '"' .. escaped_quotes .. '"'
+  end
+
+  -- Case 2: Matches strings with single quotes containing double quotes like '"term"'
+  local single_quoted = search:match("^%s*'([^']+)'%s*$")
+  if single_quoted then
+    return single_quoted
+  end
+
+  -- Case 3: Matches strings with double quotes like "term"
+  local double_quoted = search:match('^%s*"([^"]+)"%s*$')
+  if double_quoted then
+    return double_quoted
+  end
+
+  -- Case 4: If no special quotes, return the string as is
+  return search
+end
+
+local function getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg("v")
+  vim.fn.setreg("v", {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ""
+  end
+end
+
 return { -- Fuzzy Finder (files, lsp, etc)
   "nvim-telescope/telescope.nvim",
   event = "VimEnter",
@@ -234,19 +276,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
       require('telescope.builtin').colorscheme()
     end, {})
 
+    vim.keymap.set("v", "<leader>*", function()
+      local text = getVisualSelection()
+      require('telescope.builtin').grep_string({ search = text })
+    end, {})
+
 
     vim.api.nvim_create_user_command("Ag", function(params)
       local builtin = require('telescope.builtin')
       local args = params.args
-      -- fullArgs split by "--"
-      -- we wan't to skip escped quotes given the following example
-      -- Ag "search" -> search has to be the search string
-      -- Ag " search " -> (space)search(space) has to be the search string
-      -- Ag "\"search\"" -> "search" has to be the search string
-      -- Ag " \"search\" " -> (space)"search"(space) has to be the search string
-      -- Ag '"search"' -> "search" has to be the search string
-      local search = string.match(args, "\"(.*)\"") or string.match(args, "'(.*)'")
-      search = search:gsub("\\\"", "\"")
+      local search = parseSearchString(args)
 
       local glob_pattern = nil
       local glob_index = string.find(args, " --glob ")

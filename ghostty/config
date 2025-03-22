@@ -1,7 +1,7 @@
 font-family = "CaskaydiaCove Nerd Font Mono"
 font-style = "Light"
 font-size = 16
-theme = dark:GruvboxDark,light:tokyonight-day
+theme = dark:GruvboxDarkHard,light:tokyonight-day
 
 # cursor-style = block
 # cursor-style-blink = false

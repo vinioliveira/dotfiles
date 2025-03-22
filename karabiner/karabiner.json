@@ -71,28 +71,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "7",
-                                    "modifiers": {
-                                        "mandatory": ["right_option"],
-                                        "optional": ["caps_lock", "command", "option", "shift", "fn"]
-                                    }
-                                },
-                                "to": [{ "key_code": "open_bracket" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "8",
-                                    "modifiers": {
-                                        "mandatory": ["right_option"],
-                                        "optional": ["caps_lock", "command", "option", "shift", "fn"]
-                                    }
-                                },
-                                "to": [{ "key_code": "close_bracket" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "u",
                                     "modifiers": {
                                         "mandatory": ["right_option"],
@@ -150,7 +128,7 @@
                                 "to": [
                                     {
                                         "key_code": "open_bracket",
-                                        "modifiers": ["left_shift"]
+                                        "modifiers": []
                                     }
                                 ],
                                 "type": "basic"
@@ -166,7 +144,7 @@
                                 "to": [
                                     {
                                         "key_code": "close_bracket",
-                                        "modifiers": ["left_shift"]
+                                        "modifiers": []
                                     }
                                 ],
                                 "type": "basic"

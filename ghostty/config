@@ -1,6 +1,7 @@
-font-family = "CaskaydiaCove Nerd Font Mono"
+font-family = "CaskaydiaCove Nerd Font"
+# font-family = "FontasqueSans Nerd Font"
 font-style = "Light"
-font-size = 16
+font-size = 15
 theme = dark:GruvboxDarkHard,light:tokyonight-day
 
 # cursor-style = block

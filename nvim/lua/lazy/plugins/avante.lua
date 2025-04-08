@@ -1,13 +1,13 @@
 return {
   "yetone/avante.nvim",
-  keys = {
-    { "<leader>ca", mode = { "n", "i", "x" } }, -- ask
-    { "<leader>ce", mode = { "n", "i", "x" } }, -- edit
-    { "<leader>cr", mode = { "n", "i", "x" } }, -- refresh
+  -- keys = {
+  --   { "<leader>ca", mode = { "n", "i", "x" } }, -- ask
+  --   { "<leader>ce", mode = { "n", "i", "x" } }, -- edit
+  --   { "<leader>cr", mode = { "n", "i", "x" } }, -- refresh
 
-  },
-  lazy = true,
-  version = false, -- set this if you want to always pull the latest change
+  -- },
+  -- lazy = true,
+  -- version = false, -- set this if you want to always pull the latest change
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
     provider = "claude",                  -- Recommend using Claude

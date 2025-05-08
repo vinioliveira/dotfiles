@@ -90,6 +90,14 @@ map('n', 'ta', ':Alternate<CR>', { noremap = true })
 map("n", "*", ":keepjumps normal! mi*`i<CR>", { noremap = true })
 
 
+-- nnoremap <leader>z za
+-- vim.api.nvim_set_keymap('n', '<leader>z', 'za', { noremap = true })
+
+-- Make Ctrl+Backspace delete word backward in insert mode
+-- Different terminals may send different key codes for Ctrl+Backspace
+map("i", "<C-BS>", "<C-w>", { noremap = true })
+map("i", "<C-H>", "<C-w>", { noremap = true }) -- Alternative key code often sent by terminals
+
 -- map("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- map("n", "<leader>k", "<cmd>lnext<CR>zz")

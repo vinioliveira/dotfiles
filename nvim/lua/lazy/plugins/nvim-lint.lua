@@ -1,5 +1,6 @@
 return {
   'mfussenegger/nvim-lint',
+  enabled = true,
   event = "BufReadPost",
   config = function()
     require('lint').linters_by_ft = {

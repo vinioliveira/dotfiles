@@ -87,6 +87,7 @@ local servers = {
 return {
   "neovim/nvim-lspconfig",
   event = "BufReadPost",
+  enabled = true,
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -106,6 +107,7 @@ return {
     require("mason").setup({
       -- log_level = vim.log.levels.DEBUG
     })
+
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
     require("mason-lspconfig").setup({
@@ -118,8 +120,18 @@ return {
           -- certain features of an LSP (for example, turning off formatting for tsserver)
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities,
             server.capabilities or {})
+
           require("lspconfig")[server_name].setup(server)
         end,
+      },
+    })
+
+    require("lspconfig")["ts_ls"].setup({
+      flags = { debounce_text_changes = 300 },
+      single_file_support = false,
+      filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+      capabilities = {
+        documentFormattingProvider = false,
       },
     })
 

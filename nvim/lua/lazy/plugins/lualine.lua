@@ -43,15 +43,15 @@ return {
         lualine_a = { { 'mode', fmt = function(res) return res:sub(1, 1) end } },
         lualine_b = {
           -- split branch name by slash and grab the last bit
-          {
-            'branch',
-            fmt = function(str)
-              -- split branch name by slash and grab the last bit
-              local branch = str:match('([^/]+)$')
-              -- return branch:sub(1, 15) .. (str:len() > 15 and "..." or "")
-              return branch
-            end,
-          },
+          -- {
+          --   'branch',
+          --   fmt = function(str)
+          --     -- split branch name by slash and grab the last bit
+          --     local branch = str:match('([^/]+)$')
+          --     -- return branch:sub(1, 15) .. (str:len() > 15 and "..." or "")
+          --     return branch
+          --   end,
+          -- },
         },
         lualine_c = { { 'filename', path = 1, shorting_target = 30 } },
         lualine_x = {

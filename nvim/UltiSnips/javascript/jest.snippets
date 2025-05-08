@@ -26,6 +26,9 @@ snippet exph "expect(...).toHaveBeenCalled(...)" b
 expect(${1:}).toHaveBeenCalled(${0});
 endsnippet
 
+snippet earr "expect.arrayContaining({...})" i
+expect.arrayContaining([${1:{${0}}}])
+endsnippet
 
 snippet eobj "expect.objectContaining({...})" i
 expect.objectContaining(${1:{${0}}})

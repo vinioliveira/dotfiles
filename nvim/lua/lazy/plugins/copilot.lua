@@ -1,5 +1,6 @@
 return {
   "github/copilot.vim",
+  enabled  = false,
   event    = "BufReadPost",
   priority = 15,
   init     = function()

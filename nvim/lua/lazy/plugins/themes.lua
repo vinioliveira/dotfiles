@@ -1,16 +1,16 @@
 return {
-  -- {
-  --   'rose-pine/neovim',
-  --   priority = 1000,
-  --   config = function()
-  --     require('rose-pine').setup({
-  --       variant = 'moon',
-  --       styles = {
-  --         transparency = true,
-  --       }
-  --     })
-  --   end
-  -- },
+  {
+    'rose-pine/neovim',
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup({
+        -- variant = '',
+        styles = {
+          transparency = false,
+        }
+      })
+    end
+  },
   {
     'sainnhe/everforest',
     config = function()
@@ -23,7 +23,7 @@ return {
   {
     'folke/tokyonight.nvim',
     opts = {
-      transparent = true,
+      transparent = false,
       styles = {
         keywords = { italic = false },
       }
@@ -33,7 +33,7 @@ return {
   {
     'rebelot/kanagawa.nvim',
     opts = {
-      transparent = true
+      transparent = false
     }
   },
   {
@@ -64,10 +64,10 @@ return {
       }
     end
   },
-  -- {
-  --   'Tsuzat/NeoSolarized.nvim',
-  --   opts = {
-  --     transparent = false,
-  --   }
-  -- }
+  {
+    'Tsuzat/NeoSolarized.nvim',
+    opts = {
+      transparent = false,
+    }
+  }
 }

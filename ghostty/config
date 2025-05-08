@@ -1,7 +1,8 @@
-font-family = "CaskaydiaCove Nerd Font"
-# font-family = "FontasqueSans Nerd Font"
-font-style = "Light"
-font-size = 15
+# font-family = "CaskaydiaCove Nerd Font"
+# font-family = "Roboto Nerd Font Propo"
+font-family = "Hack Nerd Font Propo"
+font-style = "Regular"
+font-size = 16
 theme = dark:GruvboxDarkHard,light:tokyonight-day
 
 # cursor-style = block

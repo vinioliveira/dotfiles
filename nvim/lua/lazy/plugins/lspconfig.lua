@@ -126,24 +126,34 @@ return {
       },
     })
 
-    require("lspconfig")["ts_ls"].setup({
-      flags = { debounce_text_changes = 300 },
-      single_file_support = false,
-      filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-      capabilities = {
-        documentFormattingProvider = false,
+
+    -- for type, icon in pairs({
+    --   Error = " ",
+    --   Warn = " ",
+    --   Hint = "", -- cspell: make it very noisy
+    --   Info = " ",
+    -- }) do
+    --   local hl = "DiagnosticSign" .. type
+    --   -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    -- end
+    --
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.INFO] = "󰋼 ",
+          [vim.diagnostic.severity.HINT] = "󰌵 ",
+        },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.HINT] = "",
+          [vim.diagnostic.severity.INFO] = "",
+        },
       },
     })
 
-    for type, icon in pairs({
-      Error = " ",
-      Warn = " ",
-      Hint = "", -- cspell: make it very noisy
-      Info = " ",
-    }) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-    end
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
     vim.diagnostic.config({
@@ -168,9 +178,11 @@ return {
 
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         map("n", "tD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-        map("n", "td", "<cmd>lua vim.lsp.buf.definition()<CR>")
-        map("n", "ti", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-        map("n", "tr", "<cmd>lua vim.lsp.buf.references()<CR>")
+        -- Using telescope for that instead
+        -- map("n", "td", "<cmd>lua vim.lsp.buf.definition()<CR>")
+        -- map("n", "ti", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+        -- Using telescope for that instead
+        -- map("n", "tr", "<cmd>lua vim.lsp.buf.references()<CR>")
         map("i", "<c-j>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
         map("n", "<c-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
         map("i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")

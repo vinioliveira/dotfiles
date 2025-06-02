@@ -3,7 +3,7 @@
 font-family = "Hack Nerd Font Propo"
 font-style = "Regular"
 font-size = 16
-theme = dark:GruvboxDarkHard,light:tokyonight-day
+theme = dark:Everforest Dark - Hard,light:tokyonight-day
 
 # cursor-style = block
 # cursor-style-blink = false

@@ -37,4 +37,4 @@ export PATH="$PYTHON_HOME:$PNPM_HOME:$PATH"
 defaults write -g AppleFontSmoothing -int 0
 
 
-neofetch
+fastfetch --config ~/.dotfiles/fastfetch/minimal.jsonc

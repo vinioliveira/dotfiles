@@ -6,7 +6,7 @@ unfocused_hollow = true
 vi_mode_style = "None"
 
 [cursor.style]
-shape = "Beam"
+shape = "Block"
 
 [env]
 TERM = "xterm-256color"
@@ -107,7 +107,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [window]
 decorations = "buttonless"
-opacity = 0.95
+opacity = 0.98
 
 [window.dimensions]
 columns = 140

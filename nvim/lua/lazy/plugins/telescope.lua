@@ -213,6 +213,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
         command_history = {
           theme = "dropdown",
         },
+        -- lsp_implementations = {
+        --   theme = "cursor",
+        -- },
+        -- lsp_definitions = {
+        --   theme = "cursor",
+        -- },
+        -- lsp_references = {
+        --   theme = "cursor",
+        -- },
         search_history = {
           theme = "dropdown",
         },
@@ -280,6 +289,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
       local text = getVisualSelection()
       require('telescope.builtin').grep_string({ search = text })
     end, {})
+
+    vim.keymap.set('n', 'td', function()
+        builtin.lsp_definitions({ fname_width = 200 })
+      end,
+      { noremap = true, silent = true })
+    vim.keymap.set('n', 'ti', require('telescope.builtin').lsp_implementations,
+      { noremap = true, silent = true })
+    vim.keymap.set('n', 'tr', function()
+        builtin.lsp_references({ fname_width = 200, include_current_line = false })
+      end,
+      { noremap = true, silent = true })
 
 
     vim.api.nvim_create_user_command("Ag", function(params)

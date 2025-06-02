@@ -1,5 +1,6 @@
 return {
   "yetone/avante.nvim",
+  enabled = false,
   -- keys = {
   --   { "<leader>ca", mode = { "n", "i", "x" } }, -- ask
   --   { "<leader>ce", mode = { "n", "i", "x" } }, -- edit
@@ -10,8 +11,14 @@ return {
   -- version = false, -- set this if you want to always pull the latest change
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-    provider = "claude",                  -- Recommend using Claude
-    auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+    provider = "claude", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+    ---@alias Mode "agentic" | "legacy"
+    mode = "legacy",     -- The default mode for interaction. "agentic" uses tools to automatically generate code, "legacy" uses the old planning method to generate code.
+    -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
+    -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
+    -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
+    auto_suggestions_provider = nil, -- Set to nil to completely disable auto-suggestions
+    cursor_applying_provider = nil,  -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
     claude = {
       endpoint = "https://api.anthropic.com",
       model = "claude-3-7-sonnet-20250219",
@@ -36,12 +43,13 @@ return {
       timeout = 60000, -- Timeout in milliseconds
     },
     behaviour = {
-      auto_suggestions = false, -- Experimental stage
+      auto_suggestions = false, -- Explicitly disabled
       auto_set_highlight_group = true,
       auto_set_keymaps = true,
       auto_apply_diff_after_generation = false,
       support_paste_from_clipboard = false,
-      minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+      minimize_diff = true,         -- Whether to remove unchanged lines when applying a code block
+      enable_token_counting = true, -- Whether to enable token counting. Default to true.
     },
     mappings = {
       --- @class AvanteConflictMappings
@@ -68,15 +76,25 @@ return {
         normal = "<CR>",
         insert = "<C-s>",
       },
+      cancel = {
+        normal = { "<C-c>", "<Esc>", "q" },
+        insert = { "<C-c>" },
+      },
       sidebar = {
         apply_all = "A",
         apply_cursor = "a",
+        retry_user_request = "r",
+        edit_user_request = "e",
         switch_windows = "<C-t>",
         reverse_switch_windows = "<S-C-t>",
+        remove_file = "d",
+        add_file = "@",
+        close = { "<Esc>", "q" },
+        close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
       },
-      ask = "<leader>ca",     -- ask
-      edit = "<leader>ce",    -- edit
-      refresh = "<leader>cr", -- refresh
+      ask = "<leader>ca",       -- ask
+      edit = "<leader>ce",      -- edit
+      refresh = "<leader>cr",   -- refresh
     },
     hints = { enabled = true },
     windows = {
@@ -122,7 +140,12 @@ return {
       --- Disable by setting to -1.
       override_timeoutlen = 500,
     },
+    suggestion = {
+      debounce = 600,
+      throttle = 600,
+    },
   },
+
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows

@@ -1,6 +1,6 @@
 local M = {}
 
-M.dorename = function (win)
+M.dorename = function(win)
   local new_name = vim.trim(vim.fn.getline('.'))
   vim.api.nvim_win_close(win, true)
   vim.lsp.buf.rename(new_name)
@@ -11,7 +11,7 @@ M.rename = function()
     relative = 'cursor',
     row = 0,
     col = 0,
-    width = 30,
+    width = 50,
     height = 1,
     style = 'minimal',
     border = 'single'

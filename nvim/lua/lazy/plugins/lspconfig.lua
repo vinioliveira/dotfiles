@@ -3,90 +3,90 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local servers = {
-  gopls = {
-    flags = { debounce_text_changes = 300 },
-    filetypes = { "go" },
-    capabilities = {
-      documentFormattingProvider = false,
-    },
-  },
-  tsserver = {
-    flags = { debounce_text_changes = 300 },
-    single_file_support = false,
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-    capabilities = {
-      documentFormattingProvider = false,
-    },
-  },
-  tailwindcss = {
-    flags = { debounce_text_changes = 150 },
-    filetypes = { "typescriptreact", "typescript.tsx", "css" },
-    tailwindCSS = {
-      classAttributes = { "class", "className" },
-      lint = {
-        cssConflict = "warning",
-        invalidApply = "error",
-        invalidConfigPath = "error",
-        invalidScreen = "error",
-        invalidTailwindDirective = "error",
-        invalidVariant = "error",
-        recommendedVariantOrder = "warning",
-      },
-      validate = true,
-    },
-  },
-  lua_ls = {
-    flags = { debounce_text_changes = 150 },
-    filetypes = { "lua" },
-    capabilities = {
-      documentFormattingProvider = false,
-    },
-    settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-          -- Setup your lua path
-          path = runtime_path,
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-          disable = { "missing-fields" }
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-          checkThirdParty = false,
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-          enable = false,
-        },
-      },
-    },
-  },
-  terraformls = {
-    flags = { debounce_text_changes = 150 },
-    filetypes = { "terraform", "terraform-vars" },
-    capabilities = {
-      documentFormattingProvider = false,
-    },
-    settings = {}
-  },
-  kotlin_language_server = {
-    flags = { debounce_text_changes = 150 },
-    filetypes = { "kotlin" },
-  },
-  java_language_server = {
-    flags = { debounce_text_changes = 150 },
-    filetypes = { "java" },
-  },
+  -- gopls = {
+  --   flags = { debounce_text_changes = 300 },
+  --   filetypes = { "go" },
+  --   capabilities = {
+  --     documentFormattingProvider = false,
+  --   },
+  -- },
+  -- tsserver = {
+  --   flags = { debounce_text_changes = 300 },
+  --   single_file_support = false,
+  --   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  --   capabilities = {
+  --     documentFormattingProvider = false,
+  --   },
+  -- },
+  -- tailwindcss = {
+  --   flags = { debounce_text_changes = 150 },
+  --   filetypes = { "typescriptreact", "typescript.tsx", "css" },
+  --   tailwindCSS = {
+  --     classAttributes = { "class", "className" },
+  --     lint = {
+  --       cssConflict = "warning",
+  --       invalidApply = "error",
+  --       invalidConfigPath = "error",
+  --       invalidScreen = "error",
+  --       invalidTailwindDirective = "error",
+  --       invalidVariant = "error",
+  --       recommendedVariantOrder = "warning",
+  --     },
+  --     validate = true,
+  --   },
+  -- },
+  -- lua_ls = {
+  --   flags = { debounce_text_changes = 150 },
+  --   filetypes = { "lua" },
+  --   capabilities = {
+  --     documentFormattingProvider = false,
+  --   },
+  --   settings = {
+  --     Lua = {
+  --       runtime = {
+  --         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+  --         version = "LuaJIT",
+  --         -- Setup your lua path
+  --         path = runtime_path,
+  --       },
+  --       diagnostics = {
+  --         -- Get the language server to recognize the `vim` global
+  --         globals = { "vim" },
+  --         disable = { "missing-fields" }
+  --       },
+  --       workspace = {
+  --         -- Make the server aware of Neovim runtime files
+  --         library = vim.api.nvim_get_runtime_file("", true),
+  --         checkThirdParty = false,
+  --       },
+  --       -- Do not send telemetry data containing a randomized but unique identifier
+  --       telemetry = {
+  --         enable = false,
+  --       },
+  --     },
+  --   },
+  -- },
+  -- terraformls = {
+  --   flags = { debounce_text_changes = 150 },
+  --   filetypes = { "terraform", "terraform-vars" },
+  --   capabilities = {
+  --     documentFormattingProvider = false,
+  --   },
+  --   settings = {}
+  -- },
+  -- kotlin_language_server = {
+  --   flags = { debounce_text_changes = 150 },
+  --   filetypes = { "kotlin" },
+  -- },
+  -- java_language_server = {
+  --   flags = { debounce_text_changes = 150 },
+  --   filetypes = { "java" },
+  -- },
 }
 
 return {
   "neovim/nvim-lspconfig",
-  event = "BufReadPost",
+  -- event = "BufReadPost",
   enabled = true,
   dependencies = {
     "williamboman/mason.nvim",
@@ -100,7 +100,10 @@ return {
     -- v $HOME/.local/share/nvim/lsp_servers/diagnosticls/node_modules/diagnostic-languageserver/lib/handles/handleDiagnostic.jsj
 
 
-    require('goto-preview').setup();
+    require('goto-preview').setup({
+      width = 120, -- Width of the floating window
+      height = 25, -- Height of the floating window
+    });
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
@@ -112,6 +115,7 @@ return {
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
     require("mason-lspconfig").setup({
       ensure_installed = servers,
+      -- automatic_enable = false,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
@@ -140,7 +144,7 @@ return {
     vim.diagnostic.config({
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.ERROR] = "- ",
           [vim.diagnostic.severity.WARN] = " ",
           [vim.diagnostic.severity.INFO] = "󰋼 ",
           [vim.diagnostic.severity.HINT] = "󰌵 ",

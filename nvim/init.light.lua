@@ -3,7 +3,7 @@ require("settings.keymap")
 require("settings.commands")
 require("lazy.setup")
 
-vim.o.background = "light"
+-- vim.o.background = "light"
 
 -- vim.g.gruvbox_material_background = 'medium'
 -- -- vim.g.gruvbox_material_better_performance = 1
@@ -12,5 +12,10 @@ vim.o.background = "light"
 
 
 -- vim.cmd("colorschem tokyonight-day")
-vim.cmd("colorschem tokyonight-day")
+-- vim.cmd("colorschem tokyonight-day")
+-- vim.cmd("colorscheme gruvbox-material")
 -- vim.cmd("colorscheme everforest")
+--
+
+vim.o.background = "dark"
+vim.cmd("colorscheme onenord")

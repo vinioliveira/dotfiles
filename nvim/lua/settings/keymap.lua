@@ -105,3 +105,19 @@ map("i", "<C-H>", "<C-w>", { noremap = true }) -- Alternative key code often sen
 
 -- nnoremap <leader>z za
 -- vim.api.nvim_set_keymap('n', '<leader>z', 'za', { noremap = true })
+
+-- Recursive fold toggle function
+local function toggle_fold_recursive()
+  local line = vim.fn.line('.')
+  if vim.fn.foldclosed(line) == -1 then
+    -- Not in a closed fold: close all folds, then open current
+    vim.cmd('normal! zM')
+    vim.cmd('normal! zo')
+  else
+    -- In a closed fold: open it
+    vim.cmd('normal! zo')
+  end
+end
+
+-- Map zf to toggle fold recursively
+vim.keymap.set('n', 'zf', toggle_fold_recursive, { noremap = true, silent = true, desc = 'Toggle fold recursively' })

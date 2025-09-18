@@ -95,7 +95,7 @@ def install_homebrew
   puts 'Installing Homebrew cask packages...There may be some warnings.'
   puts '======================================================'
   run  %(  brew tap homebrew/cask-versions  ) # for firefox developer edition
-  run  %(brew install --cask keepingyouawake 1password postman google-chrome firefox-developer-edition fantastical muzzle slack raycast  ghostty appcleaner docker istat-menus karabiner-elements spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code dbeaver-community pdf-expert numi grammarly-desktop studio-3t readdle-spark zoom flameshot orbstack meetingbar)
+  run  %(brew install --cask keepingyouawake 1password postman google-chrome firefox-developer-edition fantastical muzzle slack raycast  ghostty appcleaner orbstack istat-menus karabiner-elements spotify the-unarchiver timemachineeditor vlc notion oracle-jdk rectangle visual-studio-code dbeaver-community pdf-expert numi grammarly-desktop studio-3t readdle-spark zoom flameshot orbstack meetingbar)
   puts
   puts
 
@@ -133,6 +133,10 @@ def install_others
   run %($(brew --prefix)/opt/fzf/install)
   puts
   puts
+  puts '======================================================'
+  puts 'Overriding Docker with Orbstack'
+  puts '======================================================'
+  run %(sudo ln -s $HOME/.orbstack/run/docker.sock $HOME/.docker/run/docker.sock)
 end
 
 def install_prezto

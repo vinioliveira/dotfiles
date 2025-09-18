@@ -3,7 +3,8 @@ return {
   dependencies = {
     {
       "github/copilot.vim",
-      init = function()
+      event = "BufReadPost",
+      init  = function()
         vim.keymap.set('i', '<Right>', 'copilot#Accept("\\<CR>")', {
           expr = true,
           replace_keycodes = false
@@ -20,129 +21,129 @@ return {
 
     require('CopilotChat').setup({
       -- Shared config starts here (can be passed to functions at runtime and configured via setup function)
-      system_prompt = 'COPILOT_INSTRUCTIONS', -- System prompt to use (can be specified manually in prompt via /).
+      -- system_prompt = 'COPILOT_INSTRUCTIONS', -- System prompt to use (can be specified manually in prompt via /).
 
-      model = 'gpt-4.1',                      -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
-      agent = 'copilot',                      -- Default agent to use, see ':CopilotChatAgents' for available agents (can be specified manually in prompt via @).
-      context = nil,                          -- Default context or array of contexts to use (can be specified manually in prompt via #).
-      sticky = nil,                           -- Default sticky prompt or array of sticky prompts to use at start of every new chat.
+      model = 'gpt-4.1', -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
+      agent = 'copilot', -- Default agent to use, see ':CopilotChatAgents' for available agents (can be specified manually in prompt via @).
+      -- context = nil,                          -- Default context or array of contexts to use (can be specified manually in prompt via #).
+      -- sticky = nil,                           -- Default sticky prompt or array of sticky prompts to use at start of every new chat.
 
-      temperature = 0.1,                      -- GPT result temperature
-      headless = false,                       -- Do not write to chat buffer and use history (useful for using custom processing)
-      stream = nil,                           -- Function called when receiving stream updates (returned string is appended to the chat buffer)
-      callback = nil,                         -- Function called when full response is received (retuned string is stored to history)
-      remember_as_sticky = true,              -- Remember model/agent/context as sticky prompts when asking questions
+      temperature = 0.2, -- GPT result temperature
+      -- headless = false,                       -- Do not write to chat buffer and use history (useful for using custom processing)
+      -- stream = nil,                           -- Function called when receiving stream updates (returned string is appended to the chat buffer)
+      -- callback = nil,                         -- Function called when full response is received (retuned string is stored to history)
+      -- remember_as_sticky = true,              -- Remember model/agent/context as sticky prompts when asking questions
 
       -- default selection
       -- see select.lua for implementation
-      selection = select.visual,
+      -- selection = select.visual,
 
       -- default window options
-      window = {
-        layout = 'vertical',    -- 'vertical', 'horizontal', 'float', 'replace', or a function that returns the layout
-        width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1
-        height = 0.5,           -- fractional height of parent, or absolute height in rows when > 1
-        -- Options below only apply to floating windows
-        relative = 'editor',    -- 'editor', 'win', 'cursor', 'mouse'
-        border = 'single',      -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
-        row = nil,              -- row position of the window, default is centered
-        col = nil,              -- column position of the window, default is centered
-        title = 'Copilot Chat', -- title of chat window
-        footer = nil,           -- footer of chat window
-        zindex = 1,             -- determines if window is on top or below other floating windows
-      },
+      -- window = {
+      --   layout = 'vertical',    -- 'vertical', 'horizontal', 'float', 'replace', or a function that returns the layout
+      --   width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1
+      --   height = 0.5,           -- fractional height of parent, or absolute height in rows when > 1
+      --   -- Options below only apply to floating windows
+      --   relative = 'editor',    -- 'editor', 'win', 'cursor', 'mouse'
+      --   border = 'single',      -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+      --   row = nil,              -- row position of the window, default is centered
+      --   col = nil,              -- column position of the window, default is centered
+      --   title = 'Copilot Chat', -- title of chat window
+      --   footer = nil,           -- footer of chat window
+      --   zindex = 1,             -- determines if window is on top or below other floating windows
+      -- },
 
-      show_help = true,                 -- Shows help message as virtual lines when waiting for user input
-      highlight_selection = true,       -- Highlight selection
-      highlight_headers = true,         -- Highlight headers in chat, disable if using markdown renderers (like render-markdown.nvim)
-      references_display = 'virtual',   -- 'virtual', 'write', Display references in chat as virtual text or write to buffer
-      auto_follow_cursor = true,        -- Auto-follow cursor in chat
-      auto_insert_mode = false,         -- Automatically enter insert mode when opening window and on new prompt
-      insert_at_end = false,            -- Move cursor to end of buffer when inserting text
-      clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
+      -- show_help = true,                 -- Shows help message as virtual lines when waiting for user input
+      -- highlight_selection = true,       -- Highlight selection
+      -- highlight_headers = true,         -- Highlight headers in chat, disable if using markdown renderers (like render-markdown.nvim)
+      -- references_display = 'virtual',   -- 'virtual', 'write', Display references in chat as virtual text or write to buffer
+      -- auto_follow_cursor = true,        -- Auto-follow cursor in chat
+      -- auto_insert_mode = false,         -- Automatically enter insert mode when opening window and on new prompt
+      -- insert_at_end = false,            -- Move cursor to end of buffer when inserting text
+      -- clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
 
-      -- Static config starts here (can be configured only via setup function)
+      -- -- Static config starts here (can be configured only via setup function)
 
-      debug = false, -- Enable debug logging (same as 'log_level = 'debug')
-      log_level = 'info', -- Log level to use, 'trace', 'debug', 'info', 'warn', 'error', 'fatal'
-      proxy = nil, -- [protocol://]host[:port] Use this proxy
-      allow_insecure = false, -- Allow insecure server connections
+      -- debug = false, -- Enable debug logging (same as 'log_level = 'debug')
+      -- log_level = 'info', -- Log level to use, 'trace', 'debug', 'info', 'warn', 'error', 'fatal'
+      -- proxy = nil, -- [protocol://]host[:port] Use this proxy
+      -- allow_insecure = false, -- Allow insecure server connections
 
-      chat_autocomplete = true, -- Enable chat autocompletion (when disabled, requires manual `mappings.complete` trigger)
+      -- chat_autocomplete = true, -- Enable chat autocompletion (when disabled, requires manual `mappings.complete` trigger)
 
-      log_path = vim.fn.stdpath('state') .. '/CopilotChat.log', -- Default path to log file
-      history_path = vim.fn.stdpath('data') .. '/copilotchat_history', -- Default path to stored history
+      -- log_path = vim.fn.stdpath('state') .. '/CopilotChat.log', -- Default path to log file
+      -- history_path = vim.fn.stdpath('data') .. '/copilotchat_history', -- Default path to stored history
 
-      question_header = '# User ', -- Header to use for user questions
-      answer_header = '# Copilot ', -- Header to use for AI answers
-      error_header = '# Error ', -- Header to use for errors
-      separator = '───', -- Separator to use in chat
+      -- question_header = '# User ', -- Header to use for user questions
+      -- answer_header = '# Copilot ', -- Header to use for AI answers
+      -- error_header = '# Error ', -- Header to use for errors
+      -- separator = '───', -- Separator to use in chat
 
-      -- default providers
-      -- see config/providers.lua for implementation
-      providers = {
-        copilot = {
-        },
-        github_models = {
-        },
-        copilot_embeddings = {
-        },
-      },
+      -- -- default providers
+      -- -- see config/providers.lua for implementation
+      -- providers = {
+      --   copilot = {
+      --   },
+      --   github_models = {
+      --   },
+      --   copilot_embeddings = {
+      --   },
+      -- },
 
-      -- default contexts
-      -- see config/contexts.lua for implementation
-      contexts = {
-        buffer = {
-        },
-        buffers = {
-        },
-        file = {
-        },
-        files = {
-        },
-        git = {
-        },
-        url = {
-        },
-        register = {
-        },
-        quickfix = {
-        },
-        system = {
-        }
-      },
+      -- -- default contexts
+      -- -- see config/contexts.lua for implementation
+      -- contexts = {
+      --   buffer = {
+      --   },
+      --   buffers = {
+      --   },
+      --   file = {
+      --   },
+      --   files = {
+      --   },
+      --   git = {
+      --   },
+      --   url = {
+      --   },
+      --   register = {
+      --   },
+      --   quickfix = {
+      --   },
+      --   system = {
+      --   }
+      -- },
 
-      -- default prompts
-      -- see config/prompts.lua for implementation
-      prompts = {
-        Explain = {
-          prompt = 'Write an explanation for the selected code as paragraphs of text.',
-          system_prompt = 'COPILOT_EXPLAIN',
-        },
-        Review = {
-          prompt = 'Review the selected code.',
-          system_prompt = 'COPILOT_REVIEW',
-        },
-        Fix = {
-          prompt =
-          'There is a problem in this code. Identify the issues and rewrite the code with fixes. Explain what was wrong and how your changes address the problems.',
-        },
-        Optimize = {
-          prompt =
-          'Optimize the selected code to improve performance and readability. Explain your optimization strategy and the benefits of your changes.',
-        },
-        Docs = {
-          prompt = 'Please add documentation comments to the selected code.',
-        },
-        Tests = {
-          prompt = 'Please generate tests for my code.',
-        },
-        Commit = {
-          prompt =
-          'Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block.',
-          context = 'git:staged',
-        },
-      },
+      -- -- default prompts
+      -- -- see config/prompts.lua for implementation
+      -- prompts = {
+      --   Explain = {
+      --     prompt = 'Write an explanation for the selected code as paragraphs of text.',
+      --     system_prompt = 'COPILOT_EXPLAIN',
+      --   },
+      --   Review = {
+      --     prompt = 'Review the selected code.',
+      --     system_prompt = 'COPILOT_REVIEW',
+      --   },
+      --   Fix = {
+      --     prompt =
+      --     'There is a problem in this code. Identify the issues and rewrite the code with fixes. Explain what was wrong and how your changes address the problems.',
+      --   },
+      --   Optimize = {
+      --     prompt =
+      --     'Optimize the selected code to improve performance and readability. Explain your optimization strategy and the benefits of your changes.',
+      --   },
+      --   Docs = {
+      --     prompt = 'Please add documentation comments to the selected code.',
+      --   },
+      --   Tests = {
+      --     prompt = 'Please generate tests for my code.',
+      --   },
+      --   Commit = {
+      --     prompt =
+      --     'Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block.',
+      --     context = 'git:staged',
+      --   },
+      -- },
 
       -- default mappings
       -- see config/mappings.lua for implementation
@@ -196,111 +197,19 @@ return {
           normal = 'gc',
         },
         show_help = {
-          normal = 'gh',
+          normal = 'g?',
         },
       },
-    }
-    )
+    })
+
     vim.keymap.set('n', '<leader>ca', ':CopilotChat<CR>', { desc = 'Copilot Chat Open' })
     vim.keymap.set('v', '<leader>ca', ':CopilotChat<CR>', { desc = 'Copilot Chat Open' })
     vim.keymap.set('n', '<leader>ct', ':CopilotChatToggle<CR>', { desc = 'Copilot Chat Toggle' })
     vim.keymap.set('n', '<leader>cs', ':CopilotChatStop<CR>', { desc = 'Copilot Chat Stop' })
     vim.keymap.set('n', '<leader>cr', ':CopilotChatReset<CR>', { desc = 'Copilot Chat Reset' })
+
+    vim.api.nvim_set_hl(0, 'CopilotChatHeader', { fg = '#7C3AED', bold = true })
+    vim.api.nvim_set_hl(0, 'CopilotChatSeparator', { fg = '#374151' })
+    vim.api.nvim_set_hl(0, 'CopilotChatKeyword', { fg = '#10B981', italic = true })
   end
-  -- See Commands section for default commands if you want to lazy load on them
 }
-
-
--- return {
---   -- "github/copilot.vim",
---   "zbirenbaum/copilot.lua",
---   event    = "BufReadPost",
---   priority = 15,
---   config   = function()
---     require('copilot').setup({
---       panel = {
---         enabled = false,
---         auto_refresh = false,
---         keymap = {
---           jump_prev = "[[",
---           jump_next = "]]",
---           accept = "<Right>",
---           refresh = "gr",
---           open = "<M-CR>"
---         },
---         layout = {
---           position = "bottom", -- | top | left | right | horizontal | vertical
---           ratio = 0.4
---         },
---       },
---       suggestion = {
---         enabled = true,
---         auto_trigger = false,
---         hide_during_completion = true,
---         debounce = 75,
---         trigger_on_accept = true,
---         keymap = {
---           accept = "<Right>",
---           accept_word = false,
---           accept_line = false,
---           next = "<M-Down>",
---           prev = "<M-Up>",
---           dismiss = "<C-]>",
---         },
---       },
---       filetypes = {
---         yaml = false,
---         markdown = false,
---         help = false,
---         gitcommit = false,
---         gitrebase = false,
---         hgcommit = false,
---         svn = false,
---         cvs = false,
---         ["."] = false,
---       },
---       auth_provider_url = nil, -- URL to authentication provider, if not "https://github.com/"
---       logger = {
---         file = vim.fn.stdpath("log") .. "/copilot-lua.log",
---         file_log_level = vim.log.levels.OFF,
---         print_log_level = vim.log.levels.WARN,
---         trace_lsp = "off", -- "off" | "messages" | "verbose"
---         trace_lsp_progress = false,
---         log_lsp_messages = false,
---       },
---       copilot_node_command = vim.fn.expand("$HOME") .. '/.asdf/installs/nodejs/22.15.0/bin/node', -- Node.js version must be > 20
---       workspace_folders = {},
---       copilot_model = "",
---       root_dir = function()
---         return vim.fs.dirname(vim.fs.find(".git", { upward = true })[1])
---       end,
---       should_attach = function(_, _)
---         if not vim.bo.buflisted then
---           logger.debug("not attaching, buffer is not 'buflisted'")
---           return false
---         end
-
---         if vim.bo.buftype ~= "" then
---           logger.debug("not attaching, buffer 'buftype' is " .. vim.bo.buftype)
---           return false
---         end
-
---         return true
---       end,
---       server = {
---         type = "nodejs", -- "nodejs" | "binary"
---         custom_server_filepath = nil,
---       },
---       server_opts_overrides = {},
---     })
-
-
---     -- Update the mapping that triggers copilot.lua
---     -- vim.keymap.set('i', '<Right>', 'copilot#Accept("\\<CR>")', {
---     --   expr = true,
---     --   replace_keycodes = false
---     -- })
---     -- -- disable default tab keymap
---     -- vim.g.copilot_no_tab_map = true
---   end,
--- }

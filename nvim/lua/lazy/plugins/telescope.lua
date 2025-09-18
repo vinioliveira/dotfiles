@@ -237,6 +237,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
         lsp_document_symbols = {
           theme = "dropdown",
+          fname_width = 5,
+          symbol_width = 65,
+          symbol_type_width = 5,
+          -- show_line = true,
         },
       },
       extensions = {
@@ -266,8 +270,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sc", function() builtin.command_history({ theme = "dropdown" }) end, {})
     vim.keymap.set("n", "<leader>ss", function() builtin.search_history() end, {})
     vim.keymap.set("n", "<leader>sg", function() builtin.git_commits() end, {})
-    vim.keymap.set("n", "<leader>ff", function() builtin.lsp_document_symbols({ symbols = "method" }) end, {})
-    vim.keymap.set("n", "<leader>fa", function() builtin.lsp_document_symbols() end, {})
+    vim.keymap.set("n", "<leader>ff",
+      function() builtin.lsp_document_symbols({ symbols = "method" }) end,
+      {})
+    vim.keymap.set("n", "<leader>fa", function() builtin.lsp_document_symbols({ fname_width = 2000 }) end, {})
 
 
     --Grep string for selection and under the cursor
@@ -290,6 +296,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
       require('telescope.builtin').grep_string({ search = text })
     end, {})
 
+
+    -- LSP keymaps
     vim.keymap.set('n', 'td', function()
         builtin.lsp_definitions({ fname_width = 200 })
       end,
@@ -301,6 +309,46 @@ return { -- Fuzzy Finder (files, lsp, etc)
       end,
       { noremap = true, silent = true })
 
+    local pickers = require('telescope.pickers')
+    local finders = require('telescope.finders')
+    local actions = require('telescope.actions')
+    local action_state = require('telescope.actions.state')
+    local conf = require('telescope.config').values
+    local lsp_pickers = {
+      "lsp_references",
+      "lsp_definitions",
+      "lsp_implementations",
+      "lsp_type_definitions",
+      "lsp_document_symbols",
+      "lsp_workspace_symbols",
+      "lsp_code_actions",
+      "lsp_range_code_actions",
+      "lsp_incoming_calls",
+      "lsp_outgoing_calls",
+      "lsp_document_diagnostics",
+      "lsp_workspace_diagnostics",
+    }
+
+    local function lsp_builtin_picker()
+      pickers.new({}, {
+        prompt_title = "LSP Builtins",
+        finder = finders.new_table { results = lsp_pickers },
+        sorter = conf.generic_sorter({}),
+        attach_mappings = function(prompt_bufnr, map)
+          actions.select_default:replace(function()
+            actions.close(prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            require('telescope.builtin')[selection.value]()
+          end)
+          return true
+        end,
+      }):find()
+    end
+
+    vim.keymap.set('n', '<leader>st', function()
+      lsp_builtin_picker()
+    end, { noremap = true, silent = true })
+
 
     vim.api.nvim_create_user_command("Ag", function(params)
       local builtin = require('telescope.builtin')
@@ -310,7 +358,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       local glob_pattern = nil
       local glob_index = string.find(args, " --glob ")
       if (glob_index) then
-        glob_pattern = string.sub(args, glob_index + 6)
+        glob_pattern = string.sub(args, glob_index + 7)
       end
 
       if search == nil then
@@ -323,12 +371,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
         table.insert(aditional_args, "--glob")
         table.insert(aditional_args, glob_pattern)
 
+        table.insert(aditional_args, "--hidden")
         --ignore hidden files
-        table.insert(aditional_args, "--glob")
-        table.insert(aditional_args, "!.*")
+        -- table.insert(aditional_args, "--glob")
+        -- table.insert(aditional_args, "!.*")
       end
 
-
+      print(vim.inspect(aditional_args))
       builtin.grep_string({
         search = search,
         additional_args = aditional_args

@@ -1,5 +1,32 @@
 return {
   {
+    'clearaspect/onehalf',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'rmehri01/onenord.nvim',
+    priority = 1000,
+    opts = {
+      inverse       = {
+        match_paren = true,
+      },
+      styles        = {
+        comments = "NONE",
+        strings = "NONE",
+        keywords = "NONE",
+        functions = "NONE",
+        variables = "NONE",
+        diagnostics = "underline",
+      },
+      custom_colors = {
+        dark = {
+          bg = "#1E222A", -- only applies in dark theme
+        },
+      }
+    }
+  },
+  {
     'shaunsingh/nord.nvim',
     priority = 1000,
     config = function()
@@ -12,7 +39,7 @@ return {
 
 
       -- Load the colorscheme
-      require('nord').set()
+      -- require('nord').set()
 
       -- vim.cmd("colorscheme nord")
     end
@@ -36,7 +63,7 @@ return {
       vim.g.everforest_transparent_background = true
       vim.g.everforest_better_performance = 1
 
-      vim.cmd("colorscheme everforest")
+      -- vim.cmd("colorscheme everforest")
     end
   },
   -- 'sainnhe/edge',
@@ -48,9 +75,11 @@ return {
       styles = {
         keywords = { italic = false },
       }
-    }
+    },
+    config = function()
+      -- vim.cmd([[colorscheme tokyonight-night]])
+    end
   },
-  'maxmx03/solarized.nvim',
   {
     'rebelot/kanagawa.nvim',
     opts = {
@@ -83,6 +112,9 @@ return {
         ['bg0'] = { '#141617', '232' },
         ['bg_dim'] = { '#1d2021', '234' },
       }
+
+      -- vim.o.background = 'dark'
+      -- vim.cmd([[colorscheme gruvbox-material]])
     end
   },
   {
@@ -90,5 +122,6 @@ return {
     opts = {
       transparent = false,
     }
-  }
+  },
+  'maxmx03/solarized.nvim',
 }

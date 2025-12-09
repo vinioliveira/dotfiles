@@ -3,15 +3,22 @@ return {
   enabled = true,
   event = "BufReadPost",
   config = function()
-    require('lint').linters_by_ft = {
-      javascript = { 'eslint_d', 'cspell' },
-      typescript = { 'eslint_d', 'cspell' },
-      typescriptreact = { 'eslint_d', 'cspell' },
+    local lint = require("lint")
+    local lspconfig_util = require("lspconfig.util")
+
+    lint.linters_by_ft = {
+      javascript = { 'cspell' },
+      typescript = { 'cspell' },
+      typescriptreact = { 'cspell' },
+      --
+      -- javascript = { 'eslint', 'cspell' },
+      -- typescript = { 'eslint', 'cspell' },
+      -- typescriptreact = { 'eslint', 'cspell' },
       markdown = { "cspell" },
       go = { "cspell" },
     }
 
-    local lint = require("lint")
+
     lint.linters.cspell = require("lint.util").wrap(lint.linters.cspell, function(diagnostic)
       diagnostic.severity = vim.diagnostic.severity.HINT
       return diagnostic
@@ -25,5 +32,4 @@ return {
       end,
     })
   end
-
 }

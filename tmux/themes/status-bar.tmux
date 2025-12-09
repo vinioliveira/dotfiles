@@ -34,7 +34,7 @@ set -g clock-mode-style 24
 set -g message-command-style bg=default,fg=default
 
 # Mode
-set -g mode-style bg=red,fg=default
+set -g mode-style bg=colour0,fg=default
 
 
 set -g @now-playing-playing-icon "♫"
@@ -43,10 +43,11 @@ set -g @now-playing-status-format "#[bg=colour0]#[fg=colour6]#[bg=colour6]#[f
 
 # # Window status
 set -g window-status-format " #I. #W "
-set -g window-status-style fg=colour6,bg=colour0
+set -g window-status-style fg=colour6,bg=default
 
 set -g status-left-length 60
-set -g status-left "#[fg=colour6]\ue0b6#[bg=colour6]#[fg=colour0] #S #[fg=colour6]#[bg=colour0]#[bg=colour0]#[fg=colour6] #I #[fg=colour7]#P #[fg=colour0]#[bg=colour0]"
+# set -g status-left "#[fg=colour6]\ue0b6#[bg=colour6]#[fg=colour0] #S #[fg=colour6]#[bg=colour0]#[bg=colour0]#[fg=colour6] #I #[fg=colour7]#P #[fg=colour0]#[bg=default]"
+set -g status-left "#[fg=colour6]\ue0b6#[bg=colour6]#[fg=colour0] #S #[fg=colour6]#[bg=colour0]#[bg=colour0]#[fg=colour6] #I #[fg=colour7]#P "
 
 # Right side of status bar
 set -g status-right-length 60

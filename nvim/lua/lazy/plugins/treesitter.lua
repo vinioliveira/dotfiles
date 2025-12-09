@@ -28,6 +28,7 @@ return {
         "tsx",
         "typescript",
         "json",
+        "jsonc",
         "python",
         "go",
         "javascript",

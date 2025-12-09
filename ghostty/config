@@ -3,16 +3,24 @@
 font-family = "Hack Nerd Font Propo"
 font-style = "Regular"
 font-size = 16
+theme = dark:cyberdream,light:cyberdream-light
+# theme = dark:Kanagawa Dragon,light:onenord-light
 # theme = dark:grurbox-material-hard-dark,light:onenord-light
 # theme = dark:rose-pine-moon,light:onenord-light
 # theme = dark:Everforest Dark - Hard,light:tokyonight-day
 # theme = dark:tokyonight,light:tokyonight-day
+#
+#
+# background-opacity=0.8
+# img background
+background-image = "/Users/vinicius/Downloads/RoyalBlue.jpg"
+background-image-fit=cover
 
 # cursor-style = block
 # cursor-style-blink = false
 shell-integration-features = no-cursor
 
 keybind = ctrl+/=text:\x1f
-title=👻
+title=
 macos-titlebar-proxy-icon=hidden
 keybind = shift+enter=text:\n

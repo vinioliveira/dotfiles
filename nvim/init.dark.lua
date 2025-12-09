@@ -13,13 +13,16 @@ vim.o.background = "dark"
 -- vim.cmd.colorscheme 'gruvbox-material'
 --
 -- vim.cmd("colorscheme kanagawa-wave")
+-- vim.cmd("colorscheme kanagawa-dragon")
 -- vim.cmd("colorscheme everforest")
+--
+vim.cmd("colorscheme cyberdream")
 
 
 -- vim.cmd("colorscheme everforest")
 -- vim.cmd("colorscheme nord")
 -- vim.cmd("colorscheme gruvbox-material")
-vim.cmd("colorschem onehalfdark")
+-- vim.cmd("colorschem onehalfdark")
 -- vim.cmd("colorschem rose-pine-dawn")
 -- vim.cmd("colorschem tokyonight-storm")
 -- vim.cmd("colorschem tokyonight-day")

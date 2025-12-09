@@ -92,7 +92,16 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     { 'rmagatti/goto-preview', keys = "tp" },
-    { "j-hui/fidget.nvim",     opts = {} },
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        notification = {
+          window = {
+            winblend = 0,
+          },
+        },
+      },
+    },
   },
   config = function()
     -- vim.lsp.set_log_level('debug')
@@ -113,11 +122,13 @@ return {
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
     require("mason-lspconfig").setup({
       ensure_installed = servers,
       -- automatic_enable = false,
       handlers = {
         function(server_name)
+          print("Setting up " .. server_name)
           local server = servers[server_name] or {}
           -- This handles overriding only values explicitly passed
           -- by the server configuration above. Useful when disabling
@@ -188,7 +199,7 @@ return {
         -- Using telescope for that instead
         -- map("n", "tr", "<cmd>lua vim.lsp.buf.references()<CR>")
         map("i", "<c-j>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-        map("n", "<c-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
+        map("n", "<c-k>", "<cmd>lua vim.lsp.buf.hover({ border = 'single' })<CR>")
         map("i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 
         -- utils

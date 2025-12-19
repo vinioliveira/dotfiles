@@ -3,8 +3,15 @@ reload() {
   exec zsh;
 }
 
-gwcoi() {
-  local GIT_WT_BASE_PATH=~/dev/projects/copyai/copy-ai.git
+#Let's create a variant of the gwcoi called gwfi for fullcast
+# we want to reuse most if not all of the logic from gwcoi and gwcoid
+# so we will create a function that takes the base path as an argument
+# and then we will create gwcoi and gwfi that call that function with the appropriate base path
+
+# copyai path: ~/dev/projects/copyai/copy-ai.git
+# fullcast path: ~/dev/projects/fullcast/data-intelligence.git
+_gw() {
+  local GIT_WT_BASE_PATH=$1
   local origin=`pwd`
   builtin cd $GIT_WT_BASE_PATH
   local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
@@ -15,8 +22,16 @@ gwcoi() {
   fi
 }
 
-gwcoid() {
-  local GIT_WT_BASE_PATH=~/dev/projects/copyai/copy-ai.git
+gwcoi(){
+  _gw ~/dev/projects/copyai/copy-ai.git
+}
+
+gwfi(){
+  _gw ~/dev/projects/fullcast/data-intelligence.git
+}
+
+_gwd() {
+  local GIT_WT_BASE_PATH=$1
   local origin=`pwd`
   builtin cd $GIT_WT_BASE_PATH
   local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
@@ -49,6 +64,15 @@ gwcoid() {
     fi
   fi
 }
+gwcoid(){
+  _gwd ~/dev/projects/copyai/copy-ai.git
+}
+
+gwfid(){
+  _gwd ~/dev/projects/fullcast/data-intelligence.git
+}
+
+
   # PATH=$(g wt list | sed  "$SED_REGEX/$SED_OUTPUT" | fzf | sed 's/^\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\).*\[\(.*\)\]$/\3 \[\2\] \1/g')
   # "cd $(g wt list | sed  's/\([^[:space:]]*\).\([^[:space:]]*\).*\[\(.*\)\]$/\3 \[\2\] \1/g' | fzf | sed  'ss/\([^[:space:]]*\).*$/\1/g')/\([^[:space:]]*\).*$/\1/g')"
 # Check if given url is giving gzipped content

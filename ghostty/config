@@ -11,16 +11,24 @@ theme = dark:cyberdream,light:cyberdream-light
 # theme = dark:tokyonight,light:tokyonight-day
 #
 #
-# background-opacity=0.8
+background-opacity=0.98
 # img background
-background-image = "/Users/vinicius/Downloads/RoyalBlue.jpg"
-background-image-fit=cover
+# background-image = "/Users/vinicius/Downloads/Royal.png"
+# background-image-fit=cover
 
 # cursor-style = block
 # cursor-style-blink = false
 shell-integration-features = no-cursor
 
+title =
+
+# keybind
 keybind = ctrl+/=text:\x1f
-title=
-macos-titlebar-proxy-icon=hidden
 keybind = shift+enter=text:\n
+
+
+macos-titlebar-style=tabs
+# macos-titlebar-style=transparent
+# macos-titlebar-proxy-icon=hidden
+# window-decoration=auto
+# window-theme=light

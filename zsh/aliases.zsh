@@ -67,7 +67,8 @@ alias today="cal"
 
 alias validate_pr="npm run format:check -- --base=origin/develop && npm run typecheck && npm run lint -- --base=origin/develop"
 alias copyai_servers="copyai_server.sh"
-alias gwco="gitworktree.sh"
+alias gwco="gitworktree.sh ~/dev/projects/copyai/copy-ai.git"
+alias gwfo="gitworktree.sh ~/dev/projects/fullcast/data-intelligence.git"
 
 alias darkmode="~/.dotfiles/scripts/swap-theme.sh dark"
 alias lightmode="~/.dotfiles/scripts/swap-theme.sh light"

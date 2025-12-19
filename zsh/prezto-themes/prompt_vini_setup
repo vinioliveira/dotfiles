@@ -93,15 +93,15 @@ function prompt_vini_setup {
   zstyle ':prezto:module:ruby:info:version' format '%F{red} v%v%f'
 
 #   # # Set node-info
-  zstyle ':prezto:module:node:info:version' format '%F{28}⬢ %F{0}v%v%f'
+  zstyle ':prezto:module:node:info:version' format '%F{28}⬢ %F{7}v%v%f'
 
   POWERLINE_COLOR_FG_GRAY=%F{240}
   POWERLINE_COLOR_FG_LIGHT_GRAY=%F{240}
-  POWERLINE_COLOR_FG_WHITE=%F{7}
+  POWERLINE_COLOR_FG_WHITE=%F{8}
 
   POWERLINE_COLOR_BG_GRAY=%K{240}
   POWERLINE_COLOR_BG_LIGHT_GRAY=%K{240}
-  POWERLINE_COLOR_BG_WHITE=%K{7}
+  POWERLINE_COLOR_BG_WHITE=%K{8}
 
   POWERLINE_SEPARATOR=$'\uE0B4'
   POWERLINE_R_SEPARATOR=$'\uE0B6'
@@ -118,7 +118,8 @@ function prompt_vini_setup {
 %F{14} %B%F{4}${_prompt_vini_pwd}%f%b%F{4} ${git_info:+${(e)git_info[prompt]}}
 ${editor_info[keymap]}'
   # RPROMPT='[%f${node_info[version]}]'
-  # RPROMPT='$POWERLINE_COLOR_FG_WHITE$POWERLINE_R_SEPARATOR%F$POWERLINE_COLOR_BG_WHITE${node_info[version]} %F{7}%K{10} %t%K%F{10}$POWERLINE_SEPARATOR%f%k'
+  # RPROMPT='[%F{14}${node_info[version]}%f] %F{8}%t%f'
+  RPROMPT='$POWERLINE_COLOR_FG_WHITE$POWERLINE_R_SEPARATOR%F$POWERLINE_COLOR_BG_WHITE${node_info[version]} %F{7}%K{4} %t%K%F{4}$POWERLINE_SEPARATOR%f%k'
 
 }
 

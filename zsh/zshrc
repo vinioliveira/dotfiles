@@ -38,3 +38,6 @@ defaults write -g AppleFontSmoothing -int 0
 
 
 fastfetch --config ~/.dotfiles/fastfetch/minimal.jsonc
+
+# bun completions
+[ -s "/Users/vinicius/.bun/_bun" ] && source "/Users/vinicius/.bun/_bun"

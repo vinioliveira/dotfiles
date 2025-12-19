@@ -202,6 +202,24 @@ return { -- Fuzzy Finder (files, lsp, etc)
             ["<c-j>"] = actions.move_selection_next,
             ["<c-k>"] = actions.move_selection_previous,
             ["<c-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+            ["<C-y>"] = function(prompt_bufnr)
+              local entry = require('telescope.actions.state').get_selected_entry()
+              local path = vim.fn.fnamemodify(entry.path, ':.')
+
+              vim.fn.setreg('+', path)
+              vim.notify('Copied: ' .. path)
+            end
+
+          },
+          n = {
+            ["<C-y>"] = function(prompt_bufnr)
+              local entry = require('telescope.actions.state').get_selected_entry()
+              local path = vim.fn.fnamemodify(entry.path, ':.')
+
+              vim.fn.setreg('+', path)
+              vim.notify('Copied: ' .. path)
+            end,
           },
         },
         path_display = {

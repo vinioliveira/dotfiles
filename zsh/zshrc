@@ -1,25 +1,43 @@
+# Disable flow control commands (keeps C-s from freezing everything)
+# Must check if stdin is a terminal to avoid errors
+if [[ -t 0 ]]; then
+  stty start undef 2>/dev/null
+  stty stop undef 2>/dev/null
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 if [[ -z "$LC_ALL" ]]; then
   export LC_ALL='en_US.UTF-8'
 fi
+
+autoload -Uz compinit
+compinit
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
 # Loading themes before use it
 autoload promptinit
 fpath=($HOME/.zsh.prompts $fpath)
 promptinit
 
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+#   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# fi
 
 source $HOME/.dotfiles/scripts/utils.sh
 # source $HOME/.dotfiles/scripts/tmux.sh
 
 # Customize to your needs...
 for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
-
-# Disable flow control commands (keeps C-s from freezing everything)
-stty start undef
-stty stop undef
 
 setopt RM_STAR_WAIT
 setopt CORRECT
@@ -34,10 +52,22 @@ export PATH="$PYTHON_HOME:$PNPM_HOME:$PATH"
 
 # source /Users/vinicius/.docker/init-zsh.sh || true # Added by Docker Desktop
 
-defaults write -g AppleFontSmoothing -int 0
-
-
-fastfetch --config ~/.dotfiles/fastfetch/minimal.jsonc
+# Suppress output from defaults write
+defaults write -g AppleFontSmoothing -int 0 &>/dev/null
 
 # bun completions
 [ -s "/Users/vinicius/.bun/_bun" ] && source "/Users/vinicius/.bun/_bun"
+
+# Source zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# # Source staship
+# eval "$(starship init zsh)"
+
+# Source powerlevel10k theme
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fastfetch --config ~/.dotfiles/fastfetch/minimal.jsonc

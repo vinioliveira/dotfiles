@@ -11,6 +11,7 @@ return {
     priority = 1000,
     opts = {
       transparent = true,
+      variant = "dark",
     },
   },
   {

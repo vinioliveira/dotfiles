@@ -33,9 +33,6 @@ set -g clock-mode-style 24
 # Command message
 set -g message-command-style bg=default,fg=default
 
-# Mode
-set -g mode-style bg=colour0,fg=default
-
 
 set -g @now-playing-playing-icon "♫"
 set -g @now-playing-scrollable-threshold 20

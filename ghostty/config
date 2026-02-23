@@ -1,7 +1,7 @@
-# font-family = "CaskaydiaCove Nerd Font"
+font-family = "CaskaydiaCove Nerd Font"
 # font-family = "Roboto Nerd Font Propo"
-font-family = "Hack Nerd Font Propo"
-font-style = "Regular"
+# font-family = "Hack Nerd Font Propo"
+font-style = "Light"
 font-size = 16
 theme = dark:cyberdream,light:cyberdream-light
 # theme = dark:Kanagawa Dragon,light:onenord-light

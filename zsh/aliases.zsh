@@ -80,3 +80,6 @@ alias np="npm"
 alias pn="pnpm"
 alias pi="pulumi"
 alias tf="terraform"
+
+
+alias cc="claude"

@@ -27,6 +27,7 @@ pb-yank () {
 }
 zle -N pb-yank
 bindkey -a  "p" pb-yank
-
-
 bindkey '^ ' autosuggest-accept
+
+bindkey "^?" backward-delete-char
+bindkey -v

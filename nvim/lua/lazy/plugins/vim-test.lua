@@ -38,8 +38,13 @@ return {
     vim.g['g:test#javascript#mocha#file_pattern'] = '\\v.*.(test|spec)s?\\.(js|ts)$'
     vim.g['g:test#javascript#mocha#environment'] = { NODE_ENV = 'test' }
 
+    --     " let g:test#javascript#jest#file_pattern = '\v(test|spec)s?\.(jsx|tsx|ts|js)$'
+    --     " let test#javascript#jest#executable = 'COLORS=false DEBUG_PRINT_LIMIT=100000 pnpm jest '
     vim.g['g:test#javascript#jest#file_pattern'] = '\\v(test|spec)s?\\.(jsx|tsx|ts|js)$'
     vim.g['test#javascript#jest#executable'] = 'COLORS=false DEBUG_PRINT_LIMIT=100000 pnpm jest '
+
+    -- vim.g['g:test#javascript#jest#file_pattern'] = '\\v(test|spec)s?\\.(jsx|tsx|ts|js)$'
+    -- vim.g['test#javascript#jest#executable'] = 'COLORS=false DEBUG_PRINT_LIMIT=100000 pnpm jest '
 
     -- Don't close  after running tests
     vim.g['test#preserve_screen'] = 1

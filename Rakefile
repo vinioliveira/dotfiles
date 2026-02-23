@@ -83,7 +83,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim eza zoxide bat the_silver_searcher fastfetch cmake gh)
+  run %( brew install fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim eza zoxide bat the_silver_searcher fastfetch cmake gh powerlevel10k)
   puts
   puts
 #   puts '======================================================'
@@ -148,9 +148,13 @@ def install_prezto
   # The prezto runcoms are only going to be installed if zprezto has never been installed
   install_file(Dir.glob('zsh/prezto/runcoms/z*'))
 
+  # puts
+  # puts "Overriding prezto ~/.zpreztorc with Dotfile's zpreztorc"
+  # run %( ln -nfs "$HOME/.dotfiles/zsh/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" )
+
   puts
-  puts "Overriding prezto ~/.zpreztorc with Dotfile's zpreztorc"
-  run %( ln -nfs "$HOME/.dotfiles/zsh/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" )
+  puts "Overriding tool-versions ~/.tool-versions with Dotfile's tool-versions"
+  run %( ln -nfs "$HOME/.dotfiles/zsh/p10k.zsh" "$HOME/.p10k.zsh" )
 
   puts
   puts "Overriding tool-versions ~/.tool-versions with Dotfile's tool-versions"
@@ -168,11 +172,6 @@ def install_prezto
   puts
   puts "Overriding Ghostty config"
   run %( ln -nfs "$HOME/.dotfiles/ghostty $HOME/.config/" )
-
-  puts
-  puts "Overriding prezto ~/.zshrc with Dotfile's zshrc"
-  run %( ln -nfs "$HOME/.dotfiles/zsh" "$HOME/.zsh" )
-  run %( ln -nfs "$HOME/.dotfiles/zsh/zshrc" "$HOME/.zshrc" )
 
   puts
   puts 'Creating directories for your customizations'

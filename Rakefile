@@ -83,7 +83,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install atuin fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim eza zoxide bat the_silver_searcher fastfetch cmake gh powerlevel10k)
+  run %( brew install atuin fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim eza zoxide bat the_silver_searcher fastfetch cmake gh powerlevel10k worktrunk)
   puts
   puts
 #   puts '======================================================'
@@ -131,6 +131,23 @@ def install_others
   puts 'Installing FZF.'
   puts '======================================================'
   run %($(brew --prefix)/opt/fzf/install)
+  puts
+  puts
+  puts '======================================================'
+  puts 'Installing Worktrunk shell integration.'
+  puts '======================================================'
+  run %( wt config shell install zsh --yes )
+  puts
+  puts
+  puts '======================================================'
+  puts 'Linking Worktrunk configs.'
+  puts '======================================================'
+  run %( mkdir -p "$HOME/.config/worktrunk" )
+  run %( ln -nfs "$HOME/.dotfiles/worktrunk/config.toml" "$HOME/.config/worktrunk/config.toml" )
+  run %( mkdir -p "$HOME/dev/projects/copyai/copy-ai.git/.config" )
+  run %( ln -nfs "$HOME/.dotfiles/worktrunk/copyai.toml" "$HOME/dev/projects/copyai/copy-ai.git/.config/wt.toml" )
+  run %( mkdir -p "$HOME/dev/projects/fullcast/data-intelligence.git/.config" )
+  run %( ln -nfs "$HOME/.dotfiles/worktrunk/data-intelligence.toml" "$HOME/dev/projects/fullcast/data-intelligence.git/.config/wt.toml" )
   puts
   puts
   puts '======================================================'

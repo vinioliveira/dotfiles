@@ -3,6 +3,8 @@ reload() {
   exec zsh;
 }
 
+source "$HOME/.dotfiles/scripts/worktrunk.sh"
+
 #Let's create a variant of the gwcoi called gwfi for fullcast
 # we want to reuse most if not all of the logic from gwcoi and gwcoid
 # so we will create a function that takes the base path as an argument
@@ -12,6 +14,11 @@ reload() {
 # fullcast path: ~/dev/projects/fullcast/data-intelligence.git
 _gw() {
   local GIT_WT_BASE_PATH=$1
+  if gw_has_worktrunk; then
+    gw_switch_and_cd "$GIT_WT_BASE_PATH"
+    return $?
+  fi
+
   local origin=`pwd`
   builtin cd $GIT_WT_BASE_PATH
   local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
@@ -32,6 +39,18 @@ gwfi(){
 
 _gwd() {
   local GIT_WT_BASE_PATH=$1
+  if gw_has_worktrunk; then
+    local branch=$(gw_pick_existing_worktree_branch "$GIT_WT_BASE_PATH")
+
+    if [[ -z "$branch" ]]; then
+      return 0
+    fi
+
+    echo "\e[1;41m Deleting worktree (  $branch ) \e[0m"
+    gw_wt "$GIT_WT_BASE_PATH" remove "$branch"
+    return $?
+  fi
+
   local origin=`pwd`
   builtin cd $GIT_WT_BASE_PATH
   local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`

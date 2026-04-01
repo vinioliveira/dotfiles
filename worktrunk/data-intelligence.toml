@@ -1,0 +1,15 @@
+[post-create]
+env = """
+  source_root="{{ worktree_path_of_branch('main') }}"
+  if [ -n "$source_root" ]; then
+    find "$source_root/packages" "$source_root/apps" -mindepth 2 -maxdepth 2 -name .env -type f 2>/dev/null | while read -r f; do
+      relative_path="${f#$source_root/}"
+      dest_dir="{{ worktree_path }}/${relative_path%/.env}"
+      if [ -d "$dest_dir" ]; then
+        cp "$f" "$dest_dir/.env"
+        echo "Copied .env to $dest_dir"
+      fi
+    done
+  fi
+"""
+install = "pnpm i"

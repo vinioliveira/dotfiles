@@ -1,0 +1,9 @@
+[post-create]
+env = """
+  source_path="{{ worktree_path_of_branch('develop') }}/.env"
+  if [ -f "$source_path" ] && [ ! -f "{{ worktree_path }}/.env" ]; then
+    cp "$source_path" "{{ worktree_path }}/.env"
+    echo "Copied .env from develop"
+  fi
+"""
+install = "pnpm i"

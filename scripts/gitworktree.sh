@@ -1,9 +1,23 @@
 #!/usr/bin/env bash
 
-
+source "$HOME/.dotfiles/scripts/worktrunk.sh"
 
 GIT_WT_BASE_PATH=$1
 BRANCH=$2
+
+if gw_has_worktrunk; then
+  if [[ -n "$BRANCH" ]]; then
+    if gw_branch_exists "$GIT_WT_BASE_PATH" "$BRANCH"; then
+      gw_wt "$GIT_WT_BASE_PATH" switch -x "${SHELL:-/bin/zsh}" "$BRANCH"
+    else
+      gw_wt "$GIT_WT_BASE_PATH" switch --create -x "${SHELL:-/bin/zsh}" "$BRANCH"
+    fi
+    exit $?
+  fi
+
+  gw_wt "$GIT_WT_BASE_PATH" switch -x "${SHELL:-/bin/zsh}"
+  exit $?
+fi
 
 GIT_WT_REGEX='([^[:space:]]*).*\[(.*)\]$'
 cd $GIT_WT_BASE_PATH

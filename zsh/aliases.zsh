@@ -70,6 +70,14 @@ alias copyai_servers="copyai_server.sh"
 alias gwco="gitworktree.sh ~/dev/projects/copyai/copy-ai.git"
 alias gwfo="gitworktree.sh ~/dev/projects/fullcast/data-intelligence.git"
 
+wtco() {
+  WORKTRUNK_CONFIG_PATH="$HOME/.dotfiles/worktrunk/config.toml" wt -C "$HOME/dev/projects/copyai/copy-ai.git" "$@"
+}
+
+wtfo() {
+  WORKTRUNK_CONFIG_PATH="$HOME/.dotfiles/worktrunk/config.toml" wt -C "$HOME/dev/projects/fullcast/data-intelligence.git" "$@"
+}
+
 alias darkmode="~/.dotfiles/scripts/swap-theme.sh dark"
 alias lightmode="~/.dotfiles/scripts/swap-theme.sh light"
 alias toggle-darkmode="~/.dotfiles/scripts/swap-theme.sh toggle"

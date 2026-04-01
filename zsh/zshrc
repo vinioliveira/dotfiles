@@ -1,15 +1,42 @@
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# Append history instead of overwriting
+setopt APPEND_HISTORY
+
+# Write to history immediately, not when shell exits
+setopt INC_APPEND_HISTORY
+
+# Share history across all sessions
+setopt SHARE_HISTORY
+
+# Don't store duplicate entries
+setopt HIST_IGNORE_DUPS
+
+# Remove older duplicate entries from history
+setopt HIST_IGNORE_ALL_DUPS
+
+# Don't record commands that start with a space
+setopt HIST_IGNORE_SPACE
+
+# Remove unnecessary blanks from commands
+setopt HIST_REDUCE_BLANKS
+
+# When searching history, don't show duplicates
+setopt HIST_FIND_NO_DUPS
+
+# Keep timestamps and prefer preserving unique, recent commands.
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_SAVE_NO_DUPS
+
+
 # Disable flow control commands (keeps C-s from freezing everything)
 # Must check if stdin is a terminal to avoid errors
 if [[ -t 0 ]]; then
   stty start undef 2>/dev/null
   stty stop undef 2>/dev/null
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 if [[ -z "$LC_ALL" ]]; then
@@ -44,6 +71,11 @@ setopt CORRECT
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Use Atuin for an improved Ctrl-R search experience when available.
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
+fi
+
 # pnpm
 export PNPM_HOME="/Users/vinicius/Library/pnpm"
 export PYTHON_HOME="$(brew --prefix)/opt/python@3.9/libexec/bin"
@@ -71,3 +103,11 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fastfetch --config ~/.dotfiles/fastfetch/minimal.jsonc
+
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi

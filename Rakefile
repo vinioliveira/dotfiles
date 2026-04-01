@@ -83,7 +83,7 @@ def install_homebrew
   puts '======================================================'
   puts 'Installing Homebrew packages...There may be some warnings.'
   puts '======================================================'
-  run %( brew install fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim eza zoxide bat the_silver_searcher fastfetch cmake gh powerlevel10k)
+  run %( brew install atuin fzf git httpie hub ifstat openssl python pgcli redis reattach-to-user-namespace ripgrep tmux watch yarn zsh zsh-completions neovim eza zoxide bat the_silver_searcher fastfetch cmake gh powerlevel10k)
   puts
   puts
 #   puts '======================================================'

@@ -11,7 +11,7 @@ return {
     priority = 1000,
     opts = {
       transparent = true,
-      variant = "dark",
+      variant = "auto",
     },
   },
   {
@@ -139,4 +139,26 @@ return {
     }
   },
   'maxmx03/solarized.nvim',
+  {
+    "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    priority = 999,
+    config = function()
+      local adm = require("auto-dark-mode")
+      adm.setup({
+        update_interval = 1000,
+        set_dark_mode = function()
+          vim.api.nvim_set_option_value("background", "dark", {})
+          -- cyberdream will adapt because variant="auto"
+          -- (reapply scheme to refresh highlights in all cases)
+          vim.cmd.colorscheme("cyberdream")
+        end,
+        set_light_mode = function()
+          vim.api.nvim_set_option_value("background", "light", {})
+          vim.cmd.colorscheme("cyberdream")
+        end,
+      })
+      adm.init()
+    end,
+  }
 }

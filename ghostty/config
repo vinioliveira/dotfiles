@@ -1,9 +1,10 @@
-font-family = "CaskaydiaCove Nerd Font"
+font-family = "SauceCodePro Nerd Font"
 # font-family = "Roboto Nerd Font Propo"
 # font-family = "Hack Nerd Font Propo"
-font-style = "Light"
+font-style = "Regular"
 font-size = 16
-theme = dark:cyberdream,light:cyberdream-light
+theme = dark:Atom,light:cyberdream-light
+# theme = dark:cyberdream,light:cyberdream-light
 # theme = dark:Kanagawa Dragon,light:onenord-light
 # theme = dark:grurbox-material-hard-dark,light:onenord-light
 # theme = dark:rose-pine-moon,light:onenord-light
@@ -25,6 +26,38 @@ title =
 # keybind
 keybind = ctrl+/=text:\x1f
 keybind = shift+enter=text:\n
+
+# tmux-style bindings with ctrl+d as prefix
+keybind = ctrl+a>v=new_split:right
+keybind = ctrl+a>s=new_split:down
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>f=toggle_split_zoom
+keybind = ctrl+a>shift+h=resize_split:left,10
+keybind = ctrl+a>shift+j=resize_split:down,10
+keybind = ctrl+a>shift+k=resize_split:up,10
+keybind = ctrl+a>shift+l=resize_split:right,10
+keybind = ctrl+a>x=close_surface
+keybind = ctrl+a>m=activate_key_table:vim
+
+# vim scroll mode (enter with ctrl+a then m, exit with q/escape/i)
+keybind = vim/j=scroll_page_lines:1
+keybind = vim/k=scroll_page_lines:-1
+keybind = vim/ctrl+d=scroll_page_down
+keybind = vim/ctrl+u=scroll_page_up
+keybind = vim/ctrl+f=scroll_page_down
+keybind = vim/ctrl+b=scroll_page_up
+keybind = vim/g>g=scroll_to_top
+keybind = vim/shift+g=scroll_to_bottom
+keybind = vim/slash=start_search
+keybind = vim/n=navigate_search:next
+keybind = vim/y=copy_to_clipboard
+keybind = vim/escape=deactivate_key_table
+keybind = vim/q=deactivate_key_table
+keybind = vim/i=deactivate_key_table
+keybind = vim/catch_all=ignore
 
 
 macos-titlebar-style=tabs

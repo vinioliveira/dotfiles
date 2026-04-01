@@ -44,7 +44,9 @@
                 "^com\\.googlecode\\.iterm2$",
                 "^co\\.zeit\\.hyperterm$",
                 "^co\\.zeit\\.hyper$",
-                "org.alacritty"
+                "org.alacritty",
+                "^com\\.mitchellh\\.ghostty$",
+                "^com\\.cmuxterm\\.app$"
               ]
             }
           ]
@@ -94,7 +96,9 @@
                 "^com\\.googlecode\\.iterm2$",
                 "^co\\.zeit\\.hyperterm$",
                 "^co\\.zeit\\.hyper$",
-                "^io\\.alacritty$"
+                "^io\\.alacritty$",
+                "^com\\.mitchellh\\.ghostty$",
+                "^com\\.cmuxterm\\.app$"
               ]
             }
           ]
@@ -143,7 +147,9 @@
                 "^com\\.googlecode\\.iterm2$",
                 "^co\\.zeit\\.hyperterm$",
                 "^co\\.zeit\\.hyper$",
-                "^io\\.alacritty$"
+                "^io\\.alacritty$",
+                "^com\\.mitchellh\\.ghostty$",
+                "^com\\.cmuxterm\\.app$"
               ]
             }
           ]
@@ -193,7 +199,9 @@
                 "^com\\.googlecode\\.iterm2$",
                 "^co\\.zeit\\.hyperterm$",
                 "^co\\.zeit\\.hyper$",
-                "^io\\.alacritty$"
+                "^io\\.alacritty$",
+                "^com\\.mitchellh\\.ghostty$",
+                "^com\\.cmuxterm\\.app$"
               ]
             }
           ]

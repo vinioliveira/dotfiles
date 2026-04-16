@@ -1,23 +1,13 @@
 #!/usr/bin/env bash
 
-source "$HOME/.dotfiles/scripts/worktrunk.sh"
-
 GIT_WT_BASE_PATH=$1
 BRANCH=$2
 
-if gw_has_worktrunk; then
-  if [[ -n "$BRANCH" ]]; then
-    if gw_branch_exists "$GIT_WT_BASE_PATH" "$BRANCH"; then
-      gw_wt "$GIT_WT_BASE_PATH" switch -x "${SHELL:-/bin/zsh}" "$BRANCH"
-    else
-      gw_wt "$GIT_WT_BASE_PATH" switch --create -x "${SHELL:-/bin/zsh}" "$BRANCH"
-    fi
-    exit $?
-  fi
-
-  gw_wt "$GIT_WT_BASE_PATH" switch -x "${SHELL:-/bin/zsh}"
-  exit $?
-fi
+notify_terminal_pwd() {
+  local host_name
+  host_name="$(hostname -f 2>/dev/null || hostname)"
+  printf '\033]7;file://%s%s\007' "$host_name" "$PWD"
+}
 
 GIT_WT_REGEX='([^[:space:]]*).*\[(.*)\]$'
 cd $GIT_WT_BASE_PATH
@@ -37,6 +27,7 @@ done <<< $( git worktree list )
 
 if [[ ! -z "$GWT_PATH" ]]; then
   cd $GWT_PATH
+  notify_terminal_pwd
   exec $SHELL
 fi
 
@@ -64,23 +55,22 @@ fi
 
 #if fullcast folder copy for apps
 if [[ "$GIT_WT_BASE_PATH" == *"data-intelligence.git"* ]]; then
-  # copy .env for all the packages and apps and paste them in their respective folders
-  shopt -s nullglob
-  for f in "$GIT_WT_BASE_PATH"/branches/main/packages/*/.env "$GIT_WT_BASE_PATH"/branches/main/apps/*/.env; do
-    # Extract the relative path (e.g., "packages/foo" or "apps/graphrag-api")
-    relative_path=$(echo "$f" | sed "s|$GIT_WT_BASE_PATH/branches/main/||" | sed 's|/.env$||')
-    dest_dir="$GWT_PATH/$relative_path"
-    if [ -d "$dest_dir" ]; then
-      cp "$f" "$dest_dir/.env"
-      echo "✓ Copied .env to $dest_dir"
-    else
-      echo "✗ Destination directory does not exist: $dest_dir"
-    fi
-  done
-  shopt -u nullglob
+  find "$GIT_WT_BASE_PATH/branches/main/packages" "$GIT_WT_BASE_PATH/branches/main/apps" "$GIT_WT_BASE_PATH/branches/main/skills" \
+    \( -path '*/node_modules/*' -o -path '*/local/*' \) -prune -o \
+    -name .env -type f -print 2>/dev/null | while read -r f; do
+      relative_path="${f#$GIT_WT_BASE_PATH/branches/main/}"
+      dest_dir="$GWT_PATH/${relative_path%/.env}"
+      if [ -d "$dest_dir" ]; then
+        cp "$f" "$dest_dir/.env"
+        echo "✓ Copied .env to $dest_dir"
+      else
+        echo "✗ Destination directory does not exist: $dest_dir"
+      fi
+    done
 fi
 
 
 pnpm i
 
+notify_terminal_pwd
 exec $SHELL

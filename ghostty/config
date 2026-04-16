@@ -14,8 +14,8 @@ theme = dark:Atom,light:cyberdream-light
 #
 background-opacity=0.98
 # img background
-# background-image = "/Users/vinicius/Downloads/Royal.png"
-# background-image-fit=cover
+background-image = "/Users/vinicius/Downloads/Royal.png"
+background-image-fit=cover
 
 # cursor-style = block
 # cursor-style-blink = false

@@ -144,10 +144,10 @@ def install_others
   puts '======================================================'
   run %( mkdir -p "$HOME/.config/worktrunk" )
   run %( ln -nfs "$HOME/.dotfiles/worktrunk/config.toml" "$HOME/.config/worktrunk/config.toml" )
-  run %( mkdir -p "$HOME/dev/projects/copyai/copy-ai.git/.config" )
-  run %( ln -nfs "$HOME/.dotfiles/worktrunk/copyai.toml" "$HOME/dev/projects/copyai/copy-ai.git/.config/wt.toml" )
-  run %( mkdir -p "$HOME/dev/projects/fullcast/data-intelligence.git/.config" )
-  run %( ln -nfs "$HOME/.dotfiles/worktrunk/data-intelligence.toml" "$HOME/dev/projects/fullcast/data-intelligence.git/.config/wt.toml" )
+  run %( mkdir -p "$HOME/dev/projects/copyai/copy-ai.git/branches/develop/.config" )
+  run %( ln -nfs "$HOME/.dotfiles/worktrunk/copyai.toml" "$HOME/dev/projects/copyai/copy-ai.git/branches/develop/.config/wt.toml" )
+  run %( mkdir -p "$HOME/dev/projects/fullcast/data-intelligence.git/branches/main/.config" )
+  run %( ln -nfs "$HOME/.dotfiles/worktrunk/data-intelligence.toml" "$HOME/dev/projects/fullcast/data-intelligence.git/branches/main/.config/wt.toml" )
   puts
   puts
   puts '======================================================'

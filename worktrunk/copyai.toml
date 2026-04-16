@@ -1,4 +1,4 @@
-[post-create]
+[pre-start]
 env = """
   source_path="{{ worktree_path_of_branch('develop') }}/.env"
   if [ -f "$source_path" ] && [ ! -f "{{ worktree_path }}/.env" ]; then

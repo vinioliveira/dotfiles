@@ -1,3 +1,8 @@
+# Enable Powerlevel10k instant prompt. Must stay at the very top.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -16,7 +21,12 @@ if [[ -z "$LC_ALL" ]]; then
 fi
 
 autoload -Uz compinit
-compinit
+# Only regenerate completion dump once a day
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
@@ -27,13 +37,7 @@ autoload promptinit
 fpath=($HOME/.zsh.prompts $fpath)
 promptinit
 
-# Source Prezto.
-# if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-#   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-# fi
-
 source $HOME/.dotfiles/scripts/utils.sh
-# source $HOME/.dotfiles/scripts/tmux.sh
 
 # Customize to your needs...
 for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
@@ -47,12 +51,6 @@ setopt CORRECT
 export PNPM_HOME="/Users/vinicius/Library/pnpm"
 export PYTHON_HOME="$(brew --prefix)/opt/python@3.9/libexec/bin"
 export PATH="$PYTHON_HOME:$PNPM_HOME:$PATH"
-# pnpm endexport PATH="/usr/local/opt/libpq/bin:$PATH"
-
-# source /Users/vinicius/.docker/init-zsh.sh || true # Added by Docker Desktop
-
-# Suppress output from defaults write
-defaults write -g AppleFontSmoothing -int 0 &>/dev/null
 
 # bun completions
 [ -s "/Users/vinicius/.bun/_bun" ] && source "/Users/vinicius/.bun/_bun"
@@ -60,23 +58,10 @@ defaults write -g AppleFontSmoothing -int 0 &>/dev/null
 # Source zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# # Source staship
-# eval "$(starship init zsh)"
-
 # Source powerlevel10k theme
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# fastfetch --config ~/.dotfiles/fastfetch/minimal.jsonc
-
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

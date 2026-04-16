@@ -31,3 +31,8 @@ bindkey '^ ' autosuggest-accept
 
 bindkey "^?" backward-delete-char
 bindkey -v
+
+zle-keymap-select() {
+  zle reset-prompt
+}
+zle -N zle-keymap-select

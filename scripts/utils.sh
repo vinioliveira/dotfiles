@@ -3,6 +3,40 @@ reload() {
   exec zsh;
 }
 
+ts() {
+  local result key query session
+  result=$(
+    tmux list-sessions -F '#{session_name}' 2>/dev/null \
+    | fzf --border=double \
+          --border-label=' tmux sessions ' \
+          --color 'border:#6C7086,label:#CDD6F4' \
+          --prompt '  ' \
+          --print-query \
+          --expect=ctrl-n \
+          --header 'ctrl-n: new  ctrl-x: kill' \
+          --bind 'ctrl-x:execute-silent(printf {} > /tmp/.ts_killed && tmux kill-session -t {})+reload(tmux list-sessions -F "#{session_name}" 2>/dev/null)+transform-header(printf "killed $(cat /tmp/.ts_killed)  |  ctrl-n: new  ctrl-x: kill")'
+  )
+  query=$(sed -n '1p' <<< "$result")
+  key=$(sed -n '2p' <<< "$result")
+  session=$(sed -n '3p' <<< "$result")
+
+  if [[ "$key" == "ctrl-n" ]]; then
+    [[ -z "$query" ]] && read "query?Session name: "
+    [[ -z "$query" ]] && return
+    if [[ -n "$TMUX" ]]; then
+      tmux new-session -ds "$query" && tmux switch-client -t "$query"
+    else
+      tmux new-session -s "$query"
+    fi
+  elif [[ -n "$session" ]]; then
+    if [[ -n "$TMUX" ]]; then
+      tmux switch-client -t "$session"
+    else
+      tmux attach -t "$session"
+    fi
+  fi
+}
+
 _notify_terminal_pwd() {
   local host_name
   host_name="$(hostname -f 2>/dev/null || hostname)"
@@ -17,19 +51,21 @@ _notify_terminal_pwd() {
 # copyai path: ~/dev/projects/copyai/copy-ai.git
 # fullcast path: ~/dev/projects/fullcast/data-intelligence.git
 _tmux_session_for_worktree() {
-  local session_name="${1//\./-}"
-  session_name="${session_name//\//-}"
+  local session_name="${1//\./_}"
+  session_name="${session_name//\//_}"
+  local target_dir="$2"
+  local tmux_running=$(pgrep tmux)
 
-  if [ -n "$TMUX" ]; then
-    if tmux has-session -t "=$session_name" 2>/dev/null; then
-      tmux switch-client -t "=$session_name"
-    else
-      tmux new-session -d -s "$session_name" -c "$PWD"
-      tmux switch-client -t "=$session_name"
-    fi
-  else
-    tmux new-session -A -s "$session_name" -c "$PWD"
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s "$session_name" -c "$target_dir"
+    return
   fi
+
+  if ! tmux has-session -t="$session_name" 2>/dev/null; then
+    tmux new-session -ds "$session_name" -c "$target_dir"
+  fi
+
+  tmux switch-client -t "$session_name"
 }
 
 _gw() {
@@ -39,14 +75,11 @@ _gw() {
   local gwt_line=`g wt list | fzf`
   local gwt_path=`echo $gwt_line | sed 's/\([^[:space:]]*\).*$/\1/g'`
   if [[ ! -z $gwt_path ]]; then
-    cd $gwt_path
-    _notify_terminal_pwd
-    local branch=$(git rev-parse --abbrev-ref HEAD)
-    _tmux_session_for_worktree "$branch"
-  else
-    cd $origin
-    _notify_terminal_pwd
+    local branch=$(git -C "$gwt_path" rev-parse --abbrev-ref HEAD)
+    _tmux_session_for_worktree "$branch" "$gwt_path"
   fi
+  cd $origin
+  _notify_terminal_pwd
 }
 
 gwcoi(){

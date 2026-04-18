@@ -69,6 +69,7 @@ alias validate_pr="npm run format:check -- --base=origin/develop && npm run type
 alias copyai_servers="copyai_server.sh"
 alias gwco="gitworktree.sh ~/dev/projects/copyai/copy-ai.git"
 alias gwfo="gitworktree.sh ~/dev/projects/fullcast/data-intelligence.git"
+alias gw="~/.dotfiles/scripts/gw.sh"
 
 wtco() {
   WORKTRUNK_CONFIG_PATH="$HOME/.dotfiles/worktrunk/config.toml" wt -C "$HOME/dev/projects/copyai/copy-ai.git" "$@"

@@ -1,0 +1,5 @@
+projects:
+  - name: copyai
+    path: ~/dev/projects/copyai/copy-ai.git
+  - name: fullcast
+    path: ~/dev/projects/fullcast/data-intelligence.git

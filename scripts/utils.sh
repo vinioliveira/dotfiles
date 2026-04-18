@@ -107,26 +107,7 @@ gwfi(){
   _gw ~/dev/projects/fullcast/data-intelligence.git
 }
 
-_gwo() {
-  local GIT_WT_BASE_PATH=$1
-  local branch=$2
-  [[ -z "$branch" ]] && { echo "usage: gwfo/gwco <branch>"; return 1; }
-  local gwt_path=$(git -C "$GIT_WT_BASE_PATH" worktree list | grep "\[$branch\]" | awk '{print $1}')
-  if [[ -z "$gwt_path" ]]; then
-    echo "No worktree found for branch '$branch'"
-    return 1
-  fi
-  _tmux_session_for_worktree "$branch" "$gwt_path"
-  _notify_terminal_pwd
-}
 
-gwco(){
-  _gwo ~/dev/projects/copyai/copy-ai.git "$1"
-}
-
-gwfo(){
-  _gwo ~/dev/projects/fullcast/data-intelligence.git "$1"
-}
 
 _gwd() {
   local GIT_WT_BASE_PATH=$1

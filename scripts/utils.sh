@@ -73,18 +73,16 @@ _tmux_session_for_worktree() {
   local session_name="${1//\./_}"
   session_name="${session_name//\//_}"
   local target_dir="$2"
-  local tmux_running=$(pgrep tmux)
-
-  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s "$session_name" -c "$target_dir"
-    return
-  fi
 
   if ! tmux has-session -t="$session_name" 2>/dev/null; then
     tmux new-session -ds "$session_name" -c "$target_dir"
   fi
 
-  tmux switch-client -t "$session_name"
+  if [[ -n "$TMUX" ]]; then
+    tmux switch-client -t "$session_name"
+  else
+    tmux attach-session -t "$session_name"
+  fi
 }
 
 _gw() {
@@ -107,6 +105,27 @@ gwcoi(){
 
 gwfi(){
   _gw ~/dev/projects/fullcast/data-intelligence.git
+}
+
+_gwo() {
+  local GIT_WT_BASE_PATH=$1
+  local branch=$2
+  [[ -z "$branch" ]] && { echo "usage: gwfo/gwco <branch>"; return 1; }
+  local gwt_path=$(git -C "$GIT_WT_BASE_PATH" worktree list | grep "\[$branch\]" | awk '{print $1}')
+  if [[ -z "$gwt_path" ]]; then
+    echo "No worktree found for branch '$branch'"
+    return 1
+  fi
+  _tmux_session_for_worktree "$branch" "$gwt_path"
+  _notify_terminal_pwd
+}
+
+gwco(){
+  _gwo ~/dev/projects/copyai/copy-ai.git "$1"
+}
+
+gwfo(){
+  _gwo ~/dev/projects/fullcast/data-intelligence.git "$1"
 }
 
 _gwd() {

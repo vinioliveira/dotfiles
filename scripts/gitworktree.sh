@@ -11,39 +11,25 @@ notify_terminal_pwd() {
 
 # Create or switch to a tmux session for the worktree
 tmux_session_for_worktree() {
-  local session_name="${1//\./-}"
-  session_name="${session_name//\//-}"
+  local session_name="${1//\./_}"
+  session_name="${session_name//\//_}"
 
-  if [ -n "$TMUX" ]; then
-    if tmux has-session -t "=$session_name" 2>/dev/null; then
-      tmux switch-client -t "=$session_name"
-    else
-      tmux new-session -d -s "$session_name" -c "$PWD"
-      tmux switch-client -t "=$session_name"
-    fi
+  if ! tmux has-session -t="$session_name" 2>/dev/null; then
+    tmux new-session -ds "$session_name" -c "$PWD"
+  fi
+
+  if [[ -n "$TMUX" ]]; then
+    tmux switch-client -t "$session_name"
   else
-    tmux new-session -A -s "$session_name" -c "$PWD"
+    tmux attach-session -t "$session_name"
   fi
 }
 
-GIT_WT_REGEX='([^[:space:]]*).*\[(.*)\]$'
 cd $GIT_WT_BASE_PATH
-GWT_PATH=""
+GWT_PATH=$(git worktree list | grep "/branches/${BRANCH} " | awk '{print $1}')
 
-IFS=
-while read line; do
-  if [[ $line =~ $GIT_WT_REGEX ]]; then
-    GWT_BRANCH="${BASH_REMATCH[2]}"
-    if [[ $GWT_BRANCH = $BRANCH ]]; then
-      GWT_PATH=${BASH_REMATCH[1]}
-      break
-    fi
-  fi
-done <<< $( git worktree list )
-
-
-if [[ ! -z "$GWT_PATH" ]]; then
-  cd $GWT_PATH
+if [[ -n "$GWT_PATH" ]]; then
+  cd "$GWT_PATH"
   notify_terminal_pwd
   tmux_session_for_worktree "$BRANCH"
   exit 0

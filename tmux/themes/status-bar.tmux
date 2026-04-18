@@ -1,54 +1,44 @@
 
+# bg matches terminal background (#161719) so bar blends in
+set -g status-style fg=colour6,bg=#161719
+
 # Window with activity status
-set -g window-status-activity-style bg=colour0,fg=colour5
+set -g window-status-activity-style bg=#161719,fg=colour5
 
 # Window separator
 set -g window-status-separator ""
 
 # Window status alignment
 set -g status-justify centre
-set -g status-style fg=colour6,bg=colour0
 
 # Pane border
-set -g pane-border-style bg=default,fg=colour8
-
-#set -g pane-border-bg colour0
-#set -g pane-active-border-bg colour0
-
-# Active pane border
-set -g pane-active-border-style bg=default,fg=colour15
+set -g pane-border-style bg=default,fg=colour0
+set -g pane-active-border-style bg=default,fg=colour6
 
 # Pane number indicator
 set -g display-panes-colour default
 set -g display-panes-active-colour default
 
 # Clock mode
-set -g clock-mode-colour red
+set -g clock-mode-colour colour6
 set -g clock-mode-style 24
 
-# Message
-# set -g message-bg default
-# set -g message-fg default
-
 # Command message
-set -g message-command-style bg=default,fg=default
+set -g message-command-style bg=#161719,fg=colour6
+set -g message-style bg=#161719,fg=colour6
 
+# Inactive windows
+set -g window-status-format "#[fg=colour8,bg=#161719] #I. #W "
+set -g window-status-style fg=colour8,bg=#161719
 
-set -g @now-playing-playing-icon "♫"
-set -g @now-playing-scrollable-threshold 20
-set -g @now-playing-status-format "#[bg=colour0]#[fg=colour6]#[bg=colour6]#[fg=colour0]{icon} {scrollable}"
+# Active window — blue pill
+set -g window-status-current-format "#[fg=colour6,bg=#161719]\ue0b6#[fg=#161719,bg=colour6] #I. #W #[fg=colour6,bg=#161719]\ue0b4"
+set -g window-status-current-style bg=colour6,fg=#161719
 
-# # Window status
-set -g window-status-format " #I. #W "
-set -g window-status-style fg=colour6,bg=default
-
+# Left: session pill (blue) + window/pane numbers
 set -g status-left-length 60
-# set -g status-left "#[fg=colour6]\ue0b6#[bg=colour6]#[fg=colour0] #S #[fg=colour6]#[bg=colour0]#[bg=colour0]#[fg=colour6] #I #[fg=colour7]#P #[fg=colour0]#[bg=default]"
-set -g status-left "#[fg=colour6]\ue0b6#[bg=colour6]#[fg=colour0] #S #[fg=colour6]#[bg=colour0]#[bg=colour0]#[fg=colour6] #I #[fg=colour7]#P "
+set -g status-left "#[fg=colour6,bg=#161719]\ue0b6#[bg=colour6,fg=#161719] #S #[fg=colour6,bg=#161719]\ue0b4"
 
-# Right side of status bar
+# Right: cpu (purple pill) + time (blue pill)
 set -g status-right-length 60
-set -g status-right "#[fg=colour13]#[bg=colour13]#[fg=colour0] #{cpu_icon} #{cpu_percentage} #[bg=colour13]#[fg=colour6]#[bg=colour6]#[fg=colour0] %H:%M#[bg=colour0]#[fg=colour6]\ue0b4"
-
-set -g window-status-current-format "#[fg=colour6]#[bg=colour0]#[bg=colour6]#[fg=colour0] #I. #W #[fg=colour0]#[bg=colour6]"
-set -g window-status-current-style bg=colour6,fg=colour0
+set -g status-right "#[fg=colour5,bg=#161719]\ue0b6#[bg=colour5,fg=#161719] #{cpu_icon} #{cpu_percentage} #[fg=colour6,bg=colour5]\ue0b6#[bg=colour6,fg=#161719] %H:%M #[fg=colour6,bg=#161719]\ue0b4"

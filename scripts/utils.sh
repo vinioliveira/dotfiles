@@ -3,6 +3,25 @@ reload() {
   exec zsh;
 }
 
+pg() {
+  op whoami &>/dev/null || op signin
+
+  local item
+  item=$(op item list --tags pgcli --format json 2>/dev/null \
+    | jq -r '.[].title' \
+    | fzf --prompt ' db  ' \
+          --border=double \
+          --border-label=' pg connections ' \
+          --color 'border:#6C7086,label:#CDD6F4')
+  [[ -z "$item" ]] && return
+
+  local url
+  url=$(op item get "$item" --fields label="connection string" --reveal --format json 2>/dev/null | jq -r '.value')
+  [[ -z "$url" ]] && { echo "no 'connection string' field found in '$item'"; return 1; }
+
+  pgcli "$url"
+}
+
 ts() {
   local result key query session
   result=$(

@@ -9,6 +9,23 @@ notify_terminal_pwd() {
   printf '\033]7;file://%s%s\007' "$host_name" "$PWD"
 }
 
+# Create or switch to a tmux session for the worktree
+tmux_session_for_worktree() {
+  local session_name="${1//\./-}"
+  session_name="${session_name//\//-}"
+
+  if [ -n "$TMUX" ]; then
+    if tmux has-session -t "=$session_name" 2>/dev/null; then
+      tmux switch-client -t "=$session_name"
+    else
+      tmux new-session -d -s "$session_name" -c "$PWD"
+      tmux switch-client -t "=$session_name"
+    fi
+  else
+    tmux new-session -A -s "$session_name" -c "$PWD"
+  fi
+}
+
 GIT_WT_REGEX='([^[:space:]]*).*\[(.*)\]$'
 cd $GIT_WT_BASE_PATH
 GWT_PATH=""
@@ -28,7 +45,8 @@ done <<< $( git worktree list )
 if [[ ! -z "$GWT_PATH" ]]; then
   cd $GWT_PATH
   notify_terminal_pwd
-  exec $SHELL
+  tmux_session_for_worktree "$BRANCH"
+  exit 0
 fi
 
 NORMALIZED_BRANCH=${BRANCH//\//\-}
@@ -73,4 +91,4 @@ fi
 pnpm i
 
 notify_terminal_pwd
-exec $SHELL
+tmux_session_for_worktree "$BRANCH"

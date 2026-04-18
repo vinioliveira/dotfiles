@@ -16,14 +16,33 @@ _notify_terminal_pwd() {
 
 # copyai path: ~/dev/projects/copyai/copy-ai.git
 # fullcast path: ~/dev/projects/fullcast/data-intelligence.git
+_tmux_session_for_worktree() {
+  local session_name="${1//\./-}"
+  session_name="${session_name//\//-}"
+
+  if [ -n "$TMUX" ]; then
+    if tmux has-session -t "=$session_name" 2>/dev/null; then
+      tmux switch-client -t "=$session_name"
+    else
+      tmux new-session -d -s "$session_name" -c "$PWD"
+      tmux switch-client -t "=$session_name"
+    fi
+  else
+    tmux new-session -A -s "$session_name" -c "$PWD"
+  fi
+}
+
 _gw() {
   local GIT_WT_BASE_PATH=$1
   local origin=`pwd`
   builtin cd $GIT_WT_BASE_PATH
-  local gwt_path=`g wt list | fzf | sed 's/\([^[:space:]]*\).*$/\1/g'`
+  local gwt_line=`g wt list | fzf`
+  local gwt_path=`echo $gwt_line | sed 's/\([^[:space:]]*\).*$/\1/g'`
   if [[ ! -z $gwt_path ]]; then
     cd $gwt_path
     _notify_terminal_pwd
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+    _tmux_session_for_worktree "$branch"
   else
     cd $origin
     _notify_terminal_pwd

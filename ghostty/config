@@ -3,8 +3,8 @@ font-family = "SauceCodePro Nerd Font"
 # font-family = "Hack Nerd Font Propo"
 font-style = "Regular"
 font-size = 16
-theme = dark:Atom,light:cyberdream-light
-# theme = dark:cyberdream,light:cyberdream-light
+# theme = dark:Atom,light:cyberdream-light
+theme = dark:cyberdream,light:cyberdream-light
 # theme = dark:Kanagawa Dragon,light:onenord-light
 # theme = dark:grurbox-material-hard-dark,light:onenord-light
 # theme = dark:rose-pine-moon,light:onenord-light
@@ -13,9 +13,6 @@ theme = dark:Atom,light:cyberdream-light
 #
 #
 background-opacity=0.98
-# img background
-background-image = "/Users/vinicius/Downloads/Royal.png"
-background-image-fit=cover
 
 # cursor-style = block
 # cursor-style-blink = false
@@ -60,7 +57,9 @@ keybind = shift+enter=text:\n
 # keybind = vim/catch_all=ignore
 
 
-macos-titlebar-style=tabs
+macos-titlebar-style=hidden
+window-padding-x=8
+window-padding-y=8,0
 # macos-titlebar-style=transparent
 # macos-titlebar-proxy-icon=hidden
 # window-decoration=auto

@@ -8,4 +8,3 @@ vfzf() {
     zle reset-prompt
   fi
 }
-

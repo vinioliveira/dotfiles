@@ -3,5 +3,5 @@ zsh/secrets.zsh
 nvim/fzf-history/
 alfred/
 scripts/private
-
+tmux*.log
 

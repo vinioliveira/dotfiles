@@ -16,7 +16,7 @@ vim.o.background = "dark"
 -- vim.cmd("colorscheme kanagawa-dragon")
 -- vim.cmd("colorscheme everforest")
 --
-vim.cmd("colorscheme cyberdream")
+-- vim.cmd("colorscheme flexoki-dark")
 
 
 -- vim.cmd("colorscheme everforest")

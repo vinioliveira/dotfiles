@@ -23,6 +23,12 @@ pg() {
 }
 
 ts() {
+  # Clean up stale socket if server crashed and left one behind
+  if ! tmux info &>/dev/null; then
+    local socket="/tmp/tmux-$(id -u)/default"
+    [[ -S "$socket" ]] && rm -f "$socket"
+  fi
+
   local result key query session
   result=$(
     tmux list-sessions -F '#{session_name}' 2>/dev/null \

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 GIT_WT_BASE_PATH=$1
 BRANCH=$2
 
@@ -25,8 +27,8 @@ tmux_session_for_worktree() {
   fi
 }
 
-cd $GIT_WT_BASE_PATH
-GWT_PATH=$(git worktree list | grep "/branches/${BRANCH} " | awk '{print $1}')
+cd "$GIT_WT_BASE_PATH"
+GWT_PATH="$(git worktree list | awk -v branch="/branches/${BRANCH} " '$0 ~ branch { print $1 }')"
 
 if [[ -n "$GWT_PATH" ]]; then
   cd "$GWT_PATH"
@@ -38,22 +40,22 @@ fi
 NORMALIZED_BRANCH=${BRANCH//\//\-}
 GWT_PATH="$GIT_WT_BASE_PATH/branches/$NORMALIZED_BRANCH"
 
-git fetch origin
+git fetch origin >/dev/null 2>&1 || true
 
-git branch --all | grep $BRANCH >/dev/null
-r=$?
-if [[ "$r" == "0" ]]; then
-  git worktree add $GWT_PATH $BRANCH
+if git show-ref --verify --quiet "refs/heads/$BRANCH" || git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+  git worktree add "$GWT_PATH" "$BRANCH"
 else
-  git worktree add $GWT_PATH -b $BRANCH
+  git worktree add "$GWT_PATH" -b "$BRANCH"
 fi
-cd $GWT_PATH
+cd "$GWT_PATH"
 
 
 # if copy-ai
 if [[ "$GIT_WT_BASE_PATH" == *"copy-ai.git"* ]]; then
   # copy .env file
-  cp $GIT_WT_BASE_PATH/branches/develop/.env .
+  if [[ -f "$GIT_WT_BASE_PATH/branches/develop/.env" ]]; then
+    cp "$GIT_WT_BASE_PATH/branches/develop/.env" .
+  fi
 fi
 
 

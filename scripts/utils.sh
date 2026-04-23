@@ -23,6 +23,11 @@ pg() {
 }
 
 ts() {
+  if [[ -n "$TMUX" ]]; then
+    ~/.dotfiles/scripts/tmux-sessions.sh
+    return
+  fi
+
   # Clean up stale socket if server crashed and left one behind
   if ! tmux info &>/dev/null; then
     local socket="/tmp/tmux-$(id -u)/default"

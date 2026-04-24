@@ -103,6 +103,20 @@ create_tmux_session() {
   tmux command-prompt -p "New session name:" "new-session -ds '%%' \; switch-client -t '%%'"
 }
 
+rename_tmux_session() {
+  local session_name="$1"
+  local new_name
+
+  [[ -z "$session_name" ]] && return 1
+
+  printf '\033[2J\033[H'
+  printf 'Rename session [%s]: ' "$session_name"
+  IFS= read -r new_name
+  [[ -z "$new_name" ]] && return 1
+
+  tmux rename-session -t "$session_name" "$new_name"
+}
+
 create_project_session() {
   local project_name="$1"
   local branch_name="${2:-}"
@@ -216,7 +230,7 @@ fi
 if [[ "$key" == "ctrl-r" ]]; then
   session_name="${selection%%$'\t'*}"
   [[ -z "$session_name" ]] && exit 0
-  tmux command-prompt -I "$session_name" -p "Rename session:" "rename-session -t \"$session_name\" \"%%\""
+  rename_tmux_session "$session_name"
   exit 0
 fi
 

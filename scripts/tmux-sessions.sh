@@ -4,6 +4,12 @@ set -euo pipefail
 
 projects_config="$HOME/.dotfiles/config/projects.conf"
 script_path="$HOME/.dotfiles/scripts/tmux-sessions.sh"
+fzf_color='bg:#100f0f,bg+:#1c1b1a,fg:#cecdc3,fg+:#f2f0e5,border:#6f6e69,label:#878580,gutter:#100f0f,hl:#d14d41,hl+:#d14d41,info:#879a39,prompt:#da702c,pointer:#da702c,marker:#da702c,spinner:#879a39,header:#b7b5ac'
+session_name_color='\033[1;38;5;180m'
+path_color='\033[38;5;247m'
+info_color='\033[38;5;108m'
+attached_color='\033[38;5;110m'
+ansi_reset='\033[0m'
 
 list_sessions() {
   local current
@@ -22,8 +28,12 @@ list_sessions() {
       ' \
     | while IFS='|' read -r _activity name path info attached; do
         path="${path/$HOME/~}"
-        printf "%s\t\033[1;33m%-20s\033[0m  \033[2m%-35s\033[0m  \033[32m%-14s\033[0m  \033[36m%s\033[0m\n" \
-          "$name" "$name" "$path" "$info" "$attached"
+        printf "%s\t%b%-20s%b  %b%-35s%b  %b%-14s%b  %b%s%b\n" \
+          "$name" \
+          "$session_name_color" "$name" "$ansi_reset" \
+          "$path_color" "$path" "$ansi_reset" \
+          "$info_color" "$info" "$ansi_reset" \
+          "$attached_color" "$attached" "$ansi_reset"
       done
 }
 
@@ -33,7 +43,7 @@ pick_create_target() {
     awk '!/^#/ && NF { print $1 }' "$projects_config"
   } | fzf --border=double \
           --border-label=' create session ' \
-          --color 'border:#6C7086,label:#CDD6F4' \
+          --color "$fzf_color" \
           --prompt ' type  ' \
           --header 'enter: choose  ctrl-b: back' \
           --expect=ctrl-b
@@ -43,7 +53,7 @@ pick_project() {
   awk '!/^#/ && NF { print $1 }' "$projects_config" \
     | fzf --border=double \
           --border-label=' open worktree ' \
-          --color 'border:#6C7086,label:#CDD6F4' \
+          --color "$fzf_color" \
           --prompt ' project  ' \
           --header 'enter: choose  ctrl-b: back' \
           --expect=ctrl-b
@@ -61,7 +71,7 @@ pick_worktree_branch() {
     git -C "$project_path" worktree list | grep -v '(bare)' \
       | fzf --border=double \
             --border-label=' worktrees ' \
-            --color 'border:#6C7086,label:#CDD6F4' \
+            --color "$fzf_color" \
             --prompt ' branch  ' \
             --header 'enter: open  ctrl-b: back' \
             --expect=ctrl-b
@@ -128,16 +138,16 @@ result="$(
     --layout=default \
     --border=double \
     --border-label=' sessions ' \
-    --color 'border:#6C7086,label:#CDD6F4,hl:underline,hl+:underline' \
+    --color "$fzf_color" \
     --delimiter=$'\t' \
     --with-nth=2 \
     --highlight-line \
     --prompt '  ' \
     --no-separator \
     --print-query \
-    --expect=ctrl-n,ctrl-o \
-    --header 'enter: switch  ctrl-n: create  ctrl-o: open branch  ctrl-x: kill' \
-    --bind "ctrl-x:execute-silent(tmux kill-session -t {1})+reload($script_path --list)+transform-header(killed {1}  |  enter: switch  ctrl-n: create  ctrl-o: open branch  ctrl-x: kill)"
+    --expect=ctrl-n,ctrl-o,ctrl-r \
+    --header 'enter: switch  ctrl-n: create  ctrl-o: open branch  ctrl-r: rename  ctrl-x: kill' \
+    --bind "ctrl-x:execute-silent(tmux kill-session -t {1})+reload($script_path --list)+transform-header(killed {1}  |  enter: switch  ctrl-n: create  ctrl-o: open branch  ctrl-r: rename  ctrl-x: kill)"
 )"
 
 query="$(sed -n '1p' <<< "$result")"
@@ -200,6 +210,13 @@ if [[ "$key" == "ctrl-o" ]]; then
     exit 0
   fi
 
+  exit 0
+fi
+
+if [[ "$key" == "ctrl-r" ]]; then
+  session_name="${selection%%$'\t'*}"
+  [[ -z "$session_name" ]] && exit 0
+  tmux command-prompt -I "$session_name" -p "Rename session:" "rename-session -t \"$session_name\" \"%%\""
   exit 0
 fi
 

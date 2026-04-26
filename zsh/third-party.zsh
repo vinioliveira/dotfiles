@@ -11,12 +11,9 @@ bashcompinit
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-. $(brew --prefix asdf)/libexec/asdf.sh
-. $(brew --prefix asdf)/etc/bash_completion.d/asdf
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-source <(kubectl completion zsh)
-source <(npm completion)
+[[ $commands[npm] ]] && source <(npm completion)
 
 

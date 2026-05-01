@@ -2,8 +2,18 @@
 
 set -euo pipefail
 
-GIT_WT_BASE_PATH=$1
-BRANCH=$2
+BACKGROUND=false
+POSITIONAL=()
+
+for arg in "$@"; do
+  case "$arg" in
+    --bg) BACKGROUND=true ;;
+    *) POSITIONAL+=("$arg") ;;
+  esac
+done
+
+GIT_WT_BASE_PATH="${POSITIONAL[0]}"
+BRANCH="${POSITIONAL[1]}"
 
 notify_terminal_pwd() {
   local host_name
@@ -18,6 +28,11 @@ tmux_session_for_worktree() {
 
   if ! tmux has-session -t="$session_name" 2>/dev/null; then
     tmux new-session -ds "$session_name" -c "$PWD"
+  fi
+
+  if [[ "$BACKGROUND" == true ]]; then
+    echo "tmux session '$session_name' created in background"
+    return
   fi
 
   if [[ -n "$TMUX" ]]; then

@@ -159,8 +159,63 @@ gwcoid(){
   _gwd ~/dev/projects/copyai/copy-ai.git
 }
 
+# Non-interactive worktree delete by branch name
+# Usage: _gwfd <base_path> <branch>
+_gwfd() {
+  local GIT_WT_BASE_PATH=$1
+  local BRANCH=$2
+  local origin=$(pwd)
+
+  builtin cd "$GIT_WT_BASE_PATH"
+
+  local gwt_path
+  gwt_path="$(git worktree list | awk -v branch="/branches/${BRANCH} " '$0 ~ branch { print $1 }')"
+
+  if [[ -z "$gwt_path" ]]; then
+    # try normalized (slashes → dashes)
+    local normalized="${BRANCH//\//\-}"
+    gwt_path="$(git worktree list | awk -v branch="/branches/${normalized} " '$0 ~ branch { print $1 }')"
+  fi
+
+  if [[ -z "$gwt_path" ]]; then
+    echo "No worktree found for branch: $BRANCH"
+    return 1
+  fi
+
+  local actual_branch
+  actual_branch="$(git -C "$gwt_path" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "$BRANCH")"
+  echo "\e[1;41m Deleting worktree (  $actual_branch ) \e[0m"
+
+  if [[ -n "$(git -C "$gwt_path" status --porcelain 2>/dev/null)" ]]; then
+    echo "⚠ Uncommitted changes — force removing"
+    git worktree remove "$gwt_path" --force
+  else
+    git worktree remove "$gwt_path"
+  fi
+
+  # Kill associated tmux session
+  local session_name="${BRANCH//\./_}"
+  session_name="${session_name//\//_}"
+  if tmux has-session -t="$session_name" 2>/dev/null; then
+    tmux kill-session -t "$session_name"
+    echo "Killed tmux session: $session_name"
+  fi
+
+  if [[ "$origin" == "$gwt_path" ]]; then
+    cd ..
+  else
+    cd "$origin"
+  fi
+  _notify_terminal_pwd
+}
+
+# gwfid [branch] — with branch: non-interactive delete, without: fzf picker
 gwfid(){
-  _gwd ~/dev/projects/fullcast/data-intelligence.git
+  if [[ -n "${1:-}" ]]; then
+    _gwfd ~/dev/projects/fullcast/data-intelligence.git "$1"
+  else
+    _gwd ~/dev/projects/fullcast/data-intelligence.git
+  fi
 }
 
 

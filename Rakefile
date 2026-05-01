@@ -51,7 +51,28 @@ task install_prezto: [:install_vim_plugins]  do
   install_prezto
 end
 
-task install: :install_prezto
+task link_skills: [] do
+  puts '======================================================'
+  puts 'Linking custom skills into .claude and .codex'
+  puts '======================================================'
+  Dir.glob('skills/*').each do |skill_dir|
+    next unless File.directory?(skill_dir)
+    skill_name = skill_dir.split('/').last
+    source = "#{ENV['PWD']}/#{skill_dir}"
+
+    [
+      "#{ENV['HOME']}/.claude/skills/#{skill_name}",
+      "#{ENV['HOME']}/.codex/skills/#{skill_name}"
+    ].each do |target|
+      puts "Linking #{skill_name} → #{target}"
+      run %( mkdir -p "#{File.dirname(target)}" )
+      run %( ln -nfs "#{source}" "#{target}" )
+    end
+  end
+  puts
+end
+
+task install: [:install_prezto, :link_skills]
 
 task default: 'install'
 

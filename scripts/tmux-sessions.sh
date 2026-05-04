@@ -100,7 +100,12 @@ create_tmux_session() {
     return
   fi
 
-  tmux command-prompt -p "New session name:" "new-session -ds '%%' \; switch-client -t '%%'"
+  printf '\033[2J\033[H'
+  printf 'New session name: '
+  IFS= read -r session_name
+  [[ -z "$session_name" ]] && return
+  tmux new-session -ds "$session_name"
+  tmux switch-client -t "$session_name"
 }
 
 rename_tmux_session() {

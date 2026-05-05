@@ -94,15 +94,21 @@ pick_worktree_branch() {
 create_tmux_session() {
   local session_name="${1:-}"
 
-  if [[ -n "$session_name" ]]; then
-    tmux new-session -ds "$session_name"
-    tmux switch-client -t "$session_name"
-    return
+  if [[ -z "$session_name" ]]; then
+    session_name="$(
+      true | fzf --disabled \
+                 --border=double \
+                 --border-label=' new session ' \
+                 --color "$fzf_color" \
+                 --prompt ' name  ' \
+                 --header 'type name + enter' \
+                 --no-info \
+                 --print-query \
+                 --pointer=' ' \
+      | head -1
+    )" || true
   fi
 
-  printf '\033[2J\033[H'
-  printf 'New session name: '
-  IFS= read -r session_name
   [[ -z "$session_name" ]] && return
   tmux new-session -ds "$session_name"
   tmux switch-client -t "$session_name"
@@ -114,9 +120,19 @@ rename_tmux_session() {
 
   [[ -z "$session_name" ]] && return 1
 
-  printf '\033[2J\033[H'
-  printf 'Rename session [%s]: ' "$session_name"
-  IFS= read -r new_name
+  new_name="$(
+    true | fzf --disabled \
+               --border=double \
+               --border-label=" rename: $session_name " \
+               --color "$fzf_color" \
+               --prompt ' name  ' \
+               --header 'type new name + enter' \
+               --no-info \
+               --print-query \
+               --pointer=' ' \
+    | head -1
+  )" || true
+
   [[ -z "$new_name" ]] && return 1
 
   tmux rename-session -t "$session_name" "$new_name"
@@ -197,9 +213,10 @@ if [[ "$key" == "ctrl-n" ]]; then
   if [[ "$target" == "tmux session" ]]; then
     create_tmux_session "$query"
   else
-    if ! create_project_session "$target" "$query"; then
-      status=$?
-      [[ "$status" -eq 2 ]] && exec "$script_path"
+    if create_project_session "$target" "$query"; then
+      :
+    else
+      [[ $? -eq 2 ]] && exec "$script_path"
       exit 0
     fi
   fi
@@ -223,9 +240,10 @@ if [[ "$key" == "ctrl-o" ]]; then
 
   [[ -z "$project_name" ]] && exit 0
 
-  if ! create_project_session "$project_name"; then
-    status=$?
-    [[ "$status" -eq 2 ]] && exec "$script_path"
+  if create_project_session "$project_name"; then
+    :
+  else
+    [[ $? -eq 2 ]] && exec "$script_path"
     exit 0
   fi
 

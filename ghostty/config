@@ -1,19 +1,21 @@
-font-family = "SauceCodePro Nerd Font"
+font-family = "CaskaydiaCove Nerd Font"
+# font-family = "SauceCodePro Nerd Font"
 # font-family = "Roboto Nerd Font Propo"
 # font-family = "Hack Nerd Font Propo"
+# font-style = "Light"
 font-style = "Regular"
 font-size = 16
-theme = dark:Flexoki Dark,light:cyberdream-light
+theme = dark:Gruvbox Material Dark,light:Gruvbox Material Light
+# theme = dark:Flexoki Dark,light:cyberdream-light
 # theme = dark:Atom,light:cyberdream-light
 # theme = dark:cyberdream,light:cyberdream-light
 # theme = dark:Kanagawa Dragon,light:onenord-light
-# theme = dark:grurbox-material-hard-dark,light:onenord-light
 # theme = dark:rose-pine-moon,light:onenord-light
 # theme = dark:Everforest Dark - Hard,light:tokyonight-day
 # theme = dark:tokyonight,light:tokyonight-day
 #
 #
-background-opacity=0.98
+background-opacity=1.0
 
 # cursor-style = block
 # cursor-style-blink = false

@@ -154,13 +154,11 @@ return {
         update_interval = 1000,
         set_dark_mode = function()
           vim.api.nvim_set_option_value("background", "dark", {})
-          -- cyberdream will adapt because variant="auto"
-          -- (reapply scheme to refresh highlights in all cases)
-          vim.cmd.colorscheme("flexoki-dark")
+          vim.cmd.colorscheme("gruvbox-material")
         end,
         set_light_mode = function()
           vim.api.nvim_set_option_value("background", "light", {})
-          vim.cmd.colorscheme("flexoki-light")
+          vim.cmd.colorscheme("gruvbox-material")
         end,
       })
       adm.init()

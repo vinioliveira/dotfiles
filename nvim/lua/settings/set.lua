@@ -4,6 +4,11 @@
 vim.g.mapleader         = ","
 vim.g.maplocalleader    = " "
 
+-- Disable Neovim's built-in SQL omni-completion keymaps. They map <Right> and
+-- <Left> buffer-locally in SQL files, which shadows the global Copilot accept
+-- mapping. Remove this if you start using sqlcomplete/dbext.vim.
+vim.g.omni_sql_no_default_maps = 1
+
 vim.g.python3_host_prog = '/opt/homebrew/bin/python3.11'
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.opt.termguicolors   = true

@@ -2,7 +2,28 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "WebSearch"
+      "WebSearch",
+      "Read(//Users/vinicius/.codex/**)",
+      "Read(//Users/vinicius/**)",
+      "Bash(ln -nfs /Users/vinicius/.dotfiles/skills/start-ticket __TRACKED_VAR__/.claude/skills/start-ticket)",
+      "Bash(ln -nfs /Users/vinicius/.dotfiles/skills/start-ticket __TRACKED_VAR__/.codex/skills/start-ticket)",
+      "Bash(codex --help)",
+      "Bash(codex exec *)",
+      "Bash(chmod +x *)",
+      "Bash(tmux show *)",
+      "Bash(bash ~/.tmux/plugins/tmux/catppuccin.tmux)",
+      "Bash(tmux set *)",
+      "Bash(tmux refresh-client *)",
+      "Bash(bash ~/.dotfiles/scripts/tmux-theme-check.sh)",
+      "Bash(tmux show-hooks *)",
+      "Bash(bash /Users/vinicius/.dotfiles/scripts/tmux-theme-watcher.sh)",
+      "Bash(tmux -V)",
+      "Bash(echo \"test123\")",
+      "Bash(tmux run-shell *)",
+      "Bash(tmux show-option *)",
+      "Bash(tmux source-file *)",
+      "Bash(rtk:*)",
+      "Bash(ln -nfs __TRACKED_VAR__/.dotfiles/codex/rules/default.rules __TRACKED_VAR__/.codex/rules/default.rules)"
     ],
     "deny": [],
     "ask": []

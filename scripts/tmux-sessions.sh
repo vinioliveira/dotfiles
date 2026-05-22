@@ -28,6 +28,9 @@ list_sessions() {
       ' \
     | while IFS='|' read -r _activity name path info attached; do
         path="${path/$HOME/~}"
+        if [[ ${#path} -gt 35 ]]; then
+          path="…${path: -34}"
+        fi
         printf "%s\t%b%-20s%b  %b%-35s%b  %b%-14s%b  %b%s%b\n" \
           "$name" \
           "$session_name_color" "$name" "$ansi_reset" \
@@ -69,12 +72,21 @@ pick_worktree_branch() {
 
   result="$(
     git -C "$project_path" worktree list | grep -v '(bare)' \
+      | awk '{
+          path = $1
+          n = split(path, parts, "/")
+          folder = parts[n]
+          rest = $2 " " $3
+          printf "%s\t%s  %s\n", path, folder, rest
+        }' \
       | fzf --border=double \
             --border-label=' worktrees ' \
             --color "$fzf_color" \
             --prompt ' branch  ' \
             --header 'enter: open  ctrl-b: back' \
-            --expect=ctrl-b
+            --expect=ctrl-b \
+            --delimiter=$'\t' \
+            --with-nth=2
   )"
 
   key="$(sed -n '1p' <<< "$result")"
@@ -87,7 +99,7 @@ pick_worktree_branch() {
 
   printf '%s\n' "$key"
   if [[ -n "$selection" ]]; then
-    awk '{print $1}' <<< "$selection" | xargs -I{} basename "{}"
+    cut -f1 <<< "$selection" | xargs -I{} basename "{}"
   fi
 }
 
@@ -213,7 +225,23 @@ if [[ "$key" == "ctrl-n" ]]; then
   if [[ "$target" == "tmux session" ]]; then
     create_tmux_session "$query"
   else
-    if create_project_session "$target" "$query"; then
+    branch_name="$(
+      true | fzf --disabled \
+                 --border=double \
+                 --border-label=" new branch: $target " \
+                 --color "$fzf_color" \
+                 --prompt ' branch  ' \
+                 --header 'type branch name + enter' \
+                 --no-info \
+                 --print-query \
+                 --pointer=' ' \
+                 --query "$query" \
+      | head -1
+    )" || true
+
+    [[ -z "$branch_name" ]] && exit 0
+
+    if create_project_session "$target" "$branch_name"; then
       :
     else
       [[ $? -eq 2 ]] && exec "$script_path"

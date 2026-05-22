@@ -51,7 +51,16 @@ task install_prezto: [:install_vim_plugins]  do
   install_prezto
 end
 
-task link_skills: [] do
+task link_codex_rules: [] do
+  puts '======================================================'
+  puts 'Linking Codex rules'
+  puts '======================================================'
+  run %( mkdir -p "$HOME/.codex/rules" )
+  run %( ln -nfs "$HOME/.dotfiles/codex/rules/default.rules" "$HOME/.codex/rules/default.rules" )
+  puts
+end
+
+task link_skills: [:link_codex_rules] do
   puts '======================================================'
   puts 'Linking custom skills into .claude and .codex'
   puts '======================================================'

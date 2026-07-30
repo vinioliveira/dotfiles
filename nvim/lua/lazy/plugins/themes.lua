@@ -102,6 +102,8 @@ return {
   },
   {
     'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
     opts = {
       transparent = false
     }
@@ -154,11 +156,12 @@ return {
         update_interval = 1000,
         set_dark_mode = function()
           vim.api.nvim_set_option_value("background", "dark", {})
-          vim.cmd.colorscheme("gruvbox-material")
+          -- vim.cmd.colorscheme("gruvbox-material")
+          vim.cmd.colorscheme("kanagawa-wave")
         end,
         set_light_mode = function()
           vim.api.nvim_set_option_value("background", "light", {})
-          vim.cmd.colorscheme("gruvbox-material")
+          vim.cmd.colorscheme("tokyonight-day")
         end,
       })
       adm.init()

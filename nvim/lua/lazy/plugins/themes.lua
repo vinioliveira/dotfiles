@@ -147,6 +147,28 @@ return {
   },
   'maxmx03/solarized.nvim',
   {
+    'craftzdog/solarized-osaka.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = false,
+      styles = {
+        keywords = { italic = false },
+      }
+    },
+  },
+  {
+    'sainnhe/sonokai',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- other styles: 'default', 'atlantis', 'andromeda', 'maia', 'espresso'
+      vim.g.sonokai_style = 'shusia'
+      vim.g.sonokai_enable_italic = true
+      vim.g.sonokai_better_performance = 1
+    end
+  },
+  {
     "f-person/auto-dark-mode.nvim",
     lazy = false,
     priority = 999,
@@ -157,7 +179,9 @@ return {
         set_dark_mode = function()
           vim.api.nvim_set_option_value("background", "dark", {})
           -- vim.cmd.colorscheme("gruvbox-material")
-          vim.cmd.colorscheme("kanagawa-wave")
+          -- vim.cmd.colorscheme("kanagawa-wave")
+          -- vim.cmd.colorscheme("solarized-osaka")
+          vim.cmd.colorscheme("sonokai")
         end,
         set_light_mode = function()
           vim.api.nvim_set_option_value("background", "light", {})
